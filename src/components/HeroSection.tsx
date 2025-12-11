@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Briefcase, Zap } from "lucide-react";
+import start2impactLogo from "@/assets/start2impact-logo.png";
 
 interface HeroSectionProps {
   onStart: () => void;
@@ -25,6 +26,20 @@ const HeroSection = ({ onStart }: HeroSectionProps) => {
       />
 
       <div className="relative z-10 max-w-2xl mx-auto text-center">
+        {/* Logo start2impact */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mb-8"
+        >
+          <img 
+            src={start2impactLogo} 
+            alt="start2impact" 
+            className="h-10 md:h-12 mx-auto brightness-0 invert"
+          />
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
