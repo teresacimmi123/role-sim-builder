@@ -358,6 +358,33 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
         </p>
       </Card>
 
+      {/* Master Recommendation */}
+      <Card className="p-6 bg-gradient-to-br from-primary/20 to-accent/10 border-2 border-primary/40">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-12 h-12 rounded-xl bg-primary/30 flex items-center justify-center">
+            <Trophy className="w-6 h-6 text-primary" />
+          </div>
+          <div>
+            <p className="text-sm text-muted-foreground">Il Master consigliato per te</p>
+            <h3 className="text-lg font-bold text-primary">{scenario.masterRecommendation.name}</h3>
+          </div>
+        </div>
+        <p className="text-foreground leading-relaxed mb-4">
+          {scenario.masterRecommendation.description}
+        </p>
+        <a 
+          href={scenario.masterRecommendation.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 w-full"
+        >
+          <Button variant="hero" size="lg" className="w-full">
+            Scopri il Master
+            <ArrowRight className="w-5 h-5" />
+          </Button>
+        </a>
+      </Card>
+
       <div className="pt-4">
         <Button variant="outline" size="lg" onClick={onRestart} className="w-full">
           <RotateCcw className="w-5 h-5" />
