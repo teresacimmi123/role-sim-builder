@@ -4,13 +4,21 @@ export interface UserProfile {
   interests: string;
 }
 
+export interface TaskChoice {
+  id: string;
+  text: string;
+  isCorrect?: boolean;
+  feedback: string;
+}
+
 export interface Task {
   id: number;
   title: string;
-  description: string;
+  context: string;
+  challenge: string;
+  choices: TaskChoice[];
   skill: string;
-  purpose: string;
-  isCompleted: boolean;
+  lesson: string;
 }
 
 export interface SimulationChoice {
@@ -24,7 +32,7 @@ export interface SimulationScenario {
   roleExplanation: string;
   morningIntro: string;
   tasks: Task[];
-  interactiveScenario: {
+  finalScenario: {
     context: string;
     situation: string;
     choices: SimulationChoice[];

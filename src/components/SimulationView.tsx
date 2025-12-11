@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { SimulationScenario, Task, SimulationChoice } from "@/types/simulation";
+import { SimulationScenario, Task, TaskChoice } from "@/types/simulation";
 import { 
   Clock, 
   CheckCircle2, 
@@ -10,10 +10,12 @@ import {
   Briefcase,
   Lightbulb,
   Target,
-  MessageSquare,
+  AlertCircle,
   RotateCcw,
   Trophy,
-  Star
+  Star,
+  Zap,
+  BookOpen
 } from "lucide-react";
 
 interface SimulationViewProps {
@@ -21,27 +23,42 @@ interface SimulationViewProps {
   onRestart: () => void;
 }
 
-type SimulationPhase = "intro" | "tasks" | "interactive" | "outcome" | "recap";
+type SimulationPhase = "intro" | "tasks" | "taskFeedback" | "final" | "finalOutcome" | "recap";
 
 const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
   const [phase, setPhase] = useState<SimulationPhase>("intro");
   const [currentTaskIndex, setCurrentTaskIndex] = useState(0);
-  const [completedTasks, setCompletedTasks] = useState<number[]>([]);
-  const [selectedChoice, setSelectedChoice] = useState<SimulationChoice | null>(null);
+  const [selectedTaskChoice, setSelectedTaskChoice] = useState<TaskChoice | null>(null);
+  const [taskResults, setTaskResults] = useState<{ task: Task; choice: TaskChoice }[]>([]);
+  const [selectedFinalChoice, setSelectedFinalChoice] = useState<{ id: string; text: string; outcome: string } | null>(null);
 
-  const handleCompleteTask = () => {
-    setCompletedTasks([...completedTasks, currentTaskIndex]);
+  const currentTask = scenario.tasks[currentTaskIndex];
+
+  const handleTaskChoiceSelect = (choice: TaskChoice) => {
+    setSelectedTaskChoice(choice);
+    setPhase("taskFeedback");
+  };
+
+  const handleNextTask = () => {
+    if (selectedTaskChoice && currentTask) {
+      setTaskResults([...taskResults, { task: currentTask, choice: selectedTaskChoice }]);
+    }
+    setSelectedTaskChoice(null);
+    
     if (currentTaskIndex < scenario.tasks.length - 1) {
       setCurrentTaskIndex(currentTaskIndex + 1);
+      setPhase("tasks");
     } else {
-      setPhase("interactive");
+      setPhase("final");
     }
   };
 
-  const handleChoiceSelect = (choice: SimulationChoice) => {
-    setSelectedChoice(choice);
-    setPhase("outcome");
+  const handleFinalChoiceSelect = (choice: { id: string; text: string; outcome: string }) => {
+    setSelectedFinalChoice(choice);
+    setPhase("finalOutcome");
   };
+
+  const correctAnswers = taskResults.filter(r => r.choice.isCorrect).length;
 
   const renderIntro = () => (
     <motion.div
@@ -73,108 +90,82 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
         </p>
       </Card>
 
+      <div className="p-4 rounded-xl bg-accent/10 border border-accent/20">
+        <div className="flex items-center gap-2 mb-2">
+          <Zap className="w-5 h-5 text-accent" />
+          <span className="font-medium text-accent">Come funziona</span>
+        </div>
+        <p className="text-sm text-muted-foreground">
+          Affronterai 4 situazioni reali. Per ognuna dovrai fare una scelta: non ci sono risposte sbagliate in assoluto, ma alcune sono più efficaci di altre. Riceverai feedback immediato.
+        </p>
+      </div>
+
       <Button variant="hero" size="lg" onClick={() => setPhase("tasks")} className="w-full">
-        Inizia i Task
+        Inizia la Simulazione
         <ArrowRight className="w-5 h-5" />
       </Button>
     </motion.div>
   );
 
-  const renderTasks = () => {
-    const task = scenario.tasks[currentTaskIndex];
-    return (
-      <motion.div
-        key={currentTaskIndex}
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: -20 }}
-        className="space-y-4"
-      >
-        {/* Progress */}
-        <div className="flex items-center justify-between mb-6">
-          <span className="text-sm text-muted-foreground">
-            Task {currentTaskIndex + 1} di {scenario.tasks.length}
-          </span>
-          <div className="flex gap-1.5">
-            {scenario.tasks.map((_, index) => (
-              <div
-                key={index}
-                className={`w-8 h-1.5 rounded-full transition-all ${
-                  completedTasks.includes(index)
-                    ? "bg-primary"
-                    : index === currentTaskIndex
-                    ? "bg-primary/50"
-                    : "bg-secondary"
-                }`}
-              />
-            ))}
-          </div>
-        </div>
-
-        <Card variant="gradient" className="p-6">
-          <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-            <Target className="w-5 h-5 text-primary" />
-            {task.title}
-          </h3>
-          <p className="text-foreground leading-relaxed mb-6">{task.description}</p>
-          
-          <div className="grid gap-4">
-            <div className="p-4 rounded-xl bg-secondary/50">
-              <div className="flex items-center gap-2 mb-2">
-                <Lightbulb className="w-4 h-4 text-accent" />
-                <span className="text-sm font-medium text-accent">Competenza</span>
-              </div>
-              <p className="text-sm text-foreground">{task.skill}</p>
-            </div>
-            
-            <div className="p-4 rounded-xl bg-secondary/50">
-              <div className="flex items-center gap-2 mb-2">
-                <MessageSquare className="w-4 h-4 text-primary" />
-                <span className="text-sm font-medium text-primary">Perché è importante</span>
-              </div>
-              <p className="text-sm text-muted-foreground">{task.purpose}</p>
-            </div>
-          </div>
-        </Card>
-
-        <Button variant="hero" size="lg" onClick={handleCompleteTask} className="w-full">
-          <CheckCircle2 className="w-5 h-5" />
-          Completa Task
-        </Button>
-      </motion.div>
-    );
-  };
-
-  const renderInteractive = () => (
+  const renderTask = () => (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="space-y-6"
+      key={`task-${currentTaskIndex}`}
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -20 }}
+      className="space-y-4"
     >
-      <div className="text-center mb-6">
-        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 text-accent text-sm font-medium">
-          <Star className="w-4 h-4" />
-          Scenario Interattivo
+      {/* Progress */}
+      <div className="flex items-center justify-between mb-6">
+        <span className="text-sm text-muted-foreground">
+          Situazione {currentTaskIndex + 1} di {scenario.tasks.length}
         </span>
+        <div className="flex gap-1.5">
+          {scenario.tasks.map((_, index) => (
+            <div
+              key={index}
+              className={`w-8 h-1.5 rounded-full transition-all ${
+                index < currentTaskIndex
+                  ? "bg-primary"
+                  : index === currentTaskIndex
+                  ? "bg-primary/50"
+                  : "bg-secondary"
+              }`}
+            />
+          ))}
+        </div>
       </div>
 
       <Card variant="gradient" className="p-6">
-        <p className="text-sm text-muted-foreground mb-3">{scenario.interactiveScenario.context}</p>
-        <p className="text-foreground leading-relaxed font-medium">
-          {scenario.interactiveScenario.situation}
-        </p>
+        <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+          <Target className="w-5 h-5 text-primary" />
+          {currentTask.title}
+        </h3>
+        
+        <div className="space-y-4">
+          <div className="p-4 rounded-xl bg-secondary/30">
+            <p className="text-foreground leading-relaxed">{currentTask.context}</p>
+          </div>
+          
+          <div className="p-4 rounded-xl bg-primary/10 border border-primary/20">
+            <div className="flex items-center gap-2 mb-2">
+              <AlertCircle className="w-4 h-4 text-primary" />
+              <span className="text-sm font-medium text-primary">La sfida</span>
+            </div>
+            <p className="text-foreground font-medium">{currentTask.challenge}</p>
+          </div>
+        </div>
       </Card>
 
       <div className="space-y-3">
-        <p className="text-sm text-muted-foreground text-center mb-4">Come reagisci?</p>
-        {scenario.interactiveScenario.choices.map((choice) => (
+        {currentTask.choices.map((choice) => (
           <button
             key={choice.id}
-            onClick={() => handleChoiceSelect(choice)}
-            className="w-full p-5 rounded-xl bg-secondary/50 border-2 border-transparent hover:border-primary/50 hover:bg-secondary transition-all text-left"
+            onClick={() => handleTaskChoiceSelect(choice)}
+            className="w-full p-5 rounded-xl bg-secondary/50 border-2 border-transparent hover:border-primary/50 hover:bg-secondary transition-all text-left group"
           >
             <div className="flex items-start gap-3">
-              <span className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center text-primary font-bold shrink-0">
+              <span className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center text-primary font-bold shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
                 {choice.id.toUpperCase()}
               </span>
               <p className="text-foreground leading-relaxed">{choice.text}</p>
@@ -185,7 +176,98 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
     </motion.div>
   );
 
-  const renderOutcome = () => (
+  const renderTaskFeedback = () => (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      className="space-y-6"
+    >
+      <Card variant="gradient" className="p-6">
+        <div className="flex items-center gap-2 mb-4">
+          {selectedTaskChoice?.isCorrect ? (
+            <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+              <CheckCircle2 className="w-6 h-6 text-primary" />
+            </div>
+          ) : (
+            <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+              <Lightbulb className="w-6 h-6 text-accent" />
+            </div>
+          )}
+          <div>
+            <span className="font-medium">
+              {selectedTaskChoice?.isCorrect ? "Ottima scelta!" : "Interessante..."}
+            </span>
+          </div>
+        </div>
+        
+        <div className="p-4 rounded-xl bg-secondary/30 mb-4">
+          <p className="text-sm text-muted-foreground mb-2">La tua risposta:</p>
+          <p className="text-foreground">{selectedTaskChoice?.text}</p>
+        </div>
+        
+        <div className={`p-4 rounded-xl ${selectedTaskChoice?.isCorrect ? "bg-primary/10 border border-primary/20" : "bg-accent/10 border border-accent/20"}`}>
+          <p className="text-foreground leading-relaxed">{selectedTaskChoice?.feedback}</p>
+        </div>
+      </Card>
+
+      <Card variant="glass" className="p-5">
+        <div className="flex items-center gap-2 mb-3">
+          <BookOpen className="w-5 h-5 text-primary" />
+          <span className="font-medium">Cosa impari</span>
+        </div>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          <strong className="text-foreground">{currentTask.skill}</strong>: {currentTask.lesson}
+        </p>
+      </Card>
+
+      <Button variant="hero" size="lg" onClick={handleNextTask} className="w-full">
+        {currentTaskIndex < scenario.tasks.length - 1 ? "Prossima Situazione" : "Scenario Finale"}
+        <ArrowRight className="w-5 h-5" />
+      </Button>
+    </motion.div>
+  );
+
+  const renderFinal = () => (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="space-y-6"
+    >
+      <div className="text-center mb-6">
+        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 text-accent text-sm font-medium">
+          <Star className="w-4 h-4" />
+          Scenario Finale
+        </span>
+      </div>
+
+      <Card variant="gradient" className="p-6">
+        <p className="text-muted-foreground mb-4">{scenario.finalScenario.context}</p>
+        <p className="text-foreground leading-relaxed font-medium">
+          {scenario.finalScenario.situation}
+        </p>
+      </Card>
+
+      <div className="space-y-3">
+        <p className="text-sm text-muted-foreground text-center mb-4">Quale strada scegli?</p>
+        {scenario.finalScenario.choices.map((choice) => (
+          <button
+            key={choice.id}
+            onClick={() => handleFinalChoiceSelect(choice)}
+            className="w-full p-5 rounded-xl bg-secondary/50 border-2 border-transparent hover:border-primary/50 hover:bg-secondary transition-all text-left group"
+          >
+            <div className="flex items-start gap-3">
+              <span className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center text-primary font-bold shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                {choice.id.toUpperCase()}
+              </span>
+              <p className="text-foreground leading-relaxed">{choice.text}</p>
+            </div>
+          </button>
+        ))}
+      </div>
+    </motion.div>
+  );
+
+  const renderFinalOutcome = () => (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -194,17 +276,17 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
       <Card variant="gradient" className="p-6">
         <div className="flex items-center gap-2 mb-4">
           <CheckCircle2 className="w-5 h-5 text-primary" />
-          <span className="font-medium">La tua scelta</span>
+          <span className="font-medium">Il tuo futuro</span>
         </div>
-        <p className="text-muted-foreground mb-4">{selectedChoice?.text}</p>
+        <p className="text-muted-foreground mb-4">{selectedFinalChoice?.text}</p>
         
         <div className="p-4 rounded-xl bg-primary/10 border border-primary/20">
-          <p className="text-foreground leading-relaxed">{selectedChoice?.outcome}</p>
+          <p className="text-foreground leading-relaxed">{selectedFinalChoice?.outcome}</p>
         </div>
       </Card>
 
       <Button variant="hero" size="lg" onClick={() => setPhase("recap")} className="w-full">
-        Vedi il Recap
+        Vedi il Recap Completo
         <ArrowRight className="w-5 h-5" />
       </Button>
     </motion.div>
@@ -231,16 +313,31 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
 
       <Card variant="gradient" className="p-6">
         <h3 className="font-semibold mb-4 flex items-center gap-2">
-          <CheckCircle2 className="w-5 h-5 text-primary" />
-          Task Completati
+          <Target className="w-5 h-5 text-primary" />
+          I tuoi risultati
         </h3>
+        <div className="grid grid-cols-2 gap-4 mb-4">
+          <div className="p-4 rounded-xl bg-primary/10 text-center">
+            <div className="text-3xl font-bold text-primary">{correctAnswers}/{taskResults.length}</div>
+            <div className="text-sm text-muted-foreground">Scelte ottimali</div>
+          </div>
+          <div className="p-4 rounded-xl bg-accent/10 text-center">
+            <div className="text-3xl font-bold text-accent">{taskResults.length}</div>
+            <div className="text-sm text-muted-foreground">Situazioni affrontate</div>
+          </div>
+        </div>
         <div className="space-y-2">
-          {scenario.tasks.map((task, index) => (
+          {taskResults.map((result, index) => (
             <div key={index} className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50">
-              <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
-                <CheckCircle2 className="w-4 h-4 text-primary" />
+              <div className={`w-6 h-6 rounded-full flex items-center justify-center ${result.choice.isCorrect ? "bg-primary/20" : "bg-accent/20"}`}>
+                {result.choice.isCorrect ? (
+                  <CheckCircle2 className="w-4 h-4 text-primary" />
+                ) : (
+                  <Lightbulb className="w-4 h-4 text-accent" />
+                )}
               </div>
-              <span className="text-sm">{task.title}</span>
+              <span className="text-sm flex-1">{result.task.title}</span>
+              <span className="text-xs text-muted-foreground">{result.task.skill}</span>
             </div>
           ))}
         </div>
@@ -279,9 +376,10 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
       <div className="relative z-10 max-w-lg mx-auto">
         <AnimatePresence mode="wait">
           {phase === "intro" && renderIntro()}
-          {phase === "tasks" && renderTasks()}
-          {phase === "interactive" && renderInteractive()}
-          {phase === "outcome" && renderOutcome()}
+          {phase === "tasks" && renderTask()}
+          {phase === "taskFeedback" && renderTaskFeedback()}
+          {phase === "final" && renderFinal()}
+          {phase === "finalOutcome" && renderFinalOutcome()}
           {phase === "recap" && renderRecap()}
         </AnimatePresence>
       </div>
