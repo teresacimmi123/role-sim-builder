@@ -28,722 +28,852 @@ const masterRecommendations: Record<string, MasterRecommendation> = {
   },
 };
 
-const roleMap: Record<string, Record<string, { role: string; explanation: string }>> = {
-  "UX/UI Design": {
-    default: {
-      role: "Junior UX/UI Designer",
-      explanation: "Il tuo background si fonde con la sensibilità visiva e l'approccio centrato sull'utente tipico del design digitale.",
-    },
-    marketing: {
-      role: "UX Designer con focus Marketing",
-      explanation: "La tua esperienza nel marketing si combina perfettamente con il design per creare esperienze che convertono.",
-    },
-    tech: {
-      role: "Product Designer",
-      explanation: "Le tue competenze tecniche ti permettono di dialogare efficacemente con gli sviluppatori mentre progetti interfacce.",
-    },
+// Detect interest themes from user input
+interface InterestTheme {
+  id: string;
+  keywords: string[];
+  industry: string;
+  companyName: string;
+  companyDescription: string;
+  productContext: string;
+}
+
+const interestThemes: InterestTheme[] = [
+  {
+    id: "sustainability",
+    keywords: ["sostenibil", "ambiente", "green", "ecolog", "clima", "rinnovabil", "ricicl", "plastic", "carbon", "natura", "bio"],
+    industry: "Sostenibilità e Green Tech",
+    companyName: "GreenWave",
+    companyDescription: "una startup innovativa che sviluppa soluzioni digitali per aiutare aziende e consumatori a ridurre il proprio impatto ambientale",
+    productContext: "un'app che calcola e gamifica la carbon footprint personale",
   },
-  "Web Development": {
-    default: {
-      role: "Junior Frontend Developer",
-      explanation: "Il tuo percorso formativo ti ha preparato a trasformare design in codice funzionante e performante.",
-    },
-    creative: {
-      role: "Creative Developer",
-      explanation: "La tua creatività ti permette di costruire esperienze web uniche che vanno oltre il convenzionale.",
-    },
-    business: {
-      role: "Full-Stack Developer Junior",
-      explanation: "La tua comprensione del business ti aiuta a sviluppare soluzioni complete che risolvono problemi reali.",
-    },
+  {
+    id: "publishing",
+    keywords: ["editor", "libr", "scrittur", "lettur", "giornali", "articol", "magazine", "pubblic", "stampa", "narrativ", "romanzi"],
+    industry: "Editoria Digitale",
+    companyName: "Storyflow",
+    companyDescription: "una casa editrice digitale che sta rivoluzionando il modo in cui le persone scoprono e leggono libri",
+    productContext: "una piattaforma di lettura con raccomandazioni personalizzate basate su AI",
   },
-  "Digital Marketing": {
-    default: {
-      role: "Digital Marketing Specialist Junior",
-      explanation: "Il tuo background ti ha dato la sensibilità per comunicare efficacemente nel mondo digitale.",
-    },
-    analytical: {
-      role: "Growth Marketing Analyst",
-      explanation: "Le tue capacità analitiche si combinano con il marketing per ottimizzare campagne basate sui dati.",
-    },
-    creative: {
-      role: "Content & Social Media Strategist",
-      explanation: "La tua creatività trova espressione nella creazione di contenuti che coinvolgono e convertono.",
-    },
+  {
+    id: "fashion",
+    keywords: ["moda", "fashion", "abbigliament", "stile", "vestit", "brand", "luxury", "accessori", "tendenz", "outfit"],
+    industry: "Fashion Tech",
+    companyName: "Modaverse",
+    companyDescription: "un brand di moda sostenibile che sta digitalizzando l'esperienza di shopping",
+    productContext: "un'app di virtual try-on che usa AR per provare vestiti virtualmente",
   },
-  "Data Analysis e Data Science": {
-    default: {
-      role: "Junior Data Analyst",
-      explanation: "Il tuo approccio metodico si traduce perfettamente nell'analisi di dati per supportare decisioni aziendali.",
-    },
-    tech: {
-      role: "Data Engineer Junior",
-      explanation: "Le tue competenze tecniche ti permettono di costruire pipeline di dati efficienti e scalabili.",
-    },
-    business: {
-      role: "Business Intelligence Analyst",
-      explanation: "La tua comprensione del business ti aiuta a tradurre i dati in insight strategici.",
-    },
+  {
+    id: "food",
+    keywords: ["cibo", "food", "cucin", "ristorant", "ricett", "gastronom", "chef", "alimentar", "vegan", "nutri"],
+    industry: "FoodTech",
+    companyName: "TasteHub",
+    companyDescription: "una startup che connette piccoli produttori locali con ristoranti e consumatori attraverso la tecnologia",
+    productContext: "un marketplace B2B per prodotti alimentari artigianali",
   },
-  "Non lo so": {
-    default: {
-      role: "Digital Project Coordinator",
-      explanation: "Le tue competenze trasversali ti rendono ideale per coordinare progetti digitali multidisciplinari.",
-    },
+  {
+    id: "travel",
+    keywords: ["viagg", "travel", "turis", "hotel", "destin", "avventur", "esplor", "vacan", "città", "mondo"],
+    industry: "Travel Tech",
+    companyName: "Wanderly",
+    companyDescription: "una piattaforma che crea esperienze di viaggio personalizzate e sostenibili",
+    productContext: "un'app che genera itinerari su misura basati su interessi e budget",
   },
+  {
+    id: "music",
+    keywords: ["music", "artist", "canzon", "concert", "band", "suonar", "strument", "spotify", "produzion", "audio"],
+    industry: "Music Tech",
+    companyName: "SoundNest",
+    companyDescription: "una piattaforma che aiuta artisti emergenti a crescere e monetizzare la loro musica",
+    productContext: "un'app di distribuzione e analytics per musicisti indipendenti",
+  },
+  {
+    id: "gaming",
+    keywords: ["gaming", "videogioc", "gioc", "esport", "twitch", "stream", "console", "pc gaming", "svilupp giochi"],
+    industry: "Gaming Industry",
+    companyName: "PixelForge",
+    companyDescription: "uno studio di sviluppo indie che crea giochi narrativi con impatto sociale",
+    productContext: "un gioco mobile educativo che insegna coding ai giovani",
+  },
+  {
+    id: "health",
+    keywords: ["salut", "health", "fitness", "benessere", "mental", "medic", "wellness", "sport", "palestra", "yoga", "meditaz"],
+    industry: "HealthTech",
+    companyName: "MindBody+",
+    companyDescription: "una startup che integra benessere fisico e mentale attraverso la tecnologia",
+    productContext: "un'app di coaching personalizzato che combina fitness, nutrizione e mindfulness",
+  },
+  {
+    id: "education",
+    keywords: ["educaz", "formaz", "scuol", "universit", "corsi", "apprendiment", "insegna", "didattic", "studi", "e-learning"],
+    industry: "EdTech",
+    companyName: "LearnPath",
+    companyDescription: "una piattaforma di formazione che personalizza i percorsi di apprendimento con l'AI",
+    productContext: "un'app di microlearning per professionisti che vogliono upskillare",
+  },
+  {
+    id: "art",
+    keywords: ["arte", "artist", "creativ", "illustr", "pittur", "scultur", "museo", "galleria", "visual", "design"],
+    industry: "Art Tech",
+    companyName: "ArtVerse",
+    companyDescription: "una piattaforma che democratizza l'accesso all'arte e supporta artisti emergenti",
+    productContext: "un marketplace di opere digitali e fisiche con realtà aumentata",
+  },
+  {
+    id: "social",
+    keywords: ["social", "impact", "nonprofit", "volontar", "comunità", "terzo settore", "ong", "beneficen", "solidar"],
+    industry: "Social Impact",
+    companyName: "ImpactHub Digital",
+    companyDescription: "un'organizzazione che usa la tecnologia per amplificare l'impatto sociale di NGO e associazioni",
+    productContext: "una piattaforma di crowdfunding e engagement per cause sociali",
+  },
+  {
+    id: "fintech",
+    keywords: ["finanz", "invest", "crypto", "banking", "pagament", "soldi", "risparm", "trading", "economia"],
+    industry: "FinTech",
+    companyName: "ClearPay",
+    companyDescription: "una fintech che semplifica la gestione finanziaria per giovani e freelancer",
+    productContext: "un'app di budgeting intelligente con insights automatici",
+  },
+  {
+    id: "pets",
+    keywords: ["animal", "pet", "cane", "gatto", "veterinar", "animali domestici"],
+    industry: "PetTech",
+    companyName: "PawPal",
+    companyDescription: "una startup dedicata al benessere degli animali domestici attraverso la tecnologia",
+    productContext: "un'app che connette pet owner con servizi e comunità",
+  },
+];
+
+const defaultTheme: InterestTheme = {
+  id: "tech",
+  keywords: [],
+  industry: "Tech Innovazione",
+  companyName: "NexTech",
+  companyDescription: "una startup tecnologica in rapida crescita che sviluppa prodotti digitali innovativi",
+  productContext: "una piattaforma SaaS per la gestione di progetti complessi",
 };
 
-const getBackgroundType = (background: string): string => {
+const detectInterestTheme = (interests: string, background: string): InterestTheme => {
+  const combined = `${interests} ${background}`.toLowerCase();
+  
+  for (const theme of interestThemes) {
+    for (const keyword of theme.keywords) {
+      if (combined.includes(keyword)) {
+        return theme;
+      }
+    }
+  }
+  
+  return defaultTheme;
+};
+
+const getBackgroundContext = (background: string): { type: string; advantage: string } => {
   const lowerBg = background.toLowerCase();
-  if (lowerBg.includes("marketing") || lowerBg.includes("comunicazione")) return "marketing";
-  if (lowerBg.includes("informatica") || lowerBg.includes("ingegneria") || lowerBg.includes("programmazione")) return "tech";
-  if (lowerBg.includes("arte") || lowerBg.includes("design") || lowerBg.includes("creativ")) return "creative";
-  if (lowerBg.includes("economia") || lowerBg.includes("management") || lowerBg.includes("business")) return "business";
-  if (lowerBg.includes("statistica") || lowerBg.includes("matematica") || lowerBg.includes("fisica")) return "analytical";
-  return "default";
+  
+  if (lowerBg.includes("marketing") || lowerBg.includes("comunicazione")) {
+    return { type: "marketing", advantage: "La tua esperienza nella comunicazione ti permette di capire come le persone interagiscono con i messaggi." };
+  }
+  if (lowerBg.includes("informatica") || lowerBg.includes("ingegneria") || lowerBg.includes("programmazione") || lowerBg.includes("stem")) {
+    return { type: "tech", advantage: "Il tuo background tecnico ti dà un vantaggio nel comprendere i vincoli e le possibilità tecnologiche." };
+  }
+  if (lowerBg.includes("arte") || lowerBg.includes("design") || lowerBg.includes("creativ") || lowerBg.includes("grafica")) {
+    return { type: "creative", advantage: "La tua sensibilità creativa ti permette di vedere soluzioni dove altri vedono solo problemi." };
+  }
+  if (lowerBg.includes("economia") || lowerBg.includes("management") || lowerBg.includes("business") || lowerBg.includes("commerc")) {
+    return { type: "business", advantage: "La tua comprensione del business ti aiuta a prendere decisioni con impatto reale sui risultati." };
+  }
+  if (lowerBg.includes("statistica") || lowerBg.includes("matematica") || lowerBg.includes("fisica") || lowerBg.includes("scienz")) {
+    return { type: "analytical", advantage: "Il tuo rigore analitico ti permette di trovare pattern e insight nascosti." };
+  }
+  if (lowerBg.includes("psicolog") || lowerBg.includes("sociolog") || lowerBg.includes("filosof") || lowerBg.includes("lettere") || lowerBg.includes("umanistic")) {
+    return { type: "humanistic", advantage: "La tua comprensione delle persone è un asset prezioso in ogni progetto digitale." };
+  }
+  if (lowerBg.includes("giurispruden") || lowerBg.includes("legge") || lowerBg.includes("avvocat")) {
+    return { type: "legal", advantage: "Il tuo rigore metodico e attenzione ai dettagli ti rendono affidabile e preciso." };
+  }
+  
+  return { type: "default", advantage: "Il tuo percorso unico ti dà una prospettiva fresca che può portare innovazione." };
 };
 
-const generateTasks = (area: string): Task[] => {
-  const tasksByArea: Record<string, Task[]> = {
-    "UX/UI Design": [
+const generateRole = (area: string, bgContext: { type: string; advantage: string }, theme: InterestTheme): { role: string; explanation: string } => {
+  const roles: Record<string, Record<string, { role: string; explanation: string }>> = {
+    "UX/UI Design": {
+      default: { role: `UX/UI Designer presso ${theme.companyName}`, explanation: `Combini sensibilità visiva e comprensione degli utenti nel settore ${theme.industry}. ${bgContext.advantage}` },
+      marketing: { role: `UX Designer con focus Conversion presso ${theme.companyName}`, explanation: `Progetti esperienze che convertono, unendo marketing e design nel mondo ${theme.industry}. ${bgContext.advantage}` },
+      tech: { role: `Product Designer presso ${theme.companyName}`, explanation: `Dialoghi con gli sviluppatori mentre progetti interfacce per ${theme.industry}. ${bgContext.advantage}` },
+      creative: { role: `Visual & Interaction Designer presso ${theme.companyName}`, explanation: `Crei esperienze visivamente uniche nel settore ${theme.industry}. ${bgContext.advantage}` },
+      humanistic: { role: `UX Researcher & Designer presso ${theme.companyName}`, explanation: `La tua comprensione delle persone guida il design nel settore ${theme.industry}. ${bgContext.advantage}` },
+    },
+    "Web Development": {
+      default: { role: `Frontend Developer presso ${theme.companyName}`, explanation: `Trasformi design in codice funzionante per ${theme.industry}. ${bgContext.advantage}` },
+      creative: { role: `Creative Developer presso ${theme.companyName}`, explanation: `Costruisci esperienze web uniche per ${theme.industry}. ${bgContext.advantage}` },
+      business: { role: `Full-Stack Developer presso ${theme.companyName}`, explanation: `Sviluppi soluzioni complete che risolvono problemi reali in ${theme.industry}. ${bgContext.advantage}` },
+      tech: { role: `Software Engineer presso ${theme.companyName}`, explanation: `Costruisci l'infrastruttura tecnologica per ${theme.industry}. ${bgContext.advantage}` },
+    },
+    "Digital Marketing": {
+      default: { role: `Digital Marketing Specialist presso ${theme.companyName}`, explanation: `Comunichi efficacemente nel mondo ${theme.industry}. ${bgContext.advantage}` },
+      analytical: { role: `Growth Marketing Analyst presso ${theme.companyName}`, explanation: `Ottimizzi campagne basate sui dati per ${theme.industry}. ${bgContext.advantage}` },
+      creative: { role: `Content & Brand Strategist presso ${theme.companyName}`, explanation: `Crei contenuti che coinvolgono nel settore ${theme.industry}. ${bgContext.advantage}` },
+      humanistic: { role: `Community & Content Manager presso ${theme.companyName}`, explanation: `Costruisci relazioni autentiche con la community di ${theme.industry}. ${bgContext.advantage}` },
+    },
+    "Data Analysis e Data Science": {
+      default: { role: `Data Analyst presso ${theme.companyName}`, explanation: `Analizzi dati per supportare decisioni in ${theme.industry}. ${bgContext.advantage}` },
+      tech: { role: `Data Engineer presso ${theme.companyName}`, explanation: `Costruisci pipeline di dati efficienti per ${theme.industry}. ${bgContext.advantage}` },
+      business: { role: `Business Intelligence Analyst presso ${theme.companyName}`, explanation: `Traduci i dati in insight strategici per ${theme.industry}. ${bgContext.advantage}` },
+      analytical: { role: `Data Scientist presso ${theme.companyName}`, explanation: `Costruisci modelli predittivi per ${theme.industry}. ${bgContext.advantage}` },
+    },
+    "Non lo so": {
+      default: { role: `Digital Project Coordinator presso ${theme.companyName}`, explanation: `Coordini progetti digitali multidisciplinari in ${theme.industry}. ${bgContext.advantage}` },
+    },
+  };
+
+  const areaRoles = roles[area] || roles["Non lo so"];
+  return areaRoles[bgContext.type] || areaRoles["default"];
+};
+
+const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext: { type: string; advantage: string }): Task[] => {
+  const taskTemplates: Record<string, (t: InterestTheme) => Task[]> = {
+    "UX/UI Design": (t) => [
       {
         id: 1,
         title: "Analisi del Brief del Cliente",
-        context: "Sono le 9:15. Apri la mail del tuo team lead. C'è il brief per un nuovo progetto: riprogettare l'app mobile di un'azienda di food delivery chiamata 'QuickBite'. Il cliente lamenta che 'gli utenti abbandonano il carrello troppo spesso'.",
-        challenge: "Leggi il brief e identifica qual è la VERA priorità su cui concentrarti nella prima fase di analisi:",
+        context: `Sono le 9:15. Apri Slack e trovi un messaggio del tuo team lead di ${t.companyName}. C'è il brief per un nuovo progetto: migliorare ${t.productContext}. Il feedback degli utenti dice che "l'esperienza è confusa e non capisco cosa fare".`,
+        challenge: `Come ${t.companyName} opera nel settore ${t.industry}, devi capire il VERO problema. Quale approccio scegli?`,
         choices: [
           {
             id: "a",
-            text: "Analizzare i dati di abbandono carrello per capire in quale step gli utenti escono",
+            text: "Analizzi i dati di comportamento utente per capire dove si perdono nel flusso",
             isCorrect: true,
-            feedback: "Perfetto! Prima di proporre soluzioni, devi capire DOVE e PERCHÉ gli utenti abbandonano. I dati ti diranno se il problema è nel checkout, nei prezzi, o altrove.",
+            feedback: `Perfetto! In ${t.industry}, i dati comportamentali rivelano dove gli utenti si bloccano. Prima capisci il "dove", poi il "perché".`,
           },
           {
             id: "b",
-            text: "Iniziare subito a ridisegnare il flusso di checkout più corto",
-            feedback: "Attenzione! Stai assumendo che il checkout sia il problema senza dati. Potresti sprecare tempo risolvendo il problema sbagliato.",
+            text: "Proponi subito di semplificare l'interfaccia con meno elementi",
+            feedback: "Stai assumendo che il problema sia la complessità senza dati. Nel settore " + t.industry + " potresti eliminare funzionalità cruciali.",
           },
           {
             id: "c",
-            text: "Proporre una riunione con tutto il team per fare brainstorming",
-            feedback: "Il brainstorming è utile, ma senza dati concreti rischi di basare le idee su opinioni. Prima raccogli informazioni, poi coinvolgi il team.",
+            text: "Organizzi un focus group con utenti tipo del settore " + t.industry,
+            feedback: "I focus group sono utili, ma prima servono dati quantitativi per sapere cosa chiedere. Rischi di basarti su opinioni.",
           },
         ],
         skill: "Problem Framing",
-        lesson: "Nel UX Design, resistere all'impulso di progettare subito è fondamentale. Il 50% del lavoro è capire il problema giusto da risolvere.",
+        lesson: `Nel ${t.industry}, resistere all'impulso di progettare subito è fondamentale. Il 50% del lavoro è capire il problema giusto.`,
       },
       {
         id: 2,
-        title: "Costruzione User Persona",
-        context: "Hai analizzato i dati. Il 68% degli abbandoni avviene nella schermata 'Riepilogo Ordine'. Ora il team lead ti chiede di creare una user persona basata sulle interviste utente della scorsa settimana.",
-        challenge: "Hai 3 profili di utenti intervistati. Quale scegli come persona PRIMARIA per guidare il redesign?",
+        title: "Creazione User Persona",
+        context: `Hai analizzato i dati di ${t.companyName}. Il 62% degli abbandoni avviene nella schermata principale. Il team ti chiede di creare una persona basata sulle interviste della scorsa settimana nel settore ${t.industry}.`,
+        challenge: "Hai 3 profili. Quale scegli come persona PRIMARIA?",
         choices: [
           {
             id: "a",
-            text: "Marco, 22 anni, studente: ordina 2 volte a settimana, molto sensibile ai prezzi, abbandona spesso per costi di consegna inaspettati",
+            text: `Elena, 28 anni, appassionata di ${t.industry}: usa l'app quotidianamente, frustrata dalla mancanza di personalizzazione`,
             isCorrect: true,
-            feedback: "Ottima scelta! Marco rappresenta il segmento più grande (45% degli utenti) e il suo pain point (costi nascosti) è direttamente collegato al problema di abbandono.",
+            feedback: `Ottima scelta! Elena rappresenta il core user di ${t.companyName} e il suo pain point è direttamente collegato al problema principale.`,
           },
           {
             id: "b",
-            text: "Laura, 35 anni, manager: ordina 1 volta al mese, budget alto, abbandona perché l'app è lenta",
-            feedback: "Laura è un utente valido ma minoritario (12%). Ottimizzare per lei potrebbe non impattare significativamente il problema principale.",
+            text: "Marco, 45 anni, usa l'app raramente ma quando la usa spende molto",
+            feedback: `Marco porta valore economico ma non rappresenta l'utente tipo di ${t.industry}. Ottimizzare per lui potrebbe alienare il core.`,
           },
           {
             id: "c",
-            text: "Giuseppe, 45 anni, padre di famiglia: ordina per tutta la famiglia, si perde nei menu complessi",
-            feedback: "Giuseppe ha un problema reale ma diverso (navigazione, non checkout). Risolvere il suo problema non ridurrà l'abbandono nel riepilogo ordine.",
+            text: "Sofia, 19 anni, studentessa, usa mille app simili ma nessuna la soddisfa",
+            feedback: "Sofia è interessante ma troppo volatile. Nel " + t.industry + " serve fidelizzare prima di espandere.",
           },
         ],
-        skill: "User Research Prioritization",
-        lesson: "La persona primaria deve rappresentare il segmento più impattante per il problema specifico che stai risolvendo, non l'utente 'ideale'.",
+        skill: "User Research",
+        lesson: `In ${t.industry}, la persona primaria deve rappresentare chi usa davvero il prodotto, non chi vorresti che lo usasse.`,
       },
       {
         id: 3,
         title: "Wireframing della Soluzione",
-        context: "Con Marco come persona primaria, sai che il problema sono i costi nascosti. Apri Figma e devi progettare il wireframe della nuova schermata 'Riepilogo Ordine'.",
-        challenge: "Quale approccio di design scegli per risolvere il problema dei costi nascosti?",
+        context: `Con Elena come persona, sai che il problema è la mancanza di personalizzazione in ${t.productContext}. Apri Figma e devi progettare il wireframe della nuova esperienza per ${t.companyName}.`,
+        challenge: "Quale approccio di design scegli?",
         choices: [
           {
             id: "a",
-            text: "Mostrare il costo totale stimato (inclusa consegna) già dalla selezione del ristorante, non solo nel riepilogo",
+            text: `Creare un onboarding che chiede preferenze e personalizza l'esperienza fin dal primo accesso`,
             isCorrect: true,
-            feedback: "Eccellente! Anticipare l'informazione elimina la 'sorpresa' negativa. Gli utenti decidono con tutte le informazioni fin dall'inizio. Questo si chiama 'progressive disclosure' fatto bene.",
+            feedback: `Eccellente! Nel ${t.industry}, la personalizzazione fin dall'inizio crea engagement. L'utente si sente capito e continua a usare l'app.`,
           },
           {
             id: "b",
-            text: "Aggiungere un popup che spiega nel dettaglio come vengono calcolati i costi di consegna",
-            feedback: "Spiegare non risolve il problema: l'utente è già frustrato quando vede il costo. Stai trattando il sintomo, non la causa.",
+            text: "Aggiungere filtri avanzati nella home per permettere ricerche più precise",
+            feedback: `I filtri aggiungono complessità. Nel ${t.industry}, gli utenti vogliono che sia l'app a capirli, non dover cercare manualmente.`,
           },
           {
             id: "c",
-            text: "Rendere la sezione 'Costi' più visibile con colori e icone nel riepilogo ordine",
-            feedback: "Rendere più visibile un problema non lo risolve. L'utente vedrà meglio il costo che non si aspettava, ma sarà comunque deluso.",
+            text: "Mostrare contenuti popolari in evidenza così tutti trovano qualcosa",
+            feedback: "Il contenuto popolare non è personalizzazione. Elena vuole sentirsi unica, non vedere cosa piace a tutti.",
           },
         ],
         skill: "Solution Design",
-        lesson: "Il buon design anticipa i problemi invece di reagire ad essi. Mostra le informazioni critiche quando l'utente può ancora agire.",
+        lesson: `In ${t.industry}, la personalizzazione non è un plus, è un'aspettativa. Chi non personalizza, perde.`,
       },
       {
         id: 4,
         title: "Review con il Team",
-        context: "Sono le 16:00. Presenti il tuo wireframe al team. Il developer senior alza la mano: 'Bello, ma mostrare il costo stimato prima richiede una chiamata API extra per ogni ristorante. Rallenterà l'app.'",
-        challenge: "Come rispondi a questa obiezione tecnica?",
+        context: `Sono le 16:00. Presenti il wireframe al team di ${t.companyName}. Il developer senior dice: "L'onboarding personalizzato richiede un sistema di raccomandazione che non abbiamo. Ci vorrebbero 3 mesi."`,
+        challenge: "Come rispondi?",
         choices: [
           {
             id: "a",
-            text: "'Possiamo calcolare una stima client-side basata sulla distanza media, e poi aggiornare con il costo reale nel carrello?'",
+            text: `"Possiamo partire con regole semplici basate sulle scelte dell'onboarding, e evolvere verso l'AI in una fase 2?"`,
             isCorrect: true,
-            feedback: "Perfetto! Hai proposto un compromesso tecnico che mantiene il valore UX. Mostrare una stima (es. '€2-4 consegna') è meglio di nessuna informazione, e l'API precisa viene chiamata solo nel carrello.",
+            feedback: `Perfetto! Hai proposto un MVP che mantiene il valore UX. In ${t.industry}, meglio lanciare qualcosa di buono ora che qualcosa di perfetto mai.`,
           },
           {
             id: "b",
-            text: "'L'esperienza utente è più importante della performance, dobbiamo trovare un modo'",
-            feedback: "Attenzione: ignorare i vincoli tecnici crea conflitti e soluzioni irrealizzabili. Il buon designer collabora con gli sviluppatori, non li sfida.",
+            text: `"L'esperienza utente è prioritaria, dobbiamo trovare il tempo"`,
+            feedback: `Ignorare i vincoli crea conflitti. In ${t.companyName} come in ogni azienda, il designer collabora, non impone.`,
           },
           {
             id: "c",
-            text: "'Ok, allora torniamo al design originale e cerchiamo un'altra soluzione'",
-            feedback: "Arrendersi alla prima obiezione significa perdere una buona soluzione. Prima esplora i compromessi, poi eventualmente cambia direzione.",
+            text: `"Ok, allora togliamo la personalizzazione e teniamo i filtri"`,
+            feedback: "Arrendersi alla prima obiezione significa perdere una buona soluzione. Prima cerca compromessi.",
           },
         ],
-        skill: "Cross-functional Collaboration",
-        lesson: "I migliori designer sanno negoziare tra UX ideale e vincoli reali. La soluzione perfetta che non può essere implementata non esiste.",
+        skill: "Stakeholder Management",
+        lesson: `I designer migliori sanno negoziare tra UX ideale e vincoli reali. Nel ${t.industry} come altrove, la soluzione perfetta irrealizzabile non esiste.`,
       },
     ],
-    "Web Development": [
+    "Web Development": (t) => [
       {
         id: 1,
         title: "Code Review del Collega",
-        context: "Sono le 9:30. Il tuo lead ti assegna la review del codice di un altro stagista. Ha creato un componente React per la card prodotto, ma qualcosa non ti convince nel codice.",
-        challenge: "Guardi il codice e noti che usa `document.getElementById` dentro un useEffect per manipolare il DOM. Cosa fai?",
-        choices: [
-          {
-            id: "a",
-            text: "Lasci un commento spiegando che in React si usa useRef per accedere al DOM, e alleghi un esempio di come refactorare",
-            isCorrect: true,
-            feedback: "Perfetto! Hai identificato un anti-pattern (manipolazione DOM diretta in React) e hai fornito la soluzione corretta con un esempio. Una code review costruttiva insegna, non critica.",
-          },
-          {
-            id: "b",
-            text: "Approvi il PR, funziona comunque e non vuoi sembrare pignolo con un altro stagista",
-            feedback: "Attenzione! Il codice 'che funziona' oggi può causare bug domani. Approvare codice problematico non aiuta il collega a crescere e peggiora la qualità del codebase.",
-          },
-          {
-            id: "c",
-            text: "Riscrivi tu il componente nel modo corretto e sostituisci il suo codice",
-            feedback: "Riscrivere il codice di qualcun altro senza discussione è irrispettoso e toglie l'opportunità di apprendimento. La code review è collaborazione, non imposizione.",
-          },
-        ],
-        skill: "Code Review & Mentorship",
-        lesson: "Una buona code review bilancia qualità del codice e crescita del team. Spiega il 'perché', non solo il 'cosa'.",
-      },
-      {
-        id: 2,
-        title: "Implementazione Feature",
-        context: "Dal backlog Jira prendi il ticket 'Creare componente ProductCard responsive'. I requisiti: immagine, titolo, prezzo, bottone 'Aggiungi'. Il designer ti ha passato le specifiche.",
-        challenge: "Inizi a scrivere il componente. Come strutturi le props di ProductCard?",
-        choices: [
-          {
-            id: "a",
-            text: "Props tipizzate: { product: Product } dove Product è un'interfaccia con id, title, price, imageUrl, onAddToCart callback",
-            isCorrect: true,
-            feedback: "Eccellente! Hai creato un'interfaccia chiara e riutilizzabile. Passare l'intero oggetto Product rende il componente flessibile, e il callback onAddToCart mantiene la logica nel parent.",
-          },
-          {
-            id: "b",
-            text: "Props singole: { title: string, price: number, image: string } più semplice e diretto",
-            feedback: "Funziona per casi semplici, ma quando avrai bisogno di id, stock, categoria, avrai 10+ props. Raggruppare in un oggetto Product scala meglio.",
-          },
-          {
-            id: "c",
-            text: "Nessuna prop: il componente fa fetch dei dati del prodotto internamente dato un productId",
-            feedback: "Questo viola il principio di 'dumb components'. Una ProductCard che fa fetch è difficile da testare, riutilizzare e può causare waterfall di richieste.",
-          },
-        ],
-        skill: "Component Architecture",
-        lesson: "Componenti ben strutturati sono riutilizzabili, testabili e scalabili. Investi tempo nel design delle props, ripaga nel lungo termine.",
-      },
-      {
-        id: 3,
-        title: "Debugging Misterioso",
-        context: "La chiamata API per il catalogo prodotti restituisce 500 in alcuni casi. Apri i DevTools e noti che fallisce solo quando l'utente ha più di 50 prodotti nel carrello.",
-        challenge: "Hai identificato il pattern. Qual è il prossimo step di debugging?",
-        choices: [
-          {
-            id: "a",
-            text: "Controlli il payload della request per vedere se supera un limite di dimensione, poi verifichi i log del backend per l'errore specifico",
-            isCorrect: true,
-            feedback: "Perfetto! Hai seguito un processo sistematico: prima confermi l'ipotesi (payload size), poi cerchi l'errore esatto nei log. Il debugging metodico batte il 'provare a caso'.",
-          },
-          {
-            id: "b",
-            text: "Aggiungi un try-catch nel frontend per gestire l'errore e mostrare un messaggio generico all'utente",
-            feedback: "Stai nascondendo il problema, non risolvendolo. Gli utenti con 50+ prodotti continueranno a non poter completare l'ordine.",
-          },
-          {
-            id: "c",
-            text: "Scrivi subito al team backend dicendo che la loro API è rotta",
-            feedback: "Segnalare senza investigare è poco professionale. Potrebbe essere un problema frontend (payload malformato), un limite intenzionale, o un bug backend. Prima capisci, poi comunica.",
-          },
-        ],
-        skill: "Systematic Debugging",
-        lesson: "Il debugging efficace segue un metodo: riproduci, isola, verifica l'ipotesi, trova la root cause. Mai saltare alla soluzione.",
-      },
-      {
-        id: 4,
-        title: "Deploy Venerdì Sera",
-        context: "Sono le 17:30 di venerdì. La tua feature è pronta, i test passano. Il lead chiede: 'Puoi fare merge e deploy? Così lunedì il cliente vede la nuova feature.'",
+        context: `Sono le 9:30. Il tuo lead di ${t.companyName} ti assegna la review del codice di un altro dev. Ha creato un componente React per ${t.productContext}, ma noti che usa document.getElementById dentro useEffect.`,
         challenge: "Cosa fai?",
         choices: [
           {
             id: "a",
-            text: "Fai merge su staging, verifichi che funzioni, ma proponi di deployare in produzione lunedì mattina con il team presente",
+            text: "Lasci un commento spiegando che in React si usa useRef, allegando un esempio di refactor",
             isCorrect: true,
-            feedback: "Ottima gestione del rischio! Hai completato il lavoro (staging) ma evitato il rischio di un deploy il venerdì sera senza supporto. Se qualcosa va storto nel weekend, nessuno può intervenire.",
+            feedback: `Perfetto! Una code review costruttiva insegna. In ${t.companyName}, come in ogni team sano, si cresce insieme.`,
           },
           {
             id: "b",
-            text: "Deploy immediato in produzione: i test passano, cosa può andare storto?",
-            feedback: "Il famoso 'Friday deploy' è un anti-pattern per un motivo. I test non coprono tutto: integrazioni, edge cases, comportamenti reali. Se esplode sabato, chi interviene?",
+            text: "Approvi il PR, funziona e non vuoi sembrare pignolo",
+            feedback: `Il codice "che funziona" oggi può causare bug domani. In ${t.industry}, la qualità del codice è fondamentale.`,
           },
           {
             id: "c",
-            text: "Dici al lead che preferisci non fare deploy oggi perché è venerdì",
-            feedback: "Rifiutare senza proporre alternative non è professionale. Meglio offrire un compromesso (staging oggi, prod lunedì) che un semplice 'no'.",
+            text: "Riscrivi tu il componente nel modo corretto e sostituisci il suo codice",
+            feedback: "Riscrivere senza discussione è irrispettoso e toglie l'opportunità di apprendimento.",
+          },
+        ],
+        skill: "Code Review",
+        lesson: `In ${t.industry}, una buona code review bilancia qualità e crescita del team.`,
+      },
+      {
+        id: 2,
+        title: "Implementazione Feature",
+        context: `Dal backlog Jira di ${t.companyName} prendi il ticket: "Creare componente Card per ${t.productContext}". Il designer ti ha passato le specifiche.`,
+        challenge: "Come strutturi le props del componente?",
+        choices: [
+          {
+            id: "a",
+            text: "Props tipizzate con interfaccia: { item: ItemType, onAction: callback }",
+            isCorrect: true,
+            feedback: `Eccellente! Un'interfaccia chiara rende il componente riutilizzabile in tutto ${t.productContext}.`,
+          },
+          {
+            id: "b",
+            text: "Props singole: { title, description, image } più semplice e diretto",
+            feedback: `Funziona per casi semplici, ma in ${t.industry} i requisiti evolvono. Con 10+ props diventa ingestibile.`,
+          },
+          {
+            id: "c",
+            text: "Il componente fa fetch dei dati internamente dato un ID",
+            feedback: "Viola il principio di 'dumb components'. Difficile da testare e riutilizzare.",
+          },
+        ],
+        skill: "Component Architecture",
+        lesson: `In ${t.industry}, componenti ben strutturati sono riutilizzabili, testabili e scalabili.`,
+      },
+      {
+        id: 3,
+        title: "Debugging Misterioso",
+        context: `L'API di ${t.productContext} restituisce 500 in alcuni casi. Dai DevTools noti che fallisce solo con payload grandi.`,
+        challenge: "Qual è il prossimo step?",
+        choices: [
+          {
+            id: "a",
+            text: "Controlli dimensione del payload e verifichi i log backend per l'errore specifico",
+            isCorrect: true,
+            feedback: `Perfetto! Debugging sistematico: prima confermi l'ipotesi, poi trovi la root cause.`,
+          },
+          {
+            id: "b",
+            text: "Aggiungi try-catch nel frontend per gestire l'errore con messaggio generico",
+            feedback: "Stai nascondendo il problema, non risolvendolo. Gli utenti continueranno a essere bloccati.",
+          },
+          {
+            id: "c",
+            text: "Scrivi al team backend che la loro API è rotta",
+            feedback: "Segnalare senza investigare è poco professionale. Prima capisci, poi comunica.",
+          },
+        ],
+        skill: "Debugging",
+        lesson: `In ${t.industry}, il debugging efficace segue un metodo: riproduci, isola, verifica, risolvi.`,
+      },
+      {
+        id: 4,
+        title: "Deploy Venerdì Sera",
+        context: `Sono le 17:30 di venerdì. La feature per ${t.companyName} è pronta. Il lead chiede: "Puoi fare deploy? Lunedì il cliente vuole vedere la novità."`,
+        challenge: "Cosa fai?",
+        choices: [
+          {
+            id: "a",
+            text: "Merge su staging, verifichi che funzioni, proponi deploy in prod lunedì mattina",
+            isCorrect: true,
+            feedback: `Ottima gestione del rischio! Hai completato il lavoro ma evitato problemi nel weekend.`,
+          },
+          {
+            id: "b",
+            text: "Deploy immediato: i test passano, cosa può andare storto?",
+            feedback: `Il "Friday deploy" è un anti-pattern. Se esplode sabato, chi interviene?`,
+          },
+          {
+            id: "c",
+            text: "Dici che preferisci non fare deploy oggi perché è venerdì",
+            feedback: "Rifiutare senza alternative non è professionale. Proponi un compromesso.",
           },
         ],
         skill: "Risk Management",
-        lesson: "'Deploy on Friday' è un meme per un motivo. I developer esperti bilanciano velocità e rischio, proponendo alternative quando necessario.",
+        lesson: `In ${t.industry}, i dev esperti bilanciano velocità e rischio.`,
       },
     ],
-    "Digital Marketing": [
+    "Digital Marketing": (t) => [
       {
         id: 1,
         title: "Analisi Campagna Social",
-        context: "Sono le 9:00. Apri Meta Business Suite. La campagna Instagram 'Summer Sale' è terminata. Budget: €500. Devi preparare il report per il cliente.",
-        challenge: "Vedi questi dati: Reach 45.000, Engagement Rate 1.2%, Link Clicks 380, Purchases 12. Il cliente si aspettava 50 vendite. Come presenti i risultati?",
+        context: `Sono le 9:00. Apri Meta Business per ${t.companyName}. La campagna "${t.industry} Summer" è terminata. Budget: €500. Devi preparare il report.`,
+        challenge: `Vedi: Reach 45.000, Engagement 1.2%, Click 380, Conversioni 12. Il cliente voleva 50 conversioni. Come presenti i risultati?`,
         choices: [
           {
             id: "a",
-            text: "Analizzi il funnel: 'Il problema non è la campagna ma la landing page. 380 click ma solo 12 acquisti = 3% conversion rate, molto sotto la media del 5-8%. Propongo A/B test sulla pagina.'",
+            text: `"Il problema è la landing page: 380 click ma 12 conversioni = 3% CR, sotto la media. Propongo A/B test sulla pagina."`,
             isCorrect: true,
-            feedback: "Eccellente analisi! Hai identificato dove si perde il traffico (landing page, non ads) e proposto una soluzione concreta. Il cliente apprezzerà la diagnosi precisa invece di scuse vaghe.",
+            feedback: `Eccellente! Hai identificato dove si perde il traffico e proposto una soluzione per ${t.industry}.`,
           },
           {
             id: "b",
-            text: "Evidenzi i numeri positivi: '45.000 persone raggiunte! Grande awareness per il brand.'",
-            feedback: "Stai mascherando il fallimento con vanity metrics. Il cliente voleva vendite, non reach. La fiducia si costruisce con onestà, non con spin positivo.",
+            text: `"45.000 persone raggiunte! Grande awareness per ${t.companyName}."`,
+            feedback: "Stai mascherando il fallimento con vanity metrics. Il cliente voleva conversioni, non reach.",
           },
           {
             id: "c",
-            text: "Ammetti che la campagna non ha funzionato e proponi di riprovare con budget maggiore",
-            feedback: "Senza capire PERCHÉ non ha funzionato, più budget significherà solo più soldi sprecati. Prima diagnosi, poi strategia.",
+            text: "Ammetti che non ha funzionato e proponi più budget",
+            feedback: "Senza capire PERCHÉ non ha funzionato, più budget = più spreco.",
           },
         ],
-        skill: "Data-Driven Analysis",
-        lesson: "I buoni marketer sanno leggere il funnel e identificare dove si perde valore. I numeri raccontano una storia, devi saperla interpretare.",
+        skill: "Data Analysis",
+        lesson: `Nel ${t.industry}, l'onestà sui dati costruisce fiducia. I clienti apprezzano diagnosi precise.`,
       },
       {
         id: 2,
-        title: "Piano Editoriale",
-        context: "Il cliente (brand di skincare naturale) ha approvato la strategia. Devi creare il piano per le prossime 2 settimane: 8 post Instagram.",
-        challenge: "Quale mix di contenuti proponi?",
+        title: "Crisi Social Media",
+        context: `Sono le 11:00. Un utente ha postato una recensione negativa su ${t.companyName}: "Servizio pessimo, non lo consiglio". Ha 50 commenti e sta crescendo.`,
+        challenge: "Come gestisci la situazione?",
         choices: [
           {
             id: "a",
-            text: "4 post educativi (benefici ingredienti), 2 UGC/testimonial, 1 behind-the-scenes produzione, 1 promo con CTA diretta",
+            text: "Rispondi pubblicamente con empatia, offri un contatto diretto per risolvere il problema",
             isCorrect: true,
-            feedback: "Mix perfetto! Segui la regola 80/20: 80% valore (education, social proof, storytelling) e 20% vendita diretta. Gli utenti seguono brand che li aiutano, non che vendono sempre.",
+            feedback: `Perfetto! In ${t.industry}, la trasparenza e l'ascolto trasformano critici in sostenitori.`,
           },
           {
             id: "b",
-            text: "8 post prodotto con sconti diversi ogni giorno per massimizzare le vendite",
-            feedback: "Spam promozionale brucia l'audience. Gli utenti smettono di seguire brand che vendono sempre. Inoltre, sconti continui svalutano il brand.",
+            text: "Nascondi il post per limitare la visibilità",
+            feedback: "Censurare peggiora tutto. Nel " + t.industry + ", l'autenticità è fondamentale.",
           },
           {
             id: "c",
-            text: "8 post estetici con foto prodotto bellissime e caption minimali",
-            feedback: "L'estetica attira, ma senza contenuto di valore o CTA, stai costruendo awareness senza conversione. Servono entrambi.",
-          },
-        ],
-        skill: "Content Strategy",
-        lesson: "Il content marketing efficace bilancia valore per l'utente e obiettivi business. La regola 80/20 funziona su quasi tutti i canali social.",
-      },
-      {
-        id: 3,
-        title: "Crisi Social",
-        context: "È mercoledì pomeriggio. Un influencer con 50K follower commenta un tuo post: 'Questo brand fa greenwashing! I loro ingredienti non sono davvero naturali.' Il commento sta diventando virale.",
-        challenge: "Il tuo responsabile è in ferie. Cosa fai nelle prossime 2 ore?",
-        choices: [
-          {
-            id: "a",
-            text: "Rispondi pubblicamente con calma, ringraziando per il feedback e condividendo il link alle certificazioni degli ingredienti. Poi mandi un DM all'influencer proponendo di approfondire",
-            isCorrect: true,
-            feedback: "Gestione perfetta! Risposta pubblica (trasparenza), prove concrete (certificazioni), e apertura al dialogo privato (de-escalation). Hai trasformato una crisi in opportunità di mostrare autenticità.",
-          },
-          {
-            id: "b",
-            text: "Nascondi il commento per evitare che altri lo vedano, aspetti il responsabile",
-            feedback: "Mai nascondere! L'influencer farà screenshot, la cosa diventerà 'brand censura le critiche', e la crisi raddoppierà. La trasparenza è l'unica via.",
-          },
-          {
-            id: "c",
-            text: "Rispondi difendendo aggressivamente il brand: 'Queste accuse sono false e diffamatorie'",
-            feedback: "Tono aggressivo = benzina sul fuoco. Anche se hai ragione, sembrerai sulla difensiva. La calma e le prove battono sempre l'aggressività.",
+            text: "Aspetti che si calmi, rispondere ora potrebbe alimentare la discussione",
+            feedback: "Il silenzio viene letto come disinteresse. Ogni ora di attesa peggiora la percezione.",
           },
         ],
         skill: "Crisis Management",
-        lesson: "Nelle crisi social: rispondi veloce, con calma, con prove. Mai nascondere, mai aggredire. La trasparenza costruisce più fiducia di qualsiasi campagna.",
-      },
-      {
-        id: 4,
-        title: "Report al Cliente",
-        context: "Venerdì 17:00. Devi inviare il report settimanale. La campagna questa settimana ha performato sotto le aspettative: -15% rispetto alla scorsa.",
-        challenge: "Come strutturi il report?",
-        choices: [
-          {
-            id: "a",
-            text: "Apri con i dati negativi, poi analizzi le cause (competitor ha lanciato promo, algoritmo cambiato), chiudi con 3 azioni concrete per la prossima settimana",
-            isCorrect: true,
-            feedback: "Professionale e proattivo! Onestà sui numeri + analisi delle cause + piano d'azione = cliente che si fida di te. Nascondere i problemi li fa solo crescere.",
-          },
-          {
-            id: "b",
-            text: "Evidenzi le metriche che sono andate bene e minimizzi quelle negative",
-            feedback: "I clienti non sono stuppi. Vedranno i numeri veri prima o poi. Meglio essere tu a presentarli con contesto che farli scoprire da soli.",
-          },
-          {
-            id: "c",
-            text: "Rimandi il report a lunedì sperando che nel weekend i numeri migliorino",
-            feedback: "Rimandare non cambia i numeri e rompe la fiducia sulla puntualità. Affronta i problemi, non evitarli.",
-          },
-        ],
-        skill: "Client Communication",
-        lesson: "I report migliori sono onesti, analitici e proattivi. I clienti apprezzano chi affronta i problemi, non chi li nasconde.",
-      },
-    ],
-    "Data Analysis e Data Science": [
-      {
-        id: 1,
-        title: "Pulizia Dataset",
-        context: "Sono le 9:00. Ricevi un CSV con 50.000 righe di vendite degli ultimi 6 mesi. Prima di qualsiasi analisi, apri il file e noti subito problemi.",
-        challenge: "Trovi queste anomalie: 5% di valori 'NULL' nella colonna 'prezzo', 200 righe con date in formato diverso (DD/MM vs MM/DD), 150 righe duplicate. In che ordine le affronti?",
-        choices: [
-          {
-            id: "a",
-            text: "1) Duplicati (rimuovi), 2) Date (standardizza formato), 3) NULL (analizza se sono missing at random o sistematici prima di decidere come gestirli)",
-            isCorrect: true,
-            feedback: "Ordine perfetto! Duplicati sono errori certi da rimuovere. Date sono un fix tecnico. I NULL richiedono analisi: potrebbero essere prodotti gratuiti, errori di sistema, o dati mancanti. Trattarli tutti uguali sarebbe un errore.",
-          },
-          {
-            id: "b",
-            text: "Rimuovi tutte le righe con problemi (duplicati, date strane, NULL) per avere dati puliti",
-            feedback: "Stai buttando il 6% dei dati senza capire perché sono 'sporchi'. Alcuni NULL potrebbero essere informativi (es. prodotti in promo gratuita). Analizza prima, agisci poi.",
-          },
-          {
-            id: "c",
-            text: "Sostituisci tutti i NULL con la media dei prezzi, così puoi procedere velocemente",
-            feedback: "Sostituire con la media può distorcere l'analisi. Se i NULL sono prodotti gratuiti, stai inventando prezzi. Se sono errori di un negozio specifico, stai mascherando un pattern.",
-          },
-        ],
-        skill: "Data Cleaning Strategy",
-        lesson: "La pulizia dati richiede giudizio, non solo regole. Ogni anomalia potrebbe essere un errore O un insight. Analizza prima di correggere.",
-      },
-      {
-        id: 2,
-        title: "Analisi Esplorativa",
-        context: "Dataset pulito. Il tuo manager chiede: 'Voglio capire cosa guida le vendite. Trovami gli insight principali.' Hai 3 ore.",
-        challenge: "Da dove parti con l'analisi esplorativa (EDA)?",
-        choices: [
-          {
-            id: "a",
-            text: "Distribuzione vendite per prodotto (top 20%), per tempo (stagionalità?), per regione. Poi correlazioni tra variabili.",
-            isCorrect: true,
-            feedback: "Approccio strutturato! Pareto (quali prodotti contano), tempo (ci sono pattern?), geografia (dove vendiamo?), correlazioni (cosa influenza cosa?). Hai coperto le domande fondamentali prima di andare in profondità.",
-          },
-          {
-            id: "b",
-            text: "Crei subito un modello predittivo per impressionare il manager con machine learning",
-            feedback: "ML senza EDA è come costruire senza fondamenta. Non sai nemmeno se i dati supportano un modello. L'EDA ti dice COSA modellare e SE ha senso farlo.",
-          },
-          {
-            id: "c",
-            text: "Calcoli media, mediana, deviazione standard di tutte le variabili numeriche",
-            feedback: "Le statistiche descrittive sono un inizio, ma non raccontano la storia. Il manager vuole insight actionable, non numeri. Servono visualizzazioni e analisi comparative.",
-          },
-        ],
-        skill: "Exploratory Data Analysis",
-        lesson: "L'EDA efficace segue un framework: distribuzione, tempo, segmenti, correlazioni. Rispondi alle domande di business, non produrre statistiche random.",
+        lesson: `Nel ${t.industry}, le crisi social sono opportunità per dimostrare i valori del brand.`,
       },
       {
         id: 3,
-        title: "Costruzione Dashboard",
-        context: "I tuoi insight hanno impressionato il manager. Ora vuole una dashboard per il team sales che possano usare autonomamente.",
-        challenge: "Devi decidere quali metriche mettere nella dashboard. Il sales manager dice: 'Voglio vedere tutto!' Cosa fai?",
+        title: "Pianificazione Contenuti",
+        context: `Il team di ${t.companyName} ti chiede un piano editoriale per il prossimo mese nel settore ${t.industry}. Hai budget per 12 post e 2 video.`,
+        challenge: "Come distribuisci i contenuti?",
         choices: [
           {
             id: "a",
-            text: "Proponi 5-7 KPI chiave allineati agli obiettivi del team (revenue, conversion rate, avg order value, top products, trend vs target) con filtri per periodo e regione",
+            text: "40% educational sul settore, 30% behind-the-scenes, 20% prodotto, 10% user-generated",
             isCorrect: true,
-            feedback: "Perfetto! 'Vedere tutto' non significa 'mostrare tutto'. Una dashboard efficace ha poche metriche actionable, non 50 grafici che nessuno guarda. I filtri danno flessibilità senza complessità.",
+            feedback: `Eccellente mix! In ${t.industry}, educare crea autorevolezza, il BTS umanizza, il prodotto converte, UGC crea community.`,
           },
           {
             id: "b",
-            text: "Crei una dashboard con tutti i 30+ KPI disponibili, così il sales manager può scegliere cosa guardare",
-            feedback: "Troppe metriche = nessuna metrica. Gli utenti si perderanno e non useranno la dashboard. Less is more: scegli tu le metriche importanti, è il tuo lavoro.",
+            text: "80% contenuti prodotto per massimizzare le conversioni",
+            feedback: `Troppo push. Nel ${t.industry}, chi parla solo di sé stanca il pubblico.`,
           },
           {
             id: "c",
-            text: "Chiedi al sales manager quali specifici KPI vuole, così sei sicuro di non sbagliare",
-            feedback: "Chiedere input è giusto, ma 'dimmi tu cosa vuoi' sposta la responsabilità. Il tuo valore è proporre basandoti sui dati e sugli obiettivi, poi iterare.",
+            text: "100% trend e meme per massimizzare l'engagement",
+            feedback: "L'engagement fine a sé stesso non porta risultati. Servono contenuti che costruiscono relazione.",
           },
         ],
-        skill: "Data Visualization Design",
-        lesson: "Le dashboard migliori sono opinionated: mostrano cosa conta, non tutto ciò che esiste. Il tuo lavoro è filtrare il rumore, non aggiungerlo.",
+        skill: "Content Strategy",
+        lesson: `In ${t.industry}, il mix di contenuti bilancia brand building e performance.`,
       },
       {
         id: 4,
-        title: "Presentazione al Management",
-        context: "Il direttore commerciale ti ha dato 15 minuti per presentare i tuoi insight. È la tua prima presentazione al leadership.",
-        challenge: "Hai trovato che il 30% del revenue viene da 5 prodotti con margini bassissimi. Come presenti questo insight delicato?",
+        title: "Budget Allocation",
+        context: `Il CEO di ${t.companyName} ti dà €3.000 extra per il Q4. Devi decidere come allocarli per massimizzare l'impatto nel ${t.industry}.`,
+        challenge: "Come li distribuisci?",
         choices: [
           {
             id: "a",
-            text: "'Questi 5 prodotti generano 30% del revenue ma hanno margini inferiori alla media. Ho analizzato 3 opzioni: aumentare prezzi, usarli come loss leaders per cross-sell, o ottimizzare i costi. Ecco i numeri per ogni scenario.'",
+            text: "€1.500 su retargeting chi ha già interagito, €1.000 su lookalike, €500 su test nuove audience",
             isCorrect: true,
-            feedback: "Presentazione da senior! Hai dato il contesto, non hai criticato le scelte passate, e hai proposto opzioni concrete con dati. Il direttore può decidere, tu hai fatto il tuo lavoro.",
+            feedback: `Strategia smart! Il retargeting ha il ROI più alto, i lookalike scalano, i test preparano il futuro.`,
           },
           {
             id: "b",
-            text: "'C'è un problema: stiamo perdendo margini su questi prodotti. Dobbiamo ripensare la strategia.'",
-            feedback: "Stai criticando senza proporre. Il direttore potrebbe sapere già di questi prodotti e averli scelti intenzionalmente. Senza alternative, sembri solo lamentarti.",
+            text: "Tutto su awareness per raggiungere più persone possibili",
+            feedback: `L'awareness senza conversion strategy è vanity. In ${t.industry}, serve un funnel completo.`,
           },
           {
             id: "c",
-            text: "Eviti l'argomento e presenti solo gli insight positivi, per non creare tensioni alla prima presentazione",
-            feedback: "Nascondere insight importanti non è professionale. Sei stato assunto per dire la verità ai dati, non per fare bella figura. La credibilità si costruisce con onestà.",
+            text: "Tutto su influencer marketing per un boost veloce",
+            feedback: "Gli influencer funzionano ma €3k bastano per micro-influencer. Il ROI è incerto.",
           },
         ],
-        skill: "Executive Communication",
-        lesson: "Presentare al leadership richiede: dati + contesto + opzioni. Mai criticare senza proporre. Mai nascondere per paura. I numeri sono neutrali, la presentazione no.",
+        skill: "Budget Optimization",
+        lesson: `Nel ${t.industry}, il budget va dove i dati dicono che funziona, non dove sembra più cool.`,
       },
     ],
-    "Non lo so": [
+    "Data Analysis e Data Science": (t) => [
       {
         id: 1,
-        title: "Gestione Kickoff Meeting",
-        context: "Sono le 10:00. Oggi c'è il kickoff di un nuovo progetto: un'app per un cliente nel settore fitness. Tu devi facilitare la riunione.",
-        challenge: "Mancano 5 minuti al meeting. Il designer non ha ancora mandato i mockup che doveva preparare. Cosa fai?",
+        title: "Richiesta dal Business",
+        context: `Sono le 9:00. Il CEO di ${t.companyName} ti scrive: "Mi servono i numeri delle performance del Q3 per la board di domani." Hai 24 ore.`,
+        challenge: "Come affronti la richiesta?",
         choices: [
           {
             id: "a",
-            text: "Scrivi velocemente al designer chiedendo un ETA, poi prepari un'agenda B che funzioni anche senza mockup (focus su obiettivi e timeline invece che visual)",
+            text: "Chiedi quali metriche specifiche servono e qual è la storia che vuole raccontare alla board",
             isCorrect: true,
-            feedback: "Gestione perfetta! Hai verificato la situazione, preparato un piano B, e il meeting può procedere comunque. Il buon PM anticipa i problemi e ha sempre alternative.",
+            feedback: `Perfetto! In ${t.industry}, capire il contesto evita di produrre dati inutili. Il CEO probabilmente non sa esattamente cosa vuole.`,
           },
           {
             id: "b",
-            text: "Rimandi il meeting di 30 minuti per dare tempo al designer",
-            feedback: "Rimandare all'ultimo minuto spreca il tempo di tutti i partecipanti e dà un'impressione di disorganizzazione. Un kickoff può partire senza mockup finali.",
+            text: "Prepari un report completo con tutte le metriche disponibili",
+            feedback: "Troppi dati = nessuna storia. La board ha 10 minuti, non 2 ore.",
           },
           {
             id: "c",
-            text: "Inizi il meeting e improvvisi quando arrivi alla parte dei mockup",
-            feedback: "Improvvisare porta a meeting inefficienti e imbarazzanti. Il PM deve sempre avere un piano, anche quando le cose non vanno come previsto.",
+            text: "Estrai i dati grezzi e li mandi così il CEO decide cosa usare",
+            feedback: "Il CEO non ha tempo (né competenze) per analizzare dati grezzi. Il tuo valore è tradurli.",
           },
         ],
-        skill: "Meeting Facilitation",
-        lesson: "I buoni facilitatori hanno sempre un piano B. Il meeting deve funzionare anche quando mancano elementi: focalizzati su ciò che puoi controllare.",
+        skill: "Stakeholder Communication",
+        lesson: `In ${t.industry}, l'analista bravo non risponde a domande: aiuta a fare quelle giuste.`,
       },
       {
         id: 2,
-        title: "Documentazione Progetto",
-        context: "Il tuo manager ti chiede di aggiornare la documentazione su Notion. 'È un disastro, nessuno trova niente.' Hai mezza giornata.",
-        challenge: "Apri Notion: 47 pagine sparse, nomi inconsistenti, info duplicate. Da dove parti?",
+        title: "Data Quality Issue",
+        context: `Stai analizzando i dati utente di ${t.productContext}. Noti che il 15% dei record ha valori mancanti nel campo cruciale "engagement_score".`,
+        challenge: "Come gestisci i missing values?",
         choices: [
           {
             id: "a",
-            text: "Crei prima una struttura logica (Home > Progetti > [Nome progetto] > Docs, Assets, Meeting notes), poi sposti le pagine esistenti nella nuova struttura",
+            text: "Analizzi il pattern dei missing: sono random o sistematici? Poi decidi se imputare, escludere o segnalare",
             isCorrect: true,
-            feedback: "Approccio metodico! Prima l'architettura, poi il contenuto. Spostare pagine in una struttura random crea altro caos. 30 minuti di pianificazione salvano ore di confusione.",
+            feedback: `Eccellente! In ${t.industry}, i missing values raccontano una storia. Capire PERCHÉ mancano è fondamentale.`,
           },
           {
             id: "b",
-            text: "Inizi a rinominare e riordinare le pagine una per una, partendo dalle più recenti",
-            feedback: "Senza una struttura target, stai riorganizzando nel vuoto. Potresti finire con un caos solo leggermente diverso. Prima disegna la mappa, poi muovi le cose.",
+            text: "Li sostituisci con la media per non perdere dati",
+            feedback: "La media può introdurre bias. Se i missing sono sistematici (es. utenti che non completano), la media è sbagliata.",
           },
           {
             id: "c",
-            text: "Elimini tutte le pagine vecchie e parti da zero con un nuovo setup",
-            feedback: "Rischi di perdere informazioni importanti che qualcuno sta usando. La riorganizzazione è preferibile alla distruzione, specialmente senza backup.",
+            text: "Li escludi tutti dall'analisi per avere dati puliti",
+            feedback: `Escludere il 15% può introdurre selection bias. In ${t.industry}, perderesti insight importanti.`,
           },
         ],
-        skill: "Information Architecture",
-        lesson: "Organizzare informazioni richiede pensiero sistemico: prima la struttura, poi il contenuto. Vale per Notion, per codice, per qualsiasi sistema complesso.",
+        skill: "Data Quality",
+        lesson: `In ${t.industry}, la data quality è il fondamento. Garbage in, garbage out.`,
       },
       {
         id: 3,
+        title: "Insight Controintuitivo",
+        context: `La tua analisi per ${t.companyName} mostra che gli utenti che usano meno l'app hanno retention più alta. Sembra controintuitivo.`,
+        challenge: "Come procedi?",
+        choices: [
+          {
+            id: "a",
+            text: "Indaghi il segmento: forse sono utenti premium che ottengono valore in meno tempo",
+            isCorrect: true,
+            feedback: `Ottimo! In ${t.industry}, i dati controintuitivi spesso nascondono gli insight più preziosi.`,
+          },
+          {
+            id: "b",
+            text: "Ignori l'anomalia, probabilmente è un errore nei dati",
+            feedback: "Ignorare anomalie è un errore. Spesso le scoperte più importanti sembrano 'strane' all'inizio.",
+          },
+          {
+            id: "c",
+            text: "Presenti il dato così com'è, sarà il business a interpretarlo",
+            feedback: "Presentare senza interpretare non aggiunge valore. Il tuo lavoro è spiegare, non solo mostrare.",
+          },
+        ],
+        skill: "Critical Thinking",
+        lesson: `In ${t.industry}, i dati controintuitivi meritano più attenzione, non meno.`,
+      },
+      {
+        id: 4,
+        title: "Presentazione ai Non-Tecnici",
+        context: `Devi presentare i risultati della tua analisi al team marketing di ${t.companyName}. Hai trovato 3 cluster di utenti con comportamenti diversi.`,
+        challenge: "Come presenti i risultati?",
+        choices: [
+          {
+            id: "a",
+            text: "Dai un nome descrittivo a ogni cluster, mostri 1-2 insight azionabili per ciascuno, zero formule",
+            isCorrect: true,
+            feedback: `Perfetto! 'Gli Esploratori', 'I Fedeli', 'I Dormienti' sono più memorabili di 'Cluster 1, 2, 3'.`,
+          },
+          {
+            id: "b",
+            text: "Spieghi la metodologia k-means e mostri il grafico dell'elbow method",
+            feedback: "Al marketing non interessa come hai fatto, ma cosa significa per loro.",
+          },
+          {
+            id: "c",
+            text: "Mandi un report scritto dettagliato via email, è più efficiente",
+            feedback: "Il report scritto finisce nel dimenticatoio. La presentazione crea allineamento e discussione.",
+          },
+        ],
+        skill: "Data Storytelling",
+        lesson: `In ${t.industry}, un insight non comunicato bene è un insight sprecato.`,
+      },
+    ],
+    "Non lo so": (t) => [
+      {
+        id: 1,
+        title: "Kickoff di Progetto",
+        context: `Sono le 9:00. Entri alla prima riunione del nuovo progetto per ${t.companyName}: sviluppare ${t.productContext}. Ci sono designer, developer e stakeholder.`,
+        challenge: "Qual è la prima cosa da chiarire?",
+        choices: [
+          {
+            id: "a",
+            text: "Obiettivi concreti e metriche di successo: cosa significa 'fatto bene'?",
+            isCorrect: true,
+            feedback: `Perfetto! Senza obiettivi chiari, ogni progetto in ${t.industry} rischia di andare alla deriva.`,
+          },
+          {
+            id: "b",
+            text: "Subito il piano con timeline e milestone",
+            feedback: "Il piano viene dopo gli obiettivi. Come pianifichi se non sai dove vuoi arrivare?",
+          },
+          {
+            id: "c",
+            text: "Chiedi a ognuno di presentare la propria visione del progetto",
+            feedback: "Utile per capire le aspettative, ma rischi 10 visioni diverse senza una direzione.",
+          },
+        ],
+        skill: "Project Initiation",
+        lesson: `In ${t.industry}, i progetti falliscono più per obiettivi vaghi che per esecuzione scarsa.`,
+      },
+      {
+        id: 2,
         title: "Conflitto tra Team",
-        context: "I designer dicono che i developer cambiano sempre il design. I developer dicono che i design sono impossibili da implementare. Entrambi si lamentano con te.",
-        challenge: "Come affronti questo conflitto ricorrente?",
+        context: `Il designer e il developer di ${t.companyName} non sono d'accordo su una feature. Il designer vuole un'animazione complessa, il developer dice che rallenterà l'app.`,
+        challenge: "Come gestisci la situazione?",
         choices: [
           {
             id: "a",
-            text: "Organizzi un workshop congiunto per creare insieme un 'Design Handoff Checklist': cosa deve contenere ogni design prima dello sviluppo, e quali feedback i dev possono dare prima dell'implementazione",
+            text: "Faciliti una discussione: 'Qual è l'obiettivo dell'animazione? C'è un compromesso che mantiene il valore?'",
             isCorrect: true,
-            feedback: "Soluzione strutturale! Invece di mediare caso per caso, hai creato un processo. La checklist diventa il 'contratto' tra team, riducendo frizioni future. I migliori PM risolvono le cause, non i sintomi.",
+            feedback: `Ottimo! In ${t.industry}, il coordinatore non decide ma facilita. L'obiettivo comune sblocca i conflitti.`,
           },
           {
             id: "b",
-            text: "Parli separatamente con ogni team lead per trovare un compromesso su questo progetto specifico",
-            feedback: "Risolvi il problema oggi, ma tornerà domani. Senza un processo condiviso, ogni progetto avrà lo stesso conflitto. Pensa sistemico.",
+            text: "Dai ragione al developer perché la performance è più importante",
+            feedback: "Prendere parte crea risentimento. Non sei un giudice, sei un facilitatore.",
           },
           {
             id: "c",
-            text: "Riferisci la situazione al tuo manager e chiedi che intervenga con autorità",
-            feedback: "Escalare subito ti fa sembrare incapace di gestire conflitti. Prova prima a risolverlo, l'escalation è l'ultima risorsa.",
+            text: "Escali al manager perché decida lui",
+            feedback: "Escalare subito ti fa sembrare incapace di gestire conflitti. Prima prova a risolverlo.",
           },
         ],
         skill: "Conflict Resolution",
-        lesson: "I conflitti ricorrenti sono sintomi di problemi di processo. Risolvi il processo, non il singolo conflitto. Crea strutture che prevengono il problema.",
+        lesson: `In ${t.industry}, i conflitti spesso nascono da obiettivi diversi. Trovare l'obiettivo comune li risolve.`,
       },
       {
-        id: 4,
-        title: "Prioritizzazione Last-Minute",
-        context: "Venerdì 15:00. Il cliente chiama: 'Ho urgenza di una feature nuova per lunedì.' Ma il team ha già il planning pieno per completare le feature promesse.",
-        challenge: "Come gestisci questa richiesta?",
+        id: 3,
+        title: "Deadline a Rischio",
+        context: `Mancano 5 giorni alla demo di ${t.productContext} per un cliente importante. Il team è indietro del 30% sul piano.`,
+        challenge: "Come affronti la situazione?",
         choices: [
           {
             id: "a",
-            text: "Chiedi al cliente: 'Qual è il problema di business che questa feature risolve?' Poi valuti se è davvero urgente, e se sì, proponi cosa slittare per farla entrare",
+            text: "Riunione di prioritizzazione: cosa è MUST HAVE per la demo vs nice to have? Tagliamo lo scope",
             isCorrect: true,
-            feedback: "Gestione senior! Hai qualificato l'urgenza (spesso 'urgente' significa solo 'lo voglio'), e se è reale, hai proposto un trade-off trasparente. Il cliente deve capire che le risorse sono finite.",
+            feedback: `Perfetto! In ${t.industry}, meglio consegnare meno ma funzionante che tutto ma rotto.`,
           },
           {
             id: "b",
-            text: "Dici sì al cliente e chiedi al team di lavorare nel weekend per consegnare tutto",
-            feedback: "Stai bruciando il team per una richiesta non pianificata. Questo crea risentimento e non è sostenibile. Il PM protegge il team, non lo sacrifica.",
+            text: "Chiedi al team di fare straordinari per recuperare",
+            feedback: "Gli straordinari creano burnout e errori. Nel lungo periodo, peggiori le cose.",
           },
           {
             id: "c",
-            text: "Dici al cliente che non è possibile e la feature va pianificata per lo sprint successivo",
-            feedback: "Rifiutare senza capire l'urgenza può danneggiare la relazione. Magari è davvero critica. Prima qualifica, poi decidi.",
+            text: "Informi il cliente che la demo slitterà di una settimana",
+            feedback: "Rimandare è l'ultima opzione. Prima vedi se puoi consegnare un MVP valido.",
           },
         ],
-        skill: "Stakeholder Management",
-        lesson: "Le richieste 'urgenti' raramente lo sono davvero. Il buon PM qualifica sempre l'urgenza, propone trade-off, e protegge il team da scope creep.",
+        skill: "Scope Management",
+        lesson: `In ${t.industry}, saper dire 'questo lo tagliamo' è cruciale quanto saper dire 'questo lo facciamo'.`,
+      },
+      {
+        id: 4,
+        title: "Feedback al Team",
+        context: `Un membro del team di ${t.companyName} sta sottoperformando. Non rispetta le deadline e la qualità è calata.`,
+        challenge: "Come affronti la conversazione?",
+        choices: [
+          {
+            id: "a",
+            text: "1-to-1 privato: 'Ho notato X e Y. C'è qualcosa che ti sta bloccando? Come posso aiutarti?'",
+            isCorrect: true,
+            feedback: `Perfetto! Partire con curiosità, non giudizio. Spesso ci sono motivi non visibili.`,
+          },
+          {
+            id: "b",
+            text: "Fai notare il problema nel daily standup così tutti sono allineati",
+            feedback: "Il feedback negativo in pubblico umilia e crea risentimento. Sempre in privato.",
+          },
+          {
+            id: "c",
+            text: "Aspetti ancora, magari è un periodo difficile e si riprende",
+            feedback: "Ignorare il problema lo peggiora. Il feedback tempestivo aiuta tutti.",
+          },
+        ],
+        skill: "People Management",
+        lesson: `In ${t.industry}, il feedback è un regalo. Darlo bene è un'arte che si impara.`,
       },
     ],
   };
 
-  return tasksByArea[area] || tasksByArea["Non lo so"];
+  const generator = taskTemplates[area] || taskTemplates["Non lo so"];
+  return generator(theme);
 };
 
-const generateFinalScenario = (area: string): { context: string; situation: string; choices: { id: string; text: string; outcome: string }[] } => {
+const generatePersonalizedFinalScenario = (area: string, theme: InterestTheme) => {
   const scenarios: Record<string, { context: string; situation: string; choices: { id: string; text: string; outcome: string }[] }> = {
     "UX/UI Design": {
-      context: "È passato un mese. Il redesign di QuickBite è in produzione. I dati mostrano -40% di abbandono carrello.",
-      situation: "Il cliente è entusiasta e vuole affidarti un nuovo progetto più grande: riprogettare l'intera app da zero. Ma il tuo lead ti propone anche di restare sul progetto attuale per ottimizzare ulteriormente, con potenziale promozione tra 6 mesi.",
+      context: `Dopo 6 mesi in ${theme.companyName}, hai dimostrato il tuo valore. Il tuo redesign ha aumentato la retention del 25%.`,
+      situation: `Il CEO ti propone tre opportunità di crescita nel ${theme.industry}. Quale scegli?`,
       choices: [
         {
           id: "a",
-          text: "Accetti il nuovo progetto: è l'occasione per crescere e mostrare cosa sai fare su larga scala",
-          outcome: "Scelta coraggiosa! Il nuovo progetto è sfidante ma ti fa crescere velocemente. Dopo 3 mesi difficili, consegni un lavoro eccellente e vieni riconosciuto come designer capace di gestire progetti complessi.",
+          text: "Lead Designer: guidare un team di 3 junior sul prossimo prodotto",
+          outcome: `Scegli la leadership. In un anno, il tuo team lancia un prodotto che diventa il core business di ${theme.companyName}. Impari che far crescere altri è più gratificante che brillare da solo.`,
         },
         {
           id: "b",
-          text: "Resti sul progetto attuale: preferisci consolidare le competenze e puntare alla promozione sicura",
-          outcome: "Scelta saggia! Approfondisci l'ottimizzazione, impari molto su A/B testing e analytics. La promozione arriva come promesso, e hai una base solida per progetti futuri.",
+          text: "Specializzazione: diventare l'esperto di Design System dell'azienda",
+          outcome: `Scegli la profondità. Costruisci un design system che accelera lo sviluppo del 40%. Diventi la persona che tutti consultano. La specializzazione paga.`,
         },
         {
           id: "c",
-          text: "Chiedi se puoi fare entrambi part-time per non rinunciare a nessuna opportunità",
-          outcome: "Ambizioso! Il lead accetta ma ti avvisa dei rischi. I primi due mesi sono duri, ma impari a gestire priorità e delegare. Alla fine ottieni il meglio di entrambi i mondi.",
+          text: "Product: passare a Product Designer per avere più impatto strategico",
+          outcome: `Scegli l'impatto. Lavori a stretto contatto con CEO e stakeholder. Le tue decisioni influenzano la direzione dell'azienda. Il design diventa strategia.`,
         },
       ],
     },
     "Web Development": {
-      context: "Dopo 3 mesi, sei diventato il riferimento per il frontend nel team. Il codice che scrivi è pulito e ben documentato.",
-      situation: "Il CTO ti propone due percorsi: specializzarti in frontend avanzato (performance, animazioni, accessibility) oppure passare al full-stack imparando backend e database.",
+      context: `Dopo 6 mesi in ${theme.companyName}, il tuo codice è in produzione e usato da migliaia di utenti nel ${theme.industry}.`,
+      situation: "Il CTO ti presenta tre path di crescita. Quale ti attira di più?",
       choices: [
         {
           id: "a",
-          text: "Scegli frontend avanzato: vuoi diventare esperto in una cosa, non mediocre in due",
-          outcome: "La specializzazione paga. In 6 mesi diventi il 'go-to person' per performance e a11y. I progetti più prestigiosi passano da te. La T-shaped career funziona.",
+          text: "Tech Lead: guidare le scelte architetturali del team",
+          outcome: `Scegli la leadership tecnica. In un anno, guidi la migrazione a una nuova architettura. Il sistema è più veloce e scalabile. I junior ti vedono come mentore.`,
         },
         {
           id: "b",
-          text: "Scegli full-stack: vuoi capire l'intero sistema e avere più opzioni di carriera",
-          outcome: "Curva di apprendimento ripida, ma dopo un anno sai costruire prodotti completi da solo. Questo ti apre porte verso ruoli di tech lead e architettura.",
+          text: "Full-Stack: espanderti al backend per vedere il quadro completo",
+          outcome: `Scegli la completezza. Costruisci feature end-to-end. Capisci come tutto si connette. Diventi il dev che può risolvere qualsiasi problema.`,
         },
         {
           id: "c",
-          text: "Chiedi di restare generalista ancora 6 mesi prima di decidere",
-          outcome: "Scelta prudente. Usi il tempo per esplorare entrambe le aree in progetti reali. Quando decidi, la scelta è informata e consapevole. Non c'è fretta di specializzarsi.",
+          text: "DevOps/Platform: lavorare sull'infrastruttura che supporta tutto",
+          outcome: `Scegli le fondamenta. Automatizzi deploy, monitoraggio, scaling. Ogni dev dell'azienda lavora meglio grazie a te. L'impatto è invisibile ma enorme.`,
         },
       ],
     },
     "Digital Marketing": {
-      context: "Le tue campagne hanno portato +35% di conversioni in 4 mesi. Il cliente è diventato un caso studio per l'agenzia.",
-      situation: "Ti viene offerta la gestione di un cliente enterprise con budget 10x maggiore, ma anche pressione e aspettative 10x. In alternativa, puoi prendere 3 clienti small business e costruire il tuo portfolio.",
+      context: `Dopo 6 mesi in ${theme.companyName}, le tue campagne hanno generato €200k di revenue attribuibile nel ${theme.industry}.`,
+      situation: "Il CMO ti propone tre direzioni di crescita. Quale scegli?",
       choices: [
         {
           id: "a",
-          text: "Prendi l'enterprise: è l'occasione per fare il salto e imparare a gestire budget importanti",
-          outcome: "I primi mesi sono intensi. Fai errori, impari, migliori. Dopo un anno gestisci campagne da milioni e hai competenze che pochi junior hanno. Il rischio ha pagato.",
+          text: "Performance Marketing: specializzarti in paid acquisition e ottimizzazione",
+          outcome: `Scegli i numeri. Diventi un mago delle ads. Ogni euro speso ne genera 5. Le aziende ti cercano perché porti risultati misurabili.`,
         },
         {
           id: "b",
-          text: "Prendi i 3 small business: preferisci varietà e autonomia rispetto alla pressione enterprise",
-          outcome: "Ogni cliente è diverso: impari ad adattarti, a essere creativo con budget limitati. Dopo un anno hai un portfolio variegato e sai gestire qualsiasi tipo di progetto.",
+          text: "Brand & Content: costruire la narrativa e l'identità del marchio",
+          outcome: `Scegli la storia. Costruisci un brand che le persone amano nel ${theme.industry}. Il content che crei viene condiviso organicamente. Il valore è nel lungo termine.`,
         },
         {
           id: "c",
-          text: "Proponi un mix: enterprise come supporto a un senior, più un small business tuo",
-          outcome: "Il meglio di entrambi i mondi. Impari dall'enterprise senza la pressione totale, e hai il tuo progetto per sperimentare. Crescita bilanciata e sostenibile.",
+          text: "Growth: visione olistica su tutto il funnel, dalla awareness alla retention",
+          outcome: `Scegli il sistema. Vedi come ogni pezzo si connette. Ottimizzi l'intero journey, non solo un canale. Diventi indispensabile per la crescita.`,
         },
       ],
     },
     "Data Analysis e Data Science": {
-      context: "I tuoi insight hanno influenzato decisioni strategiche. Il management ti considera una risorsa preziosa.",
-      situation: "Ti propongono due percorsi: rimanere analyst e diventare senior (più presentazioni, meno codice) oppure spostarti verso data engineering (più tecnico, pipeline e infrastruttura).",
+      context: `Dopo 6 mesi in ${theme.companyName}, le tue analisi hanno influenzato decisioni da milioni di euro nel ${theme.industry}.`,
+      situation: "Il CDO ti presenta tre opportunità. Quale ti ispira di più?",
       choices: [
         {
           id: "a",
-          text: "Senior Analyst: ti piace l'impatto strategico e comunicare con il business",
-          outcome: "In un anno presenti al board, influenzi la strategia aziendale, guidi junior analyst. Il codice diminuisce ma l'impatto aumenta. Sei diventato un traduttore tra dati e business.",
+          text: "Data Science: costruire modelli predittivi e algoritmi di ML",
+          outcome: `Scegli l'AI. Costruisci modelli che predicono il comportamento utenti nel ${theme.industry}. L'azienda prende decisioni prima che i problemi emergano. Sei nel futuro.`,
         },
         {
           id: "b",
-          text: "Data Engineering: preferisci costruire sistemi robusti che scalano",
-          outcome: "Impari infrastruttura, pipeline, cloud. Meno visibilità ma lavoro tecnico che ti soddisfa. Le tue pipeline processano milioni di righe e abilitano tutto il team analytics.",
+          text: "Analytics Lead: guidare le analytics di un'intera business unit",
+          outcome: `Scegli l'impatto. Ogni decisione della BU passa dai tuoi insight. Impari il business profondamente. I dati diventano strategia.`,
         },
         {
           id: "c",
-          text: "Chiedi un ruolo ibrido: analytics engineer, che unisce entrambi",
-          outcome: "Ruolo emergente e molto richiesto. Costruisci pipeline E fai analysis. Dopo un anno sei uno dei pochi che capisce end-to-end, dalla raccolta dati all'insight finale.",
+          text: "Data Engineering: costruire l'infrastruttura dati che abilita tutto",
+          outcome: `Scegli le fondamenta. Costruisci pipeline che trasformano dati grezzi in insight. Ogni analyst lavora meglio grazie alla tua architettura.`,
         },
       ],
     },
     "Non lo so": {
-      context: "Dopo 6 mesi di esplorazione, hai capito cosa ti piace e cosa no. Hai lavorato con tutti i team.",
-      situation: "Devi scegliere dove specializzarti. Il tuo manager ti presenta tre opzioni basate su dove hai brillato di più.",
+      context: `Dopo 6 mesi in ${theme.companyName}, hai esplorato diversi ruoli nel ${theme.industry}. Hai capito cosa ti piace e cosa no.`,
+      situation: "Il tuo manager ti chiede dove vuoi specializzarti. Cosa scegli?",
       choices: [
         {
           id: "a",
-          text: "Product Management: ti è piaciuto definire cosa costruire e perché",
-          outcome: "Il ruolo perfetto per chi pensa strategicamente e ama coordinare. In un anno gestisci la roadmap di un prodotto e sei il ponte tra business, design e tech.",
+          text: "Product Management: definire cosa costruire e perché",
+          outcome: `Scegli la strategia. Diventi il ponte tra business, design e tech. In un anno gestisci la roadmap di un prodotto. Le tue decisioni plasmano il futuro.`,
         },
         {
           id: "b",
-          text: "Project Management: hai brillato nell'organizzazione e nel far succedere le cose",
-          outcome: "Diventi il collante che tiene insieme i progetti. In un anno gestisci 3 progetti in parallelo, il team ti adora perché risolvi i problemi prima che esplodano.",
+          text: "Project Management: far succedere le cose, coordinare e consegnare",
+          outcome: `Scegli l'esecuzione. Diventi chi tiene insieme i progetti complessi. Il team ti adora perché risolvi problemi prima che esplodano.`,
         },
         {
           id: "c",
-          text: "Chiedi altri 3 mesi di esplorazione in un'area che non hai ancora provato",
-          outcome: "Scopri che ti appassiona il growth hacking, che non avevi considerato. A volte la risposta è dove non hai ancora guardato. La pazienza nell'esplorare paga.",
+          text: "Ancora 3 mesi di esplorazione in un'area che non hai provato",
+          outcome: `Scegli l'esplorazione. Scopri una passione inaspettata per il growth hacking. A volte la risposta è dove non hai ancora guardato.`,
         },
       ],
     },
@@ -754,41 +884,58 @@ const generateFinalScenario = (area: string): { context: string; situation: stri
 
 export const generateScenario = (profile: UserProfile): SimulationScenario => {
   const area = profile.digitalArea || "Non lo so";
-  const bgType = getBackgroundType(profile.background);
-  const roleInfo = roleMap[area]?.[bgType] || roleMap[area]?.["default"] || roleMap["Non lo so"]["default"];
+  const theme = detectInterestTheme(profile.interests, profile.background);
+  const bgContext = getBackgroundContext(profile.background);
+  const roleInfo = generateRole(area, bgContext, theme);
 
-  const morningIntros: Record<string, string> = {
-    "UX/UI Design": `Sono le 8:55. Entri in ufficio con il tuo caffè, saluti il team e ti siedi alla tua postazione. Due monitor, Figma già aperto, post-it colorati ovunque. La playlist lo-fi parte in automatico. Oggi è una giornata intensa: c'è un nuovo progetto sul tavolo.`,
-    "Web Development": `Sono le 9:00. Ti colleghi da remoto, apri VS Code e Slack. Il daily standup è tra 15 minuti. Controlli le notifiche: 2 PR da revieware, 1 ticket assegnato e un messaggio del lead che dice 'Buongiorno! Oggi deploy importante.' Caffè pronto, cuffie on.`,
-    "Digital Marketing": `Sono le 8:45. Apri il laptop al coworking, il profumo del cappuccino ancora nell'aria. Prima cosa: controllare i social del cliente. 23 notifiche Instagram, 5 commenti da moderare. La campagna di ieri ha performato bene. Oggi si analizza e si pianifica.`,
-    "Data Analysis e Data Science": `Sono le 9:15. Arrivi in ufficio, Jupyter Notebook già caricato mentalmente. Sul tuo desk: due monitor, Python in esecuzione perpetua e una tazza che dice 'I love data'. Oggi il team sales aspetta i tuoi insight per la strategia Q2.`,
-    "Non lo so": `Sono le 9:00. Entri in agenzia, saluti tutti e ti prepari per la giornata. Come project coordinator, ogni giorno è diverso: oggi hai un kickoff, due follow-up e una deadline che si avvicina. Apri Notion, controlli la to-do list e parti.`,
-  };
-
-  const conclusions: Record<string, string> = {
-    "UX/UI Design": `Questo lavoro valorizza la tua capacità di osservare, analizzare e risolvere problemi in modo creativo. Il tuo background ti dà una prospettiva unica: non sei solo un designer, sei qualcuno che capisce perché le cose funzionano.`,
-    "Web Development": `Il tuo percorso ti ha preparato a pensare in modo logico e strutturato. Come developer, trasformi idee in realtà funzionanti. Ogni riga di codice è un piccolo atto di problem-solving.`,
-    "Digital Marketing": `La tua sensibilità comunicativa è un asset prezioso. Nel digital marketing, unisci creatività e analisi per connettere brand e persone. Il tuo background ti permette di vedere opportunità dove altri vedono solo dati.`,
-    "Data Analysis e Data Science": `Il tuo approccio metodico trova casa perfetta nell'analisi dati. Trasformi numeri in storie, pattern in decisioni. Il tuo background ti dà la capacità di vedere il quadro completo.`,
-    "Non lo so": `La tua versatilità è un superpotere. In un mondo digitale sempre più complesso, chi sa navigare tra discipline diverse diventa indispensabile. Il tuo background ti permette di fare da ponte tra team e competenze.`,
-  };
-
-  const encouragements: Record<string, string> = {
-    "UX/UI Design": `Hai appena vissuto una giornata tipo nel mondo UX/UI. Non è solo disegnare schermate: è capire le persone, risolvere problemi e comunicare soluzioni. Il tuo background in "${profile.background}" ti dà un vantaggio unico: porti una prospettiva diversa in ogni progetto.\n\nIl percorso per diventare UX/UI Designer richiede pratica, curiosità e tanta empatia. Ma la verità è che hai già le basi: sai osservare, sai chiederti "perché", sai immaginare come potrebbero andare le cose.\n\nInizia con piccoli progetti personali, esplora Figma, leggi casi studio. Ogni interfaccia che usi diventa un'opportunità di apprendimento.`,
-    "Web Development": `Hai appena vissuto una giornata tipo nel mondo dello sviluppo web. Non è solo scrivere codice: è risolvere puzzle, costruire soluzioni e collaborare con un team. Il tuo background in "${profile.background}" ti dà una marcia in più.\n\nDiventare developer richiede pratica costante e pazienza con gli errori. Ma ogni bug risolto è una lezione, ogni feature completata è una vittoria.\n\nInizia con progetti piccoli ma reali. Un portfolio personale, una to-do app. La teoria serve, ma è facendo che si impara davvero.`,
-    "Digital Marketing": `Hai appena vissuto una giornata tipo nel digital marketing. Non è solo postare sui social: è capire le persone, analizzare dati e raccontare storie che coinvolgono. Il tuo background in "${profile.background}" è un asset.\n\nIl marketing digitale evolve continuamente, quindi la curiosità è la tua skill più importante. Sperimenta, misura, impara, ripeti.\n\nInizia gestendo i social di un progetto personale. Impara Google Analytics, esplora le ads. Ogni brand che segui diventa un caso studio.`,
-    "Data Analysis e Data Science": `Hai appena vissuto una giornata tipo nel mondo dei dati. Non è solo fare grafici: è trovare storie nascoste nei numeri e guidare decisioni concrete. Il tuo background in "${profile.background}" ti dà rigore e metodo.\n\nL'analisi dati richiede pazienza e curiosità infinita. Ma la soddisfazione di trovare un pattern che nessuno aveva visto è impagabile.\n\nInizia con dataset pubblici su Kaggle, impara Python o R. Ogni dataset è un puzzle che aspetta di essere risolto.`,
-    "Non lo so": `Hai appena vissuto una giornata tipo in un ruolo che combina competenze diverse. Non saper ancora cosa vuoi fare non è una debolezza: è un'opportunità per esplorare. Il tuo background in "${profile.background}" ti dà fondamenta solide.\n\nIl mondo digitale ha bisogno di persone versatili che sappiano fare da ponte tra specialisti.\n\nEsplora diverse aree, prova corsi introduttivi. Scopri cosa ti fa perdere la cognizione del tempo. La carriera non è una linea retta, è un percorso di scoperta.`,
-  };
+  const morningIntro = generateMorningIntro(area, theme, profile);
+  const conclusion = generateConclusion(area, theme, profile);
+  const encouragement = generateEncouragement(area, theme, profile);
 
   return {
     role: roleInfo.role,
     roleExplanation: roleInfo.explanation,
-    morningIntro: morningIntros[area] || morningIntros["Non lo so"],
-    tasks: generateTasks(area),
-    finalScenario: generateFinalScenario(area),
-    conclusion: conclusions[area] || conclusions["Non lo so"],
-    encouragement: encouragements[area]?.replace("${profile.background}", profile.background) || encouragements["Non lo so"].replace("${profile.background}", profile.background),
+    morningIntro,
+    tasks: generatePersonalizedTasks(area, theme, bgContext),
+    finalScenario: generatePersonalizedFinalScenario(area, theme),
+    conclusion,
+    encouragement,
     masterRecommendation: masterRecommendations[area] || masterRecommendations["Non lo so"],
   };
+};
+
+const generateMorningIntro = (area: string, theme: InterestTheme, profile: UserProfile): string => {
+  const intros: Record<string, string> = {
+    "UX/UI Design": `Sono le 8:55. Entri nell'ufficio di ${theme.companyName}, ${theme.companyDescription}. Saluti il team e ti siedi alla tua postazione. Due monitor, Figma aperto, post-it colorati ovunque. Oggi lavorerai su ${theme.productContext}. La playlist lo-fi parte e sei pronto.`,
+    "Web Development": `Sono le 9:00. Ti colleghi da remoto per ${theme.companyName}, ${theme.companyDescription}. Apri VS Code e Slack. Il daily standup è tra 15 minuti. Oggi lavorerai su ${theme.productContext}. Caffè pronto, cuffie on, si parte.`,
+    "Digital Marketing": `Sono le 8:45. Apri il laptop al coworking, lavori per ${theme.companyName}, ${theme.companyDescription}. Prima cosa: controllare i canali social. Oggi pianificherai campagne per ${theme.productContext}. Il cappuccino è pronto, si inizia.`,
+    "Data Analysis e Data Science": `Sono le 9:15. Arrivi nell'ufficio di ${theme.companyName}, ${theme.companyDescription}. Jupyter Notebook già caricato mentalmente. Oggi analizzerai i dati di ${theme.productContext}. Due monitor, Python in esecuzione perpetua, si parte.`,
+    "Non lo so": `Sono le 9:00. Entri in ${theme.companyName}, ${theme.companyDescription}. Come project coordinator, ogni giorno è diverso. Oggi lavorerai su ${theme.productContext}. Apri Notion, controlli la to-do list e parti.`,
+  };
+
+  return intros[area] || intros["Non lo so"];
+};
+
+const generateConclusion = (area: string, theme: InterestTheme, profile: UserProfile): string => {
+  const conclusions: Record<string, string> = {
+    "UX/UI Design": `Questo lavoro in ${theme.industry} valorizza la tua capacità di osservare, analizzare e risolvere problemi. Il tuo background in "${profile.background}" combinato con la passione per "${profile.interests}" ti dà una prospettiva unica che pochi hanno.`,
+    "Web Development": `Il tuo percorso ti ha preparato a costruire soluzioni reali in ${theme.industry}. Con il tuo background in "${profile.background}" e l'interesse per "${profile.interests}", puoi creare prodotti che fanno la differenza.`,
+    "Digital Marketing": `La tua sensibilità comunicativa è un asset in ${theme.industry}. Unisci la tua formazione in "${profile.background}" con la passione per "${profile.interests}" per connettere brand e persone in modo autentico.`,
+    "Data Analysis e Data Science": `Il tuo approccio metodico trova casa in ${theme.industry}. Con il background in "${profile.background}" e l'interesse per "${profile.interests}", trasformi dati in decisioni che contano.`,
+    "Non lo so": `La tua versatilità è un superpotere in ${theme.industry}. Il background in "${profile.background}" unito all'interesse per "${profile.interests}" ti rende un professionista unico, capace di fare da ponte tra discipline.`,
+  };
+
+  return conclusions[area] || conclusions["Non lo so"];
+};
+
+const generateEncouragement = (area: string, theme: InterestTheme, profile: UserProfile): string => {
+  const encouragements: Record<string, string> = {
+    "UX/UI Design": `Hai vissuto una giornata tipo come UX/UI Designer in ${theme.industry}. Non è solo disegnare schermate: è capire le persone, risolvere problemi e creare esperienze che contano.\n\nIl tuo background in "${profile.background}" unito alla passione per "${profile.interests}" è esattamente ciò che serve: una prospettiva unica che i designer "puri" non hanno.\n\nInizia con piccoli progetti nel settore ${theme.industry}. Esplora Figma, leggi casi studio. Ogni app che usi diventa un'opportunità per imparare.`,
+    "Web Development": `Hai vissuto una giornata tipo come Developer in ${theme.industry}. Non è solo scrivere codice: è costruire soluzioni che risolvono problemi reali.\n\nCon "${profile.background}" come formazione e "${profile.interests}" come passione, hai tutto per creare prodotti unici nel ${theme.industry}.\n\nInizia con un progetto personale. Una landing page, un'app semplice. La teoria serve, ma è facendo che si impara davvero.`,
+    "Digital Marketing": `Hai vissuto una giornata tipo nel Digital Marketing per ${theme.industry}. Non è solo postare sui social: è capire le persone e raccontare storie che coinvolgono.\n\nIl tuo background in "${profile.background}" e la passione per "${profile.interests}" sono un mix vincente: capisci sia il business che le persone.\n\nInizia gestendo i social di un progetto nel ${theme.industry}. Sperimenta, misura, impara. Ogni brand che segui diventa un caso studio.`,
+    "Data Analysis e Data Science": `Hai vissuto una giornata tipo come Data Analyst in ${theme.industry}. Non è solo fare grafici: è trovare storie nascoste nei numeri.\n\nCon "${profile.background}" come base e "${profile.interests}" come passione, hai la prospettiva giusta per trovare insight che altri non vedono.\n\nInizia con dataset pubblici del ${theme.industry}. Kaggle è un buon punto di partenza. Ogni dataset è un puzzle che aspetta di essere risolto.`,
+    "Non lo so": `Hai vissuto una giornata tipo in un ruolo che combina competenze diverse in ${theme.industry}. Non sapere ancora cosa vuoi è un'opportunità per esplorare.\n\nIl tuo background in "${profile.background}" e l'interesse per "${profile.interests}" sono fondamenta solide per qualsiasi percorso.\n\nEsplora diverse aree, prova corsi introduttivi. Il mondo digitale ha bisogno di persone versatili come te.`,
+  };
+
+  return encouragements[area] || encouragements["Non lo so"];
 };
