@@ -27,6 +27,12 @@ export interface SimulationChoice {
   outcome: string;
 }
 
+export interface MasterRecommendation {
+  name: string;
+  description: string;
+  url: string;
+}
+
 export interface SimulationScenario {
   role: string;
   roleExplanation: string;
@@ -39,4 +45,5 @@ export interface SimulationScenario {
   };
   conclusion: string;
   encouragement: string;
+  masterRecommendation: MasterRecommendation;
 }

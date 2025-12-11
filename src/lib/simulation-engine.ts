@@ -1,4 +1,32 @@
-import { UserProfile, SimulationScenario, Task } from "@/types/simulation";
+import { UserProfile, SimulationScenario, Task, MasterRecommendation } from "@/types/simulation";
+
+const masterRecommendations: Record<string, MasterRecommendation> = {
+  "UX/UI Design": {
+    name: "UX/UI Design e Agenti AI",
+    description: "Imparerai a progettare interfacce utente intuitive e accessibili, combinando design thinking con le potenzialità dell'intelligenza artificiale per creare esperienze digitali all'avanguardia.",
+    url: "https://www.start2impact.it/master/ux-ui-design-2025/",
+  },
+  "Web Development": {
+    name: "Full Stack Development e Agenti AI",
+    description: "Diventerai uno sviluppatore completo, capace di costruire applicazioni web moderne dal frontend al backend, integrando soluzioni AI per automatizzare e potenziare il tuo lavoro.",
+    url: "https://www.start2impact.it/master/full-stack-development-2025/",
+  },
+  "Digital Marketing": {
+    name: "Digital Marketing e Agenti AI",
+    description: "Acquisirai competenze avanzate in marketing digitale, dalla strategia all'analisi dei dati, imparando a utilizzare l'AI per ottimizzare campagne e creare contenuti efficaci.",
+    url: "https://www.start2impact.it/master/digital-marketing-2025/",
+  },
+  "Data Analysis e Data Science": {
+    name: "Data Science, Analytics e Agenti AI",
+    description: "Imparerai a estrarre insight dai dati, costruire modelli predittivi e automatizzare analisi complesse, combinando statistica, machine learning e intelligenza artificiale.",
+    url: "https://www.start2impact.it/master/data-science-2025/",
+  },
+  "Non lo so": {
+    name: "Digital Marketing e Agenti AI",
+    description: "Un percorso versatile che ti darà competenze trasversali nel mondo digitale, dalla strategia alla creazione di contenuti, preparandoti a ruoli che richiedono visione d'insieme e adattabilità.",
+    url: "https://www.start2impact.it/master/digital-marketing-2025/",
+  },
+};
 
 const roleMap: Record<string, Record<string, { role: string; explanation: string }>> = {
   "UX/UI Design": {
@@ -761,5 +789,6 @@ export const generateScenario = (profile: UserProfile): SimulationScenario => {
     finalScenario: generateFinalScenario(area),
     conclusion: conclusions[area] || conclusions["Non lo so"],
     encouragement: encouragements[area]?.replace("${profile.background}", profile.background) || encouragements["Non lo so"].replace("${profile.background}", profile.background),
+    masterRecommendation: masterRecommendations[area] || masterRecommendations["Non lo so"],
   };
 };
