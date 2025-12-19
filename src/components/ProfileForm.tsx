@@ -35,18 +35,18 @@ const ProfileForm = ({ onSubmit, onBack }: ProfileFormProps) => {
       field: "background" as keyof UserProfile,
     },
     {
-      icon: Target,
-      title: "Area digitale",
-      subtitle: "Quale area ti interessa esplorare?",
-      field: "digitalArea" as keyof UserProfile,
-      isSelect: true,
-    },
-    {
       icon: Heart,
       title: "I tuoi interessi",
       subtitle: "Cosa ti appassiona? (anche fuori dal lavoro)",
       placeholder: "Es: fotografia, viaggi, gaming, musica, sport, lettura...",
       field: "interests" as keyof UserProfile,
+    },
+    {
+      icon: Target,
+      title: "Area digitale",
+      subtitle: "Quale area ti interessa esplorare?",
+      field: "digitalArea" as keyof UserProfile,
+      isSelect: true,
     },
   ];
 
