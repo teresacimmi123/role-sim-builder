@@ -2,6 +2,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { SimulationScenario, Task, TaskChoice } from "@/types/simulation";
 import { 
   Clock, 
@@ -15,7 +17,11 @@ import {
   Trophy,
   Star,
   Zap,
-  BookOpen
+  BookOpen,
+  Shield,
+  Mail,
+  Phone,
+  User
 } from "lucide-react";
 
 interface SimulationViewProps {
@@ -23,7 +29,7 @@ interface SimulationViewProps {
   onRestart: () => void;
 }
 
-type SimulationPhase = "intro" | "tasks" | "taskFeedback" | "final" | "finalOutcome" | "recap";
+type SimulationPhase = "intro" | "tasks" | "taskFeedback" | "final" | "finalOutcome" | "contactForm" | "recap";
 
 const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
   const [phase, setPhase] = useState<SimulationPhase>("intro");
@@ -31,6 +37,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
   const [selectedTaskChoice, setSelectedTaskChoice] = useState<TaskChoice | null>(null);
   const [taskResults, setTaskResults] = useState<{ task: Task; choice: TaskChoice }[]>([]);
   const [selectedFinalChoice, setSelectedFinalChoice] = useState<{ id: string; text: string; outcome: string } | null>(null);
+  const [contactData, setContactData] = useState({ name: "", email: "", phone: "" });
 
   const currentTask = scenario.tasks[currentTaskIndex];
 
@@ -146,6 +153,24 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
           <div className="p-4 rounded-xl bg-secondary/30">
             <p className="text-foreground leading-relaxed">{currentTask.context}</p>
           </div>
+          
+          {/* Technical Terms Explanation */}
+          {currentTask.technicalTerms && currentTask.technicalTerms.length > 0 && (
+            <div className="p-4 rounded-xl bg-accent/10 border border-accent/20">
+              <div className="flex items-center gap-2 mb-3">
+                <BookOpen className="w-4 h-4 text-accent" />
+                <span className="text-sm font-medium text-accent">Glossario</span>
+              </div>
+              <div className="space-y-2">
+                {currentTask.technicalTerms.map((term, idx) => (
+                  <div key={idx} className="text-sm">
+                    <span className="font-semibold text-foreground">{term.term}:</span>{" "}
+                    <span className="text-muted-foreground">{term.explanation}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
           
           <div className="p-4 rounded-xl bg-primary/10 border border-primary/20">
             <div className="flex items-center gap-2 mb-2">
@@ -285,8 +310,101 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
         </div>
       </Card>
 
-      <Button variant="hero" size="lg" onClick={() => setPhase("recap")} className="w-full">
+      <Button variant="hero" size="lg" onClick={() => setPhase("contactForm")} className="w-full">
         Vedi il Recap Completo
+        <ArrowRight className="w-5 h-5" />
+      </Button>
+    </motion.div>
+  );
+
+  const renderContactForm = () => (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="space-y-6"
+    >
+      <div className="text-center mb-4">
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: "spring", duration: 0.6 }}
+          className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4"
+        >
+          <Trophy className="w-8 h-8 text-primary" />
+        </motion.div>
+        <h2 className="text-2xl font-bold">Ottimo lavoro!</h2>
+        <p className="text-muted-foreground mt-2">
+          Per ricevere il tuo report personalizzato, inserisci i tuoi dati
+        </p>
+      </div>
+
+      <Card variant="gradient" className="p-6">
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="name" className="flex items-center gap-2">
+              <User className="w-4 h-4" />
+              Nome
+            </Label>
+            <Input
+              id="name"
+              placeholder="Il tuo nome"
+              value={contactData.name}
+              onChange={(e) => setContactData({ ...contactData, name: e.target.value })}
+              className="bg-secondary/50 border-border/50"
+            />
+          </div>
+          
+          <div className="space-y-2">
+            <Label htmlFor="email" className="flex items-center gap-2">
+              <Mail className="w-4 h-4" />
+              Email
+            </Label>
+            <Input
+              id="email"
+              type="email"
+              placeholder="La tua email"
+              value={contactData.email}
+              onChange={(e) => setContactData({ ...contactData, email: e.target.value })}
+              className="bg-secondary/50 border-border/50"
+            />
+          </div>
+          
+          <div className="space-y-2">
+            <Label htmlFor="phone" className="flex items-center gap-2">
+              <Phone className="w-4 h-4" />
+              Telefono
+            </Label>
+            <Input
+              id="phone"
+              type="tel"
+              placeholder="Il tuo numero di telefono"
+              value={contactData.phone}
+              onChange={(e) => setContactData({ ...contactData, phone: e.target.value })}
+              className="bg-secondary/50 border-border/50"
+            />
+          </div>
+        </div>
+      </Card>
+
+      <div className="p-4 rounded-xl bg-secondary/30 border border-border/30">
+        <div className="flex items-start gap-3">
+          <Shield className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
+          <p className="text-sm text-muted-foreground">
+            I tuoi dati sono protetti dalla nostra privacy policy. Li utilizzeremo solo per inviarti 
+            comunicazioni utili e pertinenti al tuo percorso di crescita nel digitale. 
+            Niente spam, promesso.
+          </p>
+        </div>
+      </div>
+
+      <Button 
+        variant="hero" 
+        size="lg" 
+        onClick={() => setPhase("recap")} 
+        className="w-full"
+        disabled={!contactData.name || !contactData.email || !contactData.phone}
+      >
+        Vedi il mio Report
         <ArrowRight className="w-5 h-5" />
       </Button>
     </motion.div>
@@ -407,6 +525,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
           {phase === "taskFeedback" && renderTaskFeedback()}
           {phase === "final" && renderFinal()}
           {phase === "finalOutcome" && renderFinalOutcome()}
+          {phase === "contactForm" && renderContactForm()}
           {phase === "recap" && renderRecap()}
         </AnimatePresence>
       </div>

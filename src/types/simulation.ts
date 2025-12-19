@@ -11,6 +11,11 @@ export interface TaskChoice {
   feedback: string;
 }
 
+export interface TechnicalTerm {
+  term: string;
+  explanation: string;
+}
+
 export interface Task {
   id: number;
   title: string;
@@ -19,6 +24,7 @@ export interface Task {
   choices: TaskChoice[];
   skill: string;
   lesson: string;
+  technicalTerms?: TechnicalTerm[];
 }
 
 export interface SimulationChoice {
