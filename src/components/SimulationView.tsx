@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { SimulationScenario, Task, TaskChoice, Gender } from "@/types/simulation";
-import MemojiAvatar from "./MemojiAvatar";
+import { SimulationScenario, Task, TaskChoice } from "@/types/simulation";
 import { 
   Clock, 
   CheckCircle2, 
@@ -27,13 +26,12 @@ import {
 
 interface SimulationViewProps {
   scenario: SimulationScenario;
-  gender: Gender;
   onRestart: () => void;
 }
 
 type SimulationPhase = "intro" | "tasks" | "taskFeedback" | "final" | "finalOutcome" | "contactForm" | "recap";
 
-const SimulationView = ({ scenario, gender, onRestart }: SimulationViewProps) => {
+const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
   const [phase, setPhase] = useState<SimulationPhase>("intro");
   const [currentTaskIndex, setCurrentTaskIndex] = useState(0);
   const [selectedTaskChoice, setSelectedTaskChoice] = useState<TaskChoice | null>(null);
@@ -42,15 +40,6 @@ const SimulationView = ({ scenario, gender, onRestart }: SimulationViewProps) =>
   const [contactData, setContactData] = useState({ name: "", email: "", phone: "" });
 
   const currentTask = scenario.tasks[currentTaskIndex];
-  
-  // Determine avatar expression based on last answer
-  const getAvatarExpression = (): "happy" | "sad" | "neutral" => {
-    if (phase === "taskFeedback" && selectedTaskChoice) {
-      return selectedTaskChoice.isCorrect ? "happy" : "sad";
-    }
-    return "neutral";
-  };
-
 
   const handleTaskChoiceSelect = (choice: TaskChoice) => {
     setSelectedTaskChoice(choice);
@@ -85,11 +74,6 @@ const SimulationView = ({ scenario, gender, onRestart }: SimulationViewProps) =>
       exit={{ opacity: 0 }}
       className="space-y-6"
     >
-      {/* Avatar */}
-      <div className="flex justify-center mb-4">
-        <MemojiAvatar gender={gender} expression="neutral" size={80} />
-      </div>
-
       <Card variant="gradient" className="p-6">
         <div className="flex items-center gap-3 mb-4">
           <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center">
@@ -138,11 +122,6 @@ const SimulationView = ({ scenario, gender, onRestart }: SimulationViewProps) =>
       exit={{ opacity: 0, x: -20 }}
       className="space-y-4"
     >
-      {/* Avatar */}
-      <div className="flex justify-center mb-4">
-        <MemojiAvatar gender={gender} expression="neutral" size={64} />
-      </div>
-
       {/* Progress */}
       <div className="flex items-center justify-between mb-6">
         <span className="text-sm text-muted-foreground">
@@ -228,21 +207,6 @@ const SimulationView = ({ scenario, gender, onRestart }: SimulationViewProps) =>
       animate={{ opacity: 1, scale: 1 }}
       className="space-y-6"
     >
-      {/* Avatar with expression based on answer */}
-      <div className="flex justify-center mb-4">
-        <motion.div
-          initial={{ scale: 0.8 }}
-          animate={{ scale: 1 }}
-          transition={{ type: "spring", duration: 0.5 }}
-        >
-          <MemojiAvatar 
-            gender={gender} 
-            expression={selectedTaskChoice?.isCorrect ? "happy" : "sad"} 
-            size={80} 
-          />
-        </motion.div>
-      </div>
-
       <Card variant="gradient" className="p-6">
         <div className="flex items-center gap-2 mb-4">
           {selectedTaskChoice?.isCorrect ? (
@@ -294,11 +258,6 @@ const SimulationView = ({ scenario, gender, onRestart }: SimulationViewProps) =>
       animate={{ opacity: 1 }}
       className="space-y-6"
     >
-      {/* Avatar */}
-      <div className="flex justify-center mb-4">
-        <MemojiAvatar gender={gender} expression="neutral" size={64} />
-      </div>
-
       <div className="text-center mb-6">
         <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 text-accent text-sm font-medium">
           <Star className="w-4 h-4" />
@@ -339,17 +298,6 @@ const SimulationView = ({ scenario, gender, onRestart }: SimulationViewProps) =>
       animate={{ opacity: 1, scale: 1 }}
       className="space-y-6"
     >
-      {/* Avatar happy */}
-      <div className="flex justify-center mb-4">
-        <motion.div
-          initial={{ scale: 0.8 }}
-          animate={{ scale: 1 }}
-          transition={{ type: "spring", duration: 0.5 }}
-        >
-          <MemojiAvatar gender={gender} expression="happy" size={80} />
-        </motion.div>
-      </div>
-
       <Card variant="gradient" className="p-6">
         <div className="flex items-center gap-2 mb-4">
           <CheckCircle2 className="w-5 h-5 text-primary" />
@@ -380,9 +328,9 @@ const SimulationView = ({ scenario, gender, onRestart }: SimulationViewProps) =>
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ type: "spring", duration: 0.6 }}
-          className="mx-auto mb-4"
+          className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4"
         >
-          <MemojiAvatar gender={gender} expression="happy" size={80} />
+          <Trophy className="w-8 h-8 text-primary" />
         </motion.div>
         <h2 className="text-2xl font-bold">Ottimo lavoro!</h2>
         <p className="text-muted-foreground mt-2">
@@ -473,9 +421,9 @@ const SimulationView = ({ scenario, gender, onRestart }: SimulationViewProps) =>
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ type: "spring", duration: 0.6 }}
-          className="mx-auto mb-4"
+          className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4"
         >
-          <MemojiAvatar gender={gender} expression="happy" size={96} />
+          <Trophy className="w-10 h-10 text-primary" />
         </motion.div>
         <h2 className="text-2xl font-bold">Simulazione Completata!</h2>
         <p className="text-muted-foreground mt-2">Hai vissuto una giornata da {scenario.role}</p>

@@ -1,10 +1,7 @@
-export type Gender = "donna" | "uomo" | "neutral";
-
 export interface UserProfile {
   background: string;
   digitalArea: string;
   interests: string;
-  gender: Gender;
 }
 
 export interface TaskChoice {

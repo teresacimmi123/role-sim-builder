@@ -2,8 +2,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { UserProfile, Gender } from "@/types/simulation";
-import { ArrowRight, ArrowLeft, User, Target, Heart, Users } from "lucide-react";
+import { UserProfile } from "@/types/simulation";
+import { ArrowRight, ArrowLeft, User, Target, Heart } from "lucide-react";
 
 interface ProfileFormProps {
   onSubmit: (profile: UserProfile) => void;
@@ -18,19 +18,12 @@ const digitalAreas = [
   { id: "Non lo so", label: "Non lo so ancora", description: "Voglio esplorare le possibilità" },
 ];
 
-const genderOptions = [
-  { id: "donna" as Gender, label: "Donna" },
-  { id: "uomo" as Gender, label: "Uomo" },
-  { id: "neutral" as Gender, label: "Preferisco non dirlo" },
-];
-
 const ProfileForm = ({ onSubmit, onBack }: ProfileFormProps) => {
   const [step, setStep] = useState(0);
   const [profile, setProfile] = useState<UserProfile>({
     background: "",
     digitalArea: "",
     interests: "",
-    gender: "neutral",
   });
 
   const steps = [
@@ -55,18 +48,11 @@ const ProfileForm = ({ onSubmit, onBack }: ProfileFormProps) => {
       field: "digitalArea" as keyof UserProfile,
       isSelect: true,
     },
-    {
-      icon: Users,
-      title: "Il tuo genere",
-      subtitle: "Ci aiuterà a personalizzare la tua esperienza",
-      field: "gender" as keyof UserProfile,
-      isGenderSelect: true,
-    },
   ];
 
   const currentStep = steps[step];
   const isLastStep = step === steps.length - 1;
-  const canProceed = currentStep.isGenderSelect ? true : (profile[currentStep.field] as string)?.trim() !== "";
+  const canProceed = profile[currentStep.field]?.trim() !== "";
 
   const handleNext = () => {
     if (isLastStep) {
@@ -125,23 +111,7 @@ const ProfileForm = ({ onSubmit, onBack }: ProfileFormProps) => {
                 </div>
               </div>
 
-              {currentStep.isGenderSelect ? (
-                <div className="space-y-3">
-                  {genderOptions.map((option) => (
-                    <button
-                      key={option.id}
-                      onClick={() => setProfile({ ...profile, gender: option.id })}
-                      className={`w-full p-4 rounded-xl text-left transition-all duration-200 ${
-                        profile.gender === option.id
-                          ? "bg-primary/20 border-2 border-primary"
-                          : "bg-secondary/50 border-2 border-transparent hover:bg-secondary"
-                      }`}
-                    >
-                      <div className="font-medium">{option.label}</div>
-                    </button>
-                  ))}
-                </div>
-              ) : currentStep.isSelect ? (
+              {currentStep.isSelect ? (
                 <div className="space-y-3">
                   {digitalAreas.map((area) => (
                     <button
@@ -160,7 +130,7 @@ const ProfileForm = ({ onSubmit, onBack }: ProfileFormProps) => {
                 </div>
               ) : (
                 <textarea
-                  value={profile[currentStep.field] as string}
+                  value={profile[currentStep.field]}
                   onChange={(e) =>
                     setProfile({ ...profile, [currentStep.field]: e.target.value })
                   }

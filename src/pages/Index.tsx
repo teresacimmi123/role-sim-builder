@@ -11,7 +11,6 @@ type AppPhase = "hero" | "form" | "simulation";
 const Index = () => {
   const [phase, setPhase] = useState<AppPhase>("hero");
   const [scenario, setScenario] = useState<SimulationScenario | null>(null);
-  const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
 
   const handleStartForm = () => {
     setPhase("form");
@@ -20,13 +19,11 @@ const Index = () => {
   const handleProfileSubmit = (profile: UserProfile) => {
     const generatedScenario = generateScenario(profile);
     setScenario(generatedScenario);
-    setUserProfile(profile);
     setPhase("simulation");
   };
 
   const handleRestart = () => {
     setScenario(null);
-    setUserProfile(null);
     setPhase("hero");
   };
 
@@ -41,8 +38,8 @@ const Index = () => {
         {phase === "form" && (
           <ProfileForm key="form" onSubmit={handleProfileSubmit} onBack={handleBackToHero} />
         )}
-        {phase === "simulation" && scenario && userProfile && (
-          <SimulationView key="simulation" scenario={scenario} gender={userProfile.gender} onRestart={handleRestart} />
+        {phase === "simulation" && scenario && (
+          <SimulationView key="simulation" scenario={scenario} onRestart={handleRestart} />
         )}
       </AnimatePresence>
     </main>
