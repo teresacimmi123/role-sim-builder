@@ -58,8 +58,8 @@ const HeroSection = ({ onStart }: HeroSectionProps) => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-4xl md:text-6xl font-bold mb-6 leading-tight"
         >
-          Scopri la tua
-          <span className="block text-gradient-primary">giornata tipo</span>
+          Simula una
+          <span className="block text-gradient-primary">giornata di lavoro</span>
           nel digitale
         </motion.h1>
 

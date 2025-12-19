@@ -240,6 +240,10 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         title: "Analisi del Brief del Cliente",
         context: `Sono le 9:15. Apri Slack e trovi un messaggio del tuo team lead di ${t.companyName}. C'è il brief per un nuovo progetto: migliorare ${t.productContext}. Il feedback degli utenti dice che "l'esperienza è confusa e non capisco cosa fare".`,
         challenge: `Come ${t.companyName} opera nel settore ${t.industry}, devi capire il VERO problema. Quale approccio scegli?`,
+        technicalTerms: [
+          { term: "Brief", explanation: "Documento che riassume le richieste e gli obiettivi di un progetto, fornito dal cliente o dal team." },
+          { term: "Slack", explanation: "Piattaforma di messaggistica molto usata nei team di lavoro per comunicare in tempo reale." }
+        ],
         choices: [
           {
             id: "a",
@@ -266,6 +270,10 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         title: "Creazione User Persona",
         context: `Hai analizzato i dati di ${t.companyName}. Il 62% degli abbandoni avviene nella schermata principale. Il team ti chiede di creare una persona basata sulle interviste della scorsa settimana nel settore ${t.industry}.`,
         challenge: "Hai 3 profili. Quale scegli come persona PRIMARIA?",
+        technicalTerms: [
+          { term: "User Persona", explanation: "Personaggio fittizio che rappresenta un gruppo di utenti reali, usato per progettare soluzioni centrate sulle loro esigenze." },
+          { term: "Abbandoni", explanation: "Quando un utente lascia un'app o un sito senza completare un'azione prevista (es. acquisto, registrazione)." }
+        ],
         choices: [
           {
             id: "a",
@@ -292,6 +300,11 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         title: "Wireframing della Soluzione",
         context: `Con Elena come persona, sai che il problema è la mancanza di personalizzazione in ${t.productContext}. Apri Figma e devi progettare il wireframe della nuova esperienza per ${t.companyName}.`,
         challenge: "Quale approccio di design scegli?",
+        technicalTerms: [
+          { term: "Wireframe", explanation: "Bozza schematica di un'interfaccia, senza colori o grafiche elaborate, che mostra la struttura e la disposizione degli elementi." },
+          { term: "Figma", explanation: "Software di design collaborativo molto usato per creare interfacce, prototipi e wireframe." },
+          { term: "Onboarding", explanation: "Processo di accoglienza che guida i nuovi utenti a capire come usare un'app o servizio." }
+        ],
         choices: [
           {
             id: "a",
@@ -318,6 +331,10 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         title: "Review con il Team",
         context: `Sono le 16:00. Presenti il wireframe al team di ${t.companyName}. Il developer senior dice: "L'onboarding personalizzato richiede un sistema di raccomandazione che non abbiamo. Ci vorrebbero 3 mesi."`,
         challenge: "Come rispondi?",
+        technicalTerms: [
+          { term: "MVP", explanation: "Minimum Viable Product: versione base di un prodotto con le funzionalità essenziali per testare l'idea." },
+          { term: "Sistema di raccomandazione", explanation: "Algoritmo che suggerisce contenuti personalizzati basandosi sui dati e comportamenti dell'utente." }
+        ],
         choices: [
           {
             id: "a",
@@ -346,6 +363,11 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         title: "Code Review del Collega",
         context: `Sono le 9:30. Il tuo lead di ${t.companyName} ti assegna la review del codice di un altro dev. Ha creato un componente React per ${t.productContext}, ma noti che usa document.getElementById dentro useEffect.`,
         challenge: "Cosa fai?",
+        technicalTerms: [
+          { term: "Code Review", explanation: "Processo in cui un collega esamina il codice scritto da un altro per trovare errori e miglioramenti." },
+          { term: "React", explanation: "Libreria JavaScript molto popolare per costruire interfacce utente interattive." },
+          { term: "useEffect", explanation: "Funzione di React che permette di eseguire operazioni quando un componente si carica o aggiorna." }
+        ],
         choices: [
           {
             id: "a",
@@ -372,6 +394,12 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         title: "Implementazione Feature",
         context: `Dal backlog Jira di ${t.companyName} prendi il ticket: "Creare componente Card per ${t.productContext}". Il designer ti ha passato le specifiche.`,
         challenge: "Come strutturi le props del componente?",
+        technicalTerms: [
+          { term: "Backlog", explanation: "Lista di attività o funzionalità da sviluppare, ordinate per priorità." },
+          { term: "Jira", explanation: "Software molto usato per gestire progetti e tracciare le attività del team." },
+          { term: "Props", explanation: "Dati che vengono passati a un componente React per personalizzarne il comportamento." },
+          { term: "Componente", explanation: "Blocco di codice riutilizzabile che rappresenta una parte dell'interfaccia utente." }
+        ],
         choices: [
           {
             id: "a",
@@ -398,6 +426,12 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         title: "Debugging Misterioso",
         context: `L'API di ${t.productContext} restituisce 500 in alcuni casi. Dai DevTools noti che fallisce solo con payload grandi.`,
         challenge: "Qual è il prossimo step?",
+        technicalTerms: [
+          { term: "API", explanation: "Interfaccia che permette a diverse applicazioni di comunicare tra loro, scambiando dati." },
+          { term: "Errore 500", explanation: "Codice di errore che indica un problema lato server (non dell'utente)." },
+          { term: "DevTools", explanation: "Strumenti per sviluppatori integrati nel browser per ispezionare pagine web e debug." },
+          { term: "Payload", explanation: "I dati effettivi che vengono inviati in una richiesta o risposta." }
+        ],
         choices: [
           {
             id: "a",
@@ -424,6 +458,11 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         title: "Deploy Venerdì Sera",
         context: `Sono le 17:30 di venerdì. La feature per ${t.companyName} è pronta. Il lead chiede: "Puoi fare deploy? Lunedì il cliente vuole vedere la novità."`,
         challenge: "Cosa fai?",
+        technicalTerms: [
+          { term: "Deploy", explanation: "Processo di pubblicazione del codice su un server per renderlo disponibile agli utenti." },
+          { term: "Staging", explanation: "Ambiente di test che simula la produzione, usato per verifiche finali prima del rilascio." },
+          { term: "Produzione (prod)", explanation: "L'ambiente reale dove gli utenti finali usano l'applicazione." }
+        ],
         choices: [
           {
             id: "a",
@@ -452,6 +491,12 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         title: "Analisi Campagna Social",
         context: `Sono le 9:00. Apri Meta Business per ${t.companyName}. La campagna "${t.industry} Summer" è terminata. Budget: €500. Devi preparare il report.`,
         challenge: `Vedi: Reach 45.000, Engagement 1.2%, Click 380, Conversioni 12. Il cliente voleva 50 conversioni. Come presenti i risultati?`,
+        technicalTerms: [
+          { term: "Reach", explanation: "Numero di persone uniche che hanno visto il contenuto." },
+          { term: "Engagement", explanation: "Interazioni degli utenti (like, commenti, condivisioni) rispetto al numero di visualizzazioni." },
+          { term: "Conversioni", explanation: "Azioni completate dagli utenti (acquisti, iscrizioni, download) che rappresentano l'obiettivo della campagna." },
+          { term: "CR (Conversion Rate)", explanation: "Percentuale di visitatori che completano l'azione desiderata." }
+        ],
         choices: [
           {
             id: "a",
