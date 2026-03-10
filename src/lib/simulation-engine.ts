@@ -558,18 +558,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "40% educational sul settore, 30% behind-the-scenes, 20% prodotto, 10% user-generated",
+            text: "Mix bilanciato: 40% contenuti educational sul settore, 30% behind-the-scenes, 20% prodotto e 10% contenuti della community",
             isCorrect: true,
             feedback: `Eccellente mix! In ${t.industry}, educare crea autorevolezza, il BTS umanizza, il prodotto converte, UGC crea community.`,
           },
           {
             id: "b",
-            text: "80% contenuti prodotto per massimizzare le conversioni",
+            text: "Focus sulla conversione: 80% contenuti prodotto con call-to-action dirette e 20% educational di contesto per il settore",
             feedback: `Troppo push. Nel ${t.industry}, chi parla solo di sé stanca il pubblico.`,
           },
           {
             id: "c",
-            text: "100% trend e meme per massimizzare l'engagement",
+            text: "Focus sull'engagement: 70% trend e contenuti virali del momento, 30% prodotto per mantenere la rilevanza del brand",
             feedback: "L'engagement fine a sé stesso non porta risultati. Servono contenuti che costruiscono relazione.",
           },
         ],
