@@ -366,29 +366,28 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
     "Web Development": (t) => [
       {
         id: 1,
-        title: "Code Review del Collega",
-        context: `Sono le 9:30. Il tuo responsabile in ${t.companyName} ti chiede di controllare il lavoro di un collega. Ha scritto una parte del codice per ${t.productContext}, ma noti che ha usato un approccio che funziona ma non segue le buone pratiche del linguaggio che state usando.`,
-        challenge: "Cosa fai?",
+        title: "Revisione del Codice di un Collega",
+        context: `Sono le 9:30. Il tuo responsabile in ${t.companyName} ti chiede di controllare il lavoro di un collega. Ha scritto una parte del codice per ${t.productContext}, ma noti che ha usato un approccio che funziona ma non segue le buone pratiche: il codice è difficile da leggere e sarebbe complicato da modificare in futuro.`,
+        challenge: "Come ti comporti con il tuo collega?",
         technicalTerms: [
-          { term: "Code Review", explanation: "Processo in cui un collega esamina il codice scritto da un altro per trovare errori e miglioramenti." },
-          { term: "React", explanation: "Libreria JavaScript molto popolare per costruire interfacce utente interattive." },
-          { term: "useEffect", explanation: "Funzione di React che permette di eseguire operazioni quando un componente si carica o aggiorna." }
+          { term: "Code Review", explanation: "Processo in cui un collega esamina il codice scritto da un altro per trovare errori e suggerire miglioramenti." },
+          { term: "Buone pratiche", explanation: "Regole e convenzioni condivise nel team per scrivere codice leggibile, manutenibile e affidabile." }
         ],
         choices: [
           {
             id: "a",
-            text: "Lasci un commento costruttivo spiegando che in React si usa useRef e alleghi un esempio concreto di refactor",
+            text: "Lasci un commento costruttivo spiegando quale approccio sarebbe più adatto e alleghi un esempio concreto di come migliorarlo",
             isCorrect: true,
             feedback: `Perfetto! Una code review costruttiva insegna. In ${t.companyName}, come in ogni team sano, si cresce insieme.`,
           },
           {
             id: "b",
-            text: "Approvi il PR con un commento positivo: il codice funziona correttamente e non vale la pena bloccare il rilascio",
-            feedback: `Il codice "che funziona" oggi può causare bug domani. In ${t.industry}, la qualità del codice è fondamentale.`,
+            text: "Approvi il lavoro con un commento positivo: il codice funziona correttamente e non vale la pena rallentare il rilascio",
+            feedback: `Il codice "che funziona" oggi può causare problemi domani. La qualità del codice è fondamentale per lavorare bene nel tempo.`,
           },
           {
             id: "c",
-            text: "Riscrivi tu il componente usando l'approccio corretto e lo proponi come alternativa direttamente nella stessa PR",
+            text: "Riscrivi tu quella parte del codice usando l'approccio corretto e la proponi come alternativa al posto della sua versione",
             feedback: "Riscrivere senza discussione è irrispettoso e toglie l'opportunità di apprendimento.",
           },
         ],
@@ -397,63 +396,60 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       },
       {
         id: 2,
-        title: "Implementazione Feature",
-        context: `Dalla lista delle attività di ${t.companyName} prendi un compito: "Creare un elemento visivo riutilizzabile per mostrare le informazioni di ${t.productContext}". Il designer ti ha dato le specifiche grafiche.`,
-        challenge: "Come organizzi i dati che questo elemento dovrà ricevere per funzionare?",
+        title: "Scelta di Architettura",
+        context: `${t.companyName} sta crescendo e ${t.productContext} deve gestire molti più utenti di prima. Il responsabile tecnico ti chiede di proporre come organizzare il sistema: dove salvare i dati, come far comunicare le diverse parti dell'applicazione tra loro, e come assicurarsi che tutto continui a funzionare anche sotto carico.`,
+        challenge: "Come proponi di strutturare il sistema?",
         technicalTerms: [
-          { term: "Backlog", explanation: "Lista di attività o funzionalità da sviluppare, ordinate per priorità." },
-          { term: "Jira", explanation: "Software molto usato per gestire progetti e tracciare le attività del team." },
-          { term: "Props", explanation: "Dati che vengono passati a un componente React per personalizzarne il comportamento." },
-          { term: "Componente", explanation: "Blocco di codice riutilizzabile che rappresenta una parte dell'interfaccia utente." }
+          { term: "Architettura", explanation: "Il modo in cui le diverse parti di un sistema software sono organizzate e comunicano tra loro." },
+          { term: "Database", explanation: "Sistema che archivia e organizza i dati in modo che possano essere cercati e recuperati facilmente." },
+          { term: "Scalabilità", explanation: "Capacità di un sistema di continuare a funzionare bene anche quando il numero di utenti o dati cresce." }
         ],
         choices: [
           {
             id: "a",
-            text: "Definisci un'interfaccia tipizzata con un oggetto item strutturato e una callback per le azioni utente",
+            text: "Proponi di separare il sistema in parti indipendenti, ognuna con un compito preciso, così si possono migliorare una alla volta",
             isCorrect: true,
-            feedback: `Eccellente! Un'interfaccia chiara rende il componente riutilizzabile in tutto ${t.productContext}.`,
+            feedback: `Eccellente! Separare le responsabilità rende il sistema più facile da capire, testare e far crescere nel tempo.`,
           },
           {
             id: "b",
-            text: "Passi props singole come title, description e image per mantenere il componente semplice e leggibile",
-            feedback: `Funziona per casi semplici, ma in ${t.industry} i requisiti evolvono. Con 10+ props diventa ingestibile.`,
+            text: "Proponi di tenere tutto in un unico blocco ben organizzato per semplicità, così il team può lavorarci senza dover coordinare troppe parti",
+            feedback: `Funziona all'inizio, ma quando il sistema cresce diventa difficile da modificare senza rompere qualcos'altro.`,
           },
           {
             id: "c",
-            text: "Il componente riceve solo un ID e recupera internamente i dati di cui ha bisogno tramite una chiamata API",
-            feedback: "Viola il principio di 'dumb components'. Difficile da testare e riutilizzare.",
+            text: "Proponi di usare un servizio esterno già pronto che gestisca tutto automaticamente, così il team si concentra solo sulle funzionalità",
+            feedback: "Delegare tutto a un servizio esterno crea dipendenza e limita il controllo su come funziona il sistema.",
           },
         ],
-        skill: "Component Architecture",
-        lesson: `Nel digitale, componenti ben strutturati sono riutilizzabili, testabili e scalabili.`,
+        skill: "System Architecture",
+        lesson: `Nel digitale, le scelte di architettura fatte all'inizio influenzano tutto ciò che viene dopo. Meglio pensarci bene subito.`,
       },
       {
         id: 3,
-        title: "Debugging Misterioso",
-        context: `Il sistema che collega ${t.productContext} al server dà errore in alcuni casi. Indagando, noti che il problema si verifica solo quando si inviano grandi quantità di dati.`,
+        title: "Un Errore Misterioso",
+        context: `Il sistema che gestisce ${t.productContext} dà errore in alcuni casi. Indagando, noti che il problema si verifica solo quando si inviano o si elaborano grandi quantità di dati. Gli utenti vedono un messaggio di errore generico.`,
         challenge: "Qual è il prossimo passo per risolvere il problema?",
         technicalTerms: [
-          { term: "API", explanation: "Interfaccia che permette a diverse applicazioni di comunicare tra loro, scambiando dati." },
-          { term: "Errore 500", explanation: "Codice di errore che indica un problema lato server (non dell'utente)." },
-          { term: "DevTools", explanation: "Strumenti per sviluppatori integrati nel browser per ispezionare pagine web e debug." },
-          { term: "Payload", explanation: "I dati effettivi che vengono inviati in una richiesta o risposta." }
+          { term: "Log", explanation: "Registro automatico degli eventi del sistema, utile per capire cosa è successo quando qualcosa va storto." },
+          { term: "Errore del server", explanation: "Problema che si verifica nella parte del sistema che gestisce i dati, non nel dispositivo dell'utente." }
         ],
         choices: [
           {
             id: "a",
-            text: "Verifichi la dimensione del payload che causa l'errore e controlli i log del backend per trovare il problema specifico",
+            text: "Verifichi quanti dati causano l'errore e controlli i registri del sistema per trovare il messaggio di errore specifico",
             isCorrect: true,
-            feedback: `Perfetto! Debugging sistematico: prima confermi l'ipotesi, poi trovi la root cause.`,
+            feedback: `Perfetto! Debugging sistematico: prima confermi l'ipotesi, poi trovi la causa reale del problema.`,
           },
           {
             id: "b",
-            text: "Aggiungi un try-catch nel frontend che intercetta l'errore e mostra un messaggio utile all'utente per sbloccarlo",
+            text: "Aggiungi un controllo nel codice che intercetta l'errore e mostra un messaggio più chiaro all'utente per sbloccarlo",
             feedback: "Stai nascondendo il problema, non risolvendolo. Gli utenti continueranno a essere bloccati.",
           },
           {
             id: "c",
-            text: "Apri un ticket dettagliato al team backend descrivendo il problema e allegando gli screenshot dei DevTools come evidenza",
-            feedback: "Segnalare senza investigare è poco professionale. Prima capisci, poi comunica.",
+            text: "Scrivi una segnalazione dettagliata al team descrivendo il problema e allegando tutte le informazioni raccolte finora",
+            feedback: "Segnalare senza aver investigato a fondo è prematuro. Prima cerca di capire la causa, poi comunica.",
           },
         ],
         skill: "Debugging",
@@ -461,30 +457,29 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       },
       {
         id: 4,
-        title: "Deploy Venerdì Sera",
-        context: `Sono le 17:30 di venerdì. La nuova funzionalità per ${t.companyName} è pronta. Il responsabile ti chiede: "Puoi pubblicarla online così gli utenti la vedono? Lunedì il cliente vuole vedere la novità."`,
+        title: "Pubblicazione di Venerdì Sera",
+        context: `Sono le 17:30 di venerdì. La nuova funzionalità per ${t.companyName} è pronta e testata. Il responsabile ti chiede: "Puoi pubblicarla online così gli utenti la vedono? Lunedì il cliente vuole vedere la novità."`,
         challenge: "Cosa fai?",
         technicalTerms: [
-          { term: "Deploy", explanation: "Processo di pubblicazione del codice su un server per renderlo disponibile agli utenti." },
-          { term: "Staging", explanation: "Ambiente di test che simula la produzione, usato per verifiche finali prima del rilascio." },
-          { term: "Produzione (prod)", explanation: "L'ambiente reale dove gli utenti finali usano l'applicazione." }
+          { term: "Pubblicazione (deploy)", explanation: "Processo con cui il codice viene reso disponibile agli utenti finali su internet." },
+          { term: "Ambiente di test", explanation: "Copia del sistema reale usata per fare verifiche senza rischiare di creare problemi agli utenti." }
         ],
         choices: [
           {
             id: "a",
-            text: "Fai merge su staging per verificare che tutto funzioni e proponi il deploy in produzione lunedì mattina presto",
+            text: "Pubblichi la novità sull'ambiente di test per verificare che tutto funzioni, e proponi la pubblicazione definitiva lunedì mattina",
             isCorrect: true,
             feedback: `Ottima gestione del rischio! Hai completato il lavoro ma evitato problemi nel weekend.`,
           },
           {
             id: "b",
-            text: "Procedi con il deploy in produzione: i test automatici passano tutti e la feature è stata validata dal team",
-            feedback: `Il "Friday deploy" è un anti-pattern. Se esplode sabato, chi interviene?`,
+            text: "Procedi con la pubblicazione definitiva: tutti i controlli automatici sono passati e la funzionalità è stata validata dal team",
+            feedback: `Pubblicare il venerdì sera è rischioso. Se qualcosa va storto nel weekend, chi interviene?`,
           },
           {
             id: "c",
-            text: "Comunichi al lead che è meglio posticipare il deploy a lunedì perché un rilascio il venerdì è troppo rischioso",
-            feedback: "Rifiutare senza alternative non è professionale. Proponi un compromesso.",
+            text: "Comunichi al responsabile che è meglio rimandare tutto a lunedì perché pubblicare il venerdì sera è troppo rischioso",
+            feedback: "Rifiutare senza proporre alternative non è professionale. Cerca sempre un compromesso.",
           },
         ],
         skill: "Risk Management",
