@@ -377,18 +377,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Lasci un commento spiegando che in React si usa useRef, allegando un esempio di refactor",
+            text: "Lasci un commento costruttivo spiegando che in React si usa useRef e alleghi un esempio concreto di refactor",
             isCorrect: true,
             feedback: `Perfetto! Una code review costruttiva insegna. In ${t.companyName}, come in ogni team sano, si cresce insieme.`,
           },
           {
             id: "b",
-            text: "Approvi il PR, funziona e non vuoi sembrare pignolo",
+            text: "Approvi il PR con un commento positivo: il codice funziona correttamente e non vale la pena bloccare il rilascio",
             feedback: `Il codice "che funziona" oggi può causare bug domani. In ${t.industry}, la qualità del codice è fondamentale.`,
           },
           {
             id: "c",
-            text: "Riscrivi tu il componente nel modo corretto e sostituisci il suo codice",
+            text: "Riscrivi tu il componente usando l'approccio corretto e lo proponi come alternativa direttamente nella stessa PR",
             feedback: "Riscrivere senza discussione è irrispettoso e toglie l'opportunità di apprendimento.",
           },
         ],
