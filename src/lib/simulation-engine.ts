@@ -269,7 +269,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Problem Framing",
-        lesson: `Nel ${t.industry}, resistere all'impulso di progettare subito è fondamentale. Il 50% del lavoro è capire il problema giusto.`,
+        lesson: `In questo lavoro, resistere all'impulso di progettare subito è fondamentale. Il 50% del lavoro è capire il problema giusto.`,
       },
       {
         id: 2,
@@ -299,7 +299,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "User Research",
-        lesson: `In ${t.industry}, la persona primaria deve rappresentare chi usa davvero il prodotto, non chi vorresti che lo usasse.`,
+        lesson: `In questi ruoli, la persona primaria deve rappresentare chi usa davvero il prodotto, non chi vorresti che lo usasse.`,
       },
       {
         id: 3,
@@ -330,7 +330,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Solution Design",
-        lesson: `In ${t.industry}, la personalizzazione non è un plus, è un'aspettativa. Chi non personalizza, perde.`,
+        lesson: `Nel digitale, la personalizzazione non è un plus, è un'aspettativa. Chi non personalizza, perde.`,
       },
       {
         id: 4,
@@ -360,7 +360,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Stakeholder Management",
-        lesson: `I designer migliori sanno negoziare tra UX ideale e vincoli reali. Nel ${t.industry} come altrove, la soluzione perfetta irrealizzabile non esiste.`,
+        lesson: `I designer migliori sanno negoziare tra UX ideale e vincoli reali. In questo lavoro come in ogni altro, la soluzione perfetta irrealizzabile non esiste.`,
       },
     ],
     "Web Development": (t) => [
@@ -393,7 +393,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Code Review",
-        lesson: `In ${t.industry}, una buona code review bilancia qualità e crescita del team.`,
+        lesson: `In questo lavoro, una buona code review bilancia qualità e crescita del team.`,
       },
       {
         id: 2,
@@ -425,7 +425,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Component Architecture",
-        lesson: `In ${t.industry}, componenti ben strutturati sono riutilizzabili, testabili e scalabili.`,
+        lesson: `Nel digitale, componenti ben strutturati sono riutilizzabili, testabili e scalabili.`,
       },
       {
         id: 3,
@@ -457,7 +457,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Debugging",
-        lesson: `In ${t.industry}, il debugging efficace segue un metodo: riproduci, isola, verifica, risolvi.`,
+        lesson: `In questo lavoro, il debugging efficace segue un metodo: riproduci, isola, verifica, risolvi.`,
       },
       {
         id: 4,
@@ -488,7 +488,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Risk Management",
-        lesson: `In ${t.industry}, i dev esperti bilanciano velocità e rischio.`,
+        lesson: `Nel digitale, i dev esperti bilanciano velocità e rischio.`,
       },
     ],
     "Digital Marketing": (t) => [
@@ -522,7 +522,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Data Analysis",
-        lesson: `Nel ${t.industry}, l'onestà sui dati costruisce fiducia. I clienti apprezzano diagnosi precise.`,
+        lesson: `In questo lavoro, l'onestà sui dati costruisce fiducia. I clienti apprezzano diagnosi precise.`,
       },
       {
         id: 2,
@@ -548,7 +548,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Crisis Management",
-        lesson: `Nel ${t.industry}, le crisi social sono opportunità per dimostrare i valori del brand.`,
+        lesson: `Nel digitale, le crisi social sono opportunità per dimostrare i valori del brand.`,
       },
       {
         id: 3,
@@ -574,7 +574,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Content Strategy",
-        lesson: `In ${t.industry}, il mix di contenuti bilancia brand building e performance.`,
+        lesson: `In questi ruoli, il mix di contenuti bilancia brand building e performance.`,
       },
       {
         id: 4,
@@ -600,7 +600,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Budget Optimization",
-        lesson: `Nel ${t.industry}, il budget va dove i dati dicono che funziona, non dove sembra più cool.`,
+        lesson: `Nel digitale, il budget va dove i dati dicono che funziona, non dove sembra più cool.`,
       },
     ],
     "Data Analysis e Data Science": (t) => [
@@ -628,7 +628,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Stakeholder Communication",
-        lesson: `In ${t.industry}, l'analista bravo non risponde a domande: aiuta a fare quelle giuste.`,
+        lesson: `In questo lavoro, l'analista bravo non risponde a domande: aiuta a fare quelle giuste.`,
       },
       {
         id: 2,
@@ -654,7 +654,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Data Quality",
-        lesson: `In ${t.industry}, la data quality è il fondamento. Garbage in, garbage out.`,
+        lesson: `In questi ruoli, la data quality è il fondamento. Garbage in, garbage out.`,
       },
       {
         id: 3,
@@ -680,7 +680,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Critical Thinking",
-        lesson: `In ${t.industry}, i dati controintuitivi meritano più attenzione, non meno.`,
+        lesson: `Nel digitale, i dati controintuitivi meritano più attenzione, non meno.`,
       },
       {
         id: 4,
@@ -706,7 +706,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Data Storytelling",
-        lesson: `In ${t.industry}, un insight non comunicato bene è un insight sprecato.`,
+        lesson: `In questo lavoro, un insight non comunicato bene è un insight sprecato.`,
       },
     ],
     "Non lo so": (t) => [
@@ -734,7 +734,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Project Initiation",
-        lesson: `In ${t.industry}, i progetti falliscono più per obiettivi vaghi che per esecuzione scarsa.`,
+        lesson: `Nel digitale, i progetti falliscono più per obiettivi vaghi che per esecuzione scarsa.`,
       },
       {
         id: 2,
@@ -760,7 +760,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Conflict Resolution",
-        lesson: `In ${t.industry}, i conflitti spesso nascono da obiettivi diversi. Trovare l'obiettivo comune li risolve.`,
+        lesson: `In questi ruoli, i conflitti spesso nascono da obiettivi diversi. Trovare l'obiettivo comune li risolve.`,
       },
       {
         id: 3,
@@ -786,7 +786,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Scope Management",
-        lesson: `In ${t.industry}, saper dire 'questo lo tagliamo' è cruciale quanto saper dire 'questo lo facciamo'.`,
+        lesson: `In questo lavoro, saper dire 'questo lo tagliamo' è cruciale quanto saper dire 'questo lo facciamo'.`,
       },
       {
         id: 4,
@@ -812,7 +812,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "People Management",
-        lesson: `In ${t.industry}, il feedback è un regalo. Darlo bene è un'arte che si impara.`,
+        lesson: `Nel digitale, il feedback è un regalo. Darlo bene è un'arte che si impara.`,
       },
     ],
   };
