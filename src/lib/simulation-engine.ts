@@ -253,18 +253,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Analizzi i dati di comportamento utente per capire dove si perdono nel flusso",
+            text: "Analizzi i dati di comportamento degli utenti per individuare dove si bloccano nel flusso attuale",
             isCorrect: true,
             feedback: `Perfetto! In ${t.industry}, i dati comportamentali rivelano dove gli utenti si bloccano. Prima capisci il "dove", poi il "perché".`,
           },
           {
             id: "b",
-            text: "Proponi subito di semplificare l'interfaccia con meno elementi",
+            text: "Proponi di semplificare l'interfaccia riducendo gli elementi visivi e i passaggi richiesti all'utente",
             feedback: "Stai assumendo che il problema sia la complessità senza dati. Nel settore " + t.industry + " potresti eliminare funzionalità cruciali.",
           },
           {
             id: "c",
-            text: "Organizzi un focus group con utenti tipo del settore " + t.industry,
+            text: "Organizzi un focus group con utenti reali del prodotto per raccogliere feedback qualitativi diretti",
             feedback: "I focus group sono utili, ma prima servono dati quantitativi per sapere cosa chiedere. Rischi di basarti su opinioni.",
           },
         ],
@@ -283,18 +283,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: `Elena, 28 anni, appassionata di ${t.industry}: usa l'app quotidianamente, frustrata dalla mancanza di personalizzazione`,
+            text: `Elena, 28 anni, appassionata di ${t.industry}: usa l'app ogni giorno ma è frustrata dalla mancanza di personalizzazione`,
             isCorrect: true,
             feedback: `Ottima scelta! Elena rappresenta il core user di ${t.companyName} e il suo pain point è direttamente collegato al problema principale.`,
           },
           {
             id: "b",
-            text: "Marco, 45 anni, usa l'app raramente ma quando la usa spende molto",
+            text: "Marco, 45 anni, professionista: usa l'app di rado ma genera molto valore economico quando la utilizza",
             feedback: `Marco porta valore economico ma non rappresenta l'utente tipo di ${t.industry}. Ottimizzare per lui potrebbe alienare il core.`,
           },
           {
             id: "c",
-            text: "Sofia, 19 anni, studentessa, usa mille app simili ma nessuna la soddisfa",
+            text: "Sofia, 19 anni, studentessa: prova molte app concorrenti ed è sempre alla ricerca della soluzione perfetta",
             feedback: "Sofia è interessante ma troppo volatile. Nel " + t.industry + " serve fidelizzare prima di espandere.",
           },
         ],
@@ -314,18 +314,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: `Creare un onboarding che chiede preferenze e personalizza l'esperienza fin dal primo accesso`,
+            text: "Progettare un onboarding che raccoglie le preferenze dell'utente e personalizza l'esperienza dal primo accesso",
             isCorrect: true,
             feedback: `Eccellente! Nel ${t.industry}, la personalizzazione fin dall'inizio crea engagement. L'utente si sente capito e continua a usare l'app.`,
           },
           {
             id: "b",
-            text: "Aggiungere filtri avanzati nella home per permettere ricerche più precise",
+            text: "Inserire un sistema di filtri avanzati nella home che permetta agli utenti di fare ricerche più mirate",
             feedback: `I filtri aggiungono complessità. Nel ${t.industry}, gli utenti vogliono che sia l'app a capirli, non dover cercare manualmente.`,
           },
           {
             id: "c",
-            text: "Mostrare contenuti popolari in evidenza così tutti trovano qualcosa",
+            text: "Mostrare i contenuti più popolari in evidenza nella home per guidare gli utenti verso qualcosa di rilevante",
             feedback: "Il contenuto popolare non è personalizzazione. Elena vuole sentirsi unica, non vedere cosa piace a tutti.",
           },
         ],
@@ -344,18 +344,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: `"Possiamo partire con regole semplici basate sulle scelte dell'onboarding, e evolvere verso l'AI in una fase 2?"`,
+            text: `"Possiamo partire con regole semplici basate sulle scelte dell'onboarding e poi evolvere verso l'AI in una fase 2?"`,
             isCorrect: true,
             feedback: `Perfetto! Hai proposto un MVP che mantiene il valore UX. In ${t.industry}, meglio lanciare qualcosa di buono ora che qualcosa di perfetto mai.`,
           },
           {
             id: "b",
-            text: `"L'esperienza utente è prioritaria, dobbiamo trovare il tempo"`,
+            text: `"L'esperienza utente è la nostra priorità: propongo di riorganizzare la roadmap per trovare il tempo necessario"`,
             feedback: `Ignorare i vincoli crea conflitti. In ${t.companyName} come in ogni azienda, il designer collabora, non impone.`,
           },
           {
             id: "c",
-            text: `"Ok, allora togliamo la personalizzazione e teniamo i filtri"`,
+            text: `"Ha senso, togliamo la personalizzazione dall'MVP e puntiamo su un sistema di filtri più veloce da implementare"`,
             feedback: "Arrendersi alla prima obiezione significa perdere una buona soluzione. Prima cerca compromessi.",
           },
         ],
@@ -377,18 +377,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Lasci un commento spiegando che in React si usa useRef, allegando un esempio di refactor",
+            text: "Lasci un commento costruttivo spiegando che in React si usa useRef e alleghi un esempio concreto di refactor",
             isCorrect: true,
             feedback: `Perfetto! Una code review costruttiva insegna. In ${t.companyName}, come in ogni team sano, si cresce insieme.`,
           },
           {
             id: "b",
-            text: "Approvi il PR, funziona e non vuoi sembrare pignolo",
+            text: "Approvi il PR con un commento positivo: il codice funziona correttamente e non vale la pena bloccare il rilascio",
             feedback: `Il codice "che funziona" oggi può causare bug domani. In ${t.industry}, la qualità del codice è fondamentale.`,
           },
           {
             id: "c",
-            text: "Riscrivi tu il componente nel modo corretto e sostituisci il suo codice",
+            text: "Riscrivi tu il componente usando l'approccio corretto e lo proponi come alternativa direttamente nella stessa PR",
             feedback: "Riscrivere senza discussione è irrispettoso e toglie l'opportunità di apprendimento.",
           },
         ],
@@ -409,18 +409,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Props tipizzate con interfaccia: { item: ItemType, onAction: callback }",
+            text: "Definisci un'interfaccia tipizzata con un oggetto item strutturato e una callback per le azioni utente",
             isCorrect: true,
             feedback: `Eccellente! Un'interfaccia chiara rende il componente riutilizzabile in tutto ${t.productContext}.`,
           },
           {
             id: "b",
-            text: "Props singole: { title, description, image } più semplice e diretto",
+            text: "Passi props singole come title, description e image per mantenere il componente semplice e leggibile",
             feedback: `Funziona per casi semplici, ma in ${t.industry} i requisiti evolvono. Con 10+ props diventa ingestibile.`,
           },
           {
             id: "c",
-            text: "Il componente fa fetch dei dati internamente dato un ID",
+            text: "Il componente riceve solo un ID e recupera internamente i dati di cui ha bisogno tramite una chiamata API",
             feedback: "Viola il principio di 'dumb components'. Difficile da testare e riutilizzare.",
           },
         ],
@@ -441,18 +441,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Controlli dimensione del payload e verifichi i log backend per l'errore specifico",
+            text: "Verifichi la dimensione del payload che causa l'errore e controlli i log del backend per trovare il problema specifico",
             isCorrect: true,
             feedback: `Perfetto! Debugging sistematico: prima confermi l'ipotesi, poi trovi la root cause.`,
           },
           {
             id: "b",
-            text: "Aggiungi try-catch nel frontend per gestire l'errore con messaggio generico",
+            text: "Aggiungi un try-catch nel frontend che intercetta l'errore e mostra un messaggio utile all'utente per sbloccarlo",
             feedback: "Stai nascondendo il problema, non risolvendolo. Gli utenti continueranno a essere bloccati.",
           },
           {
             id: "c",
-            text: "Scrivi al team backend che la loro API è rotta",
+            text: "Apri un ticket dettagliato al team backend descrivendo il problema e allegando gli screenshot dei DevTools come evidenza",
             feedback: "Segnalare senza investigare è poco professionale. Prima capisci, poi comunica.",
           },
         ],
@@ -472,18 +472,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Merge su staging, verifichi che funzioni, proponi deploy in prod lunedì mattina",
+            text: "Fai merge su staging per verificare che tutto funzioni e proponi il deploy in produzione lunedì mattina presto",
             isCorrect: true,
             feedback: `Ottima gestione del rischio! Hai completato il lavoro ma evitato problemi nel weekend.`,
           },
           {
             id: "b",
-            text: "Deploy immediato: i test passano, cosa può andare storto?",
+            text: "Procedi con il deploy in produzione: i test automatici passano tutti e la feature è stata validata dal team",
             feedback: `Il "Friday deploy" è un anti-pattern. Se esplode sabato, chi interviene?`,
           },
           {
             id: "c",
-            text: "Dici che preferisci non fare deploy oggi perché è venerdì",
+            text: "Comunichi al lead che è meglio posticipare il deploy a lunedì perché un rilascio il venerdì è troppo rischioso",
             feedback: "Rifiutare senza alternative non è professionale. Proponi un compromesso.",
           },
         ],
@@ -506,18 +506,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: `"Il problema è la landing page: 380 click ma 12 conversioni = 3% CR, sotto la media. Propongo A/B test sulla pagina."`,
+            text: `"Il collo di bottiglia è la landing page: 380 click ma solo 12 conversioni. Propongo un A/B test sulla pagina per migliorare il tasso"`,
             isCorrect: true,
             feedback: `Eccellente! Hai identificato dove si perde il traffico e proposto una soluzione per ${t.industry}.`,
           },
           {
             id: "b",
-            text: `"45.000 persone raggiunte! Grande awareness per ${t.companyName}."`,
+            text: `"La campagna ha portato 45.000 persone raggiunte e 380 click qualificati. Propongo di scalare il budget per aumentare i volumi"`,
             feedback: "Stai mascherando il fallimento con vanity metrics. Il cliente voleva conversioni, non reach.",
           },
           {
             id: "c",
-            text: "Ammetti che non ha funzionato e proponi più budget",
+            text: `"I risultati sono sotto le aspettative. Suggerisco di rivedere il targeting e riallocare il budget su un canale più performante"`,
             feedback: "Senza capire PERCHÉ non ha funzionato, più budget = più spreco.",
           },
         ],
@@ -532,18 +532,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Rispondi pubblicamente con empatia, offri un contatto diretto per risolvere il problema",
+            text: "Rispondi pubblicamente con empatia riconoscendo il disagio e offri un contatto diretto per risolvere la situazione",
             isCorrect: true,
             feedback: `Perfetto! In ${t.industry}, la trasparenza e l'ascolto trasformano critici in sostenitori.`,
           },
           {
             id: "b",
-            text: "Nascondi il post per limitare la visibilità",
+            text: "Nascondi temporaneamente il post per evitare che la situazione si amplifichi e contatti l'utente in privato",
             feedback: "Censurare peggiora tutto. Nel " + t.industry + ", l'autenticità è fondamentale.",
           },
           {
             id: "c",
-            text: "Aspetti che si calmi, rispondere ora potrebbe alimentare la discussione",
+            text: "Aspetti qualche ora prima di rispondere per lasciare che la conversazione si calmi e preparare una risposta ponderata",
             feedback: "Il silenzio viene letto come disinteresse. Ogni ora di attesa peggiora la percezione.",
           },
         ],
@@ -558,18 +558,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "40% educational sul settore, 30% behind-the-scenes, 20% prodotto, 10% user-generated",
+            text: "Mix bilanciato: 40% contenuti educational sul settore, 30% behind-the-scenes, 20% prodotto e 10% contenuti della community",
             isCorrect: true,
             feedback: `Eccellente mix! In ${t.industry}, educare crea autorevolezza, il BTS umanizza, il prodotto converte, UGC crea community.`,
           },
           {
             id: "b",
-            text: "80% contenuti prodotto per massimizzare le conversioni",
+            text: "Focus sulla conversione: 80% contenuti prodotto con call-to-action dirette e 20% educational di contesto per il settore",
             feedback: `Troppo push. Nel ${t.industry}, chi parla solo di sé stanca il pubblico.`,
           },
           {
             id: "c",
-            text: "100% trend e meme per massimizzare l'engagement",
+            text: "Focus sull'engagement: 70% trend e contenuti virali del momento, 30% prodotto per mantenere la rilevanza del brand",
             feedback: "L'engagement fine a sé stesso non porta risultati. Servono contenuti che costruiscono relazione.",
           },
         ],
@@ -584,18 +584,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "€1.500 su retargeting chi ha già interagito, €1.000 su lookalike, €500 su test nuove audience",
+            text: "€1.500 su retargeting degli utenti che hanno già interagito, €1.000 su audience lookalike e €500 su test di nuovi segmenti",
             isCorrect: true,
             feedback: `Strategia smart! Il retargeting ha il ROI più alto, i lookalike scalano, i test preparano il futuro.`,
           },
           {
             id: "b",
-            text: "Tutto su awareness per raggiungere più persone possibili",
+            text: "€3.000 su campagne awareness per massimizzare la reach e far conoscere il brand a più persone possibili nel Q4",
             feedback: `L'awareness senza conversion strategy è vanity. In ${t.industry}, serve un funnel completo.`,
           },
           {
             id: "c",
-            text: "Tutto su influencer marketing per un boost veloce",
+            text: "€3.000 su una collaborazione con micro-influencer del settore per generare contenuti autentici e visibilità rapida",
             feedback: "Gli influencer funzionano ma €3k bastano per micro-influencer. Il ROI è incerto.",
           },
         ],
@@ -612,18 +612,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Chiedi quali metriche specifiche servono e qual è la storia che vuole raccontare alla board",
+            text: "Chiedi al CEO quali metriche specifiche servono e qual è il messaggio che vuole trasmettere alla board",
             isCorrect: true,
             feedback: `Perfetto! In ${t.industry}, capire il contesto evita di produrre dati inutili. Il CEO probabilmente non sa esattamente cosa vuole.`,
           },
           {
             id: "b",
-            text: "Prepari un report completo con tutte le metriche disponibili",
+            text: "Prepari un report completo con tutte le metriche disponibili organizzate per area, così la board ha il quadro intero",
             feedback: "Troppi dati = nessuna storia. La board ha 10 minuti, non 2 ore.",
           },
           {
             id: "c",
-            text: "Estrai i dati grezzi e li mandi così il CEO decide cosa usare",
+            text: "Estrai rapidamente i dati principali in un foglio strutturato e li invii al CEO così può selezionare ciò che serve",
             feedback: "Il CEO non ha tempo (né competenze) per analizzare dati grezzi. Il tuo valore è tradurli.",
           },
         ],
@@ -638,18 +638,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Analizzi il pattern dei missing: sono random o sistematici? Poi decidi se imputare, escludere o segnalare",
+            text: "Analizzi il pattern dei valori mancanti per capire se sono casuali o sistematici, poi decidi la strategia migliore",
             isCorrect: true,
             feedback: `Eccellente! In ${t.industry}, i missing values raccontano una storia. Capire PERCHÉ mancano è fondamentale.`,
           },
           {
             id: "b",
-            text: "Li sostituisci con la media per non perdere dati",
+            text: "Li sostituisci con la media del campo per mantenere il dataset completo e non perdere il 15% dei record",
             feedback: "La media può introdurre bias. Se i missing sono sistematici (es. utenti che non completano), la media è sbagliata.",
           },
           {
             id: "c",
-            text: "Li escludi tutti dall'analisi per avere dati puliti",
+            text: "Li escludi dall'analisi per lavorare solo su dati certi e presentare risultati basati su informazioni verificate",
             feedback: `Escludere il 15% può introdurre selection bias. In ${t.industry}, perderesti insight importanti.`,
           },
         ],
@@ -664,18 +664,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Indaghi il segmento: forse sono utenti premium che ottengono valore in meno tempo",
+            text: "Indaghi il segmento per capire chi sono questi utenti e perché ottengono valore con meno tempo di utilizzo",
             isCorrect: true,
             feedback: `Ottimo! In ${t.industry}, i dati controintuitivi spesso nascondono gli insight più preziosi.`,
           },
           {
             id: "b",
-            text: "Ignori l'anomalia, probabilmente è un errore nei dati",
+            text: "Verifichi se l'anomalia dipende da un errore nei dati o nella raccolta prima di trarre qualsiasi conclusione",
             feedback: "Ignorare anomalie è un errore. Spesso le scoperte più importanti sembrano 'strane' all'inizio.",
           },
           {
             id: "c",
-            text: "Presenti il dato così com'è, sarà il business a interpretarlo",
+            text: "Inserisci il dato nel report lasciando al team di business l'interpretazione e le decisioni che ne conseguono",
             feedback: "Presentare senza interpretare non aggiunge valore. Il tuo lavoro è spiegare, non solo mostrare.",
           },
         ],
@@ -690,18 +690,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Dai un nome descrittivo a ogni cluster, mostri 1-2 insight azionabili per ciascuno, zero formule",
+            text: "Dai un nome descrittivo a ogni cluster e mostri uno o due insight concreti e azionabili per ciascun gruppo",
             isCorrect: true,
             feedback: `Perfetto! 'Gli Esploratori', 'I Fedeli', 'I Dormienti' sono più memorabili di 'Cluster 1, 2, 3'.`,
           },
           {
             id: "b",
-            text: "Spieghi la metodologia k-means e mostri il grafico dell'elbow method",
+            text: "Spieghi la metodologia statistica usata e mostri i grafici tecnici per dare credibilità scientifica ai risultati",
             feedback: "Al marketing non interessa come hai fatto, ma cosa significa per loro.",
           },
           {
             id: "c",
-            text: "Mandi un report scritto dettagliato via email, è più efficiente",
+            text: "Prepari un report scritto dettagliato con tutti i dati e lo invii via email così ognuno può leggerlo con calma",
             feedback: "Il report scritto finisce nel dimenticatoio. La presentazione crea allineamento e discussione.",
           },
         ],
@@ -718,18 +718,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Obiettivi concreti e metriche di successo: cosa significa 'fatto bene'?",
+            text: "Definire gli obiettivi concreti e le metriche di successo: cosa significa esattamente 'fatto bene' per questo progetto?",
             isCorrect: true,
             feedback: `Perfetto! Senza obiettivi chiari, ogni progetto in ${t.industry} rischia di andare alla deriva.`,
           },
           {
             id: "b",
-            text: "Subito il piano con timeline e milestone",
+            text: "Impostare subito un piano operativo con timeline, milestone e responsabilità chiare per ogni membro del team",
             feedback: "Il piano viene dopo gli obiettivi. Come pianifichi se non sai dove vuoi arrivare?",
           },
           {
             id: "c",
-            text: "Chiedi a ognuno di presentare la propria visione del progetto",
+            text: "Chiedere a ogni persona presente di condividere la propria visione del progetto per mappare le aspettative del team",
             feedback: "Utile per capire le aspettative, ma rischi 10 visioni diverse senza una direzione.",
           },
         ],
@@ -744,18 +744,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Faciliti una discussione: 'Qual è l'obiettivo dell'animazione? C'è un compromesso che mantiene il valore?'",
+            text: "Faciliti una discussione chiedendo qual è l'obiettivo dell'animazione e se esiste un compromesso che soddisfi entrambi",
             isCorrect: true,
             feedback: `Ottimo! In ${t.industry}, il coordinatore non decide ma facilita. L'obiettivo comune sblocca i conflitti.`,
           },
           {
             id: "b",
-            text: "Dai ragione al developer perché la performance è più importante",
+            text: "Dai priorità alla posizione del developer perché la performance dell'app ha un impatto diretto sull'esperienza utente",
             feedback: "Prendere parte crea risentimento. Non sei un giudice, sei un facilitatore.",
           },
           {
             id: "c",
-            text: "Escali al manager perché decida lui",
+            text: "Porti la questione al manager del team perché prenda una decisione definitiva avendo una visione d'insieme più ampia",
             feedback: "Escalare subito ti fa sembrare incapace di gestire conflitti. Prima prova a risolverlo.",
           },
         ],
@@ -770,18 +770,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Riunione di prioritizzazione: cosa è MUST HAVE per la demo vs nice to have? Tagliamo lo scope",
+            text: "Convochi una riunione di prioritizzazione per distinguere cosa è essenziale per la demo e cosa si può rimandare",
             isCorrect: true,
             feedback: `Perfetto! In ${t.industry}, meglio consegnare meno ma funzionante che tutto ma rotto.`,
           },
           {
             id: "b",
-            text: "Chiedi al team di fare straordinari per recuperare",
+            text: "Organizzi un piano di lavoro intensivo per il team così da recuperare il ritardo e consegnare tutto in tempo",
             feedback: "Gli straordinari creano burnout e errori. Nel lungo periodo, peggiori le cose.",
           },
           {
             id: "c",
-            text: "Informi il cliente che la demo slitterà di una settimana",
+            text: "Contatti il cliente in anticipo per proporre di spostare la demo di una settimana e consegnare un lavoro completo",
             feedback: "Rimandare è l'ultima opzione. Prima vedi se puoi consegnare un MVP valido.",
           },
         ],
@@ -796,18 +796,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "1-to-1 privato: 'Ho notato X e Y. C'è qualcosa che ti sta bloccando? Come posso aiutarti?'",
+            text: "Organizzi un incontro 1-to-1 privato per capire cosa sta succedendo e offrire supporto concreto alla persona",
             isCorrect: true,
             feedback: `Perfetto! Partire con curiosità, non giudizio. Spesso ci sono motivi non visibili.`,
           },
           {
             id: "b",
-            text: "Fai notare il problema nel daily standup così tutti sono allineati",
+            text: "Sollevi il tema nel daily standup in modo trasparente così tutto il team è allineato e può contribuire a risolvere",
             feedback: "Il feedback negativo in pubblico umilia e crea risentimento. Sempre in privato.",
           },
           {
             id: "c",
-            text: "Aspetti ancora, magari è un periodo difficile e si riprende",
+            text: "Gli dai ancora qualche settimana di tempo per riprendere il ritmo, monitorando la situazione senza metterlo sotto pressione",
             feedback: "Ignorare il problema lo peggiora. Il feedback tempestivo aiuta tutti.",
           },
         ],
