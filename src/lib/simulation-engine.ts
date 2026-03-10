@@ -244,8 +244,8 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 1,
         title: "Analisi del Brief del Cliente",
-        context: `Sono le 9:15. Apri Slack e trovi un messaggio del tuo team lead di ${t.companyName}. C'è il brief per un nuovo progetto: migliorare ${t.productContext}. Il feedback degli utenti dice che "l'esperienza è confusa e non capisco cosa fare".`,
-        challenge: `Come ${t.companyName} opera nel settore ${t.industry}, devi capire il VERO problema. Quale approccio scegli?`,
+        context: `Sono le 9:15. Trovi un messaggio del tuo responsabile di ${t.companyName}: c'è un nuovo progetto, migliorare ${t.productContext}. Gli utenti si lamentano: "L'esperienza è confusa e non capisco cosa fare".`,
+        challenge: `Devi capire qual è il VERO problema prima di proporre soluzioni. Quale approccio scegli?`,
         technicalTerms: [
           { term: "Brief", explanation: "Documento che riassume le richieste e gli obiettivi di un progetto, fornito dal cliente o dal team." },
           { term: "Slack", explanation: "Piattaforma di messaggistica molto usata nei team di lavoro per comunicare in tempo reale." }
