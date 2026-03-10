@@ -314,18 +314,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: `Creare un onboarding che chiede preferenze e personalizza l'esperienza fin dal primo accesso`,
+            text: "Progettare un onboarding che raccoglie le preferenze dell'utente e personalizza l'esperienza dal primo accesso",
             isCorrect: true,
             feedback: `Eccellente! Nel ${t.industry}, la personalizzazione fin dall'inizio crea engagement. L'utente si sente capito e continua a usare l'app.`,
           },
           {
             id: "b",
-            text: "Aggiungere filtri avanzati nella home per permettere ricerche più precise",
+            text: "Inserire un sistema di filtri avanzati nella home che permetta agli utenti di fare ricerche più mirate",
             feedback: `I filtri aggiungono complessità. Nel ${t.industry}, gli utenti vogliono che sia l'app a capirli, non dover cercare manualmente.`,
           },
           {
             id: "c",
-            text: "Mostrare contenuti popolari in evidenza così tutti trovano qualcosa",
+            text: "Mostrare i contenuti più popolari in evidenza nella home per guidare gli utenti verso qualcosa di rilevante",
             feedback: "Il contenuto popolare non è personalizzazione. Elena vuole sentirsi unica, non vedere cosa piace a tutti.",
           },
         ],
