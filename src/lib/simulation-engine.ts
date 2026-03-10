@@ -274,8 +274,8 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 2,
         title: "Creazione User Persona",
-        context: `Hai analizzato i dati di ${t.companyName}. Il 62% degli abbandoni avviene nella schermata principale. Il team ti chiede di creare una persona basata sulle interviste della scorsa settimana nel settore ${t.industry}.`,
-        challenge: "Hai 3 profili. Quale scegli come persona PRIMARIA?",
+        context: `Hai analizzato i dati di ${t.companyName}. Il 62% delle persone abbandona l'app dalla schermata principale. Il team ti chiede di scegliere un profilo-tipo di utente su cui concentrare il nuovo design, basandoti sulle interviste fatte la settimana scorsa.`,
+        challenge: "Hai 3 profili di utenti reali. Quale scegli come riferimento PRINCIPALE per il progetto?",
         technicalTerms: [
           { term: "User Persona", explanation: "Personaggio fittizio che rappresenta un gruppo di utenti reali, usato per progettare soluzioni centrate sulle loro esigenze." },
           { term: "Abbandoni", explanation: "Quando un utente lascia un'app o un sito senza completare un'azione prevista (es. acquisto, registrazione)." }
