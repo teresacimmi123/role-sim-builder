@@ -393,7 +393,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Code Review",
-        lesson: `In ${t.industry}, una buona code review bilancia qualità e crescita del team.`,
+        lesson: `In questo lavoro, una buona code review bilancia qualità e crescita del team.`,
       },
       {
         id: 2,
