@@ -734,7 +734,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Project Initiation",
-        lesson: `In ${t.industry}, i progetti falliscono più per obiettivi vaghi che per esecuzione scarsa.`,
+        lesson: `Nel digitale, i progetti falliscono più per obiettivi vaghi che per esecuzione scarsa.`,
       },
       {
         id: 2,
