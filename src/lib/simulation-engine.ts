@@ -638,18 +638,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Analizzi il pattern dei missing: sono random o sistematici? Poi decidi se imputare, escludere o segnalare",
+            text: "Analizzi il pattern dei valori mancanti per capire se sono casuali o sistematici, poi decidi la strategia migliore",
             isCorrect: true,
             feedback: `Eccellente! In ${t.industry}, i missing values raccontano una storia. Capire PERCHÉ mancano è fondamentale.`,
           },
           {
             id: "b",
-            text: "Li sostituisci con la media per non perdere dati",
+            text: "Li sostituisci con la media del campo per mantenere il dataset completo e non perdere il 15% dei record",
             feedback: "La media può introdurre bias. Se i missing sono sistematici (es. utenti che non completano), la media è sbagliata.",
           },
           {
             id: "c",
-            text: "Li escludi tutti dall'analisi per avere dati puliti",
+            text: "Li escludi dall'analisi per lavorare solo su dati certi e presentare risultati basati su informazioni verificate",
             feedback: `Escludere il 15% può introdurre selection bias. In ${t.industry}, perderesti insight importanti.`,
           },
         ],
