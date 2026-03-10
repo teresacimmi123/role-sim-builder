@@ -690,18 +690,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Dai un nome descrittivo a ogni cluster, mostri 1-2 insight azionabili per ciascuno, zero formule",
+            text: "Dai un nome descrittivo a ogni cluster e mostri uno o due insight concreti e azionabili per ciascun gruppo",
             isCorrect: true,
             feedback: `Perfetto! 'Gli Esploratori', 'I Fedeli', 'I Dormienti' sono più memorabili di 'Cluster 1, 2, 3'.`,
           },
           {
             id: "b",
-            text: "Spieghi la metodologia k-means e mostri il grafico dell'elbow method",
+            text: "Spieghi la metodologia statistica usata e mostri i grafici tecnici per dare credibilità scientifica ai risultati",
             feedback: "Al marketing non interessa come hai fatto, ma cosa significa per loro.",
           },
           {
             id: "c",
-            text: "Mandi un report scritto dettagliato via email, è più efficiente",
+            text: "Prepari un report scritto dettagliato con tutti i dati e lo invii via email così ognuno può leggerlo con calma",
             feedback: "Il report scritto finisce nel dimenticatoio. La presentazione crea allineamento e discussione.",
           },
         ],
