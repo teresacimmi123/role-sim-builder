@@ -718,18 +718,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Obiettivi concreti e metriche di successo: cosa significa 'fatto bene'?",
+            text: "Definire gli obiettivi concreti e le metriche di successo: cosa significa esattamente 'fatto bene' per questo progetto?",
             isCorrect: true,
             feedback: `Perfetto! Senza obiettivi chiari, ogni progetto in ${t.industry} rischia di andare alla deriva.`,
           },
           {
             id: "b",
-            text: "Subito il piano con timeline e milestone",
+            text: "Impostare subito un piano operativo con timeline, milestone e responsabilità chiare per ogni membro del team",
             feedback: "Il piano viene dopo gli obiettivi. Come pianifichi se non sai dove vuoi arrivare?",
           },
           {
             id: "c",
-            text: "Chiedi a ognuno di presentare la propria visione del progetto",
+            text: "Chiedere a ogni persona presente di condividere la propria visione del progetto per mappare le aspettative del team",
             feedback: "Utile per capire le aspettative, ma rischi 10 visioni diverse senza una direzione.",
           },
         ],
