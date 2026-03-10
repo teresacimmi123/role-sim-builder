@@ -30,8 +30,8 @@ const ProfileForm = ({ onSubmit, onBack }: ProfileFormProps) => {
     {
       icon: User,
       title: "Il tuo background",
-      subtitle: "Qual è la tua formazione o esperienza precedente?",
-      placeholder: "Es: Laurea in Comunicazione, 2 anni in un'agenzia eventi, corso di graphic design...",
+      subtitle: "Raccontaci da dove vieni — studi, lavori, corsi, esperienze. Non serve essere esperti.",
+      placeholder: "Es: Sono al primo anno di università, ho lavorato in un negozio, ho fatto un corso online di fotografia, vengo da studi classici...",
       field: "background" as keyof UserProfile,
     },
     {
