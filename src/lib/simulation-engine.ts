@@ -706,7 +706,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Data Storytelling",
-        lesson: `In ${t.industry}, un insight non comunicato bene è un insight sprecato.`,
+        lesson: `In questo lavoro, un insight non comunicato bene è un insight sprecato.`,
       },
     ],
     "Non lo so": (t) => [
