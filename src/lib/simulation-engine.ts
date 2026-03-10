@@ -441,18 +441,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Controlli dimensione del payload e verifichi i log backend per l'errore specifico",
+            text: "Verifichi la dimensione del payload che causa l'errore e controlli i log del backend per trovare il problema specifico",
             isCorrect: true,
             feedback: `Perfetto! Debugging sistematico: prima confermi l'ipotesi, poi trovi la root cause.`,
           },
           {
             id: "b",
-            text: "Aggiungi try-catch nel frontend per gestire l'errore con messaggio generico",
+            text: "Aggiungi un try-catch nel frontend che intercetta l'errore e mostra un messaggio utile all'utente per sbloccarlo",
             feedback: "Stai nascondendo il problema, non risolvendolo. Gli utenti continueranno a essere bloccati.",
           },
           {
             id: "c",
-            text: "Scrivi al team backend che la loro API è rotta",
+            text: "Apri un ticket dettagliato al team backend descrivendo il problema e allegando gli screenshot dei DevTools come evidenza",
             feedback: "Segnalare senza investigare è poco professionale. Prima capisci, poi comunica.",
           },
         ],
