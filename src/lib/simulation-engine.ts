@@ -532,18 +532,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Rispondi pubblicamente con empatia, offri un contatto diretto per risolvere il problema",
+            text: "Rispondi pubblicamente con empatia riconoscendo il disagio e offri un contatto diretto per risolvere la situazione",
             isCorrect: true,
             feedback: `Perfetto! In ${t.industry}, la trasparenza e l'ascolto trasformano critici in sostenitori.`,
           },
           {
             id: "b",
-            text: "Nascondi il post per limitare la visibilità",
+            text: "Nascondi temporaneamente il post per evitare che la situazione si amplifichi e contatti l'utente in privato",
             feedback: "Censurare peggiora tutto. Nel " + t.industry + ", l'autenticità è fondamentale.",
           },
           {
             id: "c",
-            text: "Aspetti che si calmi, rispondere ora potrebbe alimentare la discussione",
+            text: "Aspetti qualche ora prima di rispondere per lasciare che la conversazione si calmi e preparare una risposta ponderata",
             feedback: "Il silenzio viene letto come disinteresse. Ogni ora di attesa peggiora la percezione.",
           },
         ],
