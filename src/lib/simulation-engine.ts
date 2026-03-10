@@ -600,7 +600,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Budget Optimization",
-        lesson: `Nel ${t.industry}, il budget va dove i dati dicono che funziona, non dove sembra più cool.`,
+        lesson: `Nel digitale, il budget va dove i dati dicono che funziona, non dove sembra più cool.`,
       },
     ],
     "Data Analysis e Data Science": (t) => [
