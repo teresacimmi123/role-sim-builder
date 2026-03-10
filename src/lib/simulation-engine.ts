@@ -574,7 +574,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Content Strategy",
-        lesson: `In ${t.industry}, il mix di contenuti bilancia brand building e performance.`,
+        lesson: `In questi ruoli, il mix di contenuti bilancia brand building e performance.`,
       },
       {
         id: 4,
