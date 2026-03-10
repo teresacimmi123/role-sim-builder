@@ -457,7 +457,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Debugging",
-        lesson: `In ${t.industry}, il debugging efficace segue un metodo: riproduci, isola, verifica, risolvi.`,
+        lesson: `In questo lavoro, il debugging efficace segue un metodo: riproduci, isola, verifica, risolvi.`,
       },
       {
         id: 4,
