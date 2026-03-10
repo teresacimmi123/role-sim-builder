@@ -299,7 +299,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "User Research",
-        lesson: `In ${t.industry}, la persona primaria deve rappresentare chi usa davvero il prodotto, non chi vorresti che lo usasse.`,
+        lesson: `In questi ruoli, la persona primaria deve rappresentare chi usa davvero il prodotto, non chi vorresti che lo usasse.`,
       },
       {
         id: 3,
