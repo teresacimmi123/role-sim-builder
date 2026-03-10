@@ -770,18 +770,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Riunione di prioritizzazione: cosa è MUST HAVE per la demo vs nice to have? Tagliamo lo scope",
+            text: "Convochi una riunione di prioritizzazione per distinguere cosa è essenziale per la demo e cosa si può rimandare",
             isCorrect: true,
             feedback: `Perfetto! In ${t.industry}, meglio consegnare meno ma funzionante che tutto ma rotto.`,
           },
           {
             id: "b",
-            text: "Chiedi al team di fare straordinari per recuperare",
+            text: "Organizzi un piano di lavoro intensivo per il team così da recuperare il ritardo e consegnare tutto in tempo",
             feedback: "Gli straordinari creano burnout e errori. Nel lungo periodo, peggiori le cose.",
           },
           {
             id: "c",
-            text: "Informi il cliente che la demo slitterà di una settimana",
+            text: "Contatti il cliente in anticipo per proporre di spostare la demo di una settimana e consegnare un lavoro completo",
             feedback: "Rimandare è l'ultima opzione. Prima vedi se puoi consegnare un MVP valido.",
           },
         ],
