@@ -633,8 +633,8 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 2,
         title: "Data Quality Issue",
-        context: `Stai analizzando i dati utente di ${t.productContext}. Noti che il 15% dei record ha valori mancanti nel campo cruciale "engagement_score".`,
-        challenge: "Come gestisci i missing values?",
+        context: `Stai analizzando i dati degli utenti di ${t.productContext}. Ti accorgi che nel 15% dei casi manca un'informazione importante: il punteggio che misura quanto gli utenti sono attivi.`,
+        challenge: "Come gestisci queste informazioni mancanti?",
         choices: [
           {
             id: "a",
