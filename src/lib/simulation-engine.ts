@@ -612,18 +612,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Chiedi quali metriche specifiche servono e qual è la storia che vuole raccontare alla board",
+            text: "Chiedi al CEO quali metriche specifiche servono e qual è il messaggio che vuole trasmettere alla board",
             isCorrect: true,
             feedback: `Perfetto! In ${t.industry}, capire il contesto evita di produrre dati inutili. Il CEO probabilmente non sa esattamente cosa vuole.`,
           },
           {
             id: "b",
-            text: "Prepari un report completo con tutte le metriche disponibili",
+            text: "Prepari un report completo con tutte le metriche disponibili organizzate per area, così la board ha il quadro intero",
             feedback: "Troppi dati = nessuna storia. La board ha 10 minuti, non 2 ore.",
           },
           {
             id: "c",
-            text: "Estrai i dati grezzi e li mandi così il CEO decide cosa usare",
+            text: "Estrai rapidamente i dati principali in un foglio strutturato e li invii al CEO così può selezionare ciò che serve",
             feedback: "Il CEO non ha tempo (né competenze) per analizzare dati grezzi. Il tuo valore è tradurli.",
           },
         ],
