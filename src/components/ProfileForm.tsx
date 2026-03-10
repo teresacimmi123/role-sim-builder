@@ -11,11 +11,11 @@ interface ProfileFormProps {
 }
 
 const digitalAreas = [
-  { id: "UX/UI Design", label: "UX/UI Design", description: "Progettazione di interfacce e esperienze utente" },
-  { id: "Web Development", label: "Web Development", description: "Sviluppo di siti web e applicazioni" },
-  { id: "Digital Marketing", label: "Digital Marketing", description: "Marketing digitale, social media, advertising" },
-  { id: "Data Analysis e Data Science", label: "Data Analysis", description: "Analisi dati e business intelligence" },
-  { id: "Non lo so", label: "Non lo so ancora", description: "Voglio esplorare le possibilità" },
+  { id: "UX/UI Design", label: "UX/UI Design", description: "Vuoi capire come si progettano app e siti che le persone trovano belli e facili da usare" },
+  { id: "Web Development", label: "Web Development", description: "Ti incuriosisce come vengono costruiti siti web e applicazioni da zero" },
+  { id: "Digital Marketing", label: "Digital Marketing", description: "Vuoi capire come i brand comunicano online e raggiungono le persone giuste" },
+  { id: "Data Analysis e Data Science", label: "Data Analysis", description: "Ti affascina l'idea di trovare storie e decisioni nascoste nei numeri" },
+  { id: "Non lo so", label: "Non lo so ancora", description: "Voglio esplorare il digitale senza partire da una scelta precisa" },
 ];
 
 const ProfileForm = ({ onSubmit, onBack }: ProfileFormProps) => {
@@ -30,8 +30,8 @@ const ProfileForm = ({ onSubmit, onBack }: ProfileFormProps) => {
     {
       icon: User,
       title: "Il tuo background",
-      subtitle: "Qual è la tua formazione o esperienza precedente?",
-      placeholder: "Es: Laurea in Comunicazione, 2 anni in un'agenzia eventi, corso di graphic design...",
+      subtitle: "Raccontaci da dove vieni — studi, lavori, corsi, esperienze. Non serve essere esperti.",
+      placeholder: "Es: Sono al primo anno di università, ho lavorato in un negozio, ho fatto un corso online di fotografia, vengo da studi classici...",
       field: "background" as keyof UserProfile,
     },
     {
