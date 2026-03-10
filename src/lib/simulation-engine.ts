@@ -253,18 +253,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Analizzi i dati di comportamento utente per capire dove si perdono nel flusso",
+            text: "Analizzi i dati di comportamento degli utenti per individuare dove si bloccano nel flusso attuale",
             isCorrect: true,
             feedback: `Perfetto! In ${t.industry}, i dati comportamentali rivelano dove gli utenti si bloccano. Prima capisci il "dove", poi il "perché".`,
           },
           {
             id: "b",
-            text: "Proponi subito di semplificare l'interfaccia con meno elementi",
+            text: "Proponi di semplificare l'interfaccia riducendo gli elementi visivi e i passaggi richiesti all'utente",
             feedback: "Stai assumendo che il problema sia la complessità senza dati. Nel settore " + t.industry + " potresti eliminare funzionalità cruciali.",
           },
           {
             id: "c",
-            text: "Organizzi un focus group con utenti tipo del settore " + t.industry,
+            text: "Organizzi un focus group con utenti reali del prodotto per raccogliere feedback qualitativi diretti",
             feedback: "I focus group sono utili, ma prima servono dati quantitativi per sapere cosa chiedere. Rischi di basarti su opinioni.",
           },
         ],
