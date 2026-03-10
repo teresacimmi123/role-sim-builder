@@ -283,18 +283,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: `Elena, 28 anni, appassionata di ${t.industry}: usa l'app quotidianamente, frustrata dalla mancanza di personalizzazione`,
+            text: `Elena, 28 anni, appassionata di ${t.industry}: usa l'app ogni giorno ma è frustrata dalla mancanza di personalizzazione`,
             isCorrect: true,
             feedback: `Ottima scelta! Elena rappresenta il core user di ${t.companyName} e il suo pain point è direttamente collegato al problema principale.`,
           },
           {
             id: "b",
-            text: "Marco, 45 anni, usa l'app raramente ma quando la usa spende molto",
+            text: "Marco, 45 anni, professionista: usa l'app di rado ma genera molto valore economico quando la utilizza",
             feedback: `Marco porta valore economico ma non rappresenta l'utente tipo di ${t.industry}. Ottimizzare per lui potrebbe alienare il core.`,
           },
           {
             id: "c",
-            text: "Sofia, 19 anni, studentessa, usa mille app simili ma nessuna la soddisfa",
+            text: "Sofia, 19 anni, studentessa: prova molte app concorrenti ed è sempre alla ricerca della soluzione perfetta",
             feedback: "Sofia è interessante ma troppo volatile. Nel " + t.industry + " serve fidelizzare prima di espandere.",
           },
         ],
