@@ -244,8 +244,8 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 1,
         title: "Analisi del Brief del Cliente",
-        context: `Sono le 9:15. Apri Slack e trovi un messaggio del tuo team lead di ${t.companyName}. C'è il brief per un nuovo progetto: migliorare ${t.productContext}. Il feedback degli utenti dice che "l'esperienza è confusa e non capisco cosa fare".`,
-        challenge: `Come ${t.companyName} opera nel settore ${t.industry}, devi capire il VERO problema. Quale approccio scegli?`,
+        context: `Sono le 9:15. Trovi un messaggio del tuo responsabile di ${t.companyName}: c'è un nuovo progetto, migliorare ${t.productContext}. Gli utenti si lamentano: "L'esperienza è confusa e non capisco cosa fare".`,
+        challenge: `Devi capire qual è il VERO problema prima di proporre soluzioni. Quale approccio scegli?`,
         technicalTerms: [
           { term: "Brief", explanation: "Documento che riassume le richieste e gli obiettivi di un progetto, fornito dal cliente o dal team." },
           { term: "Slack", explanation: "Piattaforma di messaggistica molto usata nei team di lavoro per comunicare in tempo reale." }
@@ -274,8 +274,8 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 2,
         title: "Creazione User Persona",
-        context: `Hai analizzato i dati di ${t.companyName}. Il 62% degli abbandoni avviene nella schermata principale. Il team ti chiede di creare una persona basata sulle interviste della scorsa settimana nel settore ${t.industry}.`,
-        challenge: "Hai 3 profili. Quale scegli come persona PRIMARIA?",
+        context: `Hai analizzato i dati di ${t.companyName}. Il 62% delle persone abbandona l'app dalla schermata principale. Il team ti chiede di scegliere un profilo-tipo di utente su cui concentrare il nuovo design, basandoti sulle interviste fatte la settimana scorsa.`,
+        challenge: "Hai 3 profili di utenti reali. Quale scegli come riferimento PRINCIPALE per il progetto?",
         technicalTerms: [
           { term: "User Persona", explanation: "Personaggio fittizio che rappresenta un gruppo di utenti reali, usato per progettare soluzioni centrate sulle loro esigenze." },
           { term: "Abbandoni", explanation: "Quando un utente lascia un'app o un sito senza completare un'azione prevista (es. acquisto, registrazione)." }
@@ -304,8 +304,8 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 3,
         title: "Wireframing della Soluzione",
-        context: `Con Elena come persona, sai che il problema è la mancanza di personalizzazione in ${t.productContext}. Apri Figma e devi progettare il wireframe della nuova esperienza per ${t.companyName}.`,
-        challenge: "Quale approccio di design scegli?",
+        context: `Con Elena come riferimento, sai che il problema è la mancanza di personalizzazione in ${t.productContext}. Apri il programma di design e devi disegnare la bozza della nuova esperienza per ${t.companyName}.`,
+        challenge: "Quale strategia di design scegli per risolvere il problema?",
         technicalTerms: [
           { term: "Wireframe", explanation: "Bozza schematica di un'interfaccia, senza colori o grafiche elaborate, che mostra la struttura e la disposizione degli elementi." },
           { term: "Figma", explanation: "Software di design collaborativo molto usato per creare interfacce, prototipi e wireframe." },
@@ -335,7 +335,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 4,
         title: "Review con il Team",
-        context: `Sono le 16:00. Presenti il wireframe al team di ${t.companyName}. Il developer senior dice: "L'onboarding personalizzato richiede un sistema di raccomandazione che non abbiamo. Ci vorrebbero 3 mesi."`,
+        context: `Sono le 16:00. Presenti la tua bozza al team di ${t.companyName}. Lo sviluppatore più esperto dice: "Per personalizzare davvero l'esperienza ci serve un sistema che suggerisca contenuti su misura per ogni utente. Costruirlo richiederebbe 3 mesi."`,
         challenge: "Come rispondi?",
         technicalTerms: [
           { term: "MVP", explanation: "Minimum Viable Product: versione base di un prodotto con le funzionalità essenziali per testare l'idea." },
@@ -367,7 +367,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 1,
         title: "Code Review del Collega",
-        context: `Sono le 9:30. Il tuo lead di ${t.companyName} ti assegna la review del codice di un altro dev. Ha creato un componente React per ${t.productContext}, ma noti che usa document.getElementById dentro useEffect.`,
+        context: `Sono le 9:30. Il tuo responsabile in ${t.companyName} ti chiede di controllare il lavoro di un collega. Ha scritto una parte del codice per ${t.productContext}, ma noti che ha usato un approccio che funziona ma non segue le buone pratiche del linguaggio che state usando.`,
         challenge: "Cosa fai?",
         technicalTerms: [
           { term: "Code Review", explanation: "Processo in cui un collega esamina il codice scritto da un altro per trovare errori e miglioramenti." },
@@ -398,8 +398,8 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 2,
         title: "Implementazione Feature",
-        context: `Dal backlog Jira di ${t.companyName} prendi il ticket: "Creare componente Card per ${t.productContext}". Il designer ti ha passato le specifiche.`,
-        challenge: "Come strutturi le props del componente?",
+        context: `Dalla lista delle attività di ${t.companyName} prendi un compito: "Creare un elemento visivo riutilizzabile per mostrare le informazioni di ${t.productContext}". Il designer ti ha dato le specifiche grafiche.`,
+        challenge: "Come organizzi i dati che questo elemento dovrà ricevere per funzionare?",
         technicalTerms: [
           { term: "Backlog", explanation: "Lista di attività o funzionalità da sviluppare, ordinate per priorità." },
           { term: "Jira", explanation: "Software molto usato per gestire progetti e tracciare le attività del team." },
@@ -430,8 +430,8 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 3,
         title: "Debugging Misterioso",
-        context: `L'API di ${t.productContext} restituisce 500 in alcuni casi. Dai DevTools noti che fallisce solo con payload grandi.`,
-        challenge: "Qual è il prossimo step?",
+        context: `Il sistema che collega ${t.productContext} al server dà errore in alcuni casi. Indagando, noti che il problema si verifica solo quando si inviano grandi quantità di dati.`,
+        challenge: "Qual è il prossimo passo per risolvere il problema?",
         technicalTerms: [
           { term: "API", explanation: "Interfaccia che permette a diverse applicazioni di comunicare tra loro, scambiando dati." },
           { term: "Errore 500", explanation: "Codice di errore che indica un problema lato server (non dell'utente)." },
@@ -462,7 +462,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 4,
         title: "Deploy Venerdì Sera",
-        context: `Sono le 17:30 di venerdì. La feature per ${t.companyName} è pronta. Il lead chiede: "Puoi fare deploy? Lunedì il cliente vuole vedere la novità."`,
+        context: `Sono le 17:30 di venerdì. La nuova funzionalità per ${t.companyName} è pronta. Il responsabile ti chiede: "Puoi pubblicarla online così gli utenti la vedono? Lunedì il cliente vuole vedere la novità."`,
         challenge: "Cosa fai?",
         technicalTerms: [
           { term: "Deploy", explanation: "Processo di pubblicazione del codice su un server per renderlo disponibile agli utenti." },
@@ -495,8 +495,8 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 1,
         title: "Analisi Campagna Social",
-        context: `Sono le 9:00. Apri Meta Business per ${t.companyName}. La campagna "${t.industry} Summer" è terminata. Budget: €500. Devi preparare il report.`,
-        challenge: `Vedi: Reach 45.000, Engagement 1.2%, Click 380, Conversioni 12. Il cliente voleva 50 conversioni. Come presenti i risultati?`,
+        context: `Sono le 9:00. Apri il pannello di gestione delle pubblicità online di ${t.companyName}. La campagna promozionale estiva è terminata. Budget speso: €500. Devi preparare un resoconto per il cliente.`,
+        challenge: `I risultati dicono: 45.000 persone hanno visto la pubblicità, l'1.2% ha interagito (like, commenti), 380 hanno cliccato, ma solo 12 hanno fatto l'azione desiderata (acquisto o iscrizione). Il cliente ne voleva 50. Come presenti i risultati?`,
         technicalTerms: [
           { term: "Reach", explanation: "Numero di persone uniche che hanno visto il contenuto." },
           { term: "Engagement", explanation: "Interazioni degli utenti (like, commenti, condivisioni) rispetto al numero di visualizzazioni." },
@@ -506,7 +506,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: `"Il collo di bottiglia è la landing page: 380 click ma solo 12 conversioni. Propongo un A/B test sulla pagina per migliorare il tasso"`,
+            text: `"Il problema è la pagina dove le persone arrivano dopo il click: su 380 click, solo 12 hanno completato l'azione. Propongo di creare due versioni della pagina e testare quale funziona meglio"`,
             isCorrect: true,
             feedback: `Eccellente! Hai identificato dove si perde il traffico e proposto una soluzione per ${t.industry}.`,
           },
@@ -553,23 +553,23 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 3,
         title: "Pianificazione Contenuti",
-        context: `Il team di ${t.companyName} ti chiede un piano editoriale per il prossimo mese nel settore ${t.industry}. Hai budget per 12 post e 2 video.`,
-        challenge: "Come distribuisci i contenuti?",
+        context: `Il team di ${t.companyName} ti chiede di pianificare i contenuti da pubblicare sui social il prossimo mese. Hai budget per 12 post (testi e immagini) e 2 video.`,
+        challenge: "Come distribuisci i diversi tipi di contenuti?",
         choices: [
           {
             id: "a",
-            text: "Mix bilanciato: 40% contenuti educational sul settore, 30% behind-the-scenes, 20% prodotto e 10% contenuti della community",
+            text: "Mix bilanciato: 40% contenuti che insegnano qualcosa sul settore, 30% vita quotidiana dell'azienda, 20% prodotto e 10% contenuti creati dai clienti stessi",
             isCorrect: true,
             feedback: `Eccellente mix! In ${t.industry}, educare crea autorevolezza, il BTS umanizza, il prodotto converte, UGC crea community.`,
           },
           {
             id: "b",
-            text: "Focus sulla conversione: 80% contenuti prodotto con call-to-action dirette e 20% educational di contesto per il settore",
+            text: "Focus sulla vendita: 80% contenuti che mostrano il prodotto con inviti diretti all'acquisto e 20% contenuti informativi di contesto",
             feedback: `Troppo push. Nel ${t.industry}, chi parla solo di sé stanca il pubblico.`,
           },
           {
             id: "c",
-            text: "Focus sull'engagement: 70% trend e contenuti virali del momento, 30% prodotto per mantenere la rilevanza del brand",
+            text: "Focus sulle interazioni: 70% contenuti che seguono le mode del momento per attirare attenzione, 30% prodotto per ricordare il brand",
             feedback: "L'engagement fine a sé stesso non porta risultati. Servono contenuti che costruiscono relazione.",
           },
         ],
@@ -579,23 +579,23 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 4,
         title: "Budget Allocation",
-        context: `Il CEO di ${t.companyName} ti dà €3.000 extra per il Q4. Devi decidere come allocarli per massimizzare l'impatto nel ${t.industry}.`,
-        challenge: "Come li distribuisci?",
+        context: `Il CEO di ${t.companyName} ti dà €3.000 in più da spendere in pubblicità online negli ultimi 3 mesi dell'anno. Devi decidere come investirli per ottenere il massimo risultato.`,
+        challenge: "Come distribuisci il budget?",
         choices: [
           {
             id: "a",
-            text: "€1.500 su retargeting degli utenti che hanno già interagito, €1.000 su audience lookalike e €500 su test di nuovi segmenti",
+            text: "€1.500 per mostrare annunci a chi ha già visitato il sito, €1.000 per raggiungere persone simili ai tuoi clienti attuali, €500 per testare nuovi pubblici",
             isCorrect: true,
             feedback: `Strategia smart! Il retargeting ha il ROI più alto, i lookalike scalano, i test preparano il futuro.`,
           },
           {
             id: "b",
-            text: "€3.000 su campagne awareness per massimizzare la reach e far conoscere il brand a più persone possibili nel Q4",
+            text: "€3.000 su campagne per far conoscere il brand a più persone possibili e aumentare la visibilità negli ultimi mesi dell'anno",
             feedback: `L'awareness senza conversion strategy è vanity. In ${t.industry}, serve un funnel completo.`,
           },
           {
             id: "c",
-            text: "€3.000 su una collaborazione con micro-influencer del settore per generare contenuti autentici e visibilità rapida",
+            text: "€3.000 su una collaborazione con creatori di contenuti del settore per generare materiale autentico e visibilità rapida",
             feedback: "Gli influencer funzionano ma €3k bastano per micro-influencer. Il ROI è incerto.",
           },
         ],
@@ -607,7 +607,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 1,
         title: "Richiesta dal Business",
-        context: `Sono le 9:00. Il CEO di ${t.companyName} ti scrive: "Mi servono i numeri delle performance del Q3 per la board di domani." Hai 24 ore.`,
+        context: `Sono le 9:00. Il CEO di ${t.companyName} ti scrive: "Mi servono i numeri su come è andato il trimestre per la riunione con gli investitori di domani." Hai 24 ore.`,
         challenge: "Come affronti la richiesta?",
         choices: [
           {
@@ -633,8 +633,8 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 2,
         title: "Data Quality Issue",
-        context: `Stai analizzando i dati utente di ${t.productContext}. Noti che il 15% dei record ha valori mancanti nel campo cruciale "engagement_score".`,
-        challenge: "Come gestisci i missing values?",
+        context: `Stai analizzando i dati degli utenti di ${t.productContext}. Ti accorgi che nel 15% dei casi manca un'informazione importante: il punteggio che misura quanto gli utenti sono attivi.`,
+        challenge: "Come gestisci queste informazioni mancanti?",
         choices: [
           {
             id: "a",
@@ -659,7 +659,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 3,
         title: "Insight Controintuitivo",
-        context: `La tua analisi per ${t.companyName} mostra che gli utenti che usano meno l'app hanno retention più alta. Sembra controintuitivo.`,
+        context: `La tua analisi per ${t.companyName} mostra un risultato strano: gli utenti che usano meno l'app sono quelli che continuano a usarla più a lungo nel tempo. Sembra il contrario di quello che ti aspetteresti.`,
         challenge: "Come procedi?",
         choices: [
           {
@@ -685,8 +685,8 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 4,
         title: "Presentazione ai Non-Tecnici",
-        context: `Devi presentare i risultati della tua analisi al team marketing di ${t.companyName}. Hai trovato 3 cluster di utenti con comportamenti diversi.`,
-        challenge: "Come presenti i risultati?",
+        context: `Devi presentare i risultati della tua analisi al team marketing di ${t.companyName}. Hai scoperto che gli utenti si dividono in 3 gruppi con abitudini molto diverse tra loro.`,
+        challenge: "Come presenti i risultati a colleghi che non hanno competenze tecniche?",
         choices: [
           {
             id: "a",
@@ -713,7 +713,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 1,
         title: "Kickoff di Progetto",
-        context: `Sono le 9:00. Entri alla prima riunione del nuovo progetto per ${t.companyName}: sviluppare ${t.productContext}. Ci sono designer, developer e stakeholder.`,
+        context: `Sono le 9:00. Entri alla prima riunione del nuovo progetto per ${t.companyName}: sviluppare ${t.productContext}. Ci sono il grafico, il programmatore e i responsabili del progetto.`,
         challenge: "Qual è la prima cosa da chiarire?",
         choices: [
           {
@@ -739,7 +739,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 2,
         title: "Conflitto tra Team",
-        context: `Il designer e il developer di ${t.companyName} non sono d'accordo su una feature. Il designer vuole un'animazione complessa, il developer dice che rallenterà l'app.`,
+        context: `Il grafico e il programmatore di ${t.companyName} non sono d'accordo su una funzionalità. Il grafico vuole un effetto visivo elaborato, il programmatore dice che renderebbe l'app troppo lenta.`,
         challenge: "Come gestisci la situazione?",
         choices: [
           {
@@ -765,7 +765,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 3,
         title: "Deadline a Rischio",
-        context: `Mancano 5 giorni alla demo di ${t.productContext} per un cliente importante. Il team è indietro del 30% sul piano.`,
+        context: `Mancano 5 giorni alla presentazione di ${t.productContext} a un cliente importante. Il team è indietro del 30% rispetto al piano previsto.`,
         challenge: "Come affronti la situazione?",
         choices: [
           {
@@ -791,7 +791,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 4,
         title: "Feedback al Team",
-        context: `Un membro del team di ${t.companyName} sta sottoperformando. Non rispetta le deadline e la qualità è calata.`,
+        context: `Un membro del team di ${t.companyName} sta rendendo meno del solito. Non rispetta le scadenze e la qualità del suo lavoro è calata.`,
         challenge: "Come affronti la conversazione?",
         choices: [
           {
@@ -802,7 +802,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
           {
             id: "b",
-            text: "Sollevi il tema nel daily standup in modo trasparente così tutto il team è allineato e può contribuire a risolvere",
+            text: "Sollevi il tema nella riunione di aggiornamento quotidiana in modo trasparente così tutto il team è allineato e può contribuire",
             feedback: "Il feedback negativo in pubblico umilia e crea risentimento. Sempre in privato.",
           },
           {
