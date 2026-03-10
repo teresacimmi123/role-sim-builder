@@ -472,18 +472,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Merge su staging, verifichi che funzioni, proponi deploy in prod lunedì mattina",
+            text: "Fai merge su staging per verificare che tutto funzioni e proponi il deploy in produzione lunedì mattina presto",
             isCorrect: true,
             feedback: `Ottima gestione del rischio! Hai completato il lavoro ma evitato problemi nel weekend.`,
           },
           {
             id: "b",
-            text: "Deploy immediato: i test passano, cosa può andare storto?",
+            text: "Procedi con il deploy in produzione: i test automatici passano tutti e la feature è stata validata dal team",
             feedback: `Il "Friday deploy" è un anti-pattern. Se esplode sabato, chi interviene?`,
           },
           {
             id: "c",
-            text: "Dici che preferisci non fare deploy oggi perché è venerdì",
+            text: "Comunichi al lead che è meglio posticipare il deploy a lunedì perché un rilascio il venerdì è troppo rischioso",
             feedback: "Rifiutare senza alternative non è professionale. Proponi un compromesso.",
           },
         ],
