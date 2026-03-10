@@ -425,7 +425,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Component Architecture",
-        lesson: `In ${t.industry}, componenti ben strutturati sono riutilizzabili, testabili e scalabili.`,
+        lesson: `Nel digitale, componenti ben strutturati sono riutilizzabili, testabili e scalabili.`,
       },
       {
         id: 3,
