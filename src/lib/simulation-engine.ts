@@ -569,7 +569,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
           {
             id: "c",
-            text: "Focus sull'engagement: 70% trend e contenuti virali del momento, 30% prodotto per mantenere la rilevanza del brand",
+            text: "Focus sulle interazioni: 70% contenuti che seguono le mode del momento per attirare attenzione, 30% prodotto per ricordare il brand",
             feedback: "L'engagement fine a sé stesso non porta risultati. Servono contenuti che costruiscono relazione.",
           },
         ],
