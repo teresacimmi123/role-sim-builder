@@ -367,7 +367,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 1,
         title: "Code Review del Collega",
-        context: `Sono le 9:30. Il tuo lead di ${t.companyName} ti assegna la review del codice di un altro dev. Ha creato un componente React per ${t.productContext}, ma noti che usa document.getElementById dentro useEffect.`,
+        context: `Sono le 9:30. Il tuo responsabile in ${t.companyName} ti chiede di controllare il lavoro di un collega. Ha scritto una parte del codice per ${t.productContext}, ma noti che ha usato un approccio che funziona ma non segue le buone pratiche del linguaggio che state usando.`,
         challenge: "Cosa fai?",
         technicalTerms: [
           { term: "Code Review", explanation: "Processo in cui un collega esamina il codice scritto da un altro per trovare errori e miglioramenti." },
