@@ -495,8 +495,8 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 1,
         title: "Analisi Campagna Social",
-        context: `Sono le 9:00. Apri Meta Business per ${t.companyName}. La campagna "${t.industry} Summer" è terminata. Budget: €500. Devi preparare il report.`,
-        challenge: `Vedi: Reach 45.000, Engagement 1.2%, Click 380, Conversioni 12. Il cliente voleva 50 conversioni. Come presenti i risultati?`,
+        context: `Sono le 9:00. Apri il pannello di gestione delle pubblicità online di ${t.companyName}. La campagna promozionale estiva è terminata. Budget speso: €500. Devi preparare un resoconto per il cliente.`,
+        challenge: `I risultati dicono: 45.000 persone hanno visto la pubblicità, l'1.2% ha interagito (like, commenti), 380 hanno cliccato, ma solo 12 hanno fatto l'azione desiderata (acquisto o iscrizione). Il cliente ne voleva 50. Come presenti i risultati?`,
         technicalTerms: [
           { term: "Reach", explanation: "Numero di persone uniche che hanno visto il contenuto." },
           { term: "Engagement", explanation: "Interazioni degli utenti (like, commenti, condivisioni) rispetto al numero di visualizzazioni." },
