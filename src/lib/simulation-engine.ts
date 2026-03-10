@@ -488,7 +488,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Risk Management",
-        lesson: `In ${t.industry}, i dev esperti bilanciano velocità e rischio.`,
+        lesson: `Nel digitale, i dev esperti bilanciano velocità e rischio.`,
       },
     ],
     "Digital Marketing": (t) => [
