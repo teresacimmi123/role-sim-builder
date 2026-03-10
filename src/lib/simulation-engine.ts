@@ -590,7 +590,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
           {
             id: "b",
-            text: "€3.000 su campagne awareness per massimizzare la reach e far conoscere il brand a più persone possibili nel Q4",
+            text: "€3.000 su campagne per far conoscere il brand a più persone possibili e aumentare la visibilità negli ultimi mesi dell'anno",
             feedback: `L'awareness senza conversion strategy è vanity. In ${t.industry}, serve un funnel completo.`,
           },
           {
