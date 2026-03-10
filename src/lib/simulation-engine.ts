@@ -506,18 +506,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: `"Il problema è la landing page: 380 click ma 12 conversioni = 3% CR, sotto la media. Propongo A/B test sulla pagina."`,
+            text: `"Il collo di bottiglia è la landing page: 380 click ma solo 12 conversioni. Propongo un A/B test sulla pagina per migliorare il tasso"`,
             isCorrect: true,
             feedback: `Eccellente! Hai identificato dove si perde il traffico e proposto una soluzione per ${t.industry}.`,
           },
           {
             id: "b",
-            text: `"45.000 persone raggiunte! Grande awareness per ${t.companyName}."`,
+            text: `"La campagna ha portato 45.000 persone raggiunte e 380 click qualificati. Propongo di scalare il budget per aumentare i volumi"`,
             feedback: "Stai mascherando il fallimento con vanity metrics. Il cliente voleva conversioni, non reach.",
           },
           {
             id: "c",
-            text: "Ammetti che non ha funzionato e proponi più budget",
+            text: `"I risultati sono sotto le aspettative. Suggerisco di rivedere il targeting e riallocare il budget su un canale più performante"`,
             feedback: "Senza capire PERCHÉ non ha funzionato, più budget = più spreco.",
           },
         ],
