@@ -335,7 +335,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 4,
         title: "Review con il Team",
-        context: `Sono le 16:00. Presenti il wireframe al team di ${t.companyName}. Il developer senior dice: "L'onboarding personalizzato richiede un sistema di raccomandazione che non abbiamo. Ci vorrebbero 3 mesi."`,
+        context: `Sono le 16:00. Presenti la tua bozza al team di ${t.companyName}. Lo sviluppatore più esperto dice: "Per personalizzare davvero l'esperienza ci serve un sistema che suggerisca contenuti su misura per ogni utente. Costruirlo richiederebbe 3 mesi."`,
         challenge: "Come rispondi?",
         technicalTerms: [
           { term: "MVP", explanation: "Minimum Viable Product: versione base di un prodotto con le funzionalità essenziali per testare l'idea." },
