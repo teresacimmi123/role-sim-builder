@@ -584,18 +584,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "€1.500 su retargeting chi ha già interagito, €1.000 su lookalike, €500 su test nuove audience",
+            text: "€1.500 su retargeting degli utenti che hanno già interagito, €1.000 su audience lookalike e €500 su test di nuovi segmenti",
             isCorrect: true,
             feedback: `Strategia smart! Il retargeting ha il ROI più alto, i lookalike scalano, i test preparano il futuro.`,
           },
           {
             id: "b",
-            text: "Tutto su awareness per raggiungere più persone possibili",
+            text: "€3.000 su campagne awareness per massimizzare la reach e far conoscere il brand a più persone possibili nel Q4",
             feedback: `L'awareness senza conversion strategy è vanity. In ${t.industry}, serve un funnel completo.`,
           },
           {
             id: "c",
-            text: "Tutto su influencer marketing per un boost veloce",
+            text: "€3.000 su una collaborazione con micro-influencer del settore per generare contenuti autentici e visibilità rapida",
             feedback: "Gli influencer funzionano ma €3k bastano per micro-influencer. Il ROI è incerto.",
           },
         ],
