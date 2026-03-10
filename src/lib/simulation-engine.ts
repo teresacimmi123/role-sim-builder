@@ -579,8 +579,8 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 4,
         title: "Budget Allocation",
-        context: `Il CEO di ${t.companyName} ti dà €3.000 extra per il Q4. Devi decidere come allocarli per massimizzare l'impatto nel ${t.industry}.`,
-        challenge: "Come li distribuisci?",
+        context: `Il CEO di ${t.companyName} ti dà €3.000 in più da spendere in pubblicità online negli ultimi 3 mesi dell'anno. Devi decidere come investirli per ottenere il massimo risultato.`,
+        challenge: "Come distribuisci il budget?",
         choices: [
           {
             id: "a",
