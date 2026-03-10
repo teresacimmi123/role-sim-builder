@@ -238,7 +238,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
       <Card variant="glass" className="p-5">
         <div className="flex items-center gap-2 mb-3">
           <BookOpen className="w-5 h-5 text-primary" />
-          <span className="font-medium">Cosa impari</span>
+          <span className="font-medium">Una cosa utile da sapere</span>
         </div>
         <p className="text-sm text-muted-foreground leading-relaxed">
           <strong className="text-foreground">{currentTask.skill}</strong>: {currentTask.lesson}
