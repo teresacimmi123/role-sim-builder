@@ -654,7 +654,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Data Quality",
-        lesson: `In ${t.industry}, la data quality è il fondamento. Garbage in, garbage out.`,
+        lesson: `In questi ruoli, la data quality è il fondamento. Garbage in, garbage out.`,
       },
       {
         id: 3,
