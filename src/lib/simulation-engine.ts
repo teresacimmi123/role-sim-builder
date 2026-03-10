@@ -584,7 +584,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "€1.500 su retargeting degli utenti che hanno già interagito, €1.000 su audience lookalike e €500 su test di nuovi segmenti",
+            text: "€1.500 per mostrare annunci a chi ha già visitato il sito, €1.000 per raggiungere persone simili ai tuoi clienti attuali, €500 per testare nuovi pubblici",
             isCorrect: true,
             feedback: `Strategia smart! Il retargeting ha il ROI più alto, i lookalike scalano, i test preparano il futuro.`,
           },
