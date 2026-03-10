@@ -558,7 +558,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Mix bilanciato: 40% contenuti educational sul settore, 30% behind-the-scenes, 20% prodotto e 10% contenuti della community",
+            text: "Mix bilanciato: 40% contenuti che insegnano qualcosa sul settore, 30% vita quotidiana dell'azienda, 20% prodotto e 10% contenuti creati dai clienti stessi",
             isCorrect: true,
             feedback: `Eccellente mix! In ${t.industry}, educare crea autorevolezza, il BTS umanizza, il prodotto converte, UGC crea community.`,
           },
