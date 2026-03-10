@@ -744,18 +744,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Faciliti una discussione: 'Qual è l'obiettivo dell'animazione? C'è un compromesso che mantiene il valore?'",
+            text: "Faciliti una discussione chiedendo qual è l'obiettivo dell'animazione e se esiste un compromesso che soddisfi entrambi",
             isCorrect: true,
             feedback: `Ottimo! In ${t.industry}, il coordinatore non decide ma facilita. L'obiettivo comune sblocca i conflitti.`,
           },
           {
             id: "b",
-            text: "Dai ragione al developer perché la performance è più importante",
+            text: "Dai priorità alla posizione del developer perché la performance dell'app ha un impatto diretto sull'esperienza utente",
             feedback: "Prendere parte crea risentimento. Non sei un giudice, sei un facilitatore.",
           },
           {
             id: "c",
-            text: "Escali al manager perché decida lui",
+            text: "Porti la questione al manager del team perché prenda una decisione definitiva avendo una visione d'insieme più ampia",
             feedback: "Escalare subito ti fa sembrare incapace di gestire conflitti. Prima prova a risolverlo.",
           },
         ],
