@@ -812,7 +812,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "People Management",
-        lesson: `In ${t.industry}, il feedback è un regalo. Darlo bene è un'arte che si impara.`,
+        lesson: `Nel digitale, il feedback è un regalo. Darlo bene è un'arte che si impara.`,
       },
     ],
   };
