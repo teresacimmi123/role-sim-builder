@@ -409,18 +409,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Props tipizzate con interfaccia: { item: ItemType, onAction: callback }",
+            text: "Definisci un'interfaccia tipizzata con un oggetto item strutturato e una callback per le azioni utente",
             isCorrect: true,
             feedback: `Eccellente! Un'interfaccia chiara rende il componente riutilizzabile in tutto ${t.productContext}.`,
           },
           {
             id: "b",
-            text: "Props singole: { title, description, image } più semplice e diretto",
+            text: "Passi props singole come title, description e image per mantenere il componente semplice e leggibile",
             feedback: `Funziona per casi semplici, ma in ${t.industry} i requisiti evolvono. Con 10+ props diventa ingestibile.`,
           },
           {
             id: "c",
-            text: "Il componente fa fetch dei dati internamente dato un ID",
+            text: "Il componente riceve solo un ID e recupera internamente i dati di cui ha bisogno tramite una chiamata API",
             feedback: "Viola il principio di 'dumb components'. Difficile da testare e riutilizzare.",
           },
         ],
