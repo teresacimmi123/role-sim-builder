@@ -564,7 +564,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
           {
             id: "b",
-            text: "Focus sulla conversione: 80% contenuti prodotto con call-to-action dirette e 20% educational di contesto per il settore",
+            text: "Focus sulla vendita: 80% contenuti che mostrano il prodotto con inviti diretti all'acquisto e 20% contenuti informativi di contesto",
             feedback: `Troppo push. Nel ${t.industry}, chi parla solo di sé stanca il pubblico.`,
           },
           {
