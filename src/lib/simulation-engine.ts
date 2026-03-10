@@ -739,7 +739,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 2,
         title: "Conflitto tra Team",
-        context: `Il designer e il developer di ${t.companyName} non sono d'accordo su una feature. Il designer vuole un'animazione complessa, il developer dice che rallenterà l'app.`,
+        context: `Il grafico e il programmatore di ${t.companyName} non sono d'accordo su una funzionalità. Il grafico vuole un effetto visivo elaborato, il programmatore dice che renderebbe l'app troppo lenta.`,
         challenge: "Come gestisci la situazione?",
         choices: [
           {
