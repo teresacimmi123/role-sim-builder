@@ -398,8 +398,8 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 2,
         title: "Implementazione Feature",
-        context: `Dal backlog Jira di ${t.companyName} prendi il ticket: "Creare componente Card per ${t.productContext}". Il designer ti ha passato le specifiche.`,
-        challenge: "Come strutturi le props del componente?",
+        context: `Dalla lista delle attività di ${t.companyName} prendi un compito: "Creare un elemento visivo riutilizzabile per mostrare le informazioni di ${t.productContext}". Il designer ti ha dato le specifiche grafiche.`,
+        challenge: "Come organizzi i dati che questo elemento dovrà ricevere per funzionare?",
         technicalTerms: [
           { term: "Backlog", explanation: "Lista di attività o funzionalità da sviluppare, ordinate per priorità." },
           { term: "Jira", explanation: "Software molto usato per gestire progetti e tracciare le attività del team." },
