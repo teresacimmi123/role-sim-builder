@@ -330,7 +330,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Solution Design",
-        lesson: `In ${t.industry}, la personalizzazione non è un plus, è un'aspettativa. Chi non personalizza, perde.`,
+        lesson: `Nel digitale, la personalizzazione non è un plus, è un'aspettativa. Chi non personalizza, perde.`,
       },
       {
         id: 4,
