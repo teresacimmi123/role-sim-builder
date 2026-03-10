@@ -553,8 +553,8 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 3,
         title: "Pianificazione Contenuti",
-        context: `Il team di ${t.companyName} ti chiede un piano editoriale per il prossimo mese nel settore ${t.industry}. Hai budget per 12 post e 2 video.`,
-        challenge: "Come distribuisci i contenuti?",
+        context: `Il team di ${t.companyName} ti chiede di pianificare i contenuti da pubblicare sui social il prossimo mese. Hai budget per 12 post (testi e immagini) e 2 video.`,
+        challenge: "Come distribuisci i diversi tipi di contenuti?",
         choices: [
           {
             id: "a",
