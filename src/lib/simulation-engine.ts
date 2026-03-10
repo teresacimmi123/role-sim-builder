@@ -796,18 +796,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "1-to-1 privato: 'Ho notato X e Y. C'è qualcosa che ti sta bloccando? Come posso aiutarti?'",
+            text: "Organizzi un incontro 1-to-1 privato per capire cosa sta succedendo e offrire supporto concreto alla persona",
             isCorrect: true,
             feedback: `Perfetto! Partire con curiosità, non giudizio. Spesso ci sono motivi non visibili.`,
           },
           {
             id: "b",
-            text: "Fai notare il problema nel daily standup così tutti sono allineati",
+            text: "Sollevi il tema nel daily standup in modo trasparente così tutto il team è allineato e può contribuire a risolvere",
             feedback: "Il feedback negativo in pubblico umilia e crea risentimento. Sempre in privato.",
           },
           {
             id: "c",
-            text: "Aspetti ancora, magari è un periodo difficile e si riprende",
+            text: "Gli dai ancora qualche settimana di tempo per riprendere il ritmo, monitorando la situazione senza metterlo sotto pressione",
             feedback: "Ignorare il problema lo peggiora. Il feedback tempestivo aiuta tutti.",
           },
         ],
