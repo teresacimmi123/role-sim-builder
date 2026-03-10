@@ -595,7 +595,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
           {
             id: "c",
-            text: "€3.000 su una collaborazione con micro-influencer del settore per generare contenuti autentici e visibilità rapida",
+            text: "€3.000 su una collaborazione con creatori di contenuti del settore per generare materiale autentico e visibilità rapida",
             feedback: "Gli influencer funzionano ma €3k bastano per micro-influencer. Il ROI è incerto.",
           },
         ],
