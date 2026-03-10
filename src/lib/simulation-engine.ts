@@ -430,8 +430,8 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 3,
         title: "Debugging Misterioso",
-        context: `L'API di ${t.productContext} restituisce 500 in alcuni casi. Dai DevTools noti che fallisce solo con payload grandi.`,
-        challenge: "Qual è il prossimo step?",
+        context: `Il sistema che collega ${t.productContext} al server dà errore in alcuni casi. Indagando, noti che il problema si verifica solo quando si inviano grandi quantità di dati.`,
+        challenge: "Qual è il prossimo passo per risolvere il problema?",
         technicalTerms: [
           { term: "API", explanation: "Interfaccia che permette a diverse applicazioni di comunicare tra loro, scambiando dati." },
           { term: "Errore 500", explanation: "Codice di errore che indica un problema lato server (non dell'utente)." },
