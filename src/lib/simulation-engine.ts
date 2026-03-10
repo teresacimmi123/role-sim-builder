@@ -664,18 +664,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: "Indaghi il segmento: forse sono utenti premium che ottengono valore in meno tempo",
+            text: "Indaghi il segmento per capire chi sono questi utenti e perché ottengono valore con meno tempo di utilizzo",
             isCorrect: true,
             feedback: `Ottimo! In ${t.industry}, i dati controintuitivi spesso nascondono gli insight più preziosi.`,
           },
           {
             id: "b",
-            text: "Ignori l'anomalia, probabilmente è un errore nei dati",
+            text: "Verifichi se l'anomalia dipende da un errore nei dati o nella raccolta prima di trarre qualsiasi conclusione",
             feedback: "Ignorare anomalie è un errore. Spesso le scoperte più importanti sembrano 'strane' all'inizio.",
           },
           {
             id: "c",
-            text: "Presenti il dato così com'è, sarà il business a interpretarlo",
+            text: "Inserisci il dato nel report lasciando al team di business l'interpretazione e le decisioni che ne conseguono",
             feedback: "Presentare senza interpretare non aggiunge valore. Il tuo lavoro è spiegare, non solo mostrare.",
           },
         ],
