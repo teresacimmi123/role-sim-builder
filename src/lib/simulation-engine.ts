@@ -506,7 +506,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         choices: [
           {
             id: "a",
-            text: `"Il collo di bottiglia è la landing page: 380 click ma solo 12 conversioni. Propongo un A/B test sulla pagina per migliorare il tasso"`,
+            text: `"Il problema è la pagina dove le persone arrivano dopo il click: su 380 click, solo 12 hanno completato l'azione. Propongo di creare due versioni della pagina e testare quale funziona meglio"`,
             isCorrect: true,
             feedback: `Eccellente! Hai identificato dove si perde il traffico e proposto una soluzione per ${t.industry}.`,
           },
