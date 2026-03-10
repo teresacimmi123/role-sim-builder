@@ -802,7 +802,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
           {
             id: "b",
-            text: "Sollevi il tema nel daily standup in modo trasparente così tutto il team è allineato e può contribuire a risolvere",
+            text: "Sollevi il tema nella riunione di aggiornamento quotidiana in modo trasparente così tutto il team è allineato e può contribuire",
             feedback: "Il feedback negativo in pubblico umilia e crea risentimento. Sempre in privato.",
           },
           {
