@@ -462,7 +462,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 4,
         title: "Deploy Venerdì Sera",
-        context: `Sono le 17:30 di venerdì. La feature per ${t.companyName} è pronta. Il lead chiede: "Puoi fare deploy? Lunedì il cliente vuole vedere la novità."`,
+        context: `Sono le 17:30 di venerdì. La nuova funzionalità per ${t.companyName} è pronta. Il responsabile ti chiede: "Puoi pubblicarla online così gli utenti la vedono? Lunedì il cliente vuole vedere la novità."`,
         challenge: "Cosa fai?",
         technicalTerms: [
           { term: "Deploy", explanation: "Processo di pubblicazione del codice su un server per renderlo disponibile agli utenti." },
