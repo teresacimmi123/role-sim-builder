@@ -241,7 +241,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
           <span className="font-medium">Una cosa utile da sapere</span>
         </div>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          <strong className="text-foreground">{currentTask.skill}</strong>: {currentTask.lesson}
+          {currentTask.lesson}
         </p>
       </Card>
 
