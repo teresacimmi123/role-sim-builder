@@ -664,7 +664,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 4,
         title: "Presentazione ai Non-Tecnici",
-        context: `Devi presentare i risultati della tua analisi al team marketing di ${t.companyName}. Hai scoperto che gli utenti si dividono in 3 gruppi con abitudini molto diverse tra loro.`,
+        context: `Sono le 17:00. Devi presentare i risultati della tua analisi al team marketing di ${t.companyName}. Hai scoperto che gli utenti si dividono in 3 gruppi con abitudini molto diverse tra loro.`,
         challenge: "Come presenti i risultati a colleghi che non hanno competenze tecniche?",
         technicalTerms: [],
         choices: [
