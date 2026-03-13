@@ -511,7 +511,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
         <p className="text-sm text-muted-foreground leading-relaxed">{scenario.conclusion}</p>
       </Card>
 
-      <Card variant="gradient" className="p-6 border-primary/30">
+      <Card variant="gradient" className="p-6 border-primary/30 border-l-4 border-l-[#00c896]">
         <h3 className="text-xl font-bold mb-3 text-primary flex items-center gap-2">
           <Star className="w-5 h-5" />
           Il tuo prossimo passo
