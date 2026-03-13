@@ -410,7 +410,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
         size="lg" 
         onClick={() => setPhase("recap")} 
         className="w-full"
-        disabled={!contactData.name || !contactData.email || !contactData.phone}
+        disabled={!isContactFormValid}
       >
         Vedi il mio Report
         <ArrowRight className="w-5 h-5" />
