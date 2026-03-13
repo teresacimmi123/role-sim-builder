@@ -151,7 +151,7 @@ const defaultTheme: InterestTheme = {
   industry: "Tech Innovazione",
   companyName: "NexTech",
   companyDescription: "una startup tecnologica in rapida crescita che sviluppa prodotti digitali innovativi",
-  productContext: "una piattaforma SaaS per la gestione di progetti complessi",
+  productContext: "una piattaforma online in abbonamento per la gestione di progetti complessi",
 };
 
 const detectInterestTheme = (interests: string, background: string): InterestTheme => {
