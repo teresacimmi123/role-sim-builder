@@ -243,13 +243,10 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
     "UX/UI Design": (t) => [
       {
         id: 1,
-        title: "Analisi del Brief del Cliente",
+        title: "Analisi della Richiesta del Cliente",
         context: `Sono le 9:15. Trovi un messaggio del tuo responsabile di ${t.companyName}: c'è un nuovo progetto, migliorare ${t.productContext}. Gli utenti si lamentano: "L'esperienza è confusa e non capisco cosa fare".`,
         challenge: `Devi capire qual è il VERO problema prima di proporre soluzioni. Quale approccio scegli?`,
-        technicalTerms: [
-          { term: "Brief", explanation: "Documento che riassume le richieste e gli obiettivi di un progetto, fornito dal cliente o dal team." },
-          { term: "Slack", explanation: "Piattaforma di messaggistica molto usata nei team di lavoro per comunicare in tempo reale." }
-        ],
+        technicalTerms: [],
         choices: [
           {
             id: "a",
@@ -264,8 +261,8 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
           {
             id: "c",
-            text: "Organizzi un focus group con utenti reali del prodotto per raccogliere feedback qualitativi diretti",
-            feedback: "I focus group sono utili, ma prima servono dati quantitativi per sapere cosa chiedere. Rischi di basarti su opinioni.",
+            text: "Organizzi un incontro con utenti reali del prodotto per raccogliere opinioni dirette",
+            feedback: "Gli incontri con gli utenti sono utili, ma prima servono dati quantitativi per sapere cosa chiedere. Rischi di basarti su opinioni.",
           },
         ],
         skill: "Problem Framing",
@@ -273,11 +270,11 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       },
       {
         id: 2,
-        title: "Creazione User Persona",
+        title: "Scelta del Profilo Utente di Riferimento",
         context: `Hai analizzato i dati di ${t.companyName}. Il 62% delle persone abbandona l'app dalla schermata principale. Il team ti chiede di scegliere un profilo-tipo di utente su cui concentrare il nuovo design, basandoti sulle interviste fatte la settimana scorsa.`,
         challenge: "Hai 3 profili di utenti reali. Quale scegli come riferimento PRINCIPALE per il progetto?",
         technicalTerms: [
-          { term: "User Persona", explanation: "Personaggio fittizio che rappresenta un gruppo di utenti reali, usato per progettare soluzioni centrate sulle loro esigenze." },
+          { term: "Profilo-tipo (Persona)", explanation: "Personaggio fittizio che rappresenta un gruppo di utenti reali, usato per progettare soluzioni centrate sulle loro esigenze." },
           { term: "Abbandoni", explanation: "Quando un utente lascia un'app o un sito senza completare un'azione prevista (es. acquisto, registrazione)." }
         ],
         choices: [
@@ -285,38 +282,36 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: `Elena, 28 anni, appassionata di ${t.industry}: usa l'app ogni giorno ma è frustrata dalla mancanza di personalizzazione`,
             isCorrect: true,
-            feedback: `Ottima scelta! Elena rappresenta il core user di ${t.companyName} e il suo pain point è direttamente collegato al problema principale.`,
+            feedback: `Ottima scelta! Elena rappresenta l'utente principale di ${t.companyName} e il suo problema è direttamente collegato alla questione centrale.`,
           },
           {
             id: "b",
             text: "Marco, 45 anni, professionista: usa l'app di rado ma genera molto valore economico quando la utilizza",
-            feedback: `Marco porta valore economico ma non rappresenta l'utente tipo di ${t.industry}. Ottimizzare per lui potrebbe alienare il core.`,
+            feedback: `Marco porta valore economico ma non rappresenta l'utente tipo di ${t.industry}. Ottimizzare per lui potrebbe allontanare gli utenti principali.`,
           },
           {
             id: "c",
             text: "Sofia, 19 anni, studentessa: prova molte app concorrenti ed è sempre alla ricerca della soluzione perfetta",
-            feedback: "Sofia è interessante ma troppo volatile. Nel " + t.industry + " serve fidelizzare prima di espandere.",
+            feedback: "Sofia è interessante ma troppo instabile. Nel " + t.industry + " serve fidelizzare prima di espandere.",
           },
         ],
         skill: "User Research",
-        lesson: `In questi ruoli, la persona primaria deve rappresentare chi usa davvero il prodotto, non chi vorresti che lo usasse.`,
+        lesson: `In questi ruoli, il profilo-tipo primario deve rappresentare chi usa davvero il prodotto, non chi vorresti che lo usasse.`,
       },
       {
         id: 3,
-        title: "Wireframing della Soluzione",
+        title: "Progettazione della Soluzione",
         context: `Con Elena come riferimento, sai che il problema è la mancanza di personalizzazione in ${t.productContext}. Apri il programma di design e devi disegnare la bozza della nuova esperienza per ${t.companyName}.`,
         challenge: "Quale strategia di design scegli per risolvere il problema?",
         technicalTerms: [
-          { term: "Wireframe", explanation: "Bozza schematica di un'interfaccia, senza colori o grafiche elaborate, che mostra la struttura e la disposizione degli elementi." },
-          { term: "Figma", explanation: "Software di design collaborativo molto usato per creare interfacce, prototipi e wireframe." },
-          { term: "Onboarding", explanation: "Processo di accoglienza che guida i nuovi utenti a capire come usare un'app o servizio." }
+          { term: "Bozza (wireframe)", explanation: "Schema semplificato di un'interfaccia, senza colori o grafiche elaborate, che mostra la struttura e la disposizione degli elementi." }
         ],
         choices: [
           {
             id: "a",
-            text: "Progettare un onboarding che raccoglie le preferenze dell'utente e personalizza l'esperienza dal primo accesso",
+            text: "Progettare un percorso di accoglienza iniziale che raccoglie le preferenze dell'utente e personalizza l'esperienza dal primo accesso",
             isCorrect: true,
-            feedback: `Eccellente! Nel ${t.industry}, la personalizzazione fin dall'inizio crea engagement. L'utente si sente capito e continua a usare l'app.`,
+            feedback: `Eccellente! Nel ${t.industry}, la personalizzazione fin dall'inizio crea coinvolgimento. L'utente si sente capito e continua a usare l'app.`,
           },
           {
             id: "b",
@@ -334,33 +329,30 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       },
       {
         id: 4,
-        title: "Review con il Team",
+        title: "Confronto con il Team",
         context: `Sono le 16:00. Presenti la tua bozza al team di ${t.companyName}. Lo sviluppatore più esperto dice: "Per personalizzare davvero l'esperienza ci serve un sistema che suggerisca contenuti su misura per ogni utente. Costruirlo richiederebbe 3 mesi."`,
         challenge: "Come rispondi?",
-        technicalTerms: [
-          { term: "MVP", explanation: "Minimum Viable Product: versione base di un prodotto con le funzionalità essenziali per testare l'idea." },
-          { term: "Sistema di raccomandazione", explanation: "Algoritmo che suggerisce contenuti personalizzati basandosi sui dati e comportamenti dell'utente." }
-        ],
+        technicalTerms: [],
         choices: [
           {
             id: "a",
-            text: `"Possiamo partire con regole semplici basate sulle scelte dell'onboarding e poi evolvere verso l'AI in una fase 2?"`,
+            text: `"Possiamo partire con regole semplici basate sulle scelte dell'accoglienza iniziale e poi evolvere verso l'intelligenza artificiale in una fase 2?"`,
             isCorrect: true,
-            feedback: `Perfetto! Hai proposto un MVP che mantiene il valore UX. In ${t.industry}, meglio lanciare qualcosa di buono ora che qualcosa di perfetto mai.`,
+            feedback: `Perfetto! Hai proposto una versione base funzionante che mantiene il valore per l'utente. In ${t.industry}, meglio lanciare qualcosa di buono ora che qualcosa di perfetto mai.`,
           },
           {
             id: "b",
-            text: `"L'esperienza utente è la nostra priorità: propongo di riorganizzare la roadmap per trovare il tempo necessario"`,
+            text: `"L'esperienza utente è la nostra priorità: propongo di riorganizzare il piano di sviluppo per trovare il tempo necessario"`,
             feedback: `Ignorare i vincoli crea conflitti. In ${t.companyName} come in ogni azienda, il designer collabora, non impone.`,
           },
           {
             id: "c",
-            text: `"Ha senso, togliamo la personalizzazione dall'MVP e puntiamo su un sistema di filtri più veloce da implementare"`,
+            text: `"Ha senso, togliamo la personalizzazione dalla prima versione e puntiamo su un sistema di filtri più veloce da realizzare"`,
             feedback: "Arrendersi alla prima obiezione significa perdere una buona soluzione. Prima cerca compromessi.",
           },
         ],
         skill: "Stakeholder Management",
-        lesson: `I designer migliori sanno negoziare tra UX ideale e vincoli reali. In questo lavoro come in ogni altro, la soluzione perfetta irrealizzabile non esiste.`,
+        lesson: `I designer migliori sanno negoziare tra esperienza utente ideale e vincoli reali. In questo lavoro come in ogni altro, la soluzione perfetta irrealizzabile non esiste.`,
       },
     ],
     "Web Development": (t) => [
