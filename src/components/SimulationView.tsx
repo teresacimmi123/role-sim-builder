@@ -507,8 +507,8 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
       </Card>
 
       <Card variant="glass" className="p-6">
-        <h3 className="font-semibold mb-3">Perché questo percorso fa per te</h3>
-        <p className="text-muted-foreground leading-relaxed">{scenario.conclusion}</p>
+        <h3 className="text-xl font-bold mb-3">Perché questo percorso fa per te</h3>
+        <p className="text-sm text-muted-foreground leading-relaxed">{scenario.conclusion}</p>
       </Card>
 
       <Card variant="gradient" className="p-6 border-primary/30">
