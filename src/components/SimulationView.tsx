@@ -364,7 +364,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
         >
           <Trophy className="w-8 h-8 text-primary" />
         </motion.div>
-        <h2 className="text-2xl font-bold">Ottimo lavoro!</h2>
+        <h2 className="text-3xl font-extrabold">Ottimo lavoro!</h2>
         <p className="text-muted-foreground mt-2">
           Per ricevere il tuo report personalizzato, inserisci i tuoi dati
         </p>
