@@ -41,6 +41,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
   const [expandedFinalChoice, setExpandedFinalChoice] = useState<string | null>(null);
   const [contactData, setContactData] = useState({ name: "", email: "", phone: "" });
   const [expandedRecapTask, setExpandedRecapTask] = useState<number | null>(null);
+  const [recapSections, setRecapSections] = useState<Record<string, boolean>>({ risultati: true, percorso: false, prossimoPasso: false });
   const [touchedFields, setTouchedFields] = useState({ email: false, phone: false });
 
   const isEmailValid = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
