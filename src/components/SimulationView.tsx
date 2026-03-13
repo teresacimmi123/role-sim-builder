@@ -471,15 +471,36 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
         </h3>
         <div className="space-y-2">
           {taskResults.map((result, index) => (
-            <div key={index} className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50">
-              <div className={`w-6 h-6 rounded-full flex items-center justify-center ${result.choice.isCorrect ? "bg-primary/20" : "bg-accent/20"}`}>
-                {result.choice.isCorrect ? (
-                  <CheckCircle2 className="w-4 h-4 text-primary" />
-                ) : (
-                  <Lightbulb className="w-4 h-4 text-accent" />
+            <div key={index} className="rounded-lg bg-secondary/50 overflow-hidden">
+              <button
+                onClick={() => setExpandedRecapTask(expandedRecapTask === index ? null : index)}
+                className="w-full flex items-center gap-3 p-3 text-left"
+              >
+                <div className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 ${result.choice.isCorrect ? "bg-primary/20" : "bg-accent/20"}`}>
+                  {result.choice.isCorrect ? (
+                    <CheckCircle2 className="w-4 h-4 text-primary" />
+                  ) : (
+                    <Lightbulb className="w-4 h-4 text-accent" />
+                  )}
+                </div>
+                <span className="text-sm flex-1">{result.task.title}</span>
+                <ChevronDown className={`w-4 h-4 text-muted-foreground shrink-0 transition-transform ${expandedRecapTask === index ? "rotate-180" : ""}`} />
+              </button>
+              <AnimatePresence>
+                {expandedRecapTask === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-3 pb-3 ml-9">
+                      <p className="text-sm text-muted-foreground leading-relaxed">{result.task.lesson}</p>
+                    </div>
+                  </motion.div>
                 )}
-              </div>
-              <span className="text-sm flex-1">{result.task.title}</span>
+              </AnimatePresence>
             </div>
           ))}
         </div>
