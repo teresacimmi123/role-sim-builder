@@ -529,7 +529,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
           </div>
           <div>
             <p className="text-sm text-muted-foreground">Il Master consigliato per te</p>
-            <h3 className="text-lg font-bold text-primary">{scenario.masterRecommendation.name}</h3>
+            <h3 className="text-xl font-extrabold text-primary">{scenario.masterRecommendation.name}</h3>
           </div>
         </div>
         <p className="text-foreground leading-relaxed mb-4">
