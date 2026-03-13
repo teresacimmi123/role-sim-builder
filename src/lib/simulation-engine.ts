@@ -814,16 +814,19 @@ const generatePersonalizedFinalScenario = (area: string, theme: InterestTheme) =
         {
           id: "a",
           text: "Responsabile Design: guidare un team di 3 junior sul prossimo prodotto",
+          description: "Chi fa questo lavoro coordina altri designer, assegna compiti, dà feedback sui progetti e si assicura che il risultato finale sia coerente. È un ruolo per chi ama far crescere le persone e vedere il quadro d'insieme, più che stare sui dettagli.",
           outcome: `Scegli la leadership. In un anno, il tuo team lancia un prodotto che diventa il cuore di ${theme.companyName}. Impari che far crescere altri è più gratificante che brillare da solo.`,
         },
         {
           id: "b",
           text: "Specializzazione: diventare l'esperto del sistema di design condiviso dell'azienda",
+          description: "Chi fa questo lavoro crea le regole visive che tutto il team usa: colori, bottoni, layout, componenti riutilizzabili. È un ruolo per chi ama l'ordine, la precisione e costruire strumenti che rendono il lavoro degli altri più facile e veloce.",
           outcome: `Scegli la profondità. Costruisci un sistema di design condiviso che accelera lo sviluppo del 40%. Diventi la persona che tutti consultano. La specializzazione paga.`,
         },
         {
           id: "c",
           text: "Progettazione Prodotto: passare a un ruolo più strategico per avere più impatto sulle decisioni",
+          description: "Chi fa questo lavoro decide quali funzionalità costruire e perché, parlando con utenti, team tecnico e direzione. È un ruolo per chi vuole influenzare le decisioni importanti e ragionare su cosa ha senso creare, non solo su come appare.",
           outcome: `Scegli l'impatto. Lavori a stretto contatto con il CEO e i responsabili. Le tue decisioni influenzano la direzione dell'azienda. Il design diventa strategia.`,
         },
       ],
