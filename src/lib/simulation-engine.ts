@@ -692,19 +692,20 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
     "Non lo so": (t) => [
       {
         id: 1,
-        title: "Kickoff di Progetto",
+        title: "Avvio del Progetto",
         context: `Sono le 9:00. Entri alla prima riunione del nuovo progetto per ${t.companyName}: sviluppare ${t.productContext}. Ci sono il grafico, il programmatore e i responsabili del progetto.`,
         challenge: "Qual è la prima cosa da chiarire?",
+        technicalTerms: [],
         choices: [
           {
             id: "a",
-            text: "Definire gli obiettivi concreti e le metriche di successo: cosa significa esattamente 'fatto bene' per questo progetto?",
+            text: "Definire gli obiettivi concreti e i criteri di successo: cosa significa esattamente 'fatto bene' per questo progetto?",
             isCorrect: true,
             feedback: `Perfetto! Senza obiettivi chiari, ogni progetto in ${t.industry} rischia di andare alla deriva.`,
           },
           {
             id: "b",
-            text: "Impostare subito un piano operativo con timeline, milestone e responsabilità chiare per ogni membro del team",
+            text: "Impostare subito un piano operativo con calendario, traguardi intermedi e responsabilità chiare per ogni membro del team",
             feedback: "Il piano viene dopo gli obiettivi. Come pianifichi se non sai dove vuoi arrivare?",
           },
           {
@@ -721,22 +722,23 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         title: "Conflitto tra Team",
         context: `Il grafico e il programmatore di ${t.companyName} non sono d'accordo su una funzionalità. Il grafico vuole un effetto visivo elaborato, il programmatore dice che renderebbe l'app troppo lenta.`,
         challenge: "Come gestisci la situazione?",
+        technicalTerms: [],
         choices: [
           {
             id: "a",
-            text: "Faciliti una discussione chiedendo qual è l'obiettivo dell'animazione e se esiste un compromesso che soddisfi entrambi",
+            text: "Faciliti una discussione chiedendo qual è l'obiettivo dell'effetto visivo e se esiste un compromesso che soddisfi entrambi",
             isCorrect: true,
             feedback: `Ottimo! In ${t.industry}, il coordinatore non decide ma facilita. L'obiettivo comune sblocca i conflitti.`,
           },
           {
             id: "b",
-            text: "Dai priorità alla posizione del developer perché la performance dell'app ha un impatto diretto sull'esperienza utente",
+            text: "Dai priorità alla posizione del programmatore perché la velocità dell'app ha un impatto diretto sull'esperienza utente",
             feedback: "Prendere parte crea risentimento. Non sei un giudice, sei un facilitatore.",
           },
           {
             id: "c",
-            text: "Porti la questione al manager del team perché prenda una decisione definitiva avendo una visione d'insieme più ampia",
-            feedback: "Escalare subito ti fa sembrare incapace di gestire conflitti. Prima prova a risolverlo.",
+            text: "Porti la questione al responsabile del team perché prenda una decisione definitiva avendo una visione d'insieme più ampia",
+            feedback: "Passare subito la palla al capo ti fa sembrare incapace di gestire i conflitti. Prima prova a risolverlo.",
           },
         ],
         skill: "Conflict Resolution",
@@ -744,25 +746,26 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       },
       {
         id: 3,
-        title: "Deadline a Rischio",
+        title: "Scadenza a Rischio",
         context: `Mancano 5 giorni alla presentazione di ${t.productContext} a un cliente importante. Il team è indietro del 30% rispetto al piano previsto.`,
         challenge: "Come affronti la situazione?",
+        technicalTerms: [],
         choices: [
           {
             id: "a",
-            text: "Convochi una riunione di prioritizzazione per distinguere cosa è essenziale per la demo e cosa si può rimandare",
+            text: "Convochi una riunione per distinguere cosa è essenziale per la presentazione e cosa si può rimandare",
             isCorrect: true,
-            feedback: `Perfetto! In ${t.industry}, meglio consegnare meno ma funzionante che tutto ma rotto.`,
+            feedback: `Perfetto! In ${t.industry}, meglio consegnare meno ma funzionante che tutto ma incompleto.`,
           },
           {
             id: "b",
             text: "Organizzi un piano di lavoro intensivo per il team così da recuperare il ritardo e consegnare tutto in tempo",
-            feedback: "Gli straordinari creano burnout e errori. Nel lungo periodo, peggiori le cose.",
+            feedback: "Gli straordinari creano esaurimento da sovraccarico ed errori. Nel lungo periodo, peggiori le cose.",
           },
           {
             id: "c",
-            text: "Contatti il cliente in anticipo per proporre di spostare la demo di una settimana e consegnare un lavoro completo",
-            feedback: "Rimandare è l'ultima opzione. Prima vedi se puoi consegnare un MVP valido.",
+            text: "Contatti il cliente in anticipo per proporre di spostare la presentazione di una settimana e consegnare un lavoro completo",
+            feedback: "Rimandare è l'ultima opzione. Prima vedi se puoi consegnare una versione base funzionante.",
           },
         ],
         skill: "Scope Management",
@@ -773,26 +776,27 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         title: "Feedback al Team",
         context: `Un membro del team di ${t.companyName} sta rendendo meno del solito. Non rispetta le scadenze e la qualità del suo lavoro è calata.`,
         challenge: "Come affronti la conversazione?",
+        technicalTerms: [],
         choices: [
           {
             id: "a",
-            text: "Organizzi un incontro 1-to-1 privato per capire cosa sta succedendo e offrire supporto concreto alla persona",
+            text: "Organizzi un incontro privato faccia a faccia per capire cosa sta succedendo e offrire supporto concreto alla persona",
             isCorrect: true,
             feedback: `Perfetto! Partire con curiosità, non giudizio. Spesso ci sono motivi non visibili.`,
           },
           {
             id: "b",
             text: "Sollevi il tema nella riunione di aggiornamento quotidiana in modo trasparente così tutto il team è allineato e può contribuire",
-            feedback: "Il feedback negativo in pubblico umilia e crea risentimento. Sempre in privato.",
+            feedback: "Il riscontro negativo in pubblico umilia e crea risentimento. Sempre in privato.",
           },
           {
             id: "c",
             text: "Gli dai ancora qualche settimana di tempo per riprendere il ritmo, monitorando la situazione senza metterlo sotto pressione",
-            feedback: "Ignorare il problema lo peggiora. Il feedback tempestivo aiuta tutti.",
+            feedback: "Ignorare il problema lo peggiora. Il riscontro tempestivo aiuta tutti.",
           },
         ],
         skill: "People Management",
-        lesson: `Nel digitale, il feedback è un regalo. Darlo bene è un'arte che si impara.`,
+        lesson: `Nel digitale, il riscontro è un regalo. Darlo bene è un'arte che si impara.`,
       },
     ],
   };
