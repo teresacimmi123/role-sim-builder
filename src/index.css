@@ -69,8 +69,20 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply text-foreground font-sans antialiased;
     font-family: 'Outfit', sans-serif;
+    background: radial-gradient(ellipse at center, #1a0a3d 0%, #0d0520 70%);
+    background-attachment: fixed;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, hsl(260 50% 40% / 0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
 }
 
