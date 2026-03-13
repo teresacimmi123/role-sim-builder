@@ -886,16 +886,19 @@ const generatePersonalizedFinalScenario = (area: string, theme: InterestTheme) =
         {
           id: "a",
           text: "Scienza dei dati: costruire modelli predittivi e algoritmi di apprendimento automatico",
+          description: "Chi fa questo lavoro insegna ai computer a fare previsioni basate sui dati: quanti clienti perderemo? Quale prodotto venderà di più? Giorno per giorno significa esplorare dati, costruire modelli matematici e testarli. È per chi ama la logica, i numeri e risolvere problemi complessi.",
           outcome: `Scegli l'intelligenza artificiale. Costruisci modelli che predicono il comportamento utenti nel ${theme.industry}. L'azienda prende decisioni prima che i problemi emergano. Sei nel futuro.`,
         },
         {
           id: "b",
           text: "Responsabile analisi: guidare le analisi di un'intera area aziendale",
+          description: "Chi fa questo lavoro diventa il punto di riferimento per un'area dell'azienda: marketing, vendite o prodotto. Giorno per giorno significa rispondere alle domande dei colleghi con i dati, creare rapporti e presentare scoperte ai responsabili. È per chi ama tradurre numeri in decisioni concrete.",
           outcome: `Scegli l'impatto. Ogni decisione dell'area aziendale passa dalle tue scoperte. Impari il business profondamente. I dati diventano strategia.`,
         },
         {
           id: "c",
           text: "Ingegneria dei dati: costruire l'infrastruttura che rende possibile tutto il resto",
+          description: "Chi fa questo lavoro costruisce i sistemi che raccolgono, organizzano e rendono disponibili i dati per tutta l'azienda. Giorno per giorno significa scrivere programmi che elaborano grandi quantità di informazioni e assicurarsi che tutto funzioni. È per chi ama costruire cose che durano e rendono il lavoro degli altri possibile.",
           outcome: `Scegli le fondamenta. Costruisci flussi di elaborazione che trasformano dati grezzi in scoperte utili. Ogni analista lavora meglio grazie alla tua architettura.`,
         },
       ],
