@@ -36,7 +36,8 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
   const [currentTaskIndex, setCurrentTaskIndex] = useState(0);
   const [selectedTaskChoice, setSelectedTaskChoice] = useState<TaskChoice | null>(null);
   const [taskResults, setTaskResults] = useState<{ task: Task; choice: TaskChoice }[]>([]);
-  const [selectedFinalChoice, setSelectedFinalChoice] = useState<{ id: string; text: string; outcome: string } | null>(null);
+  const [selectedFinalChoice, setSelectedFinalChoice] = useState<{ id: string; text: string; description: string; outcome: string } | null>(null);
+  const [expandedFinalChoice, setExpandedFinalChoice] = useState<string | null>(null);
   const [contactData, setContactData] = useState({ name: "", email: "", phone: "" });
   const [touchedFields, setTouchedFields] = useState({ email: false, phone: false });
 
