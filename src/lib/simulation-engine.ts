@@ -747,7 +747,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 3,
         title: "Scadenza a Rischio",
-        context: `Mancano 5 giorni alla presentazione di ${t.productContext} a un cliente importante. Il team è indietro del 30% rispetto al piano previsto.`,
+        context: `Sono le 14:30. Mancano 5 giorni alla presentazione di ${t.productContext} a un cliente importante. Il team è indietro del 30% rispetto al piano previsto.`,
         challenge: "Come affronti la situazione?",
         technicalTerms: [],
         choices: [
