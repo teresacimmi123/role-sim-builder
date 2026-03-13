@@ -13,7 +13,6 @@ import {
   Lightbulb,
   Target,
   AlertCircle,
-  AlertCircle,
   RotateCcw,
   Trophy,
   Star,
@@ -22,7 +21,8 @@ import {
   Shield,
   Mail,
   Phone,
-  User
+  User,
+  ChevronDown
 } from "lucide-react";
 
 interface SimulationViewProps {
