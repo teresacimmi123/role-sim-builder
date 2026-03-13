@@ -467,7 +467,6 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
                 )}
               </div>
               <span className="text-sm flex-1">{result.task.title}</span>
-              <span className="text-xs text-muted-foreground">{result.task.skill}</span>
             </div>
           ))}
         </div>
