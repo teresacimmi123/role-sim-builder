@@ -585,17 +585,18 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         title: "Richiesta dal Business",
         context: `Sono le 9:00. Il CEO di ${t.companyName} ti scrive: "Mi servono i numeri su come è andato il trimestre per la riunione con gli investitori di domani." Hai 24 ore.`,
         challenge: "Come affronti la richiesta?",
+        technicalTerms: [],
         choices: [
           {
             id: "a",
-            text: "Chiedi al CEO quali metriche specifiche servono e qual è il messaggio che vuole trasmettere alla board",
+            text: "Chiedi al CEO quali indicatori specifici servono e qual è il messaggio che vuole trasmettere agli investitori",
             isCorrect: true,
             feedback: `Perfetto! In ${t.industry}, capire il contesto evita di produrre dati inutili. Il CEO probabilmente non sa esattamente cosa vuole.`,
           },
           {
             id: "b",
-            text: "Prepari un report completo con tutte le metriche disponibili organizzate per area, così la board ha il quadro intero",
-            feedback: "Troppi dati = nessuna storia. La board ha 10 minuti, non 2 ore.",
+            text: "Prepari un rapporto completo con tutti gli indicatori disponibili organizzati per area, così gli investitori hanno il quadro intero",
+            feedback: "Troppi dati = nessuna storia. Gli investitori hanno 10 minuti, non 2 ore.",
           },
           {
             id: "c",
@@ -608,41 +609,43 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       },
       {
         id: 2,
-        title: "Data Quality Issue",
+        title: "Problema di Qualità dei Dati",
         context: `Stai analizzando i dati degli utenti di ${t.productContext}. Ti accorgi che nel 15% dei casi manca un'informazione importante: il punteggio che misura quanto gli utenti sono attivi.`,
         challenge: "Come gestisci queste informazioni mancanti?",
+        technicalTerms: [],
         choices: [
           {
             id: "a",
-            text: "Analizzi il pattern dei valori mancanti per capire se sono casuali o sistematici, poi decidi la strategia migliore",
+            text: "Analizzi la distribuzione dei valori mancanti per capire se sono casuali o sistematici, poi decidi la strategia migliore",
             isCorrect: true,
-            feedback: `Eccellente! In ${t.industry}, i missing values raccontano una storia. Capire PERCHÉ mancano è fondamentale.`,
+            feedback: `Eccellente! In ${t.industry}, i valori mancanti raccontano una storia. Capire PERCHÉ mancano è fondamentale.`,
           },
           {
             id: "b",
-            text: "Li sostituisci con la media del campo per mantenere il dataset completo e non perdere il 15% dei record",
-            feedback: "La media può introdurre bias. Se i missing sono sistematici (es. utenti che non completano), la media è sbagliata.",
+            text: "Li sostituisci con la media del campo per mantenere l'insieme di dati completo e non perdere il 15% delle righe",
+            feedback: "La media può introdurre una distorsione. Se i valori mancano in modo sistematico (es. utenti che non completano il profilo), la media è fuorviante.",
           },
           {
             id: "c",
             text: "Li escludi dall'analisi per lavorare solo su dati certi e presentare risultati basati su informazioni verificate",
-            feedback: `Escludere il 15% può introdurre selection bias. In ${t.industry}, perderesti insight importanti.`,
+            feedback: `Escludere il 15% può introdurre una distorsione nella selezione. In ${t.industry}, perderesti informazioni importanti.`,
           },
         ],
         skill: "Data Quality",
-        lesson: `In questi ruoli, la data quality è il fondamento. Garbage in, garbage out.`,
+        lesson: `In questi ruoli, la qualità dei dati è il fondamento. Se i dati in ingresso sono scadenti, i risultati saranno scadenti.`,
       },
       {
         id: 3,
-        title: "Insight Controintuitivo",
+        title: "Risultato Controintuitivo",
         context: `La tua analisi per ${t.companyName} mostra un risultato strano: gli utenti che usano meno l'app sono quelli che continuano a usarla più a lungo nel tempo. Sembra il contrario di quello che ti aspetteresti.`,
         challenge: "Come procedi?",
+        technicalTerms: [],
         choices: [
           {
             id: "a",
             text: "Indaghi il segmento per capire chi sono questi utenti e perché ottengono valore con meno tempo di utilizzo",
             isCorrect: true,
-            feedback: `Ottimo! In ${t.industry}, i dati controintuitivi spesso nascondono gli insight più preziosi.`,
+            feedback: `Ottimo! In ${t.industry}, i dati controintuitivi spesso nascondono le scoperte più preziose.`,
           },
           {
             id: "b",
@@ -651,7 +654,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
           {
             id: "c",
-            text: "Inserisci il dato nel report lasciando al team di business l'interpretazione e le decisioni che ne conseguono",
+            text: "Inserisci il dato nel rapporto lasciando al team commerciale l'interpretazione e le decisioni che ne conseguono",
             feedback: "Presentare senza interpretare non aggiunge valore. Il tuo lavoro è spiegare, non solo mostrare.",
           },
         ],
@@ -663,12 +666,13 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         title: "Presentazione ai Non-Tecnici",
         context: `Devi presentare i risultati della tua analisi al team marketing di ${t.companyName}. Hai scoperto che gli utenti si dividono in 3 gruppi con abitudini molto diverse tra loro.`,
         challenge: "Come presenti i risultati a colleghi che non hanno competenze tecniche?",
+        technicalTerms: [],
         choices: [
           {
             id: "a",
-            text: "Dai un nome descrittivo a ogni cluster e mostri uno o due insight concreti e azionabili per ciascun gruppo",
+            text: "Dai un nome descrittivo a ogni gruppo e mostri una o due scoperte concrete e utilizzabili per ciascuno",
             isCorrect: true,
-            feedback: `Perfetto! 'Gli Esploratori', 'I Fedeli', 'I Dormienti' sono più memorabili di 'Cluster 1, 2, 3'.`,
+            feedback: `Perfetto! 'Gli Esploratori', 'I Fedeli', 'I Dormienti' sono più memorabili di 'Gruppo 1, 2, 3'.`,
           },
           {
             id: "b",
@@ -677,12 +681,12 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
           {
             id: "c",
-            text: "Prepari un report scritto dettagliato con tutti i dati e lo invii via email così ognuno può leggerlo con calma",
-            feedback: "Il report scritto finisce nel dimenticatoio. La presentazione crea allineamento e discussione.",
+            text: "Prepari un documento scritto dettagliato con tutti i dati e lo invii via email così ognuno può leggerlo con calma",
+            feedback: "Il documento scritto finisce nel dimenticatoio. La presentazione crea allineamento e discussione.",
           },
         ],
         skill: "Data Storytelling",
-        lesson: `In questo lavoro, un insight non comunicato bene è un insight sprecato.`,
+        lesson: `In questo lavoro, una scoperta non comunicata bene è una scoperta sprecata.`,
       },
     ],
     "Non lo so": (t) => [
