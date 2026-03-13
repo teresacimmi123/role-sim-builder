@@ -162,7 +162,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
         
         <div className="space-y-4">
           <div className="p-4 rounded-xl bg-secondary/30">
-            <p className="text-foreground leading-relaxed">{currentTask.context}</p>
+            <p className="text-sm text-foreground leading-relaxed">{currentTask.context}</p>
           </div>
           
           {/* Technical Terms Explanation */}
