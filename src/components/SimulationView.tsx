@@ -460,7 +460,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
         >
           <Trophy className="w-10 h-10 text-primary" />
         </motion.div>
-        <h2 className="text-2xl font-bold">Hai vissuto una giornata da {scenario.role} vero.</h2>
+        <h2 className="text-2xl font-bold">Hai vissuto una giornata da {scenario.role}.</h2>
       </div>
 
       <Card variant="gradient" className="p-6">
