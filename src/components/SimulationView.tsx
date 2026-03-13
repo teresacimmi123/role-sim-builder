@@ -85,7 +85,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
       exit={{ opacity: 0 }}
       className="space-y-6"
     >
-      <Card variant="gradient" className="p-6">
+      <Card variant="gradient" className="p-6 border-l-4 border-l-[#00c896]">
         <div className="flex items-center gap-3 mb-4">
           <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center">
             <Briefcase className="w-6 h-6 text-primary" />
@@ -511,7 +511,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
         <p className="text-sm text-muted-foreground leading-relaxed">{scenario.conclusion}</p>
       </Card>
 
-      <Card variant="gradient" className="p-6 border-primary/30">
+      <Card variant="gradient" className="p-6 border-primary/30 border-l-4 border-l-[#00c896]">
         <h3 className="text-xl font-bold mb-3 text-primary flex items-center gap-2">
           <Star className="w-5 h-5" />
           Il tuo prossimo passo
@@ -522,7 +522,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
       </Card>
 
       {/* Master Recommendation */}
-      <Card className="p-6 bg-gradient-to-br from-primary/20 to-accent/10 border-2 border-primary/40">
+      <Card className="p-6 bg-gradient-to-br from-primary/20 to-accent/10 border-2 border-primary/40 border-l-4 border-l-[#00c896]">
         <div className="flex items-center gap-3 mb-4">
           <div className="w-12 h-12 rounded-xl bg-primary/30 flex items-center justify-center">
             <Trophy className="w-6 h-6 text-primary" />
