@@ -95,7 +95,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
             <h2 className="text-2xl md:text-3xl font-extrabold text-gradient-primary">{scenario.role}</h2>
           </div>
         </div>
-        <p className="text-muted-foreground leading-relaxed">{scenario.roleExplanation}</p>
+        <p className="text-sm text-muted-foreground leading-relaxed">{scenario.roleExplanation}</p>
       </Card>
 
       <Card variant="glass" className="p-6">
