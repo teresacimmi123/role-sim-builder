@@ -583,7 +583,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 1,
         title: "Richiesta dal Business",
-        context: `Sono le 9:00. Il CEO di ${t.companyName} ti scrive: "Mi servono i numeri su come è andato il trimestre per la riunione con gli investitori di domani." Hai 24 ore.`,
+        context: `Sono le 9:15. Il CEO di ${t.companyName} ti scrive: "Mi servono i numeri su come è andato il trimestre per la riunione con gli investitori di domani." Hai 24 ore.`,
         challenge: "Come affronti la richiesta?",
         technicalTerms: [],
         choices: [
