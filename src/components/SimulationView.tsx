@@ -92,10 +92,10 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
           </div>
           <div>
             <p className="text-sm text-muted-foreground">Il tuo ruolo</p>
-            <h2 className="text-xl font-bold text-gradient-primary">{scenario.role}</h2>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-gradient-primary">{scenario.role}</h2>
           </div>
         </div>
-        <p className="text-muted-foreground leading-relaxed">{scenario.roleExplanation}</p>
+        <p className="text-sm text-muted-foreground leading-relaxed">{scenario.roleExplanation}</p>
       </Card>
 
       <Card variant="glass" className="p-6">
@@ -155,14 +155,14 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
       </div>
 
       <Card variant="gradient" className="p-6">
-        <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+        <h3 className="text-2xl font-extrabold mb-4 flex items-center gap-2">
           <Target className="w-5 h-5 text-primary" />
           {currentTask.title}
         </h3>
         
         <div className="space-y-4">
           <div className="p-4 rounded-xl bg-secondary/30">
-            <p className="text-foreground leading-relaxed">{currentTask.context}</p>
+            <p className="text-sm text-foreground leading-relaxed">{currentTask.context}</p>
           </div>
           
           {/* Technical Terms Explanation */}
@@ -364,7 +364,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
         >
           <Trophy className="w-8 h-8 text-primary" />
         </motion.div>
-        <h2 className="text-2xl font-bold">Ottimo lavoro!</h2>
+        <h2 className="text-3xl font-extrabold">Ottimo lavoro!</h2>
         <p className="text-muted-foreground mt-2">
           Per ricevere il tuo report personalizzato, inserisci i tuoi dati
         </p>
@@ -461,11 +461,11 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
         >
           <Trophy className="w-10 h-10 text-primary" />
         </motion.div>
-        <h2 className="text-2xl font-bold">Hai vissuto una giornata da {scenario.role}.</h2>
+        <h2 className="text-3xl font-extrabold">Hai vissuto una giornata da {scenario.role}.</h2>
       </div>
 
       <Card variant="gradient" className="p-6">
-        <h3 className="font-semibold mb-4 flex items-center gap-2">
+        <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
           <Target className="w-5 h-5 text-primary" />
           I tuoi risultati
         </h3>
@@ -507,12 +507,12 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
       </Card>
 
       <Card variant="glass" className="p-6">
-        <h3 className="font-semibold mb-3">Perché questo percorso fa per te</h3>
-        <p className="text-muted-foreground leading-relaxed">{scenario.conclusion}</p>
+        <h3 className="text-xl font-bold mb-3">Perché questo percorso fa per te</h3>
+        <p className="text-sm text-muted-foreground leading-relaxed">{scenario.conclusion}</p>
       </Card>
 
       <Card variant="gradient" className="p-6 border-primary/30">
-        <h3 className="font-semibold mb-3 text-primary flex items-center gap-2">
+        <h3 className="text-xl font-bold mb-3 text-primary flex items-center gap-2">
           <Star className="w-5 h-5" />
           Il tuo prossimo passo
         </h3>
@@ -529,10 +529,10 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
           </div>
           <div>
             <p className="text-sm text-muted-foreground">Il Master consigliato per te</p>
-            <h3 className="text-lg font-bold text-primary">{scenario.masterRecommendation.name}</h3>
+            <h3 className="text-xl font-extrabold text-primary">{scenario.masterRecommendation.name}</h3>
           </div>
         </div>
-        <p className="text-foreground leading-relaxed mb-4">
+        <p className="text-sm text-foreground leading-relaxed mb-4">
           {scenario.masterRecommendation.description}
         </p>
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 mb-4 py-3 px-4 rounded-lg bg-primary/10">
