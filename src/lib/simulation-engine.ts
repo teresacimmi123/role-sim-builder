@@ -301,7 +301,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 3,
         title: "Progettazione della Soluzione",
-        context: `Con Elena come riferimento, sai che il problema è la mancanza di personalizzazione in ${t.productContext}. Apri il programma di design e devi disegnare la bozza della nuova esperienza per ${t.companyName}.`,
+        context: `Sono le 14:30. Con Elena come riferimento, sai che il problema è la mancanza di personalizzazione in ${t.productContext}. Apri il programma di design e devi disegnare la bozza della nuova esperienza per ${t.companyName}.`,
         challenge: "Quale strategia di design scegli per risolvere il problema?",
         technicalTerms: [
           { term: "Bozza (wireframe)", explanation: "Schema semplificato di un'interfaccia, senza colori o grafiche elaborate, che mostra la struttura e la disposizione degli elementi." }
