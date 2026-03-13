@@ -472,26 +472,25 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         context: `Sono le 9:00. Apri il pannello di gestione delle pubblicità online di ${t.companyName}. La campagna promozionale estiva è terminata. Budget speso: €500. Devi preparare un resoconto per il cliente.`,
         challenge: `I risultati dicono: 45.000 persone hanno visto la pubblicità, l'1.2% ha interagito (like, commenti), 380 hanno cliccato, ma solo 12 hanno fatto l'azione desiderata (acquisto o iscrizione). Il cliente ne voleva 50. Come presenti i risultati?`,
         technicalTerms: [
-          { term: "Reach", explanation: "Numero di persone uniche che hanno visto il contenuto." },
-          { term: "Engagement", explanation: "Interazioni degli utenti (like, commenti, condivisioni) rispetto al numero di visualizzazioni." },
-          { term: "Conversioni", explanation: "Azioni completate dagli utenti (acquisti, iscrizioni, download) che rappresentano l'obiettivo della campagna." },
-          { term: "CR (Conversion Rate)", explanation: "Percentuale di visitatori che completano l'azione desiderata." }
+          { term: "Persone raggiunte", explanation: "Numero di persone uniche che hanno visto il contenuto." },
+          { term: "Tasso di interazione", explanation: "Percentuale di persone che hanno interagito col contenuto (like, commenti, condivisioni) rispetto a quante lo hanno visto." },
+          { term: "Conversioni", explanation: "Azioni completate dagli utenti (acquisti, iscrizioni, download) che rappresentano l'obiettivo della campagna." }
         ],
         choices: [
           {
             id: "a",
             text: `"Il problema è la pagina dove le persone arrivano dopo il click: su 380 click, solo 12 hanno completato l'azione. Propongo di creare due versioni della pagina e testare quale funziona meglio"`,
             isCorrect: true,
-            feedback: `Eccellente! Hai identificato dove si perde il traffico e proposto una soluzione per ${t.industry}.`,
+            feedback: `Eccellente! Hai identificato dove si perdono le persone e proposto una soluzione concreta per ${t.industry}.`,
           },
           {
             id: "b",
-            text: `"La campagna ha portato 45.000 persone raggiunte e 380 click qualificati. Propongo di scalare il budget per aumentare i volumi"`,
-            feedback: "Stai mascherando il fallimento con vanity metrics. Il cliente voleva conversioni, non reach.",
+            text: `"La campagna ha portato 45.000 persone raggiunte e 380 click qualificati. Propongo di aumentare il budget per ampliare i volumi"`,
+            feedback: "Stai mascherando il fallimento con numeri che sembrano buoni ma non contano davvero. Il cliente voleva conversioni, non visibilità.",
           },
           {
             id: "c",
-            text: `"I risultati sono sotto le aspettative. Suggerisco di rivedere il targeting e riallocare il budget su un canale più performante"`,
+            text: `"I risultati sono sotto le aspettative. Suggerisco di rivedere la selezione del pubblico e spostare il budget su un canale più efficace"`,
             feedback: "Senza capire PERCHÉ non ha funzionato, più budget = più spreco.",
           },
         ],
@@ -503,6 +502,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         title: "Crisi Social Media",
         context: `Sono le 11:00. Un utente ha postato una recensione negativa su ${t.companyName}: "Servizio pessimo, non lo consiglio". Ha 50 commenti e sta crescendo.`,
         challenge: "Come gestisci la situazione?",
+        technicalTerms: [],
         choices: [
           {
             id: "a",
@@ -522,59 +522,61 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Crisis Management",
-        lesson: `Nel digitale, le crisi social sono opportunità per dimostrare i valori del brand.`,
+        lesson: `Nel digitale, le crisi sui social sono opportunità per dimostrare i valori del marchio.`,
       },
       {
         id: 3,
         title: "Pianificazione Contenuti",
         context: `Il team di ${t.companyName} ti chiede di pianificare i contenuti da pubblicare sui social il prossimo mese. Hai budget per 12 post (testi e immagini) e 2 video.`,
         challenge: "Come distribuisci i diversi tipi di contenuti?",
+        technicalTerms: [],
         choices: [
           {
             id: "a",
             text: "Mix bilanciato: 40% contenuti che insegnano qualcosa sul settore, 30% vita quotidiana dell'azienda, 20% prodotto e 10% contenuti creati dai clienti stessi",
             isCorrect: true,
-            feedback: `Eccellente mix! In ${t.industry}, educare crea autorevolezza, il BTS umanizza, il prodotto converte, UGC crea community.`,
+            feedback: `Eccellente mix! In ${t.industry}, i contenuti educativi creano autorevolezza, quelli sul dietro le quinte umanizzano, il prodotto converte, e i contenuti dei clienti creano comunità.`,
           },
           {
             id: "b",
             text: "Focus sulla vendita: 80% contenuti che mostrano il prodotto con inviti diretti all'acquisto e 20% contenuti informativi di contesto",
-            feedback: `Troppo push. Nel ${t.industry}, chi parla solo di sé stanca il pubblico.`,
+            feedback: `Troppo aggressivo. Nel ${t.industry}, chi parla solo di sé stanca il pubblico.`,
           },
           {
             id: "c",
-            text: "Focus sulle interazioni: 70% contenuti che seguono le mode del momento per attirare attenzione, 30% prodotto per ricordare il brand",
-            feedback: "L'engagement fine a sé stesso non porta risultati. Servono contenuti che costruiscono relazione.",
+            text: "Focus sulle interazioni: 70% contenuti che seguono le mode del momento per attirare attenzione, 30% prodotto per ricordare il marchio",
+            feedback: "Le interazioni fine a sé stesse non portano risultati. Servono contenuti che costruiscono relazione.",
           },
         ],
         skill: "Content Strategy",
-        lesson: `In questi ruoli, il mix di contenuti bilancia brand building e performance.`,
+        lesson: `In questi ruoli, il mix di contenuti bilancia costruzione del marchio e risultati concreti.`,
       },
       {
         id: 4,
-        title: "Budget Allocation",
+        title: "Distribuzione del Budget Pubblicitario",
         context: `Il CEO di ${t.companyName} ti dà €3.000 in più da spendere in pubblicità online negli ultimi 3 mesi dell'anno. Devi decidere come investirli per ottenere il massimo risultato.`,
         challenge: "Come distribuisci il budget?",
+        technicalTerms: [],
         choices: [
           {
             id: "a",
             text: "€1.500 per mostrare annunci a chi ha già visitato il sito, €1.000 per raggiungere persone simili ai tuoi clienti attuali, €500 per testare nuovi pubblici",
             isCorrect: true,
-            feedback: `Strategia smart! Il retargeting ha il ROI più alto, i lookalike scalano, i test preparano il futuro.`,
+            feedback: `Strategia intelligente! Raggiungere chi ti conosce già ha il ritorno sull'investimento più alto, il pubblico simile ti fa crescere, e i test preparano il futuro.`,
           },
           {
             id: "b",
-            text: "€3.000 su campagne per far conoscere il brand a più persone possibili e aumentare la visibilità negli ultimi mesi dell'anno",
-            feedback: `L'awareness senza conversion strategy è vanity. In ${t.industry}, serve un funnel completo.`,
+            text: "€3.000 su campagne per far conoscere il marchio a più persone possibili e aumentare la visibilità negli ultimi mesi dell'anno",
+            feedback: `La visibilità senza una strategia di conversione è fine a sé stessa. In ${t.industry}, serve un percorso completo dall'attenzione all'acquisto.`,
           },
           {
             id: "c",
             text: "€3.000 su una collaborazione con creatori di contenuti del settore per generare materiale autentico e visibilità rapida",
-            feedback: "Gli influencer funzionano ma €3k bastano per micro-influencer. Il ROI è incerto.",
+            feedback: "I creatori di contenuti funzionano ma con €3.000 puoi permetterti solo collaborazioni piccole. Il ritorno sull'investimento è incerto.",
           },
         ],
         skill: "Budget Optimization",
-        lesson: `Nel digitale, il budget va dove i dati dicono che funziona, non dove sembra più cool.`,
+        lesson: `Nel digitale, il budget va dove i dati dicono che funziona, non dove sembra più attraente.`,
       },
     ],
     "Data Analysis e Data Science": (t) => [
