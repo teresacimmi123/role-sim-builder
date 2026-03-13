@@ -862,16 +862,19 @@ const generatePersonalizedFinalScenario = (area: string, theme: InterestTheme) =
         {
           id: "a",
           text: "Pubblicità e risultati: specializzarti in campagne a pagamento e ottimizzazione",
+          description: "Chi fa questo lavoro gestisce budget pubblicitari, crea annunci, analizza i risultati e ottimizza le campagne per ottenere più vendite o iscrizioni. Giorno per giorno significa lavorare con numeri, testare varianti e cercare il modo migliore di spendere ogni euro. È per chi ama i risultati concreti e misurabili.",
           outcome: `Scegli i numeri. Diventi un esperto di pubblicità. Ogni euro speso ne genera 5. Le aziende ti cercano perché porti risultati misurabili.`,
         },
         {
           id: "b",
           text: "Marchio e contenuti: costruire la narrativa e l'identità del marchio",
+          description: "Chi fa questo lavoro scrive testi, crea storie, definisce il tono di voce e costruisce l'immagine dell'azienda nel tempo. Giorno per giorno significa scrivere, ideare campagne creative e collaborare con grafici e videomaker. È per chi ama raccontare storie e costruire qualcosa che le persone ricordano.",
           outcome: `Scegli la storia. Costruisci un marchio che le persone amano nel ${theme.industry}. I contenuti che crei vengono condivisi spontaneamente. Il valore è nel lungo termine.`,
         },
         {
           id: "c",
           text: "Crescita: visione d'insieme su tutto il percorso dell'utente, dalla scoperta alla fidelizzazione",
+          description: "Chi fa questo lavoro guarda l'intero percorso di una persona: da quando scopre il prodotto a quando diventa cliente fedele. Giorno per giorno significa analizzare dati, proporre esperimenti e collegare marketing, prodotto e vendite. È per chi ama capire come funzionano i sistemi nel loro insieme.",
           outcome: `Scegli il sistema. Vedi come ogni pezzo si connette. Ottimizzi l'intero percorso dell'utente, non solo un canale. Diventi indispensabile per la crescita.`,
         },
       ],
