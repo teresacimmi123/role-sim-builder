@@ -532,7 +532,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
             <h3 className="text-xl font-extrabold text-primary">{scenario.masterRecommendation.name}</h3>
           </div>
         </div>
-        <p className="text-foreground leading-relaxed mb-4">
+        <p className="text-sm text-foreground leading-relaxed mb-4">
           {scenario.masterRecommendation.description}
         </p>
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 mb-4 py-3 px-4 rounded-lg bg-primary/10">

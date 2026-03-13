@@ -67,7 +67,7 @@ const HeroSection = ({ onStart }: HeroSectionProps) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed"
+          className="text-base md:text-lg text-muted-foreground mb-10 leading-relaxed"
         >
           Vivi un'esperienza immersiva basata sul tuo background.
           <br className="hidden md:block" />

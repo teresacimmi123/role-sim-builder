@@ -106,7 +106,7 @@ const ProfileForm = ({ onSubmit, onBack }: ProfileFormProps) => {
                   <currentStep.icon className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-semibold">{currentStep.title}</h2>
+                  <h2 className="text-2xl font-bold">{currentStep.title}</h2>
                   <p className="text-sm text-muted-foreground">{currentStep.subtitle}</p>
                 </div>
               </div>
