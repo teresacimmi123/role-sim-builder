@@ -446,16 +446,6 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
           <Target className="w-5 h-5 text-primary" />
           I tuoi risultati
         </h3>
-        <div className="grid grid-cols-2 gap-4 mb-4">
-          <div className="p-4 rounded-xl bg-primary/10 text-center">
-            <div className="text-3xl font-bold text-primary">{correctAnswers}/{taskResults.length}</div>
-            <div className="text-sm text-muted-foreground">Scelte ottimali</div>
-          </div>
-          <div className="p-4 rounded-xl bg-accent/10 text-center">
-            <div className="text-3xl font-bold text-accent">{taskResults.length}</div>
-            <div className="text-sm text-muted-foreground">Situazioni affrontate</div>
-          </div>
-        </div>
         <div className="space-y-2">
           {taskResults.map((result, index) => (
             <div key={index} className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50">
