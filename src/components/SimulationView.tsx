@@ -155,7 +155,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
       </div>
 
       <Card variant="gradient" className="p-6">
-        <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+        <h3 className="text-2xl font-extrabold mb-4 flex items-center gap-2">
           <Target className="w-5 h-5 text-primary" />
           {currentTask.title}
         </h3>
