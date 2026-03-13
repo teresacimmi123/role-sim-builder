@@ -610,7 +610,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 2,
         title: "Problema di Qualità dei Dati",
-        context: `Stai analizzando i dati degli utenti di ${t.productContext}. Ti accorgi che nel 15% dei casi manca un'informazione importante: il punteggio che misura quanto gli utenti sono attivi.`,
+        context: `Sono le 11:00. Stai analizzando i dati degli utenti di ${t.productContext}. Ti accorgi che nel 15% dei casi manca un'informazione importante: il punteggio che misura quanto gli utenti sono attivi.`,
         challenge: "Come gestisci queste informazioni mancanti?",
         technicalTerms: [],
         choices: [
