@@ -38,6 +38,14 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
   const [taskResults, setTaskResults] = useState<{ task: Task; choice: TaskChoice }[]>([]);
   const [selectedFinalChoice, setSelectedFinalChoice] = useState<{ id: string; text: string; outcome: string } | null>(null);
   const [contactData, setContactData] = useState({ name: "", email: "", phone: "" });
+  const [touchedFields, setTouchedFields] = useState({ email: false, phone: false });
+
+  const isEmailValid = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const isPhoneValid = (phone: string) => /^[\d\s+]+$/.test(phone) && phone.replace(/\D/g, "").length >= 8;
+
+  const emailError = touchedFields.email && contactData.email && !isEmailValid(contactData.email);
+  const phoneError = touchedFields.phone && contactData.phone && !isPhoneValid(contactData.phone);
+  const isContactFormValid = contactData.name.trim() !== "" && isEmailValid(contactData.email) && isPhoneValid(contactData.phone);
 
   const currentTask = scenario.tasks[currentTaskIndex];
 
