@@ -21,7 +21,8 @@ import {
   Shield,
   Mail,
   Phone,
-  User
+  User,
+  ChevronDown
 } from "lucide-react";
 
 interface SimulationViewProps {
@@ -36,7 +37,8 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
   const [currentTaskIndex, setCurrentTaskIndex] = useState(0);
   const [selectedTaskChoice, setSelectedTaskChoice] = useState<TaskChoice | null>(null);
   const [taskResults, setTaskResults] = useState<{ task: Task; choice: TaskChoice }[]>([]);
-  const [selectedFinalChoice, setSelectedFinalChoice] = useState<{ id: string; text: string; outcome: string } | null>(null);
+  const [selectedFinalChoice, setSelectedFinalChoice] = useState<{ id: string; text: string; description: string; outcome: string } | null>(null);
+  const [expandedFinalChoice, setExpandedFinalChoice] = useState<string | null>(null);
   const [contactData, setContactData] = useState({ name: "", email: "", phone: "" });
   const [touchedFields, setTouchedFields] = useState({ email: false, phone: false });
 
@@ -68,7 +70,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
     }
   };
 
-  const handleFinalChoiceSelect = (choice: { id: string; text: string; outcome: string }) => {
+  const handleFinalChoiceSelect = (choice: { id: string; text: string; description: string; outcome: string }) => {
     setSelectedFinalChoice(choice);
     setPhase("finalOutcome");
   };
@@ -283,18 +285,39 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
       <div className="space-y-3">
         <p className="text-sm text-muted-foreground text-center mb-4">Quale strada scegli?</p>
         {scenario.finalScenario.choices.map((choice) => (
-          <button
-            key={choice.id}
-            onClick={() => handleFinalChoiceSelect(choice)}
-            className="w-full p-5 rounded-xl bg-secondary/50 border-2 border-transparent hover:border-primary/50 hover:bg-secondary transition-all text-left group"
-          >
-            <div className="flex items-start gap-3">
-              <span className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center text-primary font-bold shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
-                {choice.id.toUpperCase()}
-              </span>
-              <p className="text-foreground leading-relaxed">{choice.text}</p>
-            </div>
-          </button>
+          <div key={choice.id} className="rounded-xl bg-secondary/50 border-2 border-transparent hover:border-primary/50 hover:bg-secondary transition-all">
+            <button
+              onClick={() => setExpandedFinalChoice(expandedFinalChoice === choice.id ? null : choice.id)}
+              className="w-full p-5 text-left group"
+            >
+              <div className="flex items-start gap-3">
+                <span className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center text-primary font-bold shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                  {choice.id.toUpperCase()}
+                </span>
+                <p className="text-foreground leading-relaxed flex-1">{choice.text}</p>
+                <ChevronDown className={`w-5 h-5 text-muted-foreground shrink-0 mt-0.5 transition-transform ${expandedFinalChoice === choice.id ? "rotate-180" : ""}`} />
+              </div>
+            </button>
+            <AnimatePresence>
+              {expandedFinalChoice === choice.id && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="overflow-hidden"
+                >
+                  <div className="px-5 pb-4 pt-0 ml-11">
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-3">{choice.description}</p>
+                    <Button variant="hero" size="sm" onClick={() => handleFinalChoiceSelect(choice)}>
+                      Scelgo questa strada
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         ))}
       </div>
     </motion.div>

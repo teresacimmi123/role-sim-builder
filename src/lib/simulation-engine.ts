@@ -806,7 +806,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
 };
 
 const generatePersonalizedFinalScenario = (area: string, theme: InterestTheme) => {
-  const scenarios: Record<string, { context: string; situation: string; choices: { id: string; text: string; outcome: string }[] }> = {
+  const scenarios: Record<string, { context: string; situation: string; choices: { id: string; text: string; description: string; outcome: string }[] }> = {
     "UX/UI Design": {
       context: `Dopo 6 mesi in ${theme.companyName}, hai dimostrato il tuo valore. Il tuo nuovo design ha aumentato la fidelizzazione degli utenti del 25%.`,
       situation: `Il CEO ti propone tre opportunità di crescita nel ${theme.industry}. Quale scegli?`,
@@ -814,16 +814,19 @@ const generatePersonalizedFinalScenario = (area: string, theme: InterestTheme) =
         {
           id: "a",
           text: "Responsabile Design: guidare un team di 3 junior sul prossimo prodotto",
+          description: "Chi fa questo lavoro coordina altri designer, assegna compiti, dà feedback sui progetti e si assicura che il risultato finale sia coerente. È un ruolo per chi ama far crescere le persone e vedere il quadro d'insieme, più che stare sui dettagli.",
           outcome: `Scegli la leadership. In un anno, il tuo team lancia un prodotto che diventa il cuore di ${theme.companyName}. Impari che far crescere altri è più gratificante che brillare da solo.`,
         },
         {
           id: "b",
           text: "Specializzazione: diventare l'esperto del sistema di design condiviso dell'azienda",
+          description: "Chi fa questo lavoro crea le regole visive che tutto il team usa: colori, bottoni, layout, componenti riutilizzabili. È un ruolo per chi ama l'ordine, la precisione e costruire strumenti che rendono il lavoro degli altri più facile e veloce.",
           outcome: `Scegli la profondità. Costruisci un sistema di design condiviso che accelera lo sviluppo del 40%. Diventi la persona che tutti consultano. La specializzazione paga.`,
         },
         {
           id: "c",
           text: "Progettazione Prodotto: passare a un ruolo più strategico per avere più impatto sulle decisioni",
+          description: "Chi fa questo lavoro decide quali funzionalità costruire e perché, parlando con utenti, team tecnico e direzione. È un ruolo per chi vuole influenzare le decisioni importanti e ragionare su cosa ha senso creare, non solo su come appare.",
           outcome: `Scegli l'impatto. Lavori a stretto contatto con il CEO e i responsabili. Le tue decisioni influenzano la direzione dell'azienda. Il design diventa strategia.`,
         },
       ],
@@ -835,16 +838,19 @@ const generatePersonalizedFinalScenario = (area: string, theme: InterestTheme) =
         {
           id: "a",
           text: "Responsabile tecnico: guidare le scelte di architettura del team",
+          description: "Chi fa questo lavoro decide come organizzare il codice, quali tecnologie usare e come far lavorare bene il team. Giorno per giorno significa fare riunioni tecniche, revisionare il lavoro degli altri e risolvere i problemi più complessi. È per chi ama insegnare e avere una visione d'insieme.",
           outcome: `Scegli la leadership tecnica. In un anno, guidi la migrazione a una nuova architettura. Il sistema è più veloce e scalabile. I junior ti vedono come mentore.`,
         },
         {
           id: "b",
           text: "Sviluppatore completo: espanderti alla parte server per vedere il quadro completo",
+          description: "Chi fa questo lavoro costruisce sia la parte visibile delle applicazioni sia quella invisibile (dove si salvano i dati, come comunicano i sistemi). Giorno per giorno significa scrivere codice, risolvere problemi e vedere le proprie creazioni funzionare dall'inizio alla fine. È per chi vuole capire come funziona tutto.",
           outcome: `Scegli la completezza. Costruisci funzionalità dall'inizio alla fine. Capisci come tutto si connette. Diventi lo sviluppatore che può risolvere qualsiasi problema.`,
         },
         {
           id: "c",
           text: "Infrastruttura: lavorare sui sistemi che supportano tutto il resto",
+          description: "Chi fa questo lavoro si occupa di far funzionare i server, automatizzare i processi e assicurarsi che il sito o l'app non cada mai. Giorno per giorno significa configurare sistemi, monitorare le prestazioni e costruire strumenti interni. È per chi ama risolvere problemi dietro le quinte.",
           outcome: `Scegli le fondamenta. Automatizzi pubblicazione, monitoraggio, crescita del sistema. Ogni sviluppatore dell'azienda lavora meglio grazie a te. L'impatto è invisibile ma enorme.`,
         },
       ],
@@ -856,16 +862,19 @@ const generatePersonalizedFinalScenario = (area: string, theme: InterestTheme) =
         {
           id: "a",
           text: "Pubblicità e risultati: specializzarti in campagne a pagamento e ottimizzazione",
+          description: "Chi fa questo lavoro gestisce budget pubblicitari, crea annunci, analizza i risultati e ottimizza le campagne per ottenere più vendite o iscrizioni. Giorno per giorno significa lavorare con numeri, testare varianti e cercare il modo migliore di spendere ogni euro. È per chi ama i risultati concreti e misurabili.",
           outcome: `Scegli i numeri. Diventi un esperto di pubblicità. Ogni euro speso ne genera 5. Le aziende ti cercano perché porti risultati misurabili.`,
         },
         {
           id: "b",
           text: "Marchio e contenuti: costruire la narrativa e l'identità del marchio",
+          description: "Chi fa questo lavoro scrive testi, crea storie, definisce il tono di voce e costruisce l'immagine dell'azienda nel tempo. Giorno per giorno significa scrivere, ideare campagne creative e collaborare con grafici e videomaker. È per chi ama raccontare storie e costruire qualcosa che le persone ricordano.",
           outcome: `Scegli la storia. Costruisci un marchio che le persone amano nel ${theme.industry}. I contenuti che crei vengono condivisi spontaneamente. Il valore è nel lungo termine.`,
         },
         {
           id: "c",
           text: "Crescita: visione d'insieme su tutto il percorso dell'utente, dalla scoperta alla fidelizzazione",
+          description: "Chi fa questo lavoro guarda l'intero percorso di una persona: da quando scopre il prodotto a quando diventa cliente fedele. Giorno per giorno significa analizzare dati, proporre esperimenti e collegare marketing, prodotto e vendite. È per chi ama capire come funzionano i sistemi nel loro insieme.",
           outcome: `Scegli il sistema. Vedi come ogni pezzo si connette. Ottimizzi l'intero percorso dell'utente, non solo un canale. Diventi indispensabile per la crescita.`,
         },
       ],
@@ -877,16 +886,19 @@ const generatePersonalizedFinalScenario = (area: string, theme: InterestTheme) =
         {
           id: "a",
           text: "Scienza dei dati: costruire modelli predittivi e algoritmi di apprendimento automatico",
+          description: "Chi fa questo lavoro insegna ai computer a fare previsioni basate sui dati: quanti clienti perderemo? Quale prodotto venderà di più? Giorno per giorno significa esplorare dati, costruire modelli matematici e testarli. È per chi ama la logica, i numeri e risolvere problemi complessi.",
           outcome: `Scegli l'intelligenza artificiale. Costruisci modelli che predicono il comportamento utenti nel ${theme.industry}. L'azienda prende decisioni prima che i problemi emergano. Sei nel futuro.`,
         },
         {
           id: "b",
           text: "Responsabile analisi: guidare le analisi di un'intera area aziendale",
+          description: "Chi fa questo lavoro diventa il punto di riferimento per un'area dell'azienda: marketing, vendite o prodotto. Giorno per giorno significa rispondere alle domande dei colleghi con i dati, creare rapporti e presentare scoperte ai responsabili. È per chi ama tradurre numeri in decisioni concrete.",
           outcome: `Scegli l'impatto. Ogni decisione dell'area aziendale passa dalle tue scoperte. Impari il business profondamente. I dati diventano strategia.`,
         },
         {
           id: "c",
           text: "Ingegneria dei dati: costruire l'infrastruttura che rende possibile tutto il resto",
+          description: "Chi fa questo lavoro costruisce i sistemi che raccolgono, organizzano e rendono disponibili i dati per tutta l'azienda. Giorno per giorno significa scrivere programmi che elaborano grandi quantità di informazioni e assicurarsi che tutto funzioni. È per chi ama costruire cose che durano e rendono il lavoro degli altri possibile.",
           outcome: `Scegli le fondamenta. Costruisci flussi di elaborazione che trasformano dati grezzi in scoperte utili. Ogni analista lavora meglio grazie alla tua architettura.`,
         },
       ],
@@ -898,16 +910,19 @@ const generatePersonalizedFinalScenario = (area: string, theme: InterestTheme) =
         {
           id: "a",
           text: "Gestione del prodotto: definire cosa costruire e perché",
+          description: "Chi fa questo lavoro decide quali funzionalità aggiungere a un'app o un sito, parlando con gli utenti per capire cosa serve e con il team per capire cosa è possibile. Giorno per giorno significa fare riunioni, scrivere documenti di progetto e prendere decisioni. È per chi ama avere una visione d'insieme e guidare le scelte.",
           outcome: `Scegli la strategia. Diventi il ponte tra business, design e tecnologia. In un anno gestisci il piano di sviluppo di un prodotto. Le tue decisioni plasmano il futuro.`,
         },
         {
           id: "b",
           text: "Gestione dei progetti: far succedere le cose, coordinare e consegnare",
+          description: "Chi fa questo lavoro si assicura che i progetti vengano completati nei tempi, organizzando il lavoro del team e risolvendo i problemi che emergono. Giorno per giorno significa aggiornare piani, facilitare riunioni e tenere tutti allineati. È per chi ama l'organizzazione e far funzionare le cose.",
           outcome: `Scegli l'esecuzione. Diventi chi tiene insieme i progetti complessi. Il team ti adora perché risolvi problemi prima che esplodano.`,
         },
         {
           id: "c",
           text: "Ancora 3 mesi di esplorazione in un'area che non hai provato",
+          description: "Questa scelta significa continuare a esplorare ruoli diversi prima di decidere: potresti provare il marketing, l'analisi dati o il design. Giorno per giorno significa affiancare colleghi di aree diverse e capire dove ti senti più a tuo agio. È per chi preferisce scegliere con calma dopo aver visto le opzioni.",
           outcome: `Scegli l'esplorazione. Scopri una passione inaspettata per le strategie di crescita rapida. A volte la risposta è dove non hai ancora guardato.`,
         },
       ],
