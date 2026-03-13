@@ -806,7 +806,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
 };
 
 const generatePersonalizedFinalScenario = (area: string, theme: InterestTheme) => {
-  const scenarios: Record<string, { context: string; situation: string; choices: { id: string; text: string; outcome: string }[] }> = {
+  const scenarios: Record<string, { context: string; situation: string; choices: { id: string; text: string; description: string; outcome: string }[] }> = {
     "UX/UI Design": {
       context: `Dopo 6 mesi in ${theme.companyName}, hai dimostrato il tuo valore. Il tuo nuovo design ha aumentato la fidelizzazione degli utenti del 25%.`,
       situation: `Il CEO ti propone tre opportunità di crescita nel ${theme.industry}. Quale scegli?`,
