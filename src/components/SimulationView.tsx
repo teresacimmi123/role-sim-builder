@@ -373,8 +373,10 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
               placeholder="La tua email"
               value={contactData.email}
               onChange={(e) => setContactData({ ...contactData, email: e.target.value })}
-              className="bg-secondary/50 border-border/50"
+              onBlur={() => setTouchedFields(f => ({ ...f, email: true }))}
+              className={`bg-secondary/50 border-border/50 ${emailError ? "border-red-500" : ""}`}
             />
+            {emailError && <p className="text-sm text-red-500">Inserisci un'email valida</p>}
           </div>
           
           <div className="space-y-2">
@@ -388,8 +390,10 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
               placeholder="Il tuo numero di telefono"
               value={contactData.phone}
               onChange={(e) => setContactData({ ...contactData, phone: e.target.value })}
-              className="bg-secondary/50 border-border/50"
+              onBlur={() => setTouchedFields(f => ({ ...f, phone: true }))}
+              className={`bg-secondary/50 border-border/50 ${phoneError ? "border-red-500" : ""}`}
             />
+            {phoneError && <p className="text-sm text-red-500">Inserisci un numero di telefono valido</p>}
           </div>
         </div>
       </Card>
