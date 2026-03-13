@@ -535,6 +535,22 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
         <p className="text-foreground leading-relaxed mb-4">
           {scenario.masterRecommendation.description}
         </p>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 mb-4 py-3 px-4 rounded-lg bg-primary/10">
+          <span className="flex items-center gap-1.5 text-sm text-primary">
+            <CheckCircle2 className="w-4 h-4 shrink-0" />
+            +3.000 studenti già assunti
+          </span>
+          <span className="hidden sm:block w-px h-4 bg-primary/30" />
+          <span className="flex items-center gap-1.5 text-sm text-primary">
+            <CheckCircle2 className="w-4 h-4 shrink-0" />
+            98% trova lavoro entro 6 mesi
+          </span>
+          <span className="hidden sm:block w-px h-4 bg-primary/30" />
+          <span className="flex items-center gap-1.5 text-sm text-primary">
+            <CheckCircle2 className="w-4 h-4 shrink-0" />
+            Garanzia Money Back Under 30*
+          </span>
+        </div>
         <a 
           href={scenario.masterRecommendation.url}
           target="_blank"
@@ -546,6 +562,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
             <ArrowRight className="w-5 h-5" />
           </Button>
         </a>
+        <p className="text-xs text-muted-foreground mt-3">*Condizioni su start2impact.it</p>
       </Card>
 
       <div className="pt-4">
