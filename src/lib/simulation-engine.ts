@@ -774,7 +774,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
       {
         id: 4,
         title: "Feedback al Team",
-        context: `Un membro del team di ${t.companyName} sta rendendo meno del solito. Non rispetta le scadenze e la qualità del suo lavoro è calata.`,
+        context: `Sono le 17:30. Un membro del team di ${t.companyName} sta rendendo meno del solito. Non rispetta le scadenze e la qualità del suo lavoro è calata.`,
         challenge: "Come affronti la conversazione?",
         technicalTerms: [],
         choices: [
