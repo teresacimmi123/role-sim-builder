@@ -838,16 +838,19 @@ const generatePersonalizedFinalScenario = (area: string, theme: InterestTheme) =
         {
           id: "a",
           text: "Responsabile tecnico: guidare le scelte di architettura del team",
+          description: "Chi fa questo lavoro decide come organizzare il codice, quali tecnologie usare e come far lavorare bene il team. Giorno per giorno significa fare riunioni tecniche, revisionare il lavoro degli altri e risolvere i problemi più complessi. È per chi ama insegnare e avere una visione d'insieme.",
           outcome: `Scegli la leadership tecnica. In un anno, guidi la migrazione a una nuova architettura. Il sistema è più veloce e scalabile. I junior ti vedono come mentore.`,
         },
         {
           id: "b",
           text: "Sviluppatore completo: espanderti alla parte server per vedere il quadro completo",
+          description: "Chi fa questo lavoro costruisce sia la parte visibile delle applicazioni sia quella invisibile (dove si salvano i dati, come comunicano i sistemi). Giorno per giorno significa scrivere codice, risolvere problemi e vedere le proprie creazioni funzionare dall'inizio alla fine. È per chi vuole capire come funziona tutto.",
           outcome: `Scegli la completezza. Costruisci funzionalità dall'inizio alla fine. Capisci come tutto si connette. Diventi lo sviluppatore che può risolvere qualsiasi problema.`,
         },
         {
           id: "c",
           text: "Infrastruttura: lavorare sui sistemi che supportano tutto il resto",
+          description: "Chi fa questo lavoro si occupa di far funzionare i server, automatizzare i processi e assicurarsi che il sito o l'app non cada mai. Giorno per giorno significa configurare sistemi, monitorare le prestazioni e costruire strumenti interni. È per chi ama risolvere problemi dietro le quinte.",
           outcome: `Scegli le fondamenta. Automatizzi pubblicazione, monitoraggio, crescita del sistema. Ogni sviluppatore dell'azienda lavora meglio grazie a te. L'impatto è invisibile ma enorme.`,
         },
       ],
