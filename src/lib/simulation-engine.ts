@@ -910,16 +910,19 @@ const generatePersonalizedFinalScenario = (area: string, theme: InterestTheme) =
         {
           id: "a",
           text: "Gestione del prodotto: definire cosa costruire e perché",
+          description: "Chi fa questo lavoro decide quali funzionalità aggiungere a un'app o un sito, parlando con gli utenti per capire cosa serve e con il team per capire cosa è possibile. Giorno per giorno significa fare riunioni, scrivere documenti di progetto e prendere decisioni. È per chi ama avere una visione d'insieme e guidare le scelte.",
           outcome: `Scegli la strategia. Diventi il ponte tra business, design e tecnologia. In un anno gestisci il piano di sviluppo di un prodotto. Le tue decisioni plasmano il futuro.`,
         },
         {
           id: "b",
           text: "Gestione dei progetti: far succedere le cose, coordinare e consegnare",
+          description: "Chi fa questo lavoro si assicura che i progetti vengano completati nei tempi, organizzando il lavoro del team e risolvendo i problemi che emergono. Giorno per giorno significa aggiornare piani, facilitare riunioni e tenere tutti allineati. È per chi ama l'organizzazione e far funzionare le cose.",
           outcome: `Scegli l'esecuzione. Diventi chi tiene insieme i progetti complessi. Il team ti adora perché risolvi problemi prima che esplodano.`,
         },
         {
           id: "c",
           text: "Ancora 3 mesi di esplorazione in un'area che non hai provato",
+          description: "Questa scelta significa continuare a esplorare ruoli diversi prima di decidere: potresti provare il marketing, l'analisi dati o il design. Giorno per giorno significa affiancare colleghi di aree diverse e capire dove ti senti più a tuo agio. È per chi preferisce scegliere con calma dopo aver visto le opzioni.",
           outcome: `Scegli l'esplorazione. Scopri una passione inaspettata per le strategie di crescita rapida. A volte la risposta è dove non hai ancora guardato.`,
         },
       ],

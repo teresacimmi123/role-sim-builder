@@ -30,6 +30,7 @@ export interface Task {
 export interface SimulationChoice {
   id: string;
   text: string;
+  description: string;
   outcome: string;
 }
 

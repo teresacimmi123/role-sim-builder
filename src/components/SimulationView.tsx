@@ -13,6 +13,7 @@ import {
   Lightbulb,
   Target,
   AlertCircle,
+  AlertCircle,
   RotateCcw,
   Trophy,
   Star,
