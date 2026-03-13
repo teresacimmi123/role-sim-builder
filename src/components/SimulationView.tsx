@@ -38,6 +38,14 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
   const [taskResults, setTaskResults] = useState<{ task: Task; choice: TaskChoice }[]>([]);
   const [selectedFinalChoice, setSelectedFinalChoice] = useState<{ id: string; text: string; outcome: string } | null>(null);
   const [contactData, setContactData] = useState({ name: "", email: "", phone: "" });
+  const [touchedFields, setTouchedFields] = useState({ email: false, phone: false });
+
+  const isEmailValid = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const isPhoneValid = (phone: string) => /^[\d\s+]+$/.test(phone) && phone.replace(/\D/g, "").length >= 8;
+
+  const emailError = touchedFields.email && contactData.email && !isEmailValid(contactData.email);
+  const phoneError = touchedFields.phone && contactData.phone && !isPhoneValid(contactData.phone);
+  const isContactFormValid = contactData.name.trim() !== "" && isEmailValid(contactData.email) && isPhoneValid(contactData.phone);
 
   const currentTask = scenario.tasks[currentTaskIndex];
 
@@ -365,8 +373,10 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
               placeholder="La tua email"
               value={contactData.email}
               onChange={(e) => setContactData({ ...contactData, email: e.target.value })}
-              className="bg-secondary/50 border-border/50"
+              onBlur={() => setTouchedFields(f => ({ ...f, email: true }))}
+              className={`bg-secondary/50 border-border/50 ${emailError ? "border-red-500" : ""}`}
             />
+            {emailError && <p className="text-sm text-red-500">Inserisci un'email valida</p>}
           </div>
           
           <div className="space-y-2">
@@ -380,8 +390,10 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
               placeholder="Il tuo numero di telefono"
               value={contactData.phone}
               onChange={(e) => setContactData({ ...contactData, phone: e.target.value })}
-              className="bg-secondary/50 border-border/50"
+              onBlur={() => setTouchedFields(f => ({ ...f, phone: true }))}
+              className={`bg-secondary/50 border-border/50 ${phoneError ? "border-red-500" : ""}`}
             />
+            {phoneError && <p className="text-sm text-red-500">Inserisci un numero di telefono valido</p>}
           </div>
         </div>
       </Card>
@@ -402,7 +414,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
         size="lg" 
         onClick={() => setPhase("recap")} 
         className="w-full"
-        disabled={!contactData.name || !contactData.email || !contactData.phone}
+        disabled={!isContactFormValid}
       >
         Vedi il mio Report
         <ArrowRight className="w-5 h-5" />
