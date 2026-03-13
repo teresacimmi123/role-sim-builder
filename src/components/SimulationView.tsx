@@ -466,60 +466,112 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
       </div>
 
       <Card variant="gradient" className="p-6">
-        <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-          <Target className="w-5 h-5 text-primary" />
-          I tuoi risultati
-        </h3>
-        <div className="space-y-2">
-          {taskResults.map((result, index) => (
-            <div key={index} className="rounded-lg bg-secondary/50 overflow-hidden">
-              <button
-                onClick={() => setExpandedRecapTask(expandedRecapTask === index ? null : index)}
-                className="w-full flex items-center gap-3 p-3 text-left"
-              >
-                <div className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 ${result.choice.isCorrect ? "bg-primary/20" : "bg-accent/20"}`}>
-                  {result.choice.isCorrect ? (
-                    <CheckCircle2 className="w-4 h-4 text-primary" />
-                  ) : (
-                    <Lightbulb className="w-4 h-4 text-accent" />
-                  )}
-                </div>
-                <span className="text-sm flex-1">{result.task.title}</span>
-                <ChevronDown className={`w-4 h-4 text-muted-foreground shrink-0 transition-transform ${expandedRecapTask === index ? "rotate-180" : ""}`} />
-              </button>
-              <AnimatePresence>
-                {expandedRecapTask === index && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-3 pb-3 ml-9">
-                      <p className="text-sm text-muted-foreground leading-relaxed">{result.task.lesson}</p>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          ))}
-        </div>
+        <button
+          onClick={() => setRecapSections(s => ({ ...s, risultati: !s.risultati }))}
+          className="w-full flex items-center justify-between cursor-pointer"
+        >
+          <h3 className="text-xl font-bold flex items-center gap-2">
+            <Target className="w-5 h-5 text-primary" />
+            I tuoi risultati
+          </h3>
+          <ChevronDown className={`w-5 h-5 text-muted-foreground transition-transform duration-300 ${recapSections.risultati ? "rotate-180" : ""}`} />
+        </button>
+        <AnimatePresence>
+          {recapSections.risultati && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden"
+            >
+              <div className="space-y-2 mt-4">
+                {taskResults.map((result, index) => (
+                  <div key={index} className="rounded-lg bg-secondary/50 overflow-hidden">
+                    <button
+                      onClick={() => setExpandedRecapTask(expandedRecapTask === index ? null : index)}
+                      className="w-full flex items-center gap-3 p-3 text-left"
+                    >
+                      <div className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 ${result.choice.isCorrect ? "bg-primary/20" : "bg-accent/20"}`}>
+                        {result.choice.isCorrect ? (
+                          <CheckCircle2 className="w-4 h-4 text-primary" />
+                        ) : (
+                          <Lightbulb className="w-4 h-4 text-accent" />
+                        )}
+                      </div>
+                      <span className="text-sm flex-1">{result.task.title}</span>
+                      <ChevronDown className={`w-4 h-4 text-muted-foreground shrink-0 transition-transform ${expandedRecapTask === index ? "rotate-180" : ""}`} />
+                    </button>
+                    <AnimatePresence>
+                      {expandedRecapTask === index && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-3 pb-3 ml-9">
+                            <p className="text-sm text-muted-foreground leading-relaxed">{result.task.lesson}</p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </Card>
 
       <Card variant="glass" className="p-6">
-        <h3 className="text-xl font-bold mb-3">Perché questo percorso fa per te</h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">{scenario.conclusion}</p>
+        <button
+          onClick={() => setRecapSections(s => ({ ...s, percorso: !s.percorso }))}
+          className="w-full flex items-center justify-between cursor-pointer"
+        >
+          <h3 className="text-xl font-bold">Perché questo percorso fa per te</h3>
+          <ChevronDown className={`w-5 h-5 text-muted-foreground transition-transform duration-300 ${recapSections.percorso ? "rotate-180" : ""}`} />
+        </button>
+        <AnimatePresence>
+          {recapSections.percorso && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden"
+            >
+              <p className="text-sm text-muted-foreground leading-relaxed mt-3">{scenario.conclusion}</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </Card>
 
       <Card variant="gradient" className="p-6 border-primary/30 border-l-4 border-l-[#00c896]">
-        <h3 className="text-xl font-bold mb-3 text-primary flex items-center gap-2">
-          <Star className="w-5 h-5" />
-          Il tuo prossimo passo
-        </h3>
-        <p className="text-foreground leading-relaxed whitespace-pre-line">
-          {scenario.encouragement}
-        </p>
+        <button
+          onClick={() => setRecapSections(s => ({ ...s, prossimoPasso: !s.prossimoPasso }))}
+          className="w-full flex items-center justify-between cursor-pointer"
+        >
+          <h3 className="text-xl font-bold text-primary flex items-center gap-2">
+            <Star className="w-5 h-5" />
+            Il tuo prossimo passo
+          </h3>
+          <ChevronDown className={`w-5 h-5 text-muted-foreground transition-transform duration-300 ${recapSections.prossimoPasso ? "rotate-180" : ""}`} />
+        </button>
+        <AnimatePresence>
+          {recapSections.prossimoPasso && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden"
+            >
+              <p className="text-foreground leading-relaxed whitespace-pre-line mt-3">{scenario.encouragement}</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </Card>
 
       {/* Master Recommendation */}
