@@ -69,7 +69,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
     }
   };
 
-  const handleFinalChoiceSelect = (choice: { id: string; text: string; outcome: string }) => {
+  const handleFinalChoiceSelect = (choice: { id: string; text: string; description: string; outcome: string }) => {
     setSelectedFinalChoice(choice);
     setPhase("finalOutcome");
   };
