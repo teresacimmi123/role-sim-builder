@@ -361,16 +361,13 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         title: "Revisione del Codice di un Collega",
         context: `Sono le 9:30. Il tuo responsabile in ${t.companyName} ti chiede di controllare il lavoro di un collega. Ha scritto una parte del codice per ${t.productContext}, ma noti che ha usato un approccio che funziona ma non segue le buone pratiche: il codice è difficile da leggere e sarebbe complicato da modificare in futuro.`,
         challenge: "Come ti comporti con il tuo collega?",
-        technicalTerms: [
-          { term: "Code Review", explanation: "Processo in cui un collega esamina il codice scritto da un altro per trovare errori e suggerire miglioramenti." },
-          { term: "Buone pratiche", explanation: "Regole e convenzioni condivise nel team per scrivere codice leggibile, manutenibile e affidabile." }
-        ],
+        technicalTerms: [],
         choices: [
           {
             id: "a",
             text: "Lasci un commento costruttivo spiegando quale approccio sarebbe più adatto e alleghi un esempio concreto di come migliorarlo",
             isCorrect: true,
-            feedback: `Perfetto! Una code review costruttiva insegna. In ${t.companyName}, come in ogni team sano, si cresce insieme.`,
+            feedback: `Perfetto! Una revisione costruttiva insegna. In ${t.companyName}, come in ogni team sano, si cresce insieme.`,
           },
           {
             id: "b",
@@ -384,18 +381,14 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Code Review",
-        lesson: `In questo lavoro, una buona code review bilancia qualità e crescita del team.`,
+        lesson: `In questo lavoro, una buona revisione del codice bilancia qualità e crescita del team.`,
       },
       {
         id: 2,
         title: "Scelta di Architettura",
         context: `${t.companyName} sta crescendo e ${t.productContext} deve gestire molti più utenti di prima. Il responsabile tecnico ti chiede di proporre come organizzare il sistema: dove salvare i dati, come far comunicare le diverse parti dell'applicazione tra loro, e come assicurarsi che tutto continui a funzionare anche sotto carico.`,
         challenge: "Come proponi di strutturare il sistema?",
-        technicalTerms: [
-          { term: "Architettura", explanation: "Il modo in cui le diverse parti di un sistema software sono organizzate e comunicano tra loro." },
-          { term: "Database", explanation: "Sistema che archivia e organizza i dati in modo che possano essere cercati e recuperati facilmente." },
-          { term: "Scalabilità", explanation: "Capacità di un sistema di continuare a funzionare bene anche quando il numero di utenti o dati cresce." }
-        ],
+        technicalTerms: [],
         choices: [
           {
             id: "a",
@@ -422,16 +415,13 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
         title: "Un Errore Misterioso",
         context: `Il sistema che gestisce ${t.productContext} dà errore in alcuni casi. Indagando, noti che il problema si verifica solo quando si inviano o si elaborano grandi quantità di dati. Gli utenti vedono un messaggio di errore generico.`,
         challenge: "Qual è il prossimo passo per risolvere il problema?",
-        technicalTerms: [
-          { term: "Log", explanation: "Registro automatico degli eventi del sistema, utile per capire cosa è successo quando qualcosa va storto." },
-          { term: "Errore del server", explanation: "Problema che si verifica nella parte del sistema che gestisce i dati, non nel dispositivo dell'utente." }
-        ],
+        technicalTerms: [],
         choices: [
           {
             id: "a",
             text: "Verifichi quanti dati causano l'errore e controlli i registri del sistema per trovare il messaggio di errore specifico",
             isCorrect: true,
-            feedback: `Perfetto! Debugging sistematico: prima confermi l'ipotesi, poi trovi la causa reale del problema.`,
+            feedback: `Perfetto! Risoluzione sistematica: prima confermi l'ipotesi, poi trovi la causa reale del problema.`,
           },
           {
             id: "b",
@@ -445,28 +435,25 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Debugging",
-        lesson: `In questo lavoro, il debugging efficace segue un metodo: riproduci, isola, verifica, risolvi.`,
+        lesson: `In questo lavoro, la risoluzione efficace degli errori segue un metodo: riproduci, isola, verifica, risolvi.`,
       },
       {
         id: 4,
         title: "Pubblicazione di Venerdì Sera",
         context: `Sono le 17:30 di venerdì. La nuova funzionalità per ${t.companyName} è pronta e testata. Il responsabile ti chiede: "Puoi pubblicarla online così gli utenti la vedono? Lunedì il cliente vuole vedere la novità."`,
         challenge: "Cosa fai?",
-        technicalTerms: [
-          { term: "Pubblicazione (deploy)", explanation: "Processo con cui il codice viene reso disponibile agli utenti finali su internet." },
-          { term: "Ambiente di test", explanation: "Copia del sistema reale usata per fare verifiche senza rischiare di creare problemi agli utenti." }
-        ],
+        technicalTerms: [],
         choices: [
           {
             id: "a",
-            text: "Pubblichi la novità sull'ambiente di test per verificare che tutto funzioni, e proponi la pubblicazione definitiva lunedì mattina",
+            text: "Pubblichi la novità sull'ambiente di prova per verificare che tutto funzioni, e proponi la pubblicazione definitiva lunedì mattina",
             isCorrect: true,
-            feedback: `Ottima gestione del rischio! Hai completato il lavoro ma evitato problemi nel weekend.`,
+            feedback: `Ottima gestione del rischio! Hai completato il lavoro ma evitato problemi nel fine settimana.`,
           },
           {
             id: "b",
             text: "Procedi con la pubblicazione definitiva: tutti i controlli automatici sono passati e la funzionalità è stata validata dal team",
-            feedback: `Pubblicare il venerdì sera è rischioso. Se qualcosa va storto nel weekend, chi interviene?`,
+            feedback: `Pubblicare il venerdì sera è rischioso. Se qualcosa va storto nel fine settimana, chi interviene?`,
           },
           {
             id: "c",
@@ -475,7 +462,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Risk Management",
-        lesson: `Nel digitale, i dev esperti bilanciano velocità e rischio.`,
+        lesson: `Nel digitale, gli sviluppatori esperti bilanciano velocità e rischio.`,
       },
     ],
     "Digital Marketing": (t) => [
