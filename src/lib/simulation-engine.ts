@@ -808,107 +808,107 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
 const generatePersonalizedFinalScenario = (area: string, theme: InterestTheme) => {
   const scenarios: Record<string, { context: string; situation: string; choices: { id: string; text: string; outcome: string }[] }> = {
     "UX/UI Design": {
-      context: `Dopo 6 mesi in ${theme.companyName}, hai dimostrato il tuo valore. Il tuo redesign ha aumentato la retention del 25%.`,
+      context: `Dopo 6 mesi in ${theme.companyName}, hai dimostrato il tuo valore. Il tuo nuovo design ha aumentato la fidelizzazione degli utenti del 25%.`,
       situation: `Il CEO ti propone tre opportunità di crescita nel ${theme.industry}. Quale scegli?`,
       choices: [
         {
           id: "a",
-          text: "Lead Designer: guidare un team di 3 junior sul prossimo prodotto",
-          outcome: `Scegli la leadership. In un anno, il tuo team lancia un prodotto che diventa il core business di ${theme.companyName}. Impari che far crescere altri è più gratificante che brillare da solo.`,
+          text: "Responsabile Design: guidare un team di 3 junior sul prossimo prodotto",
+          outcome: `Scegli la leadership. In un anno, il tuo team lancia un prodotto che diventa il cuore di ${theme.companyName}. Impari che far crescere altri è più gratificante che brillare da solo.`,
         },
         {
           id: "b",
-          text: "Specializzazione: diventare l'esperto di Design System dell'azienda",
-          outcome: `Scegli la profondità. Costruisci un design system che accelera lo sviluppo del 40%. Diventi la persona che tutti consultano. La specializzazione paga.`,
+          text: "Specializzazione: diventare l'esperto del sistema di design condiviso dell'azienda",
+          outcome: `Scegli la profondità. Costruisci un sistema di design condiviso che accelera lo sviluppo del 40%. Diventi la persona che tutti consultano. La specializzazione paga.`,
         },
         {
           id: "c",
-          text: "Product: passare a Product Designer per avere più impatto strategico",
-          outcome: `Scegli l'impatto. Lavori a stretto contatto con CEO e stakeholder. Le tue decisioni influenzano la direzione dell'azienda. Il design diventa strategia.`,
+          text: "Progettazione Prodotto: passare a un ruolo più strategico per avere più impatto sulle decisioni",
+          outcome: `Scegli l'impatto. Lavori a stretto contatto con il CEO e i responsabili. Le tue decisioni influenzano la direzione dell'azienda. Il design diventa strategia.`,
         },
       ],
     },
     "Web Development": {
-      context: `Dopo 6 mesi in ${theme.companyName}, il tuo codice è in produzione e usato da migliaia di utenti nel ${theme.industry}.`,
-      situation: "Il CTO ti presenta tre path di crescita. Quale ti attira di più?",
+      context: `Dopo 6 mesi in ${theme.companyName}, il tuo codice è online e usato da migliaia di utenti nel ${theme.industry}.`,
+      situation: "Il responsabile tecnico ti presenta tre percorsi di crescita. Quale ti attira di più?",
       choices: [
         {
           id: "a",
-          text: "Tech Lead: guidare le scelte architetturali del team",
+          text: "Responsabile tecnico: guidare le scelte di architettura del team",
           outcome: `Scegli la leadership tecnica. In un anno, guidi la migrazione a una nuova architettura. Il sistema è più veloce e scalabile. I junior ti vedono come mentore.`,
         },
         {
           id: "b",
-          text: "Full-Stack: espanderti al backend per vedere il quadro completo",
-          outcome: `Scegli la completezza. Costruisci feature end-to-end. Capisci come tutto si connette. Diventi il dev che può risolvere qualsiasi problema.`,
+          text: "Sviluppatore completo: espanderti alla parte server per vedere il quadro completo",
+          outcome: `Scegli la completezza. Costruisci funzionalità dall'inizio alla fine. Capisci come tutto si connette. Diventi lo sviluppatore che può risolvere qualsiasi problema.`,
         },
         {
           id: "c",
-          text: "DevOps/Platform: lavorare sull'infrastruttura che supporta tutto",
-          outcome: `Scegli le fondamenta. Automatizzi deploy, monitoraggio, scaling. Ogni dev dell'azienda lavora meglio grazie a te. L'impatto è invisibile ma enorme.`,
+          text: "Infrastruttura: lavorare sui sistemi che supportano tutto il resto",
+          outcome: `Scegli le fondamenta. Automatizzi pubblicazione, monitoraggio, crescita del sistema. Ogni sviluppatore dell'azienda lavora meglio grazie a te. L'impatto è invisibile ma enorme.`,
         },
       ],
     },
     "Digital Marketing": {
-      context: `Dopo 6 mesi in ${theme.companyName}, le tue campagne hanno generato €200k di revenue attribuibile nel ${theme.industry}.`,
-      situation: "Il CMO ti propone tre direzioni di crescita. Quale scegli?",
+      context: `Dopo 6 mesi in ${theme.companyName}, le tue campagne hanno generato €200.000 di ricavi attribuibili nel ${theme.industry}.`,
+      situation: "Il responsabile marketing ti propone tre direzioni di crescita. Quale scegli?",
       choices: [
         {
           id: "a",
-          text: "Performance Marketing: specializzarti in paid acquisition e ottimizzazione",
-          outcome: `Scegli i numeri. Diventi un mago delle ads. Ogni euro speso ne genera 5. Le aziende ti cercano perché porti risultati misurabili.`,
+          text: "Pubblicità e risultati: specializzarti in campagne a pagamento e ottimizzazione",
+          outcome: `Scegli i numeri. Diventi un esperto di pubblicità. Ogni euro speso ne genera 5. Le aziende ti cercano perché porti risultati misurabili.`,
         },
         {
           id: "b",
-          text: "Brand & Content: costruire la narrativa e l'identità del marchio",
-          outcome: `Scegli la storia. Costruisci un brand che le persone amano nel ${theme.industry}. Il content che crei viene condiviso organicamente. Il valore è nel lungo termine.`,
+          text: "Marchio e contenuti: costruire la narrativa e l'identità del marchio",
+          outcome: `Scegli la storia. Costruisci un marchio che le persone amano nel ${theme.industry}. I contenuti che crei vengono condivisi spontaneamente. Il valore è nel lungo termine.`,
         },
         {
           id: "c",
-          text: "Growth: visione olistica su tutto il funnel, dalla awareness alla retention",
-          outcome: `Scegli il sistema. Vedi come ogni pezzo si connette. Ottimizzi l'intero journey, non solo un canale. Diventi indispensabile per la crescita.`,
+          text: "Crescita: visione d'insieme su tutto il percorso dell'utente, dalla scoperta alla fidelizzazione",
+          outcome: `Scegli il sistema. Vedi come ogni pezzo si connette. Ottimizzi l'intero percorso dell'utente, non solo un canale. Diventi indispensabile per la crescita.`,
         },
       ],
     },
     "Data Analysis e Data Science": {
       context: `Dopo 6 mesi in ${theme.companyName}, le tue analisi hanno influenzato decisioni da milioni di euro nel ${theme.industry}.`,
-      situation: "Il CDO ti presenta tre opportunità. Quale ti ispira di più?",
+      situation: "Il responsabile dei dati ti presenta tre opportunità. Quale ti ispira di più?",
       choices: [
         {
           id: "a",
-          text: "Data Science: costruire modelli predittivi e algoritmi di ML",
-          outcome: `Scegli l'AI. Costruisci modelli che predicono il comportamento utenti nel ${theme.industry}. L'azienda prende decisioni prima che i problemi emergano. Sei nel futuro.`,
+          text: "Scienza dei dati: costruire modelli predittivi e algoritmi di apprendimento automatico",
+          outcome: `Scegli l'intelligenza artificiale. Costruisci modelli che predicono il comportamento utenti nel ${theme.industry}. L'azienda prende decisioni prima che i problemi emergano. Sei nel futuro.`,
         },
         {
           id: "b",
-          text: "Analytics Lead: guidare le analytics di un'intera business unit",
-          outcome: `Scegli l'impatto. Ogni decisione della BU passa dai tuoi insight. Impari il business profondamente. I dati diventano strategia.`,
+          text: "Responsabile analisi: guidare le analisi di un'intera area aziendale",
+          outcome: `Scegli l'impatto. Ogni decisione dell'area aziendale passa dalle tue scoperte. Impari il business profondamente. I dati diventano strategia.`,
         },
         {
           id: "c",
-          text: "Data Engineering: costruire l'infrastruttura dati che abilita tutto",
-          outcome: `Scegli le fondamenta. Costruisci pipeline che trasformano dati grezzi in insight. Ogni analyst lavora meglio grazie alla tua architettura.`,
+          text: "Ingegneria dei dati: costruire l'infrastruttura che rende possibile tutto il resto",
+          outcome: `Scegli le fondamenta. Costruisci flussi di elaborazione che trasformano dati grezzi in scoperte utili. Ogni analista lavora meglio grazie alla tua architettura.`,
         },
       ],
     },
     "Non lo so": {
       context: `Dopo 6 mesi in ${theme.companyName}, hai esplorato diversi ruoli nel ${theme.industry}. Hai capito cosa ti piace e cosa no.`,
-      situation: "Il tuo manager ti chiede dove vuoi specializzarti. Cosa scegli?",
+      situation: "Il tuo responsabile ti chiede dove vuoi specializzarti. Cosa scegli?",
       choices: [
         {
           id: "a",
-          text: "Product Management: definire cosa costruire e perché",
-          outcome: `Scegli la strategia. Diventi il ponte tra business, design e tech. In un anno gestisci la roadmap di un prodotto. Le tue decisioni plasmano il futuro.`,
+          text: "Gestione del prodotto: definire cosa costruire e perché",
+          outcome: `Scegli la strategia. Diventi il ponte tra business, design e tecnologia. In un anno gestisci il piano di sviluppo di un prodotto. Le tue decisioni plasmano il futuro.`,
         },
         {
           id: "b",
-          text: "Project Management: far succedere le cose, coordinare e consegnare",
+          text: "Gestione dei progetti: far succedere le cose, coordinare e consegnare",
           outcome: `Scegli l'esecuzione. Diventi chi tiene insieme i progetti complessi. Il team ti adora perché risolvi problemi prima che esplodano.`,
         },
         {
           id: "c",
           text: "Ancora 3 mesi di esplorazione in un'area che non hai provato",
-          outcome: `Scegli l'esplorazione. Scopri una passione inaspettata per il growth hacking. A volte la risposta è dove non hai ancora guardato.`,
+          outcome: `Scegli l'esplorazione. Scopri una passione inaspettata per le strategie di crescita rapida. A volte la risposta è dove non hai ancora guardato.`,
         },
       ],
     },
