@@ -68,7 +68,22 @@ const ProfileForm = ({ onSubmit, onBack }: ProfileFormProps) => {
   const canProceed = profile[currentStep.field]?.trim() !== "";
 
   const handleNext = () => {
+    // onboarding_step_completed for every step
+    const stepNames = ["Il tuo background", "I tuoi interessi", "Area digitale"];
+    pushEvent({
+      event: 'onboarding_step_completed',
+      event_category: 'onboarding',
+      step_number: step + 1,
+      step_name: stepNames[step],
+      step_value: step === 2 ? profile.digitalArea : "compilato",
+    });
+
     if (isLastStep) {
+      pushEvent({
+        event: 'onboarding_completed',
+        event_category: 'onboarding',
+        area_selected: profile.digitalArea,
+      });
       pushEvent({
         event: 'form_submit',
         event_category: 'lead_generation',
