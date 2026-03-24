@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { UserProfile } from "@/types/simulation";
 import { ArrowRight, ArrowLeft, User, Target, Heart } from "lucide-react";
+import { pushEvent } from "@/lib/gtm";
 
 interface ProfileFormProps {
   onSubmit: (profile: UserProfile) => void;
@@ -25,6 +26,18 @@ const ProfileForm = ({ onSubmit, onBack }: ProfileFormProps) => {
     digitalArea: "",
     interests: "",
   });
+  const formStartTracked = useRef(false);
+
+  const trackFormStart = () => {
+    if (!formStartTracked.current) {
+      pushEvent({
+        event: 'form_start',
+        event_category: 'lead_generation',
+        event_label: 'Primo campo compilato nel form contatti',
+      });
+      formStartTracked.current = true;
+    }
+  };
 
   const steps = [
     {
@@ -56,6 +69,11 @@ const ProfileForm = ({ onSubmit, onBack }: ProfileFormProps) => {
 
   const handleNext = () => {
     if (isLastStep) {
+      pushEvent({
+        event: 'form_submit',
+        event_category: 'lead_generation',
+        event_label: 'Form contatti inviato con successo',
+      });
       onSubmit(profile);
     } else {
       setStep(step + 1);
@@ -116,7 +134,10 @@ const ProfileForm = ({ onSubmit, onBack }: ProfileFormProps) => {
                   {digitalAreas.map((area) => (
                     <button
                       key={area.id}
-                      onClick={() => setProfile({ ...profile, digitalArea: area.id })}
+                      onClick={() => {
+                        trackFormStart();
+                        setProfile({ ...profile, digitalArea: area.id });
+                      }}
                       className={`w-full p-4 rounded-xl text-left transition-all duration-200 ${
                         profile.digitalArea === area.id
                           ? "bg-primary/20 border-2 border-primary"
@@ -134,6 +155,7 @@ const ProfileForm = ({ onSubmit, onBack }: ProfileFormProps) => {
                   onChange={(e) =>
                     setProfile({ ...profile, [currentStep.field]: e.target.value })
                   }
+                  onFocus={trackFormStart}
                   placeholder={currentStep.placeholder}
                   className="w-full h-32 bg-secondary/50 border border-border rounded-xl p-4 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"
                 />

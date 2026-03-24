@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SimulationScenario, Task, TaskChoice } from "@/types/simulation";
+import { pushEvent } from "@/lib/gtm";
 import { 
   Clock, 
   CheckCircle2, 
@@ -43,6 +44,42 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
   const [expandedRecapTask, setExpandedRecapTask] = useState<number | null>(null);
   const [recapSections, setRecapSections] = useState<Record<string, boolean>>({ risultati: true, percorso: false, prossimoPasso: false });
   const [touchedFields, setTouchedFields] = useState({ email: false, phone: false });
+  const startTime = useRef(Date.now());
+  const contactFormStartTracked = useRef(false);
+  const resultViewedTracked = useRef(false);
+
+  // scenario_drop_off: track abandonment during tasks/final phases
+  useEffect(() => {
+    const isInProgress = ["tasks", "taskFeedback", "final", "finalOutcome"].includes(phase);
+    if (!isInProgress) return;
+
+    const handleBeforeUnload = () => {
+      const lastCompleted = taskResults.length;
+      const total = scenario.tasks.length;
+      pushEvent({
+        event: 'scenario_drop_off',
+        event_category: 'quiz_abandonment',
+        last_scenario_completed: lastCompleted,
+        total_scenarios: total,
+        completion_percentage: total > 0 ? Math.round((lastCompleted / total) * 100) : 0,
+      });
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, [phase, taskResults.length, scenario.tasks.length]);
+
+  // result_viewed: fire once when recap mounts
+  useEffect(() => {
+    if (phase === "recap" && !resultViewedTracked.current) {
+      resultViewedTracked.current = true;
+      pushEvent({
+        event: 'result_viewed',
+        event_category: 'results',
+        result_role: scenario.role,
+      });
+    }
+  }, [phase, scenario.role]);
 
   const isEmailValid = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const isPhoneValid = (phone: string) => /^[\d\s+]+$/.test(phone) && phone.replace(/\D/g, "").length >= 8;
@@ -54,6 +91,16 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
   const currentTask = scenario.tasks[currentTaskIndex];
 
   const handleTaskChoiceSelect = (choice: TaskChoice) => {
+    // scenario_answered
+    pushEvent({
+      event: 'scenario_answered',
+      event_category: 'quiz_progress',
+      scenario_number: currentTaskIndex + 1,
+      scenario_title: currentTask.title,
+      answer_selected: choice.text,
+      total_scenarios: scenario.tasks.length,
+    });
+
     setSelectedTaskChoice(choice);
     setPhase("taskFeedback");
   };
@@ -68,6 +115,13 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
       setCurrentTaskIndex(currentTaskIndex + 1);
       setPhase("tasks");
     } else {
+      // quiz_completed
+      pushEvent({
+        event: 'quiz_completed',
+        event_category: 'quiz_progress',
+        total_scenarios: scenario.tasks.length,
+        time_to_complete: Math.round((Date.now() - startTime.current) / 1000),
+      });
       setPhase("final");
     }
   };
@@ -75,6 +129,63 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
   const handleFinalChoiceSelect = (choice: { id: string; text: string; description: string; outcome: string }) => {
     setSelectedFinalChoice(choice);
     setPhase("finalOutcome");
+  };
+
+  const handleRestart = () => {
+    pushEvent({
+      event: 'restart_quiz',
+      event_category: 'engagement',
+      event_label: 'Utente ha scelto di rifare il test',
+    });
+    onRestart();
+  };
+
+  const handleRecapSectionClick = (sectionKey: string, sectionName: string) => {
+    const newState = !recapSections[sectionKey];
+    setRecapSections(s => ({ ...s, [sectionKey]: newState }));
+    if (newState) {
+      pushEvent({
+        event: 'result_section_click',
+        event_category: 'results',
+        section_name: sectionName,
+      });
+    }
+  };
+
+  const handleCtaClick = (ctaText: string, ctaDestination: string) => {
+    pushEvent({
+      event: 'cta_click',
+      event_category: 'results',
+      cta_text: ctaText,
+      cta_destination: ctaDestination,
+    });
+    // Also track as outbound
+    pushEvent({
+      event: 'outbound_click',
+      event_category: 'outbound',
+      outbound_url: ctaDestination,
+      link_text: ctaText,
+    });
+  };
+
+  const trackContactFormStart = () => {
+    if (!contactFormStartTracked.current) {
+      pushEvent({
+        event: 'form_start',
+        event_category: 'lead_generation',
+        event_label: 'Primo campo compilato nel form contatti',
+      });
+      contactFormStartTracked.current = true;
+    }
+  };
+
+  const handleContactFormSubmit = () => {
+    pushEvent({
+      event: 'form_submit',
+      event_category: 'lead_generation',
+      event_label: 'Form contatti inviato con successo',
+    });
+    setPhase("recap");
   };
 
   const correctAnswers = taskResults.filter(r => r.choice.isCorrect).length;
@@ -383,6 +494,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
               placeholder="Il tuo nome"
               value={contactData.name}
               onChange={(e) => setContactData({ ...contactData, name: e.target.value })}
+              onFocus={trackContactFormStart}
               className="bg-secondary/50 border-border/50"
             />
           </div>
@@ -398,6 +510,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
               placeholder="La tua email"
               value={contactData.email}
               onChange={(e) => setContactData({ ...contactData, email: e.target.value })}
+              onFocus={trackContactFormStart}
               onBlur={() => setTouchedFields(f => ({ ...f, email: true }))}
               className={`bg-secondary/50 border-border/50 ${emailError ? "border-red-500" : ""}`}
             />
@@ -415,6 +528,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
               placeholder="Il tuo numero di telefono"
               value={contactData.phone}
               onChange={(e) => setContactData({ ...contactData, phone: e.target.value })}
+              onFocus={trackContactFormStart}
               onBlur={() => setTouchedFields(f => ({ ...f, phone: true }))}
               className={`bg-secondary/50 border-border/50 ${phoneError ? "border-red-500" : ""}`}
             />
@@ -437,7 +551,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
       <Button 
         variant="hero" 
         size="lg" 
-        onClick={() => setPhase("recap")} 
+        onClick={handleContactFormSubmit} 
         className="w-full"
         disabled={!isContactFormValid}
       >
@@ -467,7 +581,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
 
       <Card variant="gradient" className="p-6">
         <button
-          onClick={() => setRecapSections(s => ({ ...s, risultati: !s.risultati }))}
+          onClick={() => handleRecapSectionClick('risultati', 'I tuoi risultati')}
           className="w-full flex items-center justify-between cursor-pointer"
         >
           <h3 className="text-xl font-bold flex items-center gap-2">
@@ -527,7 +641,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
 
       <Card variant="glass" className="p-6">
         <button
-          onClick={() => setRecapSections(s => ({ ...s, percorso: !s.percorso }))}
+          onClick={() => handleRecapSectionClick('percorso', 'Perché questo percorso fa per te')}
           className="w-full flex items-center justify-between cursor-pointer"
         >
           <h3 className="text-xl font-bold">Perché questo percorso fa per te</h3>
@@ -550,7 +664,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
 
       <Card variant="gradient" className="p-6 border-primary/30 border-l-4 border-l-[#00c896]">
         <button
-          onClick={() => setRecapSections(s => ({ ...s, prossimoPasso: !s.prossimoPasso }))}
+          onClick={() => handleRecapSectionClick('prossimoPasso', 'Il tuo prossimo passo')}
           className="w-full flex items-center justify-between cursor-pointer"
         >
           <h3 className="text-xl font-bold text-primary flex items-center gap-2">
@@ -609,6 +723,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 w-full"
+          onClick={() => handleCtaClick('Scopri il Master', scenario.masterRecommendation.url)}
         >
           <Button variant="hero" size="lg" className="w-full">
             Scopri il Master
@@ -619,7 +734,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
       </Card>
 
       <div className="pt-4">
-        <Button variant="outline" size="lg" onClick={onRestart} className="w-full">
+        <Button variant="outline" size="lg" onClick={handleRestart} className="w-full">
           <RotateCcw className="w-5 h-5" />
           Vuoi provare un altro scenario?
         </Button>
