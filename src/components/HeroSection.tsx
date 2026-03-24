@@ -2,12 +2,22 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Briefcase, Zap } from "lucide-react";
 import start2impactLogo from "@/assets/start2impact-logo.png";
+import { pushEvent } from "@/lib/gtm";
 
 interface HeroSectionProps {
   onStart: () => void;
 }
 
 const HeroSection = ({ onStart }: HeroSectionProps) => {
+  const handleStart = () => {
+    pushEvent({
+      event: 'quiz_start',
+      event_category: 'engagement',
+      event_label: 'Inizio simulazione dalla homepage',
+    });
+    onStart();
+  };
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden">
       {/* Background effects */}
@@ -80,7 +90,7 @@ const HeroSection = ({ onStart }: HeroSectionProps) => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <Button variant="hero" size="xl" onClick={onStart}>
+          <Button variant="hero" size="xl" onClick={handleStart}>
             <Zap className="w-5 h-5" />
             Inizia la Simulazione
           </Button>
