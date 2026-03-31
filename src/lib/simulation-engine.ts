@@ -448,7 +448,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Pubblichi la novità sull'ambiente di prova per verificare che tutto funzioni, e proponi la pubblicazione definitiva lunedì mattina",
             isCorrect: true,
-            feedback: `Ottima gestione del rischio! Hai completato il lavoro ma evitato problemi nel fine settimana.`,
+            feedback: `Buona gestione del rischio. Lavoro fatto, problemi evitati.`,
           },
           {
             id: "b",
