@@ -166,7 +166,7 @@ const ProfileForm = ({ onSubmit, onBack }: ProfileFormProps) => {
                         trackFormStart();
                         setProfile({ ...profile, digitalArea: area.id });
                       }}
-                      className={`w-full p-4 rounded-xl text-left transition-all duration-200 ${
+                      className={`w-full p-4 rounded text-left transition-all duration-200 ${
                         profile.digitalArea === area.id
                           ? "bg-primary/20 border-2 border-primary"
                           : "bg-secondary/50 border-2 border-transparent hover:bg-secondary"
