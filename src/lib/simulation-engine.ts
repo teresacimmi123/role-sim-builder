@@ -435,7 +435,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Debugging",
-        lesson: `In questo lavoro, la risoluzione efficace degli errori segue un metodo: riproduci, isola, verifica, risolvi.`,
+        lesson: `Riproduci, isola, verifica, risolvi.`,
       },
       {
         id: 4,
