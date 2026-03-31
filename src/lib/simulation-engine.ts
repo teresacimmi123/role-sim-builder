@@ -287,7 +287,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           {
             id: "b",
             text: "Marco, 45 anni, professionista: usa l'app di rado ma genera molto valore economico quando la utilizza",
-            feedback: `Marco porta valore economico ma non rappresenta l'utente tipo di ${t.industry}. Ottimizzare per lui potrebbe allontanare gli utenti principali.`,
+            feedback: `Porta valore economico ma non rappresenta l'utente tipo. Rischi di allontanare gli altri.`,
           },
           {
             id: "c",
