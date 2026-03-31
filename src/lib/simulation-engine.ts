@@ -659,7 +659,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Critical Thinking",
-        lesson: `Nel digitale, i dati controintuitivi meritano più attenzione, non meno.`,
+        lesson: `I dati strani meritano più attenzione, non meno.`,
       },
       {
         id: 4,
