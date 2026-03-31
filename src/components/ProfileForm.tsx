@@ -185,7 +185,7 @@ const ProfileForm = ({ onSubmit, onBack }: ProfileFormProps) => {
                   }
                   onFocus={trackFormStart}
                   placeholder={currentStep.placeholder}
-                  className="w-full h-32 bg-secondary/50 border border-border rounded-xl p-4 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"
+                  className="w-full h-32 bg-secondary/50 border border-border rounded p-4 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"
                 />
               )}
 

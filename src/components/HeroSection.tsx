@@ -111,7 +111,7 @@ const HeroSection = ({ onStart }: HeroSectionProps) => {
             { icon: Sparkles, label: "Personalizzato" },
           ].map((item, index) => (
             <div key={index} className="flex flex-col items-center gap-2 text-muted-foreground">
-              <div className="w-12 h-12 rounded-xl glass flex items-center justify-center">
+              <div className="w-12 h-12 rounded glass flex items-center justify-center">
                 <item.icon className="w-5 h-5 text-primary" />
               </div>
               <span className="text-xs font-medium">{item.label}</span>
