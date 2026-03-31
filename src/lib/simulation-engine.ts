@@ -381,7 +381,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Code Review",
-        lesson: `In questo lavoro, una buona revisione del codice bilancia qualità e crescita del team.`,
+        lesson: `Revisione buona: insegna, non solo corregge.`,
       },
       {
         id: 2,
