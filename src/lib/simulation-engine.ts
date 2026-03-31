@@ -672,7 +672,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Dai un nome descrittivo a ogni gruppo e mostri una o due scoperte concrete e utilizzabili per ciascuno",
             isCorrect: true,
-            feedback: `Perfetto! 'Gli Esploratori', 'I Fedeli', 'I Dormienti' sono più memorabili di 'Gruppo 1, 2, 3'.`,
+            feedback: `Nomi descrittivi rendono i gruppi memorabili e utilizzabili dal team.`,
           },
           {
             id: "b",
