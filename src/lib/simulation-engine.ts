@@ -549,7 +549,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Content Strategy",
-        lesson: `In questi ruoli, il mix di contenuti bilancia costruzione del marchio e risultati concreti.`,
+        lesson: `Bilancia contenuti di marca e risultati.`,
       },
       {
         id: 4,
