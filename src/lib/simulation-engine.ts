@@ -296,7 +296,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "User Research",
-        lesson: `In questi ruoli, il profilo-tipo primario deve rappresentare chi usa davvero il prodotto, non chi vorresti che lo usasse.`,
+        lesson: `Progetta per chi usa il prodotto davvero.`,
       },
       {
         id: 3,
