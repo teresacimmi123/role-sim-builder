@@ -686,7 +686,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Data Storytelling",
-        lesson: `In questo lavoro, una scoperta non comunicata bene è una scoperta sprecata.`,
+        lesson: `Scoperta comunicata male è scoperta sprecata.`,
       },
     ],
     "Non lo so": (t) => [
