@@ -399,7 +399,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           {
             id: "b",
             text: "Proponi di tenere tutto in un unico blocco ben organizzato per semplicità, così il team può lavorarci senza dover coordinare troppe parti",
-            feedback: `Funziona all'inizio, ma quando il sistema cresce diventa difficile da modificare senza rompere qualcos'altro.`,
+            feedback: `Funziona all'inizio, ma diventa difficile da modificare crescendo.`,
           },
           {
             id: "c",
