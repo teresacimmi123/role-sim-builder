@@ -224,13 +224,13 @@ const generateRole = (area: string, bgContext: { type: string; advantage: string
       analytical: { role: `Data Scientist presso ${theme.companyName}`, explanation: `Costruisci modelli predittivi per ${theme.industry}. ${bgContext.advantage}` },
     },
     "Non lo so": {
-      marketing: { role: `Digital Content Strategist presso ${theme.companyName}`, explanation: `Hai un background nel marketing e una passione per l'${theme.industry}: nel digitale questo si traduce in saper costruire messaggi che arrivano alle persone giuste, nel settore che già ti accende. Ti abbiamo assegnato un ruolo che unisce strategia e creatività.` },
-      tech: { role: `Digital Product Manager presso ${theme.companyName}`, explanation: `Con un background tecnico e un interesse per l'${theme.industry}, il ruolo di Product Manager ti permette di usare la logica senza rinchiuderti in un'unica specializzazione — guidando prodotti in un settore che già conosci e ami.` },
-      creative: { role: `Creative Project Lead presso ${theme.companyName}`, explanation: `La tua sensibilità creativa unita alla passione per l'${theme.industry} è una combinazione rara. Ti abbiamo assegnato un ruolo che dà forma alle idee in un settore dove il bello e il funzionale devono convivere.` },
-      business: { role: `Digital Business Developer presso ${theme.companyName}`, explanation: `Capisci i meccanismi del business e hai un interesse genuino per l'${theme.industry}: chi sa leggere le opportunità di mercato e parlare il linguaggio del digitale in questo settore vale doppio.` },
-      humanistic: { role: `UX Strategist & Community Lead presso ${theme.companyName}`, explanation: `Sai leggere le persone, e il tuo interesse per l'${theme.industry} ti dà un contesto preciso dove applicarlo. Ti abbiamo assegnato un ruolo che mette le relazioni umane al centro di un settore che spesso le dimentica.` },
-      analytical: { role: `Data-Driven Project Manager presso ${theme.companyName}`, explanation: `Ragioni per numeri e strutture, e hai una passione per l'${theme.industry}: questo ti rende prezioso in un ruolo dove le decisioni devono essere giustificate con dati in un settore che hai già scelto di esplorare.` },
-      default: { role: `Digital Explorer in residenza presso ${theme.companyName}`, explanation: `Non avere ancora una direzione precisa non è un limite. Il tuo interesse per l'${theme.industry} ci ha detto qualcosa di importante: ti abbiamo messo in un ruolo trasversale proprio in quel mondo, così puoi toccare più aree e capire dove senti più energia.` },
+      marketing: { role: `Digital Content Strategist presso ${theme.companyName}`, explanation: `Unisci comunicazione e strategia digitale nel settore ${theme.industry}. ${bgContext.advantage}` },
+      tech: { role: `Digital Product Manager presso ${theme.companyName}`, explanation: `Usi la logica per guidare prodotti digitali nel settore ${theme.industry}. ${bgContext.advantage}` },
+      creative: { role: `Creative Project Lead presso ${theme.companyName}`, explanation: `Dai forma alle idee creative nel settore ${theme.industry}. ${bgContext.advantage}` },
+      business: { role: `Digital Business Developer presso ${theme.companyName}`, explanation: `Leggi le opportunità di mercato nel digitale per ${theme.industry}. ${bgContext.advantage}` },
+      humanistic: { role: `UX Strategist & Community Lead presso ${theme.companyName}`, explanation: `Metti le relazioni umane al centro del digitale in ${theme.industry}. ${bgContext.advantage}` },
+      analytical: { role: `Data-Driven Project Manager presso ${theme.companyName}`, explanation: `Prendi decisioni basate sui dati nel settore ${theme.industry}. ${bgContext.advantage}` },
+      default: { role: `Digital Explorer in residenza presso ${theme.companyName}`, explanation: `Esplori diverse aree del digitale nel settore ${theme.industry}. ${bgContext.advantage}` },
     },
   };
 
