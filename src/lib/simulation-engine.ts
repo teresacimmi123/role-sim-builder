@@ -513,7 +513,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           {
             id: "b",
             text: "Nascondi temporaneamente il post per evitare che la situazione si amplifichi e contatti l'utente in privato",
-            feedback: "Censurare peggiora tutto. Nel " + t.industry + ", l'autenticità è fondamentale.",
+            feedback: "Censurare peggiora tutto. L'autenticità è fondamentale.",
           },
           {
             id: "c",
