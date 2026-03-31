@@ -372,7 +372,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           {
             id: "b",
             text: "Approvi il lavoro con un commento positivo: il codice funziona correttamente e non vale la pena rallentare il rilascio",
-            feedback: `Il codice "che funziona" oggi può causare problemi domani. La qualità del codice è fondamentale per lavorare bene nel tempo.`,
+            feedback: `Il codice "che funziona" oggi può causare problemi domani.`,
           },
           {
             id: "c",
