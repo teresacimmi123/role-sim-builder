@@ -282,7 +282,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: `Elena, 28 anni, appassionata di ${t.industry}: usa l'app ogni giorno ma è frustrata dalla mancanza di personalizzazione`,
             isCorrect: true,
-            feedback: `Ottima scelta! Elena rappresenta l'utente principale di ${t.companyName} e il suo problema è direttamente collegato alla questione centrale.`,
+            feedback: `Elena rappresenta l'utente principale e il suo problema è quello centrale.`,
           },
           {
             id: "b",
