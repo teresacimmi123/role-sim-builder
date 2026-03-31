@@ -36,9 +36,9 @@ const CookieBanner = () => {
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
           className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-md z-50"
         >
-          <div className="bg-card border border-border rounded-2xl p-5 shadow-xl backdrop-blur-sm">
+          <div className="bg-card border border-border rounded p-5 shadow-xl backdrop-blur-sm">
             <div className="flex items-start gap-3">
-              <div className="bg-primary/10 rounded-full p-2 mt-0.5">
+              <div className="bg-primary/10 rounded p-2 mt-0.5">
                 <Cookie className="w-5 h-5 text-primary" />
               </div>
               <div className="flex-1 space-y-3">
