@@ -562,7 +562,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "€1.500 per mostrare annunci a chi ha già visitato il sito, €1.000 per raggiungere persone simili ai tuoi clienti attuali, €500 per testare nuovi pubblici",
             isCorrect: true,
-            feedback: `Strategia intelligente! Raggiungere chi ti conosce già ha il ritorno sull'investimento più alto, il pubblico simile ti fa crescere, e i test preparano il futuro.`,
+            feedback: `Chi ti conosce già converte di più. Pubblico simile espande, test preparano il futuro.`,
           },
           {
             id: "b",
