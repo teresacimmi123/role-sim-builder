@@ -262,7 +262,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           {
             id: "c",
             text: "Organizzi un incontro con utenti reali del prodotto per raccogliere opinioni dirette",
-            feedback: "Gli incontri con gli utenti sono utili, ma prima servono dati quantitativi per sapere cosa chiedere. Rischi di basarti su opinioni.",
+            feedback: "Utili, ma prima servono dati quantitativi per sapere cosa chiedere.",
           },
         ],
         skill: "Problem Framing",
