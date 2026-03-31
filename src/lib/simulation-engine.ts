@@ -316,7 +316,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           {
             id: "b",
             text: "Inserire un sistema di filtri avanzati nella home che permetta agli utenti di fare ricerche più mirate",
-            feedback: `I filtri aggiungono complessità. Nel ${t.industry}, gli utenti vogliono che sia l'app a capirli, non dover cercare manualmente.`,
+            feedback: `I filtri aggiungono complessità. Gli utenti vogliono che l'app li capisca.`,
           },
           {
             id: "c",
