@@ -968,11 +968,11 @@ const generateMorningIntro = (area: string, theme: InterestTheme, profile: UserP
 
 const generateConclusion = (area: string, theme: InterestTheme, profile: UserProfile): string => {
   const conclusions: Record<string, string> = {
-    "UX/UI Design": `Hai appena analizzato una richiesta reale, scelto il profilo utente su cui concentrarti, progettato una soluzione concreta e difeso le tue idee davanti a un team. Questo è il lavoro vero di chi progetta esperienze digitali: non si tratta di rendere le cose "belle", ma di capire le persone e risolvere i loro problemi.`,
-    "Web Development": `Hai appena revisionato il lavoro di un collega, scelto come strutturare un sistema, risolto un errore sotto pressione e deciso se pubblicare o aspettare. Questo è il lavoro vero di chi costruisce prodotti digitali: non è solo scrivere codice, è prendere decisioni che hanno un impatto reale.`,
-    "Digital Marketing": `Hai appena letto i dati di una campagna, gestito una crisi sui social, pianificato un mese di contenuti e distribuito un budget pubblicitario. Questo è il lavoro vero di chi fa marketing digitale: non è solo pubblicare post, è ragionare in modo strategico su ogni scelta.`,
-    "Data Analysis e Data Science": `Hai appena scelto cosa misurare in un progetto reale, trovato un'anomalia nei dati, raccontato i risultati a chi deve prendere decisioni e affrontato un problema di qualità dei dati. Questo è il lavoro vero di chi analizza dati: non è solo fare grafici, è trasformare numeri in risposte concrete.`,
-    "Non lo so": `Hai appena affrontato situazioni che richiedevano analisi, comunicazione, problem solving e visione d'insieme. Anche senza un titolo preciso, hai dimostrato di saper ragionare come chi lavora nel digitale ogni giorno.`,
+    "UX/UI Design": `Hai analizzato una richiesta reale, scelto un profilo utente, progettato una soluzione e difeso le tue idee davanti a un team. Questo è il lavoro di chi progetta esperienze digitali.`,
+    "Web Development": `Hai revisionato codice, scelto un'architettura, risolto un errore e gestito una pubblicazione sotto pressione. Questo è il lavoro di chi costruisce prodotti digitali.`,
+    "Digital Marketing": `Hai letto i dati di una campagna, gestito una crisi, pianificato contenuti e distribuito un budget. Questo è il lavoro di chi fa marketing digitale.`,
+    "Data Analysis e Data Science": `Hai scelto cosa misurare, trovato un'anomalia, comunicato risultati a non-tecnici e gestito dati incompleti. Questo è il lavoro di chi analizza dati.`,
+    "Non lo so": `Hai affrontato analisi, comunicazione, problem solving e coordinamento. Hai ragionato come chi lavora nel digitale ogni giorno.`,
   };
 
   return conclusions[area] || conclusions["Non lo so"];
