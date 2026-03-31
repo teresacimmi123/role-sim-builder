@@ -338,7 +338,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: `"Possiamo partire con regole semplici basate sulle scelte dell'accoglienza iniziale e poi evolvere verso l'intelligenza artificiale in una fase 2?"`,
             isCorrect: true,
-            feedback: `Perfetto! Hai proposto una versione base funzionante che mantiene il valore per l'utente. In ${t.industry}, meglio lanciare qualcosa di buono ora che qualcosa di perfetto mai.`,
+            feedback: `Versione base funzionante ora, evoluzione dopo. Approccio corretto.`,
           },
           {
             id: "b",
