@@ -742,7 +742,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Conflict Resolution",
-        lesson: `In questi ruoli, i conflitti spesso nascono da obiettivi diversi. Trovare l'obiettivo comune li risolve.`,
+        lesson: `Trova l'obiettivo comune, il conflitto si risolve.`,
       },
       {
         id: 3,
