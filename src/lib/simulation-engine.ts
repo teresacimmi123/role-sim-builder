@@ -508,7 +508,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Rispondi pubblicamente con empatia riconoscendo il disagio e offri un contatto diretto per risolvere la situazione",
             isCorrect: true,
-            feedback: `Perfetto! In ${t.industry}, la trasparenza e l'ascolto trasformano critici in sostenitori.`,
+            feedback: `Trasparenza e ascolto trasformano critici in sostenitori.`,
           },
           {
             id: "b",
