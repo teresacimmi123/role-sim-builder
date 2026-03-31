@@ -481,7 +481,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: `"Il problema è la pagina dove le persone arrivano dopo il click: su 380 click, solo 12 hanno completato l'azione. Propongo di creare due versioni della pagina e testare quale funziona meglio"`,
             isCorrect: true,
-            feedback: `Eccellente! Hai identificato dove si perdono le persone e proposto una soluzione concreta per ${t.industry}.`,
+            feedback: `Hai identificato dove si perdono le persone e proposto una soluzione concreta.`,
           },
           {
             id: "b",
