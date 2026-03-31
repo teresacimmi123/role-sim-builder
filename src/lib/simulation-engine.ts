@@ -632,7 +632,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Data Quality",
-        lesson: `In questi ruoli, la qualità dei dati è il fondamento. Se i dati in ingresso sono scadenti, i risultati saranno scadenti.`,
+        lesson: `Dati scadenti in ingresso, risultati scadenti.`,
       },
       {
         id: 3,
