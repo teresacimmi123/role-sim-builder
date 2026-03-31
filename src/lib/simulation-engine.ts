@@ -453,7 +453,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           {
             id: "b",
             text: "Procedi con la pubblicazione definitiva: tutti i controlli automatici sono passati e la funzionalità è stata validata dal team",
-            feedback: `Pubblicare il venerdì sera è rischioso. Se qualcosa va storto nel fine settimana, chi interviene?`,
+            feedback: `Rischioso. Se qualcosa va storto nel fine settimana, chi interviene?`,
           },
           {
             id: "c",
