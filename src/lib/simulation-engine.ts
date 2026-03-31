@@ -252,7 +252,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Analizzi i dati di comportamento degli utenti per individuare dove si bloccano nel flusso attuale",
             isCorrect: true,
-            feedback: `Perfetto! In ${t.industry}, i dati comportamentali rivelano dove gli utenti si bloccano. Prima capisci il "dove", poi il "perché".`,
+            feedback: `Giusto. I dati comportamentali mostrano dove si bloccano gli utenti.`,
           },
           {
             id: "b",
