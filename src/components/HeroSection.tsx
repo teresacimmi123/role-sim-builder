@@ -35,7 +35,7 @@ const HeroSection = ({ onStart }: HeroSectionProps) => {
         }}
       />
 
-      <div className="relative z-10 max-w-2xl mx-auto text-center">
+      <div className="relative z-10 max-w-3xl mx-auto text-center">
         {/* Logo start2impact */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
