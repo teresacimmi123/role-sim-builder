@@ -618,7 +618,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Analizzi la distribuzione dei valori mancanti per capire se sono casuali o sistematici, poi decidi la strategia migliore",
             isCorrect: true,
-            feedback: `Eccellente! In ${t.industry}, i valori mancanti raccontano una storia. Capire PERCHÉ mancano è fondamentale.`,
+            feedback: `I valori mancanti raccontano una storia. Capire perché mancano è fondamentale.`,
           },
           {
             id: "b",
