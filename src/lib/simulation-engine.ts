@@ -224,13 +224,13 @@ const generateRole = (area: string, bgContext: { type: string; advantage: string
       analytical: { role: `Data Scientist presso ${theme.companyName}`, explanation: `Costruisci modelli predittivi per ${theme.industry}. ${bgContext.advantage}` },
     },
     "Non lo so": {
-      marketing: { role: `Digital Content Strategist presso ${theme.companyName}`, explanation: `Unisci comunicazione e strategia digitale nel settore ${theme.industry}. ${bgContext.advantage}` },
-      tech: { role: `Digital Product Manager presso ${theme.companyName}`, explanation: `Usi la logica per guidare prodotti digitali nel settore ${theme.industry}. ${bgContext.advantage}` },
-      creative: { role: `Creative Project Lead presso ${theme.companyName}`, explanation: `Dai forma alle idee creative nel settore ${theme.industry}. ${bgContext.advantage}` },
-      business: { role: `Digital Business Developer presso ${theme.companyName}`, explanation: `Leggi le opportunità di mercato nel digitale per ${theme.industry}. ${bgContext.advantage}` },
-      humanistic: { role: `UX Strategist & Community Lead presso ${theme.companyName}`, explanation: `Metti le relazioni umane al centro del digitale in ${theme.industry}. ${bgContext.advantage}` },
-      analytical: { role: `Data-Driven Project Manager presso ${theme.companyName}`, explanation: `Prendi decisioni basate sui dati nel settore ${theme.industry}. ${bgContext.advantage}` },
-      default: { role: `Digital Explorer in residenza presso ${theme.companyName}`, explanation: `Esplori diverse aree del digitale nel settore ${theme.industry}. ${bgContext.advantage}` },
+      marketing: { role: `Digital Content Strategist presso ${theme.companyName}`, explanation: `Hai un background nel marketing e una passione per l'${theme.industry}: nel digitale questo si traduce in saper costruire messaggi che arrivano alle persone giuste, nel settore che già ti accende. Ti abbiamo assegnato un ruolo che unisce strategia e creatività.` },
+      tech: { role: `Digital Product Manager presso ${theme.companyName}`, explanation: `Con un background tecnico e un interesse per l'${theme.industry}, il ruolo di Product Manager ti permette di usare la logica senza rinchiuderti in un'unica specializzazione — guidando prodotti in un settore che già conosci e ami.` },
+      creative: { role: `Creative Project Lead presso ${theme.companyName}`, explanation: `La tua sensibilità creativa unita alla passione per l'${theme.industry} è una combinazione rara. Ti abbiamo assegnato un ruolo che dà forma alle idee in un settore dove il bello e il funzionale devono convivere.` },
+      business: { role: `Digital Business Developer presso ${theme.companyName}`, explanation: `Capisci i meccanismi del business e hai un interesse genuino per l'${theme.industry}: chi sa leggere le opportunità di mercato e parlare il linguaggio del digitale in questo settore vale doppio.` },
+      humanistic: { role: `UX Strategist & Community Lead presso ${theme.companyName}`, explanation: `Sai leggere le persone, e il tuo interesse per l'${theme.industry} ti dà un contesto preciso dove applicarlo. Ti abbiamo assegnato un ruolo che mette le relazioni umane al centro di un settore che spesso le dimentica.` },
+      analytical: { role: `Data-Driven Project Manager presso ${theme.companyName}`, explanation: `Ragioni per numeri e strutture, e hai una passione per l'${theme.industry}: questo ti rende prezioso in un ruolo dove le decisioni devono essere giustificate con dati in un settore che hai già scelto di esplorare.` },
+      default: { role: `Digital Explorer in residenza presso ${theme.companyName}`, explanation: `Non avere ancora una direzione precisa non è un limite. Il tuo interesse per l'${theme.industry} ci ha detto qualcosa di importante: ti abbiamo messo in un ruolo trasversale proprio in quel mondo, così puoi toccare più aree e capire dove senti più energia.` },
     },
   };
 
@@ -252,21 +252,21 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Analizzi i dati di comportamento degli utenti per individuare dove si bloccano nel flusso attuale",
             isCorrect: true,
-            feedback: `Giusto. I dati comportamentali mostrano dove si bloccano gli utenti.`,
+            feedback: `Perfetto! In ${t.industry}, i dati comportamentali rivelano dove gli utenti si bloccano. Prima capisci il "dove", poi il "perché".`,
           },
           {
             id: "b",
             text: "Proponi di semplificare l'interfaccia riducendo gli elementi visivi e i passaggi richiesti all'utente",
-            feedback: "Stai assumendo il problema senza dati. Potresti eliminare funzionalità cruciali.",
+            feedback: "Stai assumendo che il problema sia la complessità senza dati. Nel settore " + t.industry + " potresti eliminare funzionalità cruciali.",
           },
           {
             id: "c",
             text: "Organizzi un incontro con utenti reali del prodotto per raccogliere opinioni dirette",
-            feedback: "Utili, ma prima servono dati quantitativi per sapere cosa chiedere.",
+            feedback: "Gli incontri con gli utenti sono utili, ma prima servono dati quantitativi per sapere cosa chiedere. Rischi di basarti su opinioni.",
           },
         ],
         skill: "Problem Framing",
-        lesson: `Prima i dati, poi il design.`,
+        lesson: `In questo lavoro, resistere all'impulso di progettare subito è fondamentale. Il 50% del lavoro è capire il problema giusto.`,
       },
       {
         id: 2,
@@ -282,21 +282,21 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: `Elena, 28 anni, appassionata di ${t.industry}: usa l'app ogni giorno ma è frustrata dalla mancanza di personalizzazione`,
             isCorrect: true,
-            feedback: `Elena rappresenta l'utente principale e il suo problema è quello centrale.`,
+            feedback: `Ottima scelta! Elena rappresenta l'utente principale di ${t.companyName} e il suo problema è direttamente collegato alla questione centrale.`,
           },
           {
             id: "b",
             text: "Marco, 45 anni, professionista: usa l'app di rado ma genera molto valore economico quando la utilizza",
-            feedback: `Porta valore economico ma non rappresenta l'utente tipo. Rischi di allontanare gli altri.`,
+            feedback: `Marco porta valore economico ma non rappresenta l'utente tipo di ${t.industry}. Ottimizzare per lui potrebbe allontanare gli utenti principali.`,
           },
           {
             id: "c",
             text: "Sofia, 19 anni, studentessa: prova molte app concorrenti ed è sempre alla ricerca della soluzione perfetta",
-            feedback: "Troppo instabile come riferimento. Serve fidelizzare prima di espandere.",
+            feedback: "Sofia è interessante ma troppo instabile. Nel " + t.industry + " serve fidelizzare prima di espandere.",
           },
         ],
         skill: "User Research",
-        lesson: `Progetta per chi usa il prodotto davvero.`,
+        lesson: `In questi ruoli, il profilo-tipo primario deve rappresentare chi usa davvero il prodotto, non chi vorresti che lo usasse.`,
       },
       {
         id: 3,
@@ -311,12 +311,12 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Progettare un percorso di accoglienza iniziale che raccoglie le preferenze dell'utente e personalizza l'esperienza dal primo accesso",
             isCorrect: true,
-            feedback: `La personalizzazione dal primo accesso crea coinvolgimento immediato.`,
+            feedback: `Eccellente! Nel ${t.industry}, la personalizzazione fin dall'inizio crea coinvolgimento. L'utente si sente capito e continua a usare l'app.`,
           },
           {
             id: "b",
             text: "Inserire un sistema di filtri avanzati nella home che permetta agli utenti di fare ricerche più mirate",
-            feedback: `I filtri aggiungono complessità. Gli utenti vogliono che l'app li capisca.`,
+            feedback: `I filtri aggiungono complessità. Nel ${t.industry}, gli utenti vogliono che sia l'app a capirli, non dover cercare manualmente.`,
           },
           {
             id: "c",
@@ -325,7 +325,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Solution Design",
-        lesson: `La personalizzazione è un'aspettativa, non un extra.`,
+        lesson: `Nel digitale, la personalizzazione non è un plus, è un'aspettativa. Chi non personalizza, perde.`,
       },
       {
         id: 4,
@@ -338,12 +338,12 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: `"Possiamo partire con regole semplici basate sulle scelte dell'accoglienza iniziale e poi evolvere verso l'intelligenza artificiale in una fase 2?"`,
             isCorrect: true,
-            feedback: `Versione base funzionante ora, evoluzione dopo. Approccio corretto.`,
+            feedback: `Perfetto! Hai proposto una versione base funzionante che mantiene il valore per l'utente. In ${t.industry}, meglio lanciare qualcosa di buono ora che qualcosa di perfetto mai.`,
           },
           {
             id: "b",
             text: `"L'esperienza utente è la nostra priorità: propongo di riorganizzare il piano di sviluppo per trovare il tempo necessario"`,
-            feedback: `Ignorare i vincoli tecnici crea conflitti. Il designer collabora, non impone.`,
+            feedback: `Ignorare i vincoli crea conflitti. In ${t.companyName} come in ogni azienda, il designer collabora, non impone.`,
           },
           {
             id: "c",
@@ -352,7 +352,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Stakeholder Management",
-        lesson: `Negozia tra esperienza ideale e vincoli reali.`,
+        lesson: `I designer migliori sanno negoziare tra esperienza utente ideale e vincoli reali. In questo lavoro come in ogni altro, la soluzione perfetta irrealizzabile non esiste.`,
       },
     ],
     "Web Development": (t) => [
@@ -367,12 +367,12 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Lasci un commento costruttivo spiegando quale approccio sarebbe più adatto e alleghi un esempio concreto di come migliorarlo",
             isCorrect: true,
-            feedback: `Una revisione costruttiva con esempio concreto insegna e fa crescere.`,
+            feedback: `Perfetto! Una revisione costruttiva insegna. In ${t.companyName}, come in ogni team sano, si cresce insieme.`,
           },
           {
             id: "b",
             text: "Approvi il lavoro con un commento positivo: il codice funziona correttamente e non vale la pena rallentare il rilascio",
-            feedback: `Il codice "che funziona" oggi può causare problemi domani.`,
+            feedback: `Il codice "che funziona" oggi può causare problemi domani. La qualità del codice è fondamentale per lavorare bene nel tempo.`,
           },
           {
             id: "c",
@@ -381,7 +381,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Code Review",
-        lesson: `Revisione buona: insegna, non solo corregge.`,
+        lesson: `In questo lavoro, una buona revisione del codice bilancia qualità e crescita del team.`,
       },
       {
         id: 2,
@@ -394,12 +394,12 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Proponi di separare il sistema in parti indipendenti, ognuna con un compito preciso, così si possono migliorare una alla volta",
             isCorrect: true,
-            feedback: `Separare le responsabilità rende il sistema più facile da far crescere.`,
+            feedback: `Eccellente! Separare le responsabilità rende il sistema più facile da capire, testare e far crescere nel tempo.`,
           },
           {
             id: "b",
             text: "Proponi di tenere tutto in un unico blocco ben organizzato per semplicità, così il team può lavorarci senza dover coordinare troppe parti",
-            feedback: `Funziona all'inizio, ma diventa difficile da modificare crescendo.`,
+            feedback: `Funziona all'inizio, ma quando il sistema cresce diventa difficile da modificare senza rompere qualcos'altro.`,
           },
           {
             id: "c",
@@ -408,7 +408,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "System Architecture",
-        lesson: `L'architettura scelta all'inizio condiziona tutto.`,
+        lesson: `Nel digitale, le scelte di architettura fatte all'inizio influenzano tutto ciò che viene dopo. Meglio pensarci bene subito.`,
       },
       {
         id: 3,
@@ -421,7 +421,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Verifichi quanti dati causano l'errore e controlli i registri del sistema per trovare il messaggio di errore specifico",
             isCorrect: true,
-            feedback: `Approccio sistematico: confermi l'ipotesi, poi trovi la causa reale.`,
+            feedback: `Perfetto! Risoluzione sistematica: prima confermi l'ipotesi, poi trovi la causa reale del problema.`,
           },
           {
             id: "b",
@@ -435,7 +435,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Debugging",
-        lesson: `Riproduci, isola, verifica, risolvi.`,
+        lesson: `In questo lavoro, la risoluzione efficace degli errori segue un metodo: riproduci, isola, verifica, risolvi.`,
       },
       {
         id: 4,
@@ -448,12 +448,12 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Pubblichi la novità sull'ambiente di prova per verificare che tutto funzioni, e proponi la pubblicazione definitiva lunedì mattina",
             isCorrect: true,
-            feedback: `Buona gestione del rischio. Lavoro fatto, problemi evitati.`,
+            feedback: `Ottima gestione del rischio! Hai completato il lavoro ma evitato problemi nel fine settimana.`,
           },
           {
             id: "b",
             text: "Procedi con la pubblicazione definitiva: tutti i controlli automatici sono passati e la funzionalità è stata validata dal team",
-            feedback: `Rischioso. Se qualcosa va storto nel fine settimana, chi interviene?`,
+            feedback: `Pubblicare il venerdì sera è rischioso. Se qualcosa va storto nel fine settimana, chi interviene?`,
           },
           {
             id: "c",
@@ -462,7 +462,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Risk Management",
-        lesson: `Bilancia velocità e rischio, sempre.`,
+        lesson: `Nel digitale, gli sviluppatori esperti bilanciano velocità e rischio.`,
       },
     ],
     "Digital Marketing": (t) => [
@@ -481,12 +481,12 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: `"Il problema è la pagina dove le persone arrivano dopo il click: su 380 click, solo 12 hanno completato l'azione. Propongo di creare due versioni della pagina e testare quale funziona meglio"`,
             isCorrect: true,
-            feedback: `Hai identificato dove si perdono le persone e proposto una soluzione concreta.`,
+            feedback: `Eccellente! Hai identificato dove si perdono le persone e proposto una soluzione concreta per ${t.industry}.`,
           },
           {
             id: "b",
             text: `"La campagna ha portato 45.000 persone raggiunte e 380 click qualificati. Propongo di aumentare il budget per ampliare i volumi"`,
-            feedback: "Stai mascherando il fallimento con numeri che non contano. Il cliente voleva conversioni.",
+            feedback: "Stai mascherando il fallimento con numeri che sembrano buoni ma non contano davvero. Il cliente voleva conversioni, non visibilità.",
           },
           {
             id: "c",
@@ -495,7 +495,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Data Analysis",
-        lesson: `Onestà sui dati costruisce fiducia.`,
+        lesson: `In questo lavoro, l'onestà sui dati costruisce fiducia. I clienti apprezzano diagnosi precise.`,
       },
       {
         id: 2,
@@ -508,12 +508,12 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Rispondi pubblicamente con empatia riconoscendo il disagio e offri un contatto diretto per risolvere la situazione",
             isCorrect: true,
-            feedback: `Trasparenza e ascolto trasformano critici in sostenitori.`,
+            feedback: `Perfetto! In ${t.industry}, la trasparenza e l'ascolto trasformano critici in sostenitori.`,
           },
           {
             id: "b",
             text: "Nascondi temporaneamente il post per evitare che la situazione si amplifichi e contatti l'utente in privato",
-            feedback: "Censurare peggiora tutto. L'autenticità è fondamentale.",
+            feedback: "Censurare peggiora tutto. Nel " + t.industry + ", l'autenticità è fondamentale.",
           },
           {
             id: "c",
@@ -522,7 +522,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Crisis Management",
-        lesson: `Le crisi sono occasioni per dimostrare valori.`,
+        lesson: `Nel digitale, le crisi sui social sono opportunità per dimostrare i valori del marchio.`,
       },
       {
         id: 3,
@@ -535,12 +535,12 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Mix bilanciato: 40% contenuti che insegnano qualcosa sul settore, 30% vita quotidiana dell'azienda, 20% prodotto e 10% contenuti creati dai clienti stessi",
             isCorrect: true,
-            feedback: `Mix equilibrato: contenuti educativi, dietro le quinte, prodotto e comunità.`,
+            feedback: `Eccellente mix! In ${t.industry}, i contenuti educativi creano autorevolezza, quelli sul dietro le quinte umanizzano, il prodotto converte, e i contenuti dei clienti creano comunità.`,
           },
           {
             id: "b",
             text: "Focus sulla vendita: 80% contenuti che mostrano il prodotto con inviti diretti all'acquisto e 20% contenuti informativi di contesto",
-            feedback: `Troppo aggressivo. Chi parla solo di sé stanca il pubblico.`,
+            feedback: `Troppo aggressivo. Nel ${t.industry}, chi parla solo di sé stanca il pubblico.`,
           },
           {
             id: "c",
@@ -549,7 +549,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Content Strategy",
-        lesson: `Bilancia contenuti di marca e risultati.`,
+        lesson: `In questi ruoli, il mix di contenuti bilancia costruzione del marchio e risultati concreti.`,
       },
       {
         id: 4,
@@ -562,12 +562,12 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "€1.500 per mostrare annunci a chi ha già visitato il sito, €1.000 per raggiungere persone simili ai tuoi clienti attuali, €500 per testare nuovi pubblici",
             isCorrect: true,
-            feedback: `Chi ti conosce già converte di più. Pubblico simile espande, test preparano il futuro.`,
+            feedback: `Strategia intelligente! Raggiungere chi ti conosce già ha il ritorno sull'investimento più alto, il pubblico simile ti fa crescere, e i test preparano il futuro.`,
           },
           {
             id: "b",
             text: "€3.000 su campagne per far conoscere il marchio a più persone possibili e aumentare la visibilità negli ultimi mesi dell'anno",
-            feedback: `Visibilità senza strategia di conversione è fine a sé stessa.`,
+            feedback: `La visibilità senza una strategia di conversione è fine a sé stessa. In ${t.industry}, serve un percorso completo dall'attenzione all'acquisto.`,
           },
           {
             id: "c",
@@ -576,7 +576,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Budget Optimization",
-        lesson: `Il budget segue i dati, non l'istinto.`,
+        lesson: `Nel digitale, il budget va dove i dati dicono che funziona, non dove sembra più attraente.`,
       },
     ],
     "Data Analysis e Data Science": (t) => [
@@ -591,7 +591,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Chiedi al CEO quali indicatori specifici servono e qual è il messaggio che vuole trasmettere agli investitori",
             isCorrect: true,
-            feedback: `Capire il contesto evita di produrre dati inutili.`,
+            feedback: `Perfetto! In ${t.industry}, capire il contesto evita di produrre dati inutili. Il CEO probabilmente non sa esattamente cosa vuole.`,
           },
           {
             id: "b",
@@ -605,7 +605,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Stakeholder Communication",
-        lesson: `Prima capisci la domanda, poi cerchi i dati.`,
+        lesson: `In questo lavoro, l'analista bravo non risponde a domande: aiuta a fare quelle giuste.`,
       },
       {
         id: 2,
@@ -618,21 +618,21 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Analizzi la distribuzione dei valori mancanti per capire se sono casuali o sistematici, poi decidi la strategia migliore",
             isCorrect: true,
-            feedback: `I valori mancanti raccontano una storia. Capire perché mancano è fondamentale.`,
+            feedback: `Eccellente! In ${t.industry}, i valori mancanti raccontano una storia. Capire PERCHÉ mancano è fondamentale.`,
           },
           {
             id: "b",
             text: "Li sostituisci con la media del campo per mantenere l'insieme di dati completo e non perdere il 15% delle righe",
-            feedback: "La media può introdurre distorsione se i valori mancano in modo sistematico.",
+            feedback: "La media può introdurre una distorsione. Se i valori mancano in modo sistematico (es. utenti che non completano il profilo), la media è fuorviante.",
           },
           {
             id: "c",
             text: "Li escludi dall'analisi per lavorare solo su dati certi e presentare risultati basati su informazioni verificate",
-            feedback: `Escludere il 15% può distorcere i risultati. Perderesti informazioni importanti.`,
+            feedback: `Escludere il 15% può introdurre una distorsione nella selezione. In ${t.industry}, perderesti informazioni importanti.`,
           },
         ],
         skill: "Data Quality",
-        lesson: `Dati scadenti in ingresso, risultati scadenti.`,
+        lesson: `In questi ruoli, la qualità dei dati è il fondamento. Se i dati in ingresso sono scadenti, i risultati saranno scadenti.`,
       },
       {
         id: 3,
@@ -645,12 +645,12 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Indaghi il segmento per capire chi sono questi utenti e perché ottengono valore con meno tempo di utilizzo",
             isCorrect: true,
-            feedback: `I dati controintuitivi spesso nascondono le scoperte più preziose.`,
+            feedback: `Ottimo! In ${t.industry}, i dati controintuitivi spesso nascondono le scoperte più preziose.`,
           },
           {
             id: "b",
             text: "Verifichi se l'anomalia dipende da un errore nei dati o nella raccolta prima di trarre qualsiasi conclusione",
-            feedback: "Le scoperte più importanti spesso sembrano 'strane' all'inizio.",
+            feedback: "Ignorare anomalie è un errore. Spesso le scoperte più importanti sembrano 'strane' all'inizio.",
           },
           {
             id: "c",
@@ -659,7 +659,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Critical Thinking",
-        lesson: `I dati strani meritano più attenzione, non meno.`,
+        lesson: `Nel digitale, i dati controintuitivi meritano più attenzione, non meno.`,
       },
       {
         id: 4,
@@ -672,7 +672,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Dai un nome descrittivo a ogni gruppo e mostri una o due scoperte concrete e utilizzabili per ciascuno",
             isCorrect: true,
-            feedback: `Nomi descrittivi rendono i gruppi memorabili e utilizzabili dal team.`,
+            feedback: `Perfetto! 'Gli Esploratori', 'I Fedeli', 'I Dormienti' sono più memorabili di 'Gruppo 1, 2, 3'.`,
           },
           {
             id: "b",
@@ -686,7 +686,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Data Storytelling",
-        lesson: `Scoperta comunicata male è scoperta sprecata.`,
+        lesson: `In questo lavoro, una scoperta non comunicata bene è una scoperta sprecata.`,
       },
     ],
     "Non lo so": (t) => [
@@ -701,7 +701,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Definire gli obiettivi concreti e i criteri di successo: cosa significa esattamente 'fatto bene' per questo progetto?",
             isCorrect: true,
-            feedback: `Senza obiettivi chiari, ogni progetto rischia di andare alla deriva.`,
+            feedback: `Perfetto! Senza obiettivi chiari, ogni progetto in ${t.industry} rischia di andare alla deriva.`,
           },
           {
             id: "b",
@@ -715,7 +715,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Project Initiation",
-        lesson: `Obiettivi vaghi fanno fallire più dell'esecuzione.`,
+        lesson: `Nel digitale, i progetti falliscono più per obiettivi vaghi che per esecuzione scarsa.`,
       },
       {
         id: 2,
@@ -728,7 +728,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Faciliti una discussione chiedendo qual è l'obiettivo dell'effetto visivo e se esiste un compromesso che soddisfi entrambi",
             isCorrect: true,
-            feedback: `Il coordinatore non decide, facilita. L'obiettivo comune sblocca i conflitti.`,
+            feedback: `Ottimo! In ${t.industry}, il coordinatore non decide ma facilita. L'obiettivo comune sblocca i conflitti.`,
           },
           {
             id: "b",
@@ -742,7 +742,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Conflict Resolution",
-        lesson: `Trova l'obiettivo comune, il conflitto si risolve.`,
+        lesson: `In questi ruoli, i conflitti spesso nascono da obiettivi diversi. Trovare l'obiettivo comune li risolve.`,
       },
       {
         id: 3,
@@ -755,7 +755,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Convochi una riunione per distinguere cosa è essenziale per la presentazione e cosa si può rimandare",
             isCorrect: true,
-            feedback: `Meglio consegnare meno ma funzionante che tutto ma incompleto.`,
+            feedback: `Perfetto! In ${t.industry}, meglio consegnare meno ma funzionante che tutto ma incompleto.`,
           },
           {
             id: "b",
@@ -769,7 +769,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Scope Management",
-        lesson: `Saper tagliare è importante quanto saper fare.`,
+        lesson: `In questo lavoro, saper dire 'questo lo tagliamo' è cruciale quanto saper dire 'questo lo facciamo'.`,
       },
       {
         id: 4,
@@ -782,7 +782,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Organizzi un incontro privato faccia a faccia per capire cosa sta succedendo e offrire supporto concreto alla persona",
             isCorrect: true,
-            feedback: `Partire con curiosità, non giudizio. Spesso ci sono motivi non visibili.`,
+            feedback: `Perfetto! Partire con curiosità, non giudizio. Spesso ci sono motivi non visibili.`,
           },
           {
             id: "b",
@@ -796,7 +796,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "People Management",
-        lesson: `Riscontro tempestivo e privato, sempre.`,
+        lesson: `Nel digitale, il riscontro è un regalo. Darlo bene è un'arte che si impara.`,
       },
     ],
   };
@@ -968,11 +968,11 @@ const generateMorningIntro = (area: string, theme: InterestTheme, profile: UserP
 
 const generateConclusion = (area: string, theme: InterestTheme, profile: UserProfile): string => {
   const conclusions: Record<string, string> = {
-    "UX/UI Design": `Hai analizzato una richiesta reale, scelto un profilo utente, progettato una soluzione e difeso le tue idee davanti a un team. Questo è il lavoro di chi progetta esperienze digitali.`,
-    "Web Development": `Hai revisionato codice, scelto un'architettura, risolto un errore e gestito una pubblicazione sotto pressione. Questo è il lavoro di chi costruisce prodotti digitali.`,
-    "Digital Marketing": `Hai letto i dati di una campagna, gestito una crisi, pianificato contenuti e distribuito un budget. Questo è il lavoro di chi fa marketing digitale.`,
-    "Data Analysis e Data Science": `Hai scelto cosa misurare, trovato un'anomalia, comunicato risultati a non-tecnici e gestito dati incompleti. Questo è il lavoro di chi analizza dati.`,
-    "Non lo so": `Hai affrontato analisi, comunicazione, problem solving e coordinamento. Hai ragionato come chi lavora nel digitale ogni giorno.`,
+    "UX/UI Design": `Hai appena analizzato una richiesta reale, scelto il profilo utente su cui concentrarti, progettato una soluzione concreta e difeso le tue idee davanti a un team. Questo è il lavoro vero di chi progetta esperienze digitali: non si tratta di rendere le cose "belle", ma di capire le persone e risolvere i loro problemi.`,
+    "Web Development": `Hai appena revisionato il lavoro di un collega, scelto come strutturare un sistema, risolto un errore sotto pressione e deciso se pubblicare o aspettare. Questo è il lavoro vero di chi costruisce prodotti digitali: non è solo scrivere codice, è prendere decisioni che hanno un impatto reale.`,
+    "Digital Marketing": `Hai appena letto i dati di una campagna, gestito una crisi sui social, pianificato un mese di contenuti e distribuito un budget pubblicitario. Questo è il lavoro vero di chi fa marketing digitale: non è solo pubblicare post, è ragionare in modo strategico su ogni scelta.`,
+    "Data Analysis e Data Science": `Hai appena scelto cosa misurare in un progetto reale, trovato un'anomalia nei dati, raccontato i risultati a chi deve prendere decisioni e affrontato un problema di qualità dei dati. Questo è il lavoro vero di chi analizza dati: non è solo fare grafici, è trasformare numeri in risposte concrete.`,
+    "Non lo so": `Hai appena affrontato situazioni che richiedevano analisi, comunicazione, problem solving e visione d'insieme. Anche senza un titolo preciso, hai dimostrato di saper ragionare come chi lavora nel digitale ogni giorno.`,
   };
 
   return conclusions[area] || conclusions["Non lo so"];
@@ -980,11 +980,11 @@ const generateConclusion = (area: string, theme: InterestTheme, profile: UserPro
 
 const generateEncouragement = (area: string, theme: InterestTheme, profile: UserProfile): string => {
   const encouragements: Record<string, string> = {
-    "UX/UI Design": `Hai ascoltato prima di proporre, cercato il problema vero prima di disegnare, e ti sei confrontato con chi la pensa diversamente. Sono le qualità di chi progetta esperienze che funzionano.`,
-    "Web Development": `Non ti sei fermato alla soluzione più veloce: hai valutato le conseguenze e pensato a chi avrebbe lavorato dopo di te. È così che ragiona chi costruisce software che dura.`,
-    "Digital Marketing": `Non ti sei accontentato di numeri che sembrano buoni: hai cercato quelli che contano davvero. È la differenza tra chi pubblica contenuti e chi costruisce strategie.`,
-    "Data Analysis e Data Science": `Non ti sei perso nei numeri: hai cercato la storia che raccontano. È la differenza tra chi riempie fogli di calcolo e chi trasforma dati in decisioni.`,
-    "Non lo so": `Hai saputo adattarti, ragionare sotto pressione e trovare soluzioni in contesti nuovi. Sono le basi di qualsiasi carriera nel digitale.`,
+    "UX/UI Design": `Il modo in cui hai affrontato queste situazioni dice qualcosa di te: sai ascoltare prima di proporre, cerchi il problema vero prima di disegnare soluzioni, e non hai paura di confrontarti con chi la pensa diversamente. Sono le qualità di chi progetta esperienze che funzionano davvero.\n\nC'è un designer in te che ragiona già nel modo giusto. Il Master in UX/UI Design è il posto dove questa versione di te prende forma: impari il metodo, costruisci progetti reali e ti confronti con professionisti che fanno questo lavoro ogni giorno.`,
+    "Web Development": `Il modo in cui hai ragionato mostra qualcosa: non ti sei fermato alla soluzione più veloce, hai valutato le conseguenze, hai pensato a chi avrebbe lavorato dopo di te. È così che ragiona chi costruisce software che dura nel tempo.\n\nC'è uno sviluppatore in te che ha già l'approccio giusto. Il Master in Web Development è dove questa mentalità diventa competenza tecnica concreta: impari a costruire, testare e pubblicare prodotti reali con le tecnologie che il mercato cerca.`,
+    "Digital Marketing": `Il modo in cui hai letto i dati, gestito la crisi e distribuito le risorse racconta il tuo approccio: non ti accontenti di numeri che sembrano buoni, cerchi quelli che contano davvero. È esattamente la differenza tra chi pubblica contenuti e chi costruisce strategie.\n\nC'è un marketer in te che sa già dove guardare. Il Master in Digital Marketing è dove questa intuizione diventa metodo: impari a pianificare campagne, leggere i risultati e prendere decisioni basate sui dati, lavorando su casi reali.`,
+    "Data Analysis e Data Science": `Il modo in cui hai scelto cosa misurare, come verificare un'anomalia e come comunicare i risultati dice molto: non ti perdi nei numeri, cerchi la storia che raccontano. È la differenza tra chi riempie fogli di calcolo e chi trasforma dati in decisioni.\n\nC'è un analista in te che ha già il mindset giusto. Il Master in Data Analysis è dove questo approccio diventa competenza: impari gli strumenti, lavori su dataset reali e costruisci progetti che puoi mostrare a chi assume.`,
+    "Non lo so": `Non sapere ancora quale strada prendere non è un limite — è il segno di chi vuole scegliere bene. Il modo in cui hai affrontato queste situazioni mostra che sai adattarti, ragionare sotto pressione e trovare soluzioni anche in contesti nuovi.\n\nQueste sono le basi di qualsiasi carriera nel digitale. Il Master giusto per te è quello dove puoi esplorare, provare e scoprire cosa ti accende davvero — con il supporto di chi ci è già passato.`,
   };
 
   return encouragements[area] || encouragements["Non lo so"];
