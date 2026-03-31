@@ -343,7 +343,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           {
             id: "b",
             text: `"L'esperienza utente è la nostra priorità: propongo di riorganizzare il piano di sviluppo per trovare il tempo necessario"`,
-            feedback: `Ignorare i vincoli crea conflitti. In ${t.companyName} come in ogni azienda, il designer collabora, non impone.`,
+            feedback: `Ignorare i vincoli tecnici crea conflitti. Il designer collabora, non impone.`,
           },
           {
             id: "c",
