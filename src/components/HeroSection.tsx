@@ -56,7 +56,7 @@ const HeroSection = ({ onStart }: HeroSectionProps) => {
           transition={{ duration: 0.6 }}
           className="mb-6"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-primary font-medium">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded glass text-sm text-primary font-medium">
             <Sparkles className="w-4 h-4" />
             Simulatore di Carriera Digitale
           </span>
@@ -90,7 +90,10 @@ const HeroSection = ({ onStart }: HeroSectionProps) => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <Button variant="hero" size="xl" onClick={handleStart}>
+          <Button 
+            onClick={handleStart}
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-sm text-lg font-semibold h-15 px-11 py-4 transition-all duration-300 bg-transparent border-2 border-[#00e599] text-[#00e599] hover:bg-[rgba(0,229,153,0.08)] active:scale-[0.98]"
+          >
             <Zap className="w-5 h-5" />
             Inizia la Simulazione
           </Button>
@@ -108,7 +111,7 @@ const HeroSection = ({ onStart }: HeroSectionProps) => {
             { icon: Sparkles, label: "Personalizzato" },
           ].map((item, index) => (
             <div key={index} className="flex flex-col items-center gap-2 text-muted-foreground">
-              <div className="w-12 h-12 rounded-xl glass flex items-center justify-center">
+              <div className="w-12 h-12 rounded glass flex items-center justify-center">
                 <item.icon className="w-5 h-5 text-primary" />
               </div>
               <span className="text-xs font-medium">{item.label}</span>

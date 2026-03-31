@@ -113,16 +113,31 @@ const ProfileForm = ({ onSubmit, onBack }: ProfileFormProps) => {
         animate={{ opacity: 1, y: 0 }}
         className="relative z-10 w-full max-w-lg"
       >
-        {/* Progress */}
-        <div className="flex gap-2 mb-8">
-          {steps.map((_, index) => (
-            <div
-              key={index}
-              className={`h-1.5 flex-1 rounded-full transition-all duration-300 ${
-                index <= step ? "bg-primary" : "bg-secondary"
-              }`}
-            />
-          ))}
+        {/* Progress - numeric */}
+        <div className="flex items-center justify-center gap-4 mb-8">
+          {steps.map((_, index) => {
+            const num = String(index + 1).padStart(2, '0');
+            const isCompleted = index < step;
+            const isActive = index === step;
+            return (
+              <div key={index} className="flex items-center gap-4">
+                <span
+                  className={`text-sm font-medium tracking-wider ${
+                    isCompleted
+                      ? "text-[#00e599]"
+                      : isActive
+                      ? "text-foreground border-b-2 border-[#00e599] pb-0.5"
+                      : "text-muted-foreground/40"
+                  }`}
+                >
+                  {num}
+                </span>
+                {index < steps.length - 1 && (
+                  <span className="text-muted-foreground/30">—</span>
+                )}
+              </div>
+            );
+          })}
         </div>
 
         <AnimatePresence mode="wait">
@@ -134,14 +149,12 @@ const ProfileForm = ({ onSubmit, onBack }: ProfileFormProps) => {
             transition={{ duration: 0.3 }}
           >
             <Card variant="gradient" className="p-6 md:p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <currentStep.icon className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold">{currentStep.title}</h2>
-                  <p className="text-sm text-muted-foreground">{currentStep.subtitle}</p>
-                </div>
+              <div className="mb-6">
+                <span className="text-xs font-semibold uppercase tracking-widest text-[#00e599]">
+                  Step {String(step + 1).padStart(2, '0')}
+                </span>
+                <h2 className="text-2xl font-bold mt-1">{currentStep.title}</h2>
+                <p className="text-sm text-muted-foreground">{currentStep.subtitle}</p>
               </div>
 
               {currentStep.isSelect ? (
@@ -153,7 +166,7 @@ const ProfileForm = ({ onSubmit, onBack }: ProfileFormProps) => {
                         trackFormStart();
                         setProfile({ ...profile, digitalArea: area.id });
                       }}
-                      className={`w-full p-4 rounded-xl text-left transition-all duration-200 ${
+                      className={`w-full p-4 rounded text-left transition-all duration-200 ${
                         profile.digitalArea === area.id
                           ? "bg-primary/20 border-2 border-primary"
                           : "bg-secondary/50 border-2 border-transparent hover:bg-secondary"
@@ -172,7 +185,7 @@ const ProfileForm = ({ onSubmit, onBack }: ProfileFormProps) => {
                   }
                   onFocus={trackFormStart}
                   placeholder={currentStep.placeholder}
-                  className="w-full h-32 bg-secondary/50 border border-border rounded-xl p-4 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"
+                  className="w-full h-32 bg-secondary/50 border border-border rounded p-4 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"
                 />
               )}
 

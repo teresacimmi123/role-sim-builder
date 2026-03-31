@@ -199,7 +199,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
     >
       <Card variant="gradient" className="p-6 border-l-4 border-l-[#00c896]">
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center">
+          <div className="w-12 h-12 rounded bg-primary/20 flex items-center justify-center">
             <Briefcase className="w-6 h-6 text-primary" />
           </div>
           <div>
@@ -220,7 +220,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
         </p>
       </Card>
 
-      <div className="p-4 rounded-xl bg-accent/10 border border-accent/20">
+      <div className="p-4 rounded bg-accent/10 border border-accent/20">
         <div className="flex items-center gap-2 mb-2">
           <Zap className="w-5 h-5 text-accent" />
           <span className="font-medium text-accent">Come funziona</span>
@@ -254,7 +254,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
           {scenario.tasks.map((_, index) => (
             <div
               key={index}
-              className={`w-8 h-1.5 rounded-full transition-all ${
+              className={`w-8 h-1.5 rounded-none transition-all ${
                 index < currentTaskIndex
                   ? "bg-primary"
                   : index === currentTaskIndex
@@ -273,13 +273,13 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
         </h3>
         
         <div className="space-y-4">
-          <div className="p-4 rounded-xl bg-secondary/30">
+          <div className="p-4 rounded bg-secondary/30">
             <p className="text-sm text-foreground leading-relaxed">{currentTask.context}</p>
           </div>
           
           {/* Technical Terms Explanation */}
           {currentTask.technicalTerms && currentTask.technicalTerms.length > 0 && (
-            <div className="p-4 rounded-xl bg-accent/10 border border-accent/20">
+            <div className="p-4 rounded bg-accent/10 border border-accent/20">
               <div className="flex items-center gap-2 mb-3">
                 <BookOpen className="w-4 h-4 text-accent" />
                 <span className="text-sm font-medium text-accent">Glossario</span>
@@ -295,7 +295,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
             </div>
           )}
           
-          <div className="p-4 rounded-xl bg-primary/10 border border-primary/20">
+          <div className="p-4 rounded bg-primary/10 border border-primary/20">
             <div className="flex items-center gap-2 mb-2">
               <AlertCircle className="w-4 h-4 text-primary" />
               <span className="text-sm font-medium text-primary">La sfida</span>
@@ -310,10 +310,10 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
           <button
             key={choice.id}
             onClick={() => handleTaskChoiceSelect(choice)}
-            className="w-full p-5 rounded-xl bg-secondary/50 border-2 border-transparent hover:border-primary/50 hover:bg-secondary transition-all text-left group"
+            className="w-full p-5 rounded bg-secondary/50 border-2 border-transparent hover:border-primary/50 hover:bg-secondary transition-all text-left group"
           >
             <div className="flex items-start gap-3">
-              <span className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center text-primary font-bold shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+              <span className="w-8 h-8 rounded bg-primary/20 flex items-center justify-center text-primary font-bold shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
                 {choice.id.toUpperCase()}
               </span>
               <p className="text-foreground leading-relaxed">{choice.text}</p>
@@ -333,11 +333,11 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
       <Card variant="gradient" className="p-6">
         <div className="flex items-center gap-2 mb-4">
           {selectedTaskChoice?.isCorrect ? (
-            <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+            <div className="w-10 h-10 rounded bg-primary/20 flex items-center justify-center">
               <CheckCircle2 className="w-6 h-6 text-primary" />
             </div>
           ) : (
-            <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+            <div className="w-10 h-10 rounded bg-accent/20 flex items-center justify-center">
               <Lightbulb className="w-6 h-6 text-accent" />
             </div>
           )}
@@ -348,12 +348,12 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
           </div>
         </div>
         
-        <div className="p-4 rounded-xl bg-secondary/30 mb-4">
+        <div className="p-4 rounded bg-secondary/30 mb-4">
           <p className="text-sm text-muted-foreground mb-2">La tua risposta:</p>
           <p className="text-foreground">{selectedTaskChoice?.text}</p>
         </div>
         
-        <div className={`p-4 rounded-xl ${selectedTaskChoice?.isCorrect ? "bg-primary/10 border border-primary/20" : "bg-accent/10 border border-accent/20"}`}>
+        <div className={`p-4 rounded ${selectedTaskChoice?.isCorrect ? "bg-primary/10 border border-primary/20" : "bg-accent/10 border border-accent/20"}`}>
           <p className="text-foreground leading-relaxed">{selectedTaskChoice?.feedback}</p>
         </div>
       </Card>
@@ -382,7 +382,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
       className="space-y-6"
     >
       <div className="text-center mb-6">
-        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 text-accent text-sm font-medium">
+        <span className="inline-flex items-center gap-2 px-4 py-2 rounded bg-accent/20 text-accent text-sm font-medium">
           <Star className="w-4 h-4" />
           Scenario Finale
         </span>
@@ -398,13 +398,13 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
       <div className="space-y-3">
         <p className="text-sm text-muted-foreground text-center mb-4">Quale strada scegli?</p>
         {scenario.finalScenario.choices.map((choice) => (
-          <div key={choice.id} className="rounded-xl bg-secondary/50 border-2 border-transparent hover:border-primary/50 hover:bg-secondary transition-all">
+          <div key={choice.id} className="rounded bg-secondary/50 border-2 border-transparent hover:border-primary/50 hover:bg-secondary transition-all">
             <button
               onClick={() => setExpandedFinalChoice(expandedFinalChoice === choice.id ? null : choice.id)}
               className="w-full p-5 text-left group"
             >
               <div className="flex items-start gap-3">
-                <span className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center text-primary font-bold shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                <span className="w-8 h-8 rounded bg-primary/20 flex items-center justify-center text-primary font-bold shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
                   {choice.id.toUpperCase()}
                 </span>
                 <p className="text-foreground leading-relaxed flex-1">{choice.text}</p>
@@ -449,7 +449,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
         </div>
         <p className="text-muted-foreground mb-4">{selectedFinalChoice?.text}</p>
         
-        <div className="p-4 rounded-xl bg-primary/10 border border-primary/20">
+        <div className="p-4 rounded bg-primary/10 border border-primary/20">
           <p className="text-foreground leading-relaxed">{selectedFinalChoice?.outcome}</p>
         </div>
       </Card>
@@ -472,7 +472,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ type: "spring", duration: 0.6 }}
-          className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4"
+          className="w-16 h-16 rounded bg-primary/20 flex items-center justify-center mx-auto mb-4"
         >
           <Trophy className="w-8 h-8 text-primary" />
         </motion.div>
@@ -537,7 +537,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
         </div>
       </Card>
 
-      <div className="p-4 rounded-xl bg-secondary/30 border border-border/30">
+      <div className="p-4 rounded bg-secondary/30 border border-border/30">
         <div className="flex items-start gap-3">
           <Shield className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
           <p className="text-sm text-muted-foreground">
@@ -572,7 +572,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ type: "spring", duration: 0.6 }}
-          className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4"
+          className="w-20 h-20 rounded bg-primary/20 flex items-center justify-center mx-auto mb-4"
         >
           <Trophy className="w-10 h-10 text-primary" />
         </motion.div>
@@ -601,12 +601,12 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
             >
               <div className="space-y-2 mt-4">
                 {taskResults.map((result, index) => (
-                  <div key={index} className="rounded-lg bg-secondary/50 overflow-hidden">
+                  <div key={index} className="rounded bg-secondary/50 overflow-hidden">
                     <button
                       onClick={() => setExpandedRecapTask(expandedRecapTask === index ? null : index)}
                       className="w-full flex items-center gap-3 p-3 text-left"
                     >
-                      <div className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 ${result.choice.isCorrect ? "bg-primary/20" : "bg-accent/20"}`}>
+                      <div className={`w-6 h-6 rounded flex items-center justify-center shrink-0 ${result.choice.isCorrect ? "bg-primary/20" : "bg-accent/20"}`}>
                         {result.choice.isCorrect ? (
                           <CheckCircle2 className="w-4 h-4 text-primary" />
                         ) : (
@@ -691,7 +691,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
       {/* Master Recommendation */}
       <Card className="p-6 bg-gradient-to-br from-primary/20 to-accent/10 border-2 border-primary/40 border-l-4 border-l-[#00c896]">
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-12 h-12 rounded-xl bg-primary/30 flex items-center justify-center">
+          <div className="w-12 h-12 rounded bg-primary/30 flex items-center justify-center">
             <Trophy className="w-6 h-6 text-primary" />
           </div>
           <div>
@@ -702,7 +702,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
         <p className="text-sm text-foreground leading-relaxed mb-4">
           {scenario.masterRecommendation.description}
         </p>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 mb-4 py-3 px-4 rounded-lg bg-primary/10">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 mb-4 py-3 px-4 rounded bg-primary/10">
           <span className="flex items-center gap-1.5 text-sm text-primary">
             <CheckCircle2 className="w-4 h-4 shrink-0" />
             +3.000 studenti già assunti
