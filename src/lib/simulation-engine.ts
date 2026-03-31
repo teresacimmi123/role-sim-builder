@@ -769,7 +769,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Scope Management",
-        lesson: `In questo lavoro, saper dire 'questo lo tagliamo' è cruciale quanto saper dire 'questo lo facciamo'.`,
+        lesson: `Saper tagliare è importante quanto saper fare.`,
       },
       {
         id: 4,
