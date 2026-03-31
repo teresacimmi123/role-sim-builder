@@ -292,7 +292,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           {
             id: "c",
             text: "Sofia, 19 anni, studentessa: prova molte app concorrenti ed è sempre alla ricerca della soluzione perfetta",
-            feedback: "Sofia è interessante ma troppo instabile. Nel " + t.industry + " serve fidelizzare prima di espandere.",
+            feedback: "Troppo instabile come riferimento. Serve fidelizzare prima di espandere.",
           },
         ],
         skill: "User Research",
