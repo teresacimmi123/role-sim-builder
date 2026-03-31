@@ -495,7 +495,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Data Analysis",
-        lesson: `In questo lavoro, l'onestà sui dati costruisce fiducia. I clienti apprezzano diagnosi precise.`,
+        lesson: `Onestà sui dati costruisce fiducia.`,
       },
       {
         id: 2,
