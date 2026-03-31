@@ -645,7 +645,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Indaghi il segmento per capire chi sono questi utenti e perché ottengono valore con meno tempo di utilizzo",
             isCorrect: true,
-            feedback: `Ottimo! In ${t.industry}, i dati controintuitivi spesso nascondono le scoperte più preziose.`,
+            feedback: `I dati controintuitivi spesso nascondono le scoperte più preziose.`,
           },
           {
             id: "b",
