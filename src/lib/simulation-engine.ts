@@ -257,7 +257,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           {
             id: "b",
             text: "Proponi di semplificare l'interfaccia riducendo gli elementi visivi e i passaggi richiesti all'utente",
-            feedback: "Stai assumendo che il problema sia la complessità senza dati. Nel settore " + t.industry + " potresti eliminare funzionalità cruciali.",
+            feedback: "Stai assumendo il problema senza dati. Potresti eliminare funzionalità cruciali.",
           },
           {
             id: "c",
