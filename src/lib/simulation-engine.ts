@@ -266,7 +266,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Problem Framing",
-        lesson: `In questo lavoro, resistere all'impulso di progettare subito è fondamentale. Il 50% del lavoro è capire il problema giusto.`,
+        lesson: `Prima i dati, poi il design.`,
       },
       {
         id: 2,
