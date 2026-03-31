@@ -623,7 +623,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           {
             id: "b",
             text: "Li sostituisci con la media del campo per mantenere l'insieme di dati completo e non perdere il 15% delle righe",
-            feedback: "La media può introdurre una distorsione. Se i valori mancano in modo sistematico (es. utenti che non completano il profilo), la media è fuorviante.",
+            feedback: "La media può introdurre distorsione se i valori mancano in modo sistematico.",
           },
           {
             id: "c",
