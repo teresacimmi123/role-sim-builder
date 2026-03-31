@@ -408,7 +408,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "System Architecture",
-        lesson: `Nel digitale, le scelte di architettura fatte all'inizio influenzano tutto ciò che viene dopo. Meglio pensarci bene subito.`,
+        lesson: `L'architettura scelta all'inizio condiziona tutto.`,
       },
       {
         id: 3,
