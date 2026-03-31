@@ -90,7 +90,10 @@ const HeroSection = ({ onStart }: HeroSectionProps) => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <Button variant="hero" size="xl" onClick={handleStart}>
+          <Button 
+            onClick={handleStart}
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-sm text-lg font-semibold h-15 px-11 py-4 transition-all duration-300 bg-transparent border-2 border-[#00e599] text-[#00e599] hover:bg-[rgba(0,229,153,0.08)] active:scale-[0.98]"
+          >
             <Zap className="w-5 h-5" />
             Inizia la Simulazione
           </Button>
