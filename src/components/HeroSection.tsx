@@ -69,7 +69,7 @@ const HeroSection = ({ onStart }: HeroSectionProps) => {
           className="text-[clamp(2.5rem,5vw,4.5rem)] font-extrabold mb-6 leading-[1.1] overflow-visible"
         >
           Simula una
-          <span className="block text-gradient-primary">giornata di lavoro</span>
+          <span className="block text-gradient-primary leading-[1.25]">giornata di lavoro</span>
           nel digitale
         </motion.h1>
 
