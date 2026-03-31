@@ -352,7 +352,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Stakeholder Management",
-        lesson: `I designer migliori sanno negoziare tra esperienza utente ideale e vincoli reali. In questo lavoro come in ogni altro, la soluzione perfetta irrealizzabile non esiste.`,
+        lesson: `Negozia tra esperienza ideale e vincoli reali.`,
       },
     ],
     "Web Development": (t) => [
