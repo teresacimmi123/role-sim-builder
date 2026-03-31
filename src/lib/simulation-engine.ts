@@ -701,7 +701,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Definire gli obiettivi concreti e i criteri di successo: cosa significa esattamente 'fatto bene' per questo progetto?",
             isCorrect: true,
-            feedback: `Perfetto! Senza obiettivi chiari, ogni progetto in ${t.industry} rischia di andare alla deriva.`,
+            feedback: `Senza obiettivi chiari, ogni progetto rischia di andare alla deriva.`,
           },
           {
             id: "b",
