@@ -486,7 +486,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           {
             id: "b",
             text: `"La campagna ha portato 45.000 persone raggiunte e 380 click qualificati. Propongo di aumentare il budget per ampliare i volumi"`,
-            feedback: "Stai mascherando il fallimento con numeri che sembrano buoni ma non contano davvero. Il cliente voleva conversioni, non visibilità.",
+            feedback: "Stai mascherando il fallimento con numeri che non contano. Il cliente voleva conversioni.",
           },
           {
             id: "c",
