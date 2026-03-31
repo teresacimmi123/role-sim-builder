@@ -628,7 +628,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           {
             id: "c",
             text: "Li escludi dall'analisi per lavorare solo su dati certi e presentare risultati basati su informazioni verificate",
-            feedback: `Escludere il 15% può introdurre una distorsione nella selezione. In ${t.industry}, perderesti informazioni importanti.`,
+            feedback: `Escludere il 15% può distorcere i risultati. Perderesti informazioni importanti.`,
           },
         ],
         skill: "Data Quality",
