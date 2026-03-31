@@ -56,7 +56,7 @@ const HeroSection = ({ onStart }: HeroSectionProps) => {
           transition={{ duration: 0.6 }}
           className="mb-6"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-primary font-medium">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded glass text-sm text-primary font-medium">
             <Sparkles className="w-4 h-4" />
             Simulatore di Carriera Digitale
           </span>
