@@ -19,7 +19,7 @@ const HeroSection = ({ onStart }: HeroSectionProps) => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-visible pt-8">
+    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-visible pt-8">
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-dark" />
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] animate-pulse-glow" />
@@ -35,7 +35,7 @@ const HeroSection = ({ onStart }: HeroSectionProps) => {
         }}
       />
 
-      <div className="relative z-10 max-w-2xl mx-auto text-center">
+      <div className="relative z-10 max-w-3xl mx-auto text-center">
         {/* Logo start2impact */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -66,7 +66,7 @@ const HeroSection = ({ onStart }: HeroSectionProps) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-[clamp(2.5rem,5vw,4.5rem)] font-extrabold mb-6 leading-[1.15] overflow-visible"
+          className="text-[clamp(2.5rem,4.6vw,4.5rem)] font-extrabold mb-6 leading-[1.15] overflow-visible"
         >
           Simula una
           <span className="block text-gradient-primary">giornata di lavoro</span>
