@@ -367,7 +367,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Lasci un commento costruttivo spiegando quale approccio sarebbe più adatto e alleghi un esempio concreto di come migliorarlo",
             isCorrect: true,
-            feedback: `Perfetto! Una revisione costruttiva insegna. In ${t.companyName}, come in ogni team sano, si cresce insieme.`,
+            feedback: `Una revisione costruttiva con esempio concreto insegna e fa crescere.`,
           },
           {
             id: "b",
