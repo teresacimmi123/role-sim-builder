@@ -796,7 +796,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "People Management",
-        lesson: `Nel digitale, il riscontro è un regalo. Darlo bene è un'arte che si impara.`,
+        lesson: `Riscontro tempestivo e privato, sempre.`,
       },
     ],
   };
