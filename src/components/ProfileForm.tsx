@@ -113,16 +113,31 @@ const ProfileForm = ({ onSubmit, onBack }: ProfileFormProps) => {
         animate={{ opacity: 1, y: 0 }}
         className="relative z-10 w-full max-w-lg"
       >
-        {/* Progress */}
-        <div className="flex gap-2 mb-8">
-          {steps.map((_, index) => (
-            <div
-              key={index}
-              className={`h-1.5 flex-1 rounded-full transition-all duration-300 ${
-                index <= step ? "bg-primary" : "bg-secondary"
-              }`}
-            />
-          ))}
+        {/* Progress - numeric */}
+        <div className="flex items-center justify-center gap-4 mb-8">
+          {steps.map((_, index) => {
+            const num = String(index + 1).padStart(2, '0');
+            const isCompleted = index < step;
+            const isActive = index === step;
+            return (
+              <div key={index} className="flex items-center gap-4">
+                <span
+                  className={`text-sm font-medium tracking-wider ${
+                    isCompleted
+                      ? "text-[#00e599]"
+                      : isActive
+                      ? "text-foreground border-b-2 border-[#00e599] pb-0.5"
+                      : "text-muted-foreground/40"
+                  }`}
+                >
+                  {num}
+                </span>
+                {index < steps.length - 1 && (
+                  <span className="text-muted-foreground/30">—</span>
+                )}
+              </div>
+            );
+          })}
         </div>
 
         <AnimatePresence mode="wait">
