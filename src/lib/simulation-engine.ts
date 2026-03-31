@@ -591,7 +591,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Chiedi al CEO quali indicatori specifici servono e qual è il messaggio che vuole trasmettere agli investitori",
             isCorrect: true,
-            feedback: `Perfetto! In ${t.industry}, capire il contesto evita di produrre dati inutili. Il CEO probabilmente non sa esattamente cosa vuole.`,
+            feedback: `Capire il contesto evita di produrre dati inutili.`,
           },
           {
             id: "b",
