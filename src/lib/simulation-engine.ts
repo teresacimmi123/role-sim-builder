@@ -394,7 +394,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Proponi di separare il sistema in parti indipendenti, ognuna con un compito preciso, così si possono migliorare una alla volta",
             isCorrect: true,
-            feedback: `Eccellente! Separare le responsabilità rende il sistema più facile da capire, testare e far crescere nel tempo.`,
+            feedback: `Separare le responsabilità rende il sistema più facile da far crescere.`,
           },
           {
             id: "b",
