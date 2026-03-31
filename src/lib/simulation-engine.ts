@@ -605,7 +605,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Stakeholder Communication",
-        lesson: `In questo lavoro, l'analista bravo non risponde a domande: aiuta a fare quelle giuste.`,
+        lesson: `Prima capisci la domanda, poi cerchi i dati.`,
       },
       {
         id: 2,
