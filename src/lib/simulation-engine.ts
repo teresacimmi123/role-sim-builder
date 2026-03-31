@@ -311,7 +311,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Progettare un percorso di accoglienza iniziale che raccoglie le preferenze dell'utente e personalizza l'esperienza dal primo accesso",
             isCorrect: true,
-            feedback: `Eccellente! Nel ${t.industry}, la personalizzazione fin dall'inizio crea coinvolgimento. L'utente si sente capito e continua a usare l'app.`,
+            feedback: `La personalizzazione dal primo accesso crea coinvolgimento immediato.`,
           },
           {
             id: "b",
