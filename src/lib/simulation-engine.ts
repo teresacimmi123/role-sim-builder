@@ -782,7 +782,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Organizzi un incontro privato faccia a faccia per capire cosa sta succedendo e offrire supporto concreto alla persona",
             isCorrect: true,
-            feedback: `Perfetto! Partire con curiosità, non giudizio. Spesso ci sono motivi non visibili.`,
+            feedback: `Partire con curiosità, non giudizio. Spesso ci sono motivi non visibili.`,
           },
           {
             id: "b",
