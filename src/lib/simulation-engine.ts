@@ -421,7 +421,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Verifichi quanti dati causano l'errore e controlli i registri del sistema per trovare il messaggio di errore specifico",
             isCorrect: true,
-            feedback: `Perfetto! Risoluzione sistematica: prima confermi l'ipotesi, poi trovi la causa reale del problema.`,
+            feedback: `Approccio sistematico: confermi l'ipotesi, poi trovi la causa reale.`,
           },
           {
             id: "b",
