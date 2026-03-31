@@ -149,14 +149,12 @@ const ProfileForm = ({ onSubmit, onBack }: ProfileFormProps) => {
             transition={{ duration: 0.3 }}
           >
             <Card variant="gradient" className="p-6 md:p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <currentStep.icon className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold">{currentStep.title}</h2>
-                  <p className="text-sm text-muted-foreground">{currentStep.subtitle}</p>
-                </div>
+              <div className="mb-6">
+                <span className="text-xs font-semibold uppercase tracking-widest text-[#00e599]">
+                  Step {String(step + 1).padStart(2, '0')}
+                </span>
+                <h2 className="text-2xl font-bold mt-1">{currentStep.title}</h2>
+                <p className="text-sm text-muted-foreground">{currentStep.subtitle}</p>
               </div>
 
               {currentStep.isSelect ? (
