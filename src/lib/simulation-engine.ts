@@ -755,7 +755,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Convochi una riunione per distinguere cosa è essenziale per la presentazione e cosa si può rimandare",
             isCorrect: true,
-            feedback: `Perfetto! In ${t.industry}, meglio consegnare meno ma funzionante che tutto ma incompleto.`,
+            feedback: `Meglio consegnare meno ma funzionante che tutto ma incompleto.`,
           },
           {
             id: "b",
