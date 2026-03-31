@@ -522,7 +522,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
           },
         ],
         skill: "Crisis Management",
-        lesson: `Nel digitale, le crisi sui social sono opportunità per dimostrare i valori del marchio.`,
+        lesson: `Le crisi sono occasioni per dimostrare valori.`,
       },
       {
         id: 3,
