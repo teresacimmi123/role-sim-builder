@@ -728,7 +728,7 @@ const generatePersonalizedTasks = (area: string, theme: InterestTheme, bgContext
             id: "a",
             text: "Faciliti una discussione chiedendo qual è l'obiettivo dell'effetto visivo e se esiste un compromesso che soddisfi entrambi",
             isCorrect: true,
-            feedback: `Ottimo! In ${t.industry}, il coordinatore non decide ma facilita. L'obiettivo comune sblocca i conflitti.`,
+            feedback: `Il coordinatore non decide, facilita. L'obiettivo comune sblocca i conflitti.`,
           },
           {
             id: "b",
