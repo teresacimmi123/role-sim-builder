@@ -66,7 +66,7 @@ const HeroSection = ({ onStart }: HeroSectionProps) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-5xl md:text-7xl font-normal mb-6 leading-[1.15] overflow-visible"
+          className="text-5xl md:text-7xl font-normal mb-6 leading-[1.05] overflow-visible"
         >
           Simula una
           <span className="block overflow-visible text-gradient-primary py-1">giornata di lavoro</span>
