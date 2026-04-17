@@ -86,7 +86,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
 
   const emailError = touchedFields.email && contactData.email && !isEmailValid(contactData.email);
   const phoneError = touchedFields.phone && contactData.phone && !isPhoneValid(contactData.phone);
-  const isContactFormValid = contactData.name.trim() !== "" && isEmailValid(contactData.email) && isPhoneValid(contactData.phone);
+  const isContactFormValid = contactData.name.trim() !== "" && contactData.surname.trim() !== "" && isEmailValid(contactData.email) && isPhoneValid(contactData.phone);
 
   const currentTask = scenario.tasks[currentTaskIndex];
 
@@ -192,6 +192,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name: contactData.name,
+        surname: contactData.surname,
         email: contactData.email,
         phone: contactData.phone,
         role: scenario.role,
@@ -510,6 +511,21 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
               placeholder="Il tuo nome"
               value={contactData.name}
               onChange={(e) => setContactData({ ...contactData, name: e.target.value })}
+              onFocus={trackContactFormStart}
+              className="bg-secondary/50 border-border/50"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="surname" className="flex items-center gap-2">
+              <User className="w-4 h-4" />
+              Cognome
+            </Label>
+            <Input
+              id="surname"
+              placeholder="Il tuo cognome"
+              value={contactData.surname}
+              onChange={(e) => setContactData({ ...contactData, surname: e.target.value })}
               onFocus={trackContactFormStart}
               className="bg-secondary/50 border-border/50"
             />
