@@ -185,6 +185,22 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
       event_category: 'lead_generation',
       event_label: 'Form contatti inviato con successo',
     });
+
+    // Invio dati al webhook MAKE (fire-and-forget, non blocca l'utente)
+    fetch("https://hook.eu1.make.com/kiw1fak7d1b46tk4jahbciyj3nlhadb3", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: contactData.name,
+        email: contactData.email,
+        phone: contactData.phone,
+        role: scenario.role,
+        correctAnswers,
+        totalTasks: scenario.tasks.length,
+        submittedAt: new Date().toISOString(),
+      }),
+    }).catch((err) => console.error("Webhook MAKE error:", err));
+
     setPhase("recap");
   };
 
