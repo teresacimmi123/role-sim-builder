@@ -28,12 +28,13 @@ import {
 
 interface SimulationViewProps {
   scenario: SimulationScenario;
+  profile: UserProfile;
   onRestart: () => void;
 }
 
 type SimulationPhase = "intro" | "tasks" | "taskFeedback" | "final" | "finalOutcome" | "contactForm" | "recap";
 
-const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
+const SimulationView = ({ scenario, profile, onRestart }: SimulationViewProps) => {
   const [phase, setPhase] = useState<SimulationPhase>("intro");
   const [currentTaskIndex, setCurrentTaskIndex] = useState(0);
   const [selectedTaskChoice, setSelectedTaskChoice] = useState<TaskChoice | null>(null);
