@@ -40,7 +40,7 @@ const SimulationView = ({ scenario, onRestart }: SimulationViewProps) => {
   const [taskResults, setTaskResults] = useState<{ task: Task; choice: TaskChoice }[]>([]);
   const [selectedFinalChoice, setSelectedFinalChoice] = useState<{ id: string; text: string; description: string; outcome: string } | null>(null);
   const [expandedFinalChoice, setExpandedFinalChoice] = useState<string | null>(null);
-  const [contactData, setContactData] = useState({ name: "", email: "", phone: "" });
+  const [contactData, setContactData] = useState({ name: "", surname: "", email: "", phone: "" });
   const [expandedRecapTask, setExpandedRecapTask] = useState<number | null>(null);
   const [recapSections, setRecapSections] = useState<Record<string, boolean>>({ risultati: true, percorso: false, prossimoPasso: false });
   const [touchedFields, setTouchedFields] = useState({ email: false, phone: false });
