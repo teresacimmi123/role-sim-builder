@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { SimulationScenario, Task, TaskChoice } from "@/types/simulation";
+import { SimulationScenario, Task, TaskChoice, UserProfile } from "@/types/simulation";
 import { pushEvent } from "@/lib/gtm";
 import { 
   Clock, 
@@ -196,6 +196,7 @@ const SimulationView = ({ scenario, profile, onRestart }: SimulationViewProps) =
         surname: contactData.surname,
         email: contactData.email,
         phone: contactData.phone,
+        digitalArea: profile.digitalArea,
         role: scenario.role,
         correctAnswers,
         totalTasks: scenario.tasks.length,
